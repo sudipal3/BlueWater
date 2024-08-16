@@ -1,0 +1,117 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header */
+header {
+    background-color: white;
+    color: navy;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and the title */
+    align-items: center; /* Align items vertically in the center */
+}
+
+/* Image in Header */
+#header-logo {
+    height: 150px; /* Adjust the size of the logo */
+    margin-left: px; /* Space between the logo and the title (if needed) */
+}
+
+/* Title Text */
+header h1 {
+    margin: 0;
+    text-align: left; /* Align the title text to the right */
+    font-family: 'Charter', serif; /* Set the font to Charter */
+    font-style: italic; /* Make the font italic */
+    flex-grow: 1; /* Allows the title to take up remaining space */
+    margin-right: 100px; /* Move the title 100px from the right */
+}
+
+
+/* Image in Header */
+#header-logo {
+    height: 50px; /* Adjust the size of the logo */
+    margin-right: 15px; /* Space between the logo and the title */
+}
+
+/* Navigation */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: navy;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+    display: inline;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Main Content Layout */
+main {
+    padding: 20px;
+    flex-grow: 1;
+    position: relative; /* Ensures the Procedures section can be positioned absolutely */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Home Section */
+#home {
+    margin-right: 300px; /* Reserve space on the right for Procedures */
+}
+
+/* Procedures Section */
+#procedures {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    width: 150px;
+    text-align: right;
+}
+
+
+/* Remove bullets from Procedures list */
+#procedures ul {
+    list-style-type: none; /* Removes bullets */
+    padding-left: 0; /* Removes any left padding */
+}
+
+/* Contact Section */
+#contact {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: auto;
+}
+
+/* Footer */
+footer {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
