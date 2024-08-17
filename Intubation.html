@@ -15,21 +15,37 @@
     <nav>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#procedures">Procedures</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
+    
+   
+    <div class="container">
+        <div class="form-section">
+        <h2> Intubation Procedure Note</h2>
+            <!-- Example Section for Technique -->
+            <div class="input-group">
+                <h3>Technique</h3>
+                <button onclick="addText('Technique: a 7.5 french ETT was used.')">7.5 Fr ETT</button>
+                <button onclick="addText('Technique: glidescope used.')">Glidescope</button>
+                 <textarea id="techniqueText" placeholder=""></textarea>
+                <!-- Add more buttons or inputs as needed -->
+            </div>
 
-    <main>
-        <section id="procedure-details">
-            <h2>Intubation Procedure Note</h2>
-            <!-- Content for this procedure -->
-        </section>
-    </main>
+            <!-- Add more input groups for other sections like Indication, Medications, etc. -->
+
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
+
 
     <footer>
         <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
         <p><a href="index.html#procedures">Back to Procedures</a></p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

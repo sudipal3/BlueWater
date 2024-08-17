@@ -9,6 +9,68 @@ body {
     position: relative;
 }
 
+/* Container for Form and Output */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    gap: 20px;
+}
+
+/* Form Section and Output Section */
+.form-section, .output-section {
+    padding: 20px;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 45%;
+}
+
+.form-section {
+    background-color: #f4f4f4;
+}
+
+.output-section {
+    background-color: #fff;
+}
+
+/* Button Styling */
+button {
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+textarea {
+    width: 85%;
+    margin-top: 10px; /* Adds space between the buttons and the textarea */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    resize: vertical; /* Allows users to resize the textarea vertically */
+}
+
+button + textarea {
+    margin-top: 10px; /* Ensures there's space between the last button and the textarea */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Output Area Styling */
+#outputArea {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 150px;
+    margin-bottom: 10px
+}
+
 /* Header */
 header {
     background-color: white;
@@ -21,7 +83,7 @@ header {
 
 /* Image in Header */
 #header-logo {
-    height: 150px; /* Adjust the size of the logo */
+    height: 80px; /* Adjust the size of the logo */
     margin-left: px; /* Space between the logo and the title (if needed) */
 }
 
@@ -33,13 +95,6 @@ header h1 {
     font-style: italic; /* Make the font italic */
     flex-grow: 1; /* Allows the title to take up remaining space */
     margin-right: 100px; /* Move the title 100px from the right */
-}
-
-
-/* Image in Header */
-#header-logo {
-    height: 50px; /* Adjust the size of the logo */
-    margin-right: 15px; /* Space between the logo and the title */
 }
 
 /* Navigation */
@@ -72,10 +127,11 @@ nav ul li a:hover {
 main {
     padding: 20px;
     flex-grow: 1;
-    position: relative; /* Ensures the Procedures section can be positioned absolutely */
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-bottom: 0;
 }
 
 /* Home Section */
@@ -91,7 +147,6 @@ main {
     width: 150px;
     text-align: right;
 }
-
 
 /* Remove bullets from Procedures list */
 #procedures ul {
