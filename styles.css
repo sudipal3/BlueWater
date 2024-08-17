@@ -52,6 +52,7 @@ textarea {
     border: 1px solid #ccc;
     font-size: 12px;
     resize: vertical; /* Allows users to resize the textarea vertically */
+    height: 5px
 }
 
 button + textarea {
@@ -68,7 +69,7 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     min-height: 150px;
-    margin-bottom: 10px
+    margin-bottom: 100px
 }
 
 /* Header */
@@ -139,7 +140,7 @@ main {
     margin-right: 300px; /* Reserve space on the right for Procedures */
 }
 
-/* Procedures Section */
+/* Procedures Column */
 #procedures {
     position: absolute;
     top: 20px;

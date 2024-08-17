@@ -18,21 +18,23 @@
         </ul>
     </nav>
     
-   
     <div class="container">
         <div class="form-section">
-        <h2> Intubation Procedure Note</h2>
-            <!-- Example Section for Technique -->
+            <h2>Intubation Procedure Note</h2>
+            
             <div class="input-group">
+                <h3>Indication</h3>
+                <button onclick="toggleText('Indication: airway protection.')">airway protection</button>
+                <button onclick="toggleText('Indication: respiratory failure.')">resp failure</button>
+                <textarea id="indicationText" placeholder="" 
+                oninput="updateRealTimeText('Indication', 'indicationText')"></textarea>
+                
                 <h3>Technique</h3>
-                <button onclick="addText('Technique: a 7.5 french ETT was used.')">7.5 Fr ETT</button>
-                <button onclick="addText('Technique: glidescope used.')">Glidescope</button>
-                 <textarea id="techniqueText" placeholder=""></textarea>
-                <!-- Add more buttons or inputs as needed -->
+                <button onclick="toggleText('Technique: a 7.5 french ETT was used.')">7.5 Fr ETT</button>
+                <button onclick="toggleText('Technique: an 8.0 Fr ETT was used.')">8.0 Fr ETT</button>
+                <textarea id="techniqueText" placeholder="" 
+                oninput="updateRealTimeText('Technique', 'techniqueText')"></textarea>
             </div>
-
-            <!-- Add more input groups for other sections like Indication, Medications, etc. -->
-
         </div>
 
         <div class="output-section">
@@ -41,11 +43,11 @@
         </div>
     </div>
 
-
     <footer>
         <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
         <p><a href="index.html#procedures">Back to Procedures</a></p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
