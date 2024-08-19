@@ -9,69 +9,6 @@ body {
     position: relative;
 }
 
-/* Container for Form and Output */
-.container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    gap: 20px;
-}
-
-/* Form Section and Output Section */
-.form-section, .output-section {
-    padding: 20px;
-    margin-top: 0px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 45%;
-}
-
-.form-section {
-    background-color: #f4f4f4;
-}
-
-.output-section {
-    background-color: #fff;
-}
-
-/* Button Styling */
-button {
-    padding: 10px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-textarea {
-    width: 85%;
-    margin-top: 10px; /* Adds space between the buttons and the textarea */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 12px;
-    resize: vertical; /* Allows users to resize the textarea vertically */
-    height: 5px
-}
-
-button + textarea {
-    margin-top: 10px; /* Ensures there's space between the last button and the textarea */
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Output Area Styling */
-#outputArea {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 150px;
-    margin-bottom: 100px
-}
-
 /* Header */
 header {
     background-color: white;
@@ -170,4 +107,81 @@ footer {
     text-align: center;
     padding: 10px;
     width: 100%;
+}
+
+/*INPUT/OUTPUT PROCEDURE STYLES*/
+
+/* Container for Form and Output */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    gap: 20px;
+}
+
+/* Form Section and Output Section */
+.form-section, .output-section {
+    padding: 20px;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 45%;
+}
+
+.form-section {
+    background-color: #f4f4f4;
+}
+
+.output-section {
+    background-color: #fff;
+}
+
+/* Button Styling */
+
+/* Default button style */
+button {
+    background-color: white;
+    color: navy;
+    border: 2px solid navy;
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Pressed button style */
+button.pressed {
+    background-color: navy;
+    color: white;
+}
+
+
+textarea {
+    width: 85%;
+    margin-top: 10px; /* Adds space between the buttons and the textarea */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    resize: vertical; /* Allows users to resize the textarea vertically */
+    height: 5px;
+    Font-family: Arial, sans-serif
+    
+}
+
+button + textarea {
+    margin-top: 10px; /* Ensures there's space between the last button and the textarea */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Output Area Styling */
+#outputArea {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 150px;
+    margin-bottom: 100px
 }

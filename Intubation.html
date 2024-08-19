@@ -9,7 +9,7 @@
 <body>
     <header>
         <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
-        <h1>MacroWave</h1>
+        <h1>Clinical Hub</h1>
     </header>
 
     <nav>
@@ -24,16 +24,14 @@
             
             <div class="input-group">
                 <h3>Indication</h3>
-                <button onclick="toggleText('Indication: airway protection.')">airway protection</button>
-                <button onclick="toggleText('Indication: respiratory failure.')">resp failure</button>
-                <textarea id="indicationText" placeholder="" 
-                oninput="updateRealTimeText('Indication', 'indicationText')"></textarea>
+                <button data-section="indication" onclick="handleButtonClick(this, 'airway protection')">airway protection</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'respiratory failure')">resp failure</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
                 
                 <h3>Technique</h3>
-                <button onclick="toggleText('Technique: a 7.5 french ETT was used.')">7.5 Fr ETT</button>
-                <button onclick="toggleText('Technique: an 8.0 Fr ETT was used.')">8.0 Fr ETT</button>
-                <textarea id="techniqueText" placeholder="" 
-                oninput="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+                <button data-section="technique" onclick="handleButtonClick(this, 'a 7.5 french ETT was used')">7.5 Fr ETT</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'an 8.0 Fr ETT was used')">8.0 Fr ETT</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
             </div>
         </div>
 
@@ -48,6 +46,6 @@
         <p><a href="index.html#procedures">Back to Procedures</a></p>
     </footer>
 
-    <script src="script.js"></script>
+<script src="procedurescript.js"></script>
 </body>
 </html>
