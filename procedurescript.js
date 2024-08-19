@@ -1,15 +1,18 @@
+// Define the order of sections
+const sectionOrder = ['indication', 'technique'];
+
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
-    const outputArea = document.getElementById('outputArea');
     const sectionName = button.getAttribute('data-section');
     const sectionId = `output-${sectionName}`;
+    const outputArea = document.getElementById('outputArea');
 
     // Find or create the section div
     let sectionDiv = document.getElementById(sectionId);
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${sectionName.charAt(0).toUpperCase() + sectionName.slice(1)}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `<strong>${capitalize(sectionName)}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
@@ -23,17 +26,18 @@ function addText(text, button) {
     // Mark the button as pressed
     button.classList.add('pressed');
 
+    // Ensure the sections are in the correct order
+    reorderSections(outputArea);
+
     // Add the main header if not present
-    if (!outputArea.querySelector('h2')) {
-        const mainTitle = document.querySelector('.form-section h2').innerText;
-        outputArea.insertAdjacentHTML('afterbegin', `<h2>${mainTitle}</h2><br>`);
-    }
+    addMainHeader(outputArea);
 }
 
 // Function to handle removing text when a button is unpressed
 function removeText(text, button) {
     const sectionName = button.getAttribute('data-section');
     const sectionId = `output-${sectionName}`;
+    const outputArea = document.getElementById('outputArea');
 
     const sectionDiv = document.getElementById(sectionId);
     const outputText = sectionDiv.querySelector('.output-text');
@@ -51,6 +55,9 @@ function removeText(text, button) {
 
     // Unmark the button as pressed
     button.classList.remove('pressed');
+
+    // Remove the header if there's no content
+    removeMainHeader(outputArea);
 }
 
 // Function to handle button clicks
@@ -83,9 +90,9 @@ function updateRealTimeText(sectionTitle, textareaId) {
 
     if (newText) {
         // Add or update the free text
-        const currentText = outputText.textContent.split(', ').filter(item => !item.includes(newText));
-        currentText.push(newText);
-        outputText.textContent = currentText.join(', ');
+        outputText.textContent = outputText.textContent
+            ? `${outputText.textContent}, ${newText}`
+            : newText;
     } else {
         // Remove the entire section and reset buttons if free text is deleted
         sectionDiv.remove();
@@ -95,13 +102,47 @@ function updateRealTimeText(sectionTitle, textareaId) {
         buttons.forEach(button => button.classList.remove('pressed'));
     }
 
-    // If no text remains in the output area, remove the header
+    // Ensure the sections are in the correct order
+    reorderSections(outputArea);
+
+    // Add the main header if not present
+    addMainHeader(outputArea);
+
+    // Remove the header if there's no content
+    removeMainHeader(outputArea);
+}
+
+// Function to add the main header if it's not already present
+function addMainHeader(outputArea) {
+    if (!outputArea.querySelector('h2') && outputArea.innerHTML.trim() !== '') {
+        const mainTitle = document.querySelector('.form-section h2').innerText;
+        outputArea.insertAdjacentHTML('afterbegin', `<h2>${mainTitle}</h2><br>`);
+    }
+}
+
+// Function to remove the main header if there's no content
+function removeMainHeader(outputArea) {
     if (!outputArea.innerHTML.trim()) {
         const header = outputArea.querySelector('h2');
         if (header) {
             header.remove();
         }
     }
+}
+
+// Function to reorder sections according to the predefined order
+function reorderSections(outputArea) {
+    sectionOrder.forEach(section => {
+        const sectionDiv = document.getElementById(`output-${section}`);
+        if (sectionDiv) {
+            outputArea.appendChild(sectionDiv);
+        }
+    });
+}
+
+// Utility function to capitalize the first letter of a string
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // Function to copy the output text to the clipboard
