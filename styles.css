@@ -119,34 +119,30 @@ footer {
     gap: 20px;
 }
 
-/* Form Section and Output Section */
-.form-section, .output-section {
-    padding: 20px;
-    margin-top: 0px;
+/* Form Section */
+.form-section {
+    background-color: #f4f4f4;
+    padding: 10px; /* Reduced padding for a more compact layout */
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 45%;
 }
 
-.form-section {
-    background-color: #f4f4f4;
+.input-group h3 {
+    margin: 5px 0; /* Reduced space above and below h3 */
+    line-height: 1.0; /* Tighter line height */
 }
 
-.output-section {
-    background-color: #fff;
-}
-
-/* Button Styling */
-
-/* Default button style */
 button {
     background-color: white;
     color: navy;
     border: 2px solid navy;
-    padding: 2px 5px;
+    padding: 2px 5px; /* Smaller padding for buttons */
+    margin: 2px 0; /* Reduced space between buttons */
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 12px; /* Slightly smaller font size */
 }
 
 /* Pressed button style */
@@ -155,33 +151,38 @@ button.pressed {
     color: white;
 }
 
-
 textarea {
     width: 85%;
-    margin-top: 10px; /* Adds space between the buttons and the textarea */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    margin-top: 5px; /* Reduced space above textarea */
+    padding: 5px; /* Reduced padding inside textarea */
     font-size: 12px;
     resize: vertical; /* Allows users to resize the textarea vertically */
-    height: 5px;
-    Font-family: Arial, sans-serif
-    
+    height: 20px; /* Adjusted height for a more compact layout */
+    font-family: Arial, sans-serif;
+    line-height: 1.2; /* Tighter line height */
 }
 
 button + textarea {
-    margin-top: 10px; /* Ensures there's space between the last button and the textarea */
+    margin-top: 5px; /* Ensures there's minimal space between the last button and the textarea */
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-/* Output Area Styling */
+/* Output Section */
+.output-section {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 45%;
+}
+
 #outputArea {
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
     min-height: 150px;
-    margin-bottom: 100px
+    margin-bottom: 100px;
 }
