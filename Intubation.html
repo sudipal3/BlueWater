@@ -78,15 +78,21 @@
                 <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
                 
                 <h3>Provider</h3>
-                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
-
-
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
             </div>
         </div>
 
         <div class="output-section">
             <div id="outputArea"></div>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            
+            <!-- Macro Buttons Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation of tube-direct visualization', 'confirmation of tube-breath sounds', 'confirmation of tube-end-tidal CO2', 'confirmation of tube-chest X-ray', 'complications-none'], this)">Glidescope 7.5</button>
+                <!-- Add more macros as needed -->
+            </div>
         </div>
     </div>
 

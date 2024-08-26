@@ -1,5 +1,5 @@
 // Define the order of sections
-const sectionOrder = ['timeout', 'indication', 'consent', 'preparation', 'medications', 'technique', 'confirmation', 'complications',  ];
+const sectionOrder = ['timeout', 'indication', 'consent', 'preparation', 'medications', 'technique', 'confirmation', 'complications', 'provider'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
@@ -154,4 +154,43 @@ function copyToClipboard() {
     window.getSelection().addRange(range);
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
+}
+
+// Function to trigger macros
+function triggerMacro(buttonIds, macroButton) {
+    // Reset the previous state
+    document.querySelectorAll('.pressed').forEach(button => {
+        const text = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+        removeText(text, button);
+    });
+
+    // Activate the selected macro
+    buttonIds.forEach(id => {
+        const [section, buttonText] = id.split('-');
+        const buttons = document.querySelectorAll(`[data-section="${section}"]`);
+        const matchedButton = Array.from(buttons).find(btn => btn.innerText === buttonText);
+
+        if (matchedButton) {
+            const associatedText = matchedButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+            addText(associatedText, matchedButton);
+        }
+    });
+
+    // Ensure the macro button reflects the state
+    macroButton.classList.add('pressed');
+}
+
+// Function to clear all output and reset all buttons
+function clearOutput() {
+    // Clear the output area
+    const outputArea = document.getElementById('outputArea');
+    outputArea.innerHTML = '';
+
+    // Reset all buttons
+    document.querySelectorAll('.pressed').forEach(button => {
+        button.classList.remove('pressed');
+    });
+
+    // Remove the main header if it's there
+    removeMainHeader(outputArea);
 }
