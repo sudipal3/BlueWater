@@ -31,6 +31,40 @@ function addText(text, button) {
 
     // Add the main header if not present
     addMainHeader(outputArea);
+
+    // Handle the special case for the "US used" button
+    if (sectionName === 'ultrasound' && text.includes('Dynamic ultrasound')) {
+        generateAdditionalProcedureNote();
+    }
+}
+
+// Function to generate the additional procedure note
+function generateAdditionalProcedureNote() {
+    const outputArea = document.getElementById('outputArea');
+    const additionalNoteId = 'additional-procedure-note';
+
+    // Remove the existing additional note if it exists
+    let existingNote = document.getElementById(additionalNoteId);
+    if (existingNote) {
+        existingNote.remove();
+    }
+
+    // Gather information for the note
+    const locationSection = document.getElementById('output-location');
+    const views = locationSection ? locationSection.querySelector('.output-text').textContent : '[location]';
+
+    // Create the additional procedure note content
+    const additionalNote = document.createElement('div');
+    additionalNote.id = additionalNoteId;
+    additionalNote.innerHTML = `
+        <h3>Procedure: Bedside vascular ultrasound</h3>
+        <p><strong>Indication:</strong> vascular access guidance, patient acuity</p>
+        <p><strong>Procedure:</strong> limited vascular ultrasound</p>
+        <p><strong>Interpretation:</strong> vessel identified dynamically during procedure and guidewire visualized in vessel lumen. Images were saved in medical record and/or PACS.</p>
+    `;
+
+    // Append the additional note to the output area
+    outputArea.appendChild(additionalNote);
 }
 
 // Function to handle removing text when a button is unpressed
@@ -138,6 +172,12 @@ function reorderSections(outputArea) {
             outputArea.appendChild(sectionDiv);
         }
     });
+
+    // Ensure the additional procedure note is at the bottom
+    const additionalNote = document.getElementById('additional-procedure-note');
+    if (additionalNote) {
+        outputArea.appendChild(additionalNote);
+    }
 }
 
 // Utility function to capitalize the first letter of a string
