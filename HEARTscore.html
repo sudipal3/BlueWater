@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEART Score Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>HEART Score Calculator</h2>
+
+            <div class="input-group">
+                <h3>History</h3>
+                <button onclick="handleButtonClick(this, 'Slightly suspicious', 0, 'The clinical history is slightly suspicious for ACS')">Slightly suspicious</button>
+                <button onclick="handleButtonClick(this, 'Moderately suspicious', 1, 'The clinical history is moderately suspicious for ACS')">Moderately suspicious</button>
+                <button onclick="handleButtonClick(this, 'Highly suspicious', 2, 'The clinical history is highly suspicious for ACS')">Highly suspicious</button>
+            </div>
+
+            <div class="input-group">
+                <h3>EKG</h3>
+                <button onclick="handleButtonClick(this, 'Normal EKG', 0, 'Normal EKG.')">Normal EKG</button>
+                <button onclick="handleButtonClick(this, 'Non-specific repolarization disturbance', 1, 'The EKG had non-specific repolarization disturbances.')">Non-specific repolarization disturbance</button>
+                <button onclick="handleButtonClick(this, 'Significant ST deviation', 2, 'Significant ST deviations noted on EKG.')">Significant ST deviation</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Age</h3>
+                <button onclick="handleButtonClick(this, '&lt;45', 0, 'Patient\'s age below 45')">Below 45</button>
+                <button onclick="handleButtonClick(this, '45-64', 1, 'Patient\'s age between 45 and 64')">45-64</button>
+                <button onclick="handleButtonClick(this, '≥65', 2, 'Patient is 65 or above')">65 or above</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Risk factors</h3>
+                <button onclick="handleButtonClick(this, 'No known risk factors', 0, 'No known risk factors')">No known risk factors</button>
+                <button onclick="handleButtonClick(this, '1-2 risk factors', 1, '1-2 risk factors')">1-2 risk factors</button>
+                <button onclick="handleButtonClick(this, '≥3 risk factors or history of atherosclerotic disease', 2, '3+ risk factors or history of atherosclerotic disease')">3+ risk factors or history of atherosclerotic disease</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Troponin</h3>
+                <button onclick="handleButtonClick(this, 'Below normal limit', 0, 'Troponin is below normal limit')">Below normal limit</button>
+                <button onclick="handleButtonClick(this, '1-3x normal limit', 1, 'The troponin is between 1 and 3 times the normal limit')">1-3x normal limit</button>
+                <button onclick="handleButtonClick(this, '&gt;3x normal limit', 2, 'The troponin is above the 3x upper limit')">Above 3x normal limit</button>
+            </div>
+
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>HEART Score:</h3>
+            <p id="heartScoreOutput"></p>
+            
+             <button onclick="clearOutput()">Clear</button>
+             <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            
+        </div>
+        
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+        <p><a href="index.html#procedures">Back to Procedures</a></p>
+    </footer>
+
+<script src="heartscore.js"></script>
+</body>
+</html>
