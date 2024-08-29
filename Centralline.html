@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Line</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Central Line Procedure Note</h2>
+            
+            <div class="input-group">
+                <h3>Timeout</h3>
+                <button data-section="timeout" onclick="handleButtonClick(this, 'A formal timeout was deferred given the emergent nature of the procedure')">emergent</button>
+                <button data-section="timeout" onclick="handleButtonClick(this, 'pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity.')">protocol/checklist</button>
+                <textarea id="timeoutText" placeholder="" onchange="updateRealTimeText('Timeout', 'timeoutText')"></textarea>
+                
+                <h3>Indication</h3>
+                <button data-section="indication" onclick="handleButtonClick(this, 'anticipated need for frequent blood draws and potential pressors/multiple drips')">patient acuity</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'poor IV access')">poor IV access</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+                
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. Patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+                
+                <h3>Location</h3>
+                <button data-section="location" onclick="handleButtonClick(this, 'right internal jugular vein')">right IJ</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left internal jugular vein')">left IJ</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'right subclavian  vein')">right subclavian</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left subclavian vein')">left subclavian</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'right femoral  vein')">right femoral</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left femoral vein')">left femoral</button>
+                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
+                
+                <h3>Preparation</h3>
+                <button data-section="preparation" onclick="handleButtonClick(this, 'patient was placed in Trendelenburg position')">Trendelenburg</button>
+                <button data-section="preparation" onclick="handleButtonClick(this, 'My hands were washed immediately prior to the procedure and I donned sterile gowns and gloves and wore a cap and mask throughout the procedure. The patient was draped with a sterile gown and the procedural area was prepared with chlorhexadine.')">sterile procedure</button>
+                <textarea id="preparationText" placeholder="" onchange="updateRealTimeText('Preparation', 'preparationText')"></textarea>
+                
+                <h3>Ultrasound</h3>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement')">US used</button>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">US not used</button>
+                <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
+                
+                <h3>Technique</h3>
+                <button data-section="technique" onclick="handleButtonClick(this, 'a triple lumen catheter was used')">triple-lumen catheter</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'a cordis catheter was used')">cordis</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'Lidocaine was used to anesthetize the overlying skin')">lidocaine</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'A needle was introduced into the vessel and good bloodflow was confirmed with aspiration. A wire was then introduced into the vessel followed by a scalpel incision and dilation of the vessel. The catheter was then introduced into the vessel over the wire and the wire was removed ')">Seldinger</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'Good return of blood was noted from all ports following removal of the wire')">good return of blood</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'The catheter was secured with a suture. A biopatch and/orsterile dressing was placed over the catheter')">suture/sterile dressing</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+                
+                <h3>Confirmation</h3>
+                <button data-section="confirmation" onclick="handleButtonClick(this, 'The wire was visualized in the vessel dynamically on ultrasound')">US visualization</button>
+                <button data-section="confirmation" onclick="handleButtonClick(this, 'Venous bloodflow was confirmed on pressure transducing')">pressure transducing</button>
+                <button data-section="confirmation" onclick="handleButtonClick(this, 'a chest XRay was ordered and interpreted showing correct catheter placement')">chest X-ray</button>
+                <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
+                
+                <h3>Complications</h3>
+                <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure')">none</button>
+                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+                
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            
+            <!-- Macro Buttons Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerMacro(['timeout-emergent', 'indication-patient acuity', 'consent-emergent', 'location-right IJ', 'preparation-Trendelenburg', 'preparation-sterile procedure', 'ultrasound-Ultrasound used', 'technique-triple-lumen catheter', 'technique-lidocaine',  'technique-Seldinger',  'technique-good return of blood', 'technique-suture/sterile dressing', 'confirmation-US visualization', 'confirmation-chest X-ray', 'complications-none'], this)">Right IJ, Ultrasound</button>
+                <!-- Add more macros as needed -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+        <p><a href="index.html#procedures">Back to Procedures</a></p>
+    </footer>
+
+<script src="centrallinescript.js"></script>
+</body>
+</html>
