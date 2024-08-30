@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERC Score Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>PERC Score Calculator</h2>
+
+            <div class="input-group">
+                <h3>Age ≥50</h3>
+                <button onclick="handlePERCButtonClick(this, 'age50', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'age50', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>HR ≥100</h3>
+                <button onclick="handlePERCButtonClick(this, 'hr100', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'hr100', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>O2 sat on room air &lt;95%</h3>
+                <button onclick="handlePERCButtonClick(this, 'o2sat95', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'o2sat95', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Unilateral leg swelling</h3>
+                <button onclick="handlePERCButtonClick(this, 'legswelling', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'legswelling', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Hemoptysis</h3>
+                <button onclick="handlePERCButtonClick(this, 'hemoptysis', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'hemoptysis', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Recent surgery or trauma (within four weeks)</h3>
+                <button onclick="handlePERCButtonClick(this, 'surgerytrauma', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'surgerytrauma', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Prior PE or DVT</h3>
+                <button onclick="handlePERCButtonClick(this, 'priorpedvt', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'priorpedvt', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Hormone use (OCPs or hormone replacement)</h3>
+                <button onclick="handlePERCButtonClick(this, 'hormoneuse', false)">No</button>
+                <button onclick="handlePERCButtonClick(this, 'hormoneuse', true)">Yes</button>
+            </div>
+
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>PERC Score:</h3>
+            <p id="percScoreOutput"></p>
+            <button onclick="clearPERCOutput()">Clear</button>
+            <button onclick="copyToClipboard('percScoreOutput')">Copy to Clipboard</button>
+            
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerPERCMacro()">PERC neg</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+        <p><a href="index.html#procedures">Back to Procedures</a></p>
+    </footer>
+
+<script src="percscore.js"></script>
+</body>
+</html>
