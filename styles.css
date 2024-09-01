@@ -211,7 +211,7 @@ button {
 
 /* Pressed button style */
 button.pressed {
-    background-color: skyblue;
+    background-color: royalblue;
     color: white;
 }
 
