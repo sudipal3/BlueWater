@@ -1,9 +1,9 @@
 // Define the order of sections
-const sectionOrder = ['consent', 'location', 'length', 'cleaning', 'foreignbody', 'anesthetic', 'suturetechnique', 'nonsuturetechnique', 'postprocedure', 'tetanus', 'complications', 'provider'];
+const sectionOrder = ['consent', 'location', 'length', 'cleaning', 'foreignbody', 'anesthetic', 'suture technique', 'non-suture technique', 'post-procedure', 'tetanus', 'complications', 'provider'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
-    const sectionName = button.parentElement.querySelector('h3').innerText.toLowerCase().replace(/\s+/g, '');
+    const sectionName = button.getAttribute('data-section'); // Use data-section to get the correct section
     const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
@@ -35,7 +35,7 @@ function addText(text, button) {
 
 // Function to handle removing text when a button is unpressed
 function removeText(text, button) {
-    const sectionName = button.parentElement.querySelector('h3').innerText.toLowerCase().replace(/\s+/g, '');
+    const sectionName = button.getAttribute('data-section'); // Use data-section to get the correct section
     const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
