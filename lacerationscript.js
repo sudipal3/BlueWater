@@ -1,5 +1,5 @@
 // Define the order of sections
-const sectionOrder = ['consent', 'location', 'length', 'cleaning', 'foreignbody', 'anesthetic', 'suture technique', 'non-suture technique', 'post-procedure', 'tetanus', 'complications', 'provider'];
+const sectionOrder = ['consent', 'location', 'length', 'cleaning', 'foreign body', 'anesthetic', 'suture technique', 'non-suture technique', 'post-procedure', 'tetanus', 'complications', 'provider'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
