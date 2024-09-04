@@ -57,9 +57,9 @@
                 <textarea id="cleaningText" placeholder="" onchange="updateRealTimeText('Cleaning', 'cleaningText')"></textarea>
 
                 <h3>Foreign body</h3>
-                <button data-section="foreign body" onclick="handleButtonClick(this, 'no foreign body present in the wound on direct visualization and exploration')">none</button>
-                <button data-section="foreign body" onclick="handleButtonClick(this, 'no foreign body was noted on XR prior to wound closure')">XR verification</button>
-                <textarea id="foreign BodyText" placeholder="" onchange="updateRealTimeText('Foreign body', 'foreignBodyText')"></textarea>
+                <button data-section="foreignbody" onclick="handleButtonClick(this, 'no foreign body present in the wound on direct visualization and exploration')">none</button>
+                <button data-section="foreignbody" onclick="handleButtonClick(this, 'no foreign body was noted on XR prior to wound closure')">XR verification</button>
+                <textarea id="foreignBodyText" placeholder="" onchange="updateRealTimeText('Foreign body', 'foreignBodyText')"></textarea>
 
                 <h3>Anesthetic</h3>
                 <button data-section="anesthetic" onclick="handleButtonClick(this, 'lidocaine')">lidocaine</button>
@@ -70,34 +70,34 @@
                 <textarea id="anestheticText" placeholder="Enter volume of anesthetic here" onchange="updateRealTimeText('Anesthetic', 'anestheticText')"></textarea>
 
                 <h3>Suture technique</h3>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'single layer')">single layer</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'multi-layer repair')">multi-layer repair</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, '3-0')">3-0</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, '4-0')">4-0</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, '5-0')">5-0</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, '6-0')">6-0</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'nylon sutures')">nylon</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'prolene sutures')">prolene</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'vicryl sutures')">vicryl</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'fast-absorbing gut sutures')">fast-absorbing gut</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'simple interrupted sutures')">simple interrupted</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'deep dermal sutures placed')">dermal sutures</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'subcuticular sutures')">subcuticular sutures</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'horizontal mattress sutures')">horizontal mattress sutures</button>
-                <button data-section="suture technique" onclick="handleButtonClick(this, 'vertical mattress sutures')">vertical mattress sutures</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'single layer')">single layer</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'multi-layer repair')">multi-layer repair</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, '3-0')">3-0</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, '4-0')">4-0</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, '5-0')">5-0</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, '6-0')">6-0</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'nylon sutures')">nylon</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'prolene sutures')">prolene</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'vicryl sutures')">vicryl</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'fast-absorbing gut sutures')">fast-absorbing gut</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'simple interrupted sutures')">simple interrupted</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'deep dermal sutures placed')">dermal sutures</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'subcuticular sutures')">subcuticular sutures</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'horizontal mattress sutures')">horizontal mattress sutures</button>
+                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'vertical mattress sutures')">vertical mattress sutures</button>
                 <textarea id="sutureText" placeholder="Enter number of sutures" onchange="updateRealTimeText('Suture technique', 'sutureText')"></textarea>
 
-                <h3>Non-suture technique</h3>
-                <button data-section="non-suture technique" onclick="handleButtonClick(this, 'staples')">staples</button>
-                <button data-section="non-suture technique" onclick="handleButtonClick(this, 'adhesive glue')">adhesive glue</button>
-                <button data-section="non-suture technique" onclick="handleButtonClick(this, 'steri-strips')">steri-strips</button>
-                <textarea id="nonSutureText" placeholder="Enter number of staples" onchange="updateRealTimeText('Non-suture technique', 'nonSutureText')"></textarea>
+                <h3>Other techniques</h3>
+                <button data-section="othertechniques" onclick="handleButtonClick(this, 'staples')">staples</button>
+                <button data-section="othertechniques" onclick="handleButtonClick(this, 'adhesive glue')">adhesive glue</button>
+                <button data-section="othertechniques" onclick="handleButtonClick(this, 'steri-strips')">steri-strips</button>
+                <textarea id="otherTechniquesText" placeholder="Enter number of staples" onchange="updateRealTimeText('Other techniques', 'otherTechniquesText')"></textarea>
 
                 <h3>Post-procedure</h3>
-                <button data-section="post-procedure" onclick="handleButtonClick(this, 'following repair of the wound, appropriate approximation and cosmesis was achieved')">good approximation/cosmesis</button>
-                <button data-section="post-procedure" onclick="handleButtonClick(this, 'due to concern for possible infection, the wound was repaired with loose approximation')">loose approximation</button>
-                <button data-section="post-procedure" onclick="handleButtonClick(this, 'a sterile dressing was applied to the wound')">sterile dressing</button>
-                <textarea id="post-procedureText" placeholder="" onchange="updateRealTimeText('Post-procedure', 'post-procedureText')"></textarea>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'following repair of the wound, appropriate approximation and cosmesis was achieved')">good approximation/cosmesis</button>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'due to concern for possible infection, the wound was repaired with loose approximation')">loose approximation</button>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'a sterile dressing was applied to the wound')">sterile dressing</button>
+                <textarea id="postProcedureText" placeholder="" onchange="updateRealTimeText('Post-procedure', 'postProcedureText')"></textarea>
 
                 <h3>Tetanus</h3>
                 <button data-section="tetanus" onclick="handleButtonClick(this, 'the patient was up to date on their tetanus vaccination status')">UTD</button>
