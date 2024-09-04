@@ -1,5 +1,9 @@
 // Define the order of sections
-const sectionOrder = ['consent', 'location', 'length', 'cleaning', 'foreign body', 'anesthetic', 'suture technique', 'non-suture technique', 'post-procedure', 'tetanus', 'complications', 'provider'];
+const sectionOrder = [
+    'consent', 'location', 'lengthcm', 'cleaning', 'foreignbody', 
+    'anesthetic', 'suturetechnique', 'othertechniques', 
+    'postprocedure', 'tetanus', 'complications', 'provider'
+];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
@@ -12,7 +16,7 @@ function addText(text, button) {
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${capitalize(sectionName)}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `<strong>${capitalizeSectionName(sectionName)}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
@@ -72,21 +76,51 @@ function handleButtonClick(button, text) {
 // Function to handle real-time text input (free text)
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
-    const sectionName = sectionTitle.replace(/\s+/g, '-').toLowerCase();
-    const sectionId = `output-${sectionName}`;
+    let sectionName = sectionTitle.replace(/\s+/g, '').toLowerCase(); // Remove spaces to match button data-section
     const outputArea = document.getElementById('outputArea');
+
+    // Special handling for sections with specific IDs
+    if (sectionName === 'length(cm)') {
+        sectionName = 'lengthcm';
+    } else if (sectionName === 'suturetechnique') {
+        sectionName = 'suturetechnique';
+    } else if (sectionName === 'othertechniques') {
+        sectionName = 'othertechniques';
+    } else if (sectionName === 'post-procedure') {
+        sectionName = 'postprocedure';
+    } else if (sectionName === 'foreignbody') {
+        sectionName = 'foreignbody';
+    }
+
+    const sectionId = `output-${sectionName}`;
 
     // Find the section div or create it if it doesn't exist
     let sectionDiv = document.getElementById(sectionId);
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${sectionTitle}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `<strong>${capitalizeSectionName(sectionName)}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
     const outputText = sectionDiv.querySelector('.output-text');
-    const newText = textarea.value.trim();
+    let newText = textarea.value.trim();
+
+    // Check if the section is 'anesthetic' and append 'cc' if needed
+    if (sectionName === 'anesthetic' && newText) {
+        // Add 'cc' after the input if not already present
+        if (!newText.toLowerCase().endsWith('cc')) {
+            newText += ' cc';
+        }
+    }
+
+    // Check if the section is 'lengthcm' and append 'cm' if needed
+    if (sectionName === 'lengthcm' && newText) {
+        // Add 'cm' after the input if not already present
+        if (!newText.toLowerCase().endsWith('cm')) {
+            newText += ' cm';
+        }
+    }
 
     if (newText) {
         // Add or update the free text
@@ -140,9 +174,22 @@ function reorderSections(outputArea) {
     });
 }
 
-// Utility function to capitalize the first letter of a string
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+// Utility function to capitalize section names properly
+function capitalizeSectionName(section) {
+    switch (section) {
+        case 'suturetechnique':
+            return 'Suture Technique';
+        case 'othertechniques':
+            return 'Other Techniques';
+        case 'postprocedure':
+            return 'Post-procedure';
+        case 'foreignbody':
+            return 'Foreign Body';
+        case 'lengthcm':
+            return 'Length (cm)';
+        default:
+            return section.charAt(0).toUpperCase() + section.slice(1);
+    }
 }
 
 // Function to copy the output text to the clipboard
