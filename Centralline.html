@@ -54,10 +54,10 @@
                 <button data-section="preparation" onclick="handleButtonClick(this, 'My hands were washed immediately prior to the procedure and I donned sterile gowns and gloves and wore a cap and mask throughout the procedure. The patient was draped with a sterile gown and the procedural area was prepared with chlorhexadine.')">sterile procedure</button>
                 <textarea id="preparationText" placeholder="" onchange="updateRealTimeText('Preparation', 'preparationText')"></textarea>
                 
-                <h3>Localization</h3>
-                <button data-section="localization" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement'); addUltrasoundProcedureNote()">US used</button>
-                <button data-section="localization" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">Landmark guidance</button>
-                <textarea id="localizationText" placeholder="" onchange="updateRealTimeText('Localization', 'localizationText')"></textarea>
+                <h3>Ultrasound</h3>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement'); addUltrasoundProcedureNote()">US used</button>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">US not used</button>
+                <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
                 
                 <h3>Technique</h3>
                 <button data-section="technique" onclick="handleButtonClick(this, 'a triple lumen catheter was used')">triple-lumen catheter</button>
@@ -93,7 +93,7 @@
             <!-- Macro Buttons Section -->
             <div class="macro-section">
                 <h3>Macros</h3>
-                <button onclick="triggerMacro(['timeout-emergent', 'indication-patient acuity', 'consent-emergent', 'location-right IJ', 'preparation-Trendelenburg', 'preparation-sterile procedure', 'localization-US used', 'technique-triple-lumen catheter', 'technique-lidocaine',  'technique-Seldinger',  'technique-good return of blood', 'technique-suture/sterile dressing', 'confirmation-US visualization', 'confirmation-chest X-ray', 'complications-none'], this)">Right IJ, Ultrasound</button>
+                <button onclick="triggerMacro(['timeout-emergent', 'indication-patient acuity', 'consent-emergent', 'location-right IJ', 'preparation-Trendelenburg', 'preparation-sterile procedure', 'ultrasound-US used', 'technique-triple-lumen catheter', 'technique-lidocaine',  'technique-Seldinger',  'technique-good return of blood', 'technique-suture/sterile dressing', 'confirmation-US visualization', 'confirmation-chest X-ray', 'complications-none'], this)">Right IJ, Ultrasound</button>
                 <!-- Add more macros as needed -->
             </div>
         </div>
@@ -101,7 +101,6 @@
 
     <footer>
         <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
-        <p><a href="index.html#procedures">Back to Procedures</a></p>
     </footer>
 
 <script src="centrallinescript.js"></script>

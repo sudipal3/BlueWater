@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wells' Criteria for PE Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Wells' Criteria for PE Calculator</h2>
+
+            <div class="input-group">
+                <h3>Clinical signs and symptoms of DVT</h3>
+                <button onclick="handleWellsButtonClick(this, 'dvt', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'dvt', 3)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>PE is #1 diagnosis OR equally likely</h3>
+                <button onclick="handleWellsButtonClick(this, 'peDiagnosis', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'peDiagnosis', 3)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Heart rate > 100</h3>
+                <button onclick="handleWellsButtonClick(this, 'heartRate', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'heartRate', 1.5)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Immobilization at least 3 days OR surgery in the previous 4 weeks</h3>
+                <button onclick="handleWellsButtonClick(this, 'immobilization', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'immobilization', 1.5)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Previous, objectively diagnosed PE or DVT</h3>
+                <button onclick="handleWellsButtonClick(this, 'previousPEorDVT', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'previousPEorDVT', 1.5)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Hemoptysis</h3>
+                <button onclick="handleWellsButtonClick(this, 'hemoptysis', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'hemoptysis', 1)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Malignancy w/ treatment within 6 months or palliative</h3>
+                <button onclick="handleWellsButtonClick(this, 'malignancy', 0)">No</button>
+                <button onclick="handleWellsButtonClick(this, 'malignancy', 1)">Yes</button>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>Wells' Score:</h3>
+            <p id="wellsScoreOutput"></p>
+            <button onclick="clearWellsOutput()">Clear</button>
+            <button onclick="copyToClipboard('wellsScoreOutput')">Copy to Clipboard</button>
+            
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerWellsMacro()">Wells neg</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+<script src="wellsscore.js"></script>
+</body>
+</html>
