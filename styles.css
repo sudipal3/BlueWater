@@ -80,8 +80,8 @@ main {
 /* Clinical Decision Tools Section */
 #decision-tools {
     position: absolute;
-    top: 20px;
-    right: 250px; /* Positioned to the left of the Procedures section */
+    top: 20px; /* Align with Procedures */
+    right: 400px; /* Adjusted right offset for even spacing */
     width: 250px;
     text-align: left;
 }
@@ -93,7 +93,7 @@ main {
 }
 
 #decision-tools ul li {
-    margin-bottom: 10px; /* Adds some space between the buttons */
+    margin-bottom: 2px; /* Reduced space between the buttons */
 }
 
 /* Link Styles for Decision Tools Section */
@@ -103,7 +103,7 @@ main {
     color: navy;
     border: 2px solid navy;
     padding: 2px 5px; /* Reduced padding for a smaller button size */
-    margin: 2px 0; /* Space between each link */
+    margin: 2px 0; /* Space between each link to match Procedures */
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -121,8 +121,8 @@ main {
 /* Procedures Column */
 #procedures {
     position: absolute;
-    top: 20px;
-    right: 80px;
+    top: 48px; /* Aligns with Clinical Decision Tools */
+    right: 250px; /* Matches the right offset of Decision Tools */
     width: 150px;
     text-align: left;
 }
@@ -194,6 +194,7 @@ footer {
 .input-group h3 {
     margin: 5px 0; /* Reduced space above and below h3 */
     line-height: 1.0; /* Tighter line height */
+    font-size: 14px;
 }
 
 /* Button Styles */
@@ -211,7 +212,7 @@ button {
 
 /* Pressed button style */
 button.pressed {
-    background-color: royalblue;
+    background-color: navy;
     color: white;
 }
 
