@@ -1,5 +1,5 @@
 // Define the order of sections
-const sectionOrder = ['timeout', 'indication', 'consent', 'location', 'preparation', 'localization', 'technique', 'confirmation', 'complications', 'provider'];
+const sectionOrder = ['timeout', 'indication', 'consent', 'location', 'preparation', 'ultrasound', 'technique', 'confirmation', 'complications', 'provider'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
@@ -33,7 +33,7 @@ function addText(text, button) {
     addMainHeader(outputArea);
 
     // Handle the special case for the "US used" button
-    if (sectionName === 'localization' && text.includes('Dynamic ultrasound')) {
+    if (sectionName === 'ultrasound' && text.includes('Dynamic ultrasound')) {
         generateAdditionalProcedureNote();
     }
 }
