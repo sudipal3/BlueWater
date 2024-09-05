@@ -38,35 +38,6 @@ function addText(text, button) {
     }
 }
 
-// Function to generate the additional procedure note
-function generateAdditionalProcedureNote() {
-    const outputArea = document.getElementById('outputArea');
-    const additionalNoteId = 'additional-procedure-note';
-
-    // Remove the existing additional note if it exists
-    let existingNote = document.getElementById(additionalNoteId);
-    if (existingNote) {
-        existingNote.remove();
-    }
-
-    // Gather information for the note
-    const locationSection = document.getElementById('output-location');
-    const views = locationSection ? locationSection.querySelector('.output-text').textContent : '[location]';
-
-    // Create the additional procedure note content
-    const additionalNote = document.createElement('div');
-    additionalNote.id = additionalNoteId;
-    additionalNote.innerHTML = `
-        <h3>Procedure: Bedside vascular ultrasound</h3>
-        <p><strong>Indication:</strong> vascular access guidance, patient acuity</p>
-        <p><strong>Procedure:</strong> limited vascular ultrasound</p>
-        <p><strong>Interpretation:</strong> vessel identified dynamically during procedure and guidewire visualized in vessel lumen. Images were saved in medical record and/or PACS.</p>
-    `;
-
-    // Append the additional note to the output area
-    outputArea.appendChild(additionalNote);
-}
-
 // Function to handle removing text when a button is unpressed
 function removeText(text, button) {
     const sectionName = button.getAttribute('data-section');
@@ -90,8 +61,13 @@ function removeText(text, button) {
     // Unmark the button as pressed
     button.classList.remove('pressed');
 
-    // Remove the header if there's no content
+    // Remove the main header if there's no content
     removeMainHeader(outputArea);
+
+    // Special case: if the "US Used" button is unpressed, remove the additional note
+    if (sectionName === 'ultrasound' && text.includes('Dynamic ultrasound')) {
+        removeAdditionalProcedureNote();
+    }
 }
 
 // Function to handle button clicks
@@ -100,6 +76,39 @@ function handleButtonClick(button, text) {
         removeText(text, button);
     } else {
         addText(text, button);
+    }
+}
+
+// Function to generate the additional procedure note
+function generateAdditionalProcedureNote() {
+    const outputArea = document.getElementById('outputArea');
+    const additionalNoteId = 'additional-procedure-note';
+
+    // Remove the existing additional note if it exists
+    let existingNote = document.getElementById(additionalNoteId);
+    if (existingNote) {
+        existingNote.remove();
+    }
+
+    // Create the additional procedure note content
+    const additionalNote = document.createElement('div');
+    additionalNote.id = additionalNoteId;
+    additionalNote.innerHTML = `
+        <h3>Procedure: Bedside vascular ultrasound</h3>
+        <p><strong>Indication:</strong> vascular access guidance, patient acuity</p>
+        <p><strong>Procedure:</strong> limited vascular ultrasound</p>
+        <p><strong>Interpretation:</strong> vessel identified dynamically during procedure and guidewire visualized in vessel lumen. Images were saved in medical record and/or PACS.</p>
+    `;
+
+    // Append the additional note to the output area
+    outputArea.appendChild(additionalNote);
+}
+
+// Function to remove the additional procedure note
+function removeAdditionalProcedureNote() {
+    const additionalNote = document.getElementById('additional-procedure-note');
+    if (additionalNote) {
+        additionalNote.remove();
     }
 }
 
@@ -233,4 +242,7 @@ function clearOutput() {
 
     // Remove the main header if it's there
     removeMainHeader(outputArea);
+
+    // Remove the additional procedure note if it's there
+    removeAdditionalProcedureNote();
 }

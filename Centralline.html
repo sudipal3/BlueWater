@@ -55,12 +55,12 @@
                 <textarea id="preparationText" placeholder="" onchange="updateRealTimeText('Preparation', 'preparationText')"></textarea>
                 
                 <h3>Ultrasound</h3>
-                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement'); generateAdditionalProcedureNote()">US used</button>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement')">US used</button>
                 <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">US not used</button>
                 <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
                 
                 <h3>Technique</h3>
-                <button data-section="technique" onclick="handleButtonClick(this, 'a triple lumen catheter was used')">triple-lumen catheter</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'a triple lumen catheter was used')">triple lumen catheter</button>
                 <button data-section="technique" onclick="handleButtonClick(this, 'a cordis catheter was used')">cordis</button>
                 <button data-section="technique" onclick="handleButtonClick(this, 'Lidocaine was used to anesthetize the overlying skin')">lidocaine</button>
                 <button data-section="technique" onclick="handleButtonClick(this, 'A needle was introduced into the vessel and good bloodflow was confirmed with aspiration. A wire was then introduced into the vessel followed by a scalpel incision and dilation of the vessel. The catheter was then introduced into the vessel over the wire and the wire was removed ')">Seldinger</button>
@@ -93,7 +93,7 @@
             <!-- Macro Buttons Section -->
             <div class="macro-section">
                 <h3>Macros</h3>
-                <button onclick="triggerMacro(['timeout-emergent', 'indication-patient acuity', 'consent-emergent', 'location-right IJ', 'preparation-Trendelenburg', 'preparation-sterile procedure', 'ultrasound-US used', 'technique-triple-lumen catheter', 'technique-lidocaine',  'technique-Seldinger',  'technique-good return of blood', 'technique-suture/sterile dressing', 'confirmation-US visualization', 'confirmation-chest X-ray', 'complications-none'], this)">Right IJ, Ultrasound</button>
+                <button onclick="triggerMacro(['timeout-emergent', 'indication-patient acuity', 'consent-emergent', 'location-right IJ', 'preparation-Trendelenburg', 'preparation-sterile procedure', 'ultrasound-US used', 'technique-triple lumen catheter', 'technique-lidocaine',  'technique-Seldinger',  'technique-good return of blood', 'technique-suture/sterile dressing', 'confirmation-US visualization', 'confirmation-chest X-ray', 'complications-none'], this)">Right IJ, Triple Lumen, Ultrasound</button>
                 <!-- Add more macros as needed -->
             </div>
         </div>
