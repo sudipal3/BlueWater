@@ -57,14 +57,14 @@ function updatePercScoreOutput() {
     // Prepare the risk message
     let riskMessage = '';
     if (anyYes) {
-        riskMessage = 'PERC score: With a positive criteria, the PERC rule cannot rule out pulmonary embolism.';
+        riskMessage = 'PERC score: As there is a positive criteria, the PERC rule cannot rule out pulmonary embolism.';
     } else {
-        riskMessage = 'PERC score: Given all criteria being negative, no further workup is needed with a low pre-test probabiltiy as the risk of PE is <2%.';
+        riskMessage = 'PERC score: Given all negative criteria, no further workup needed as the risk of PE is <2%.';
     }
 
-    // Update the output area
+    // Update the output area with the header and results
     if (selectedAnswers.length > 0) {
-        outputArea.innerHTML = `${riskMessage}<br>${selectedAnswers.join('; ')}`;
+        outputArea.innerHTML = `<strong>PERC Rule for PE</strong><br><br>${riskMessage}<br>${selectedAnswers.join('; ')}`;
     } else {
         outputArea.innerHTML = '';
     }
