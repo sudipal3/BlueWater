@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PECARN Pediatric Head Rule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>PECARN Pediatric Head Rule</h2>
+
+            <!-- Dynamic Question Container -->
+            <div id="pecarnQuestionContainer">
+                <!-- Initial Question -->
+                <div class="input-group" id="initialQuestion">
+                    <h3>Age</h3>
+                    <button onclick="handlePECARNButtonClick(this, 'age', '<2 years old')">&lt;2 years old</button>
+                    <button onclick="handlePECARNButtonClick(this, 'age', '≥2 years old')">≥2 years old</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="pecarnScoreOutput"></p>
+            <button onclick="clearPECARNOutput()">Clear</button>
+            <button onclick="copyToClipboard('pecarnScoreOutput')">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+<script src="pecarnscript.js"></script>
+</body>
+</html>
