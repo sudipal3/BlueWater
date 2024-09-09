@@ -47,7 +47,7 @@ function updateHeartScoreOutput() {
     }
 
     if (scoreDetails.length > 0) {
-        outputArea.innerHTML = `HEART Score: ${totalScore}<br>${riskMessage}<br>${scoreDetails.join('; ')}`;
+        outputArea.innerHTML = `<strong>HEART Score for Major Cardiac Events</strong><br><br>HEART Score: ${totalScore}<br>${riskMessage}<br>${scoreDetails.join('; ')}`;
     } else {
         outputArea.innerHTML = '';
     }
