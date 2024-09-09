@@ -64,7 +64,7 @@ function updateWellsScoreOutput() {
 
     // Update the output area with the total score, risk message, and score details
     if (scoreDetails.length > 0) {
-        outputArea.innerHTML = `Wells' Score: ${totalScore.toFixed(1)}<br>${riskMessage}<br>${scoreDetails.join('; ')}`;
+        outputArea.innerHTML = `<h3>Wells' Criteria for PE</h3><br>Wells' Score: ${totalScore.toFixed(1)}<br>${riskMessage}<br>${scoreDetails.join('; ')}`;
     } else {
         outputArea.innerHTML = '';
     }
