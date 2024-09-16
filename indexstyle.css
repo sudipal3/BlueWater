@@ -85,7 +85,7 @@ main {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-/* Clinical Decision Tools Section */
+/* Clinical Decision Tools and Procedures Sections */
 #decision-tools,
 #procedures {
     background-color: #f4f4f4;
@@ -96,17 +96,21 @@ main {
     min-width: 200px; /* Ensures minimum width on smaller screens */
 }
 
-/* Remove bullets from Decision Tools list */
+/* Remove bullets and set list to flex */
 #decision-tools ul,
 #procedures ul {
     list-style-type: none; /* Removes bullets */
     padding-left: 0; /* Removes any left padding */
+    margin: 0; /* Removes margin */
+    display: flex; /* Use flexbox for list items */
+    flex-wrap: wrap; /* Allows wrapping of items to new rows */
+    gap: 5px; /* Adds space between items */
 }
 
 /* List items styling */
 #decision-tools ul li,
 #procedures ul li {
-    margin-bottom: 2px; /* Consistent spacing between items */
+    margin-bottom: 0; /* No margin between list items */
 }
 
 /* Link Styles for Decision Tools and Procedures Sections */
@@ -117,7 +121,7 @@ main {
     color: navy;
     border: 2px solid navy;
     padding: 2px 5px; /* Reduced padding for a smaller button size */
-    margin: 2px 0; /* Space between each link */
+    margin: 0; /* No extra margin between buttons */
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
