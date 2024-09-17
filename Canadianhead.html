@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canadian Head CT Rule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Canadian Head CT Rule</h2>
+
+            <!-- Dynamic Question Container -->
+            <div id="canadianHeadQuestionContainer">
+                <!-- Criteria Questions -->
+                <div class="input-group">
+                    <h3>Age &lt;16 or &ge;65  </h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'age', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'age', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Patient on blood thinners</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'bloodThinners', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'bloodThinners', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Seizure after injury</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'seizure', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'seizure', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>GCS &lt;15 at 2 hours post-injury</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'gcs', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'gcs', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Suspected open or depressed skull fracture</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'skullFracture', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'skullFracture', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Any sign of basilar skull fracture? (Hemotympanum, raccoon eyes, Battle’s Sign, CSF oto-/rhinorrhea)</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'basilarFracture', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'basilarFracture', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>&ge;2 episodes of vomiting</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'vomiting', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'vomiting', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Retrograde amnesia to the event &ge; 30 minutes</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'amnesia', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'amnesia', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>“Dangerous” mechanism? (Pedestrian struck by motor vehicle, occupant ejected from motor vehicle, or fall from &gt;3 feet or &gt;5 stairs)</h3>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'dangerousMechanism', 'No')">No</button>
+                    <button onclick="handleCanadianHeadButtonClick(this, 'dangerousMechanism', 'Yes')">Yes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="canadianHeadScoreOutput"></p>
+            <button onclick="clearCanadianHeadOutput()">Clear</button>
+            <button onclick="copyToClipboard('canadianHeadScoreOutput')">Copy to Clipboard</button>
+            
+        <!-- Macro Button Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerCanadianHeadMacro()">Canadian head neg</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+<!-- Include JavaScript file -->
+<script src="canadianheadscript.js"></script>
+</body>
+</html>
