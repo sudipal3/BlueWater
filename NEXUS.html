@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS C-spine Rule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>NEXUS C-spine Rule</h2>
+
+            <!-- Criteria Questions -->
+            <div id="nexusQuestionContainer">
+                <div class="input-group">
+                    <h3>Focal neurologic deficit present</h3>
+                    <button onclick="handleNexusButtonClick(this, 'focalNeurologic', 'No')">No</button>
+                    <button onclick="handleNexusButtonClick(this, 'focalNeurologic', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Midline spinal tenderness present</h3>
+                    <button onclick="handleNexusButtonClick(this, 'spinalTenderness', 'No')">No</button>
+                    <button onclick="handleNexusButtonClick(this, 'spinalTenderness', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Altered level of consciousness present</h3>
+                    <button onclick="handleNexusButtonClick(this, 'alteredLOC', 'No')">No</button>
+                    <button onclick="handleNexusButtonClick(this, 'alteredLOC', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Intoxication present</h3>
+                    <button onclick="handleNexusButtonClick(this, 'intoxication', 'No')">No</button>
+                    <button onclick="handleNexusButtonClick(this, 'intoxication', 'Yes')">Yes</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Distracting injury present</h3>
+                    <button onclick="handleNexusButtonClick(this, 'distractingInjury', 'No')">No</button>
+                    <button onclick="handleNexusButtonClick(this, 'distractingInjury', 'Yes')">Yes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="nexusScoreOutput"></p>
+            <button onclick="clearNexusOutput()">Clear</button>
+            <button onclick="copyToClipboard('nexusScoreOutput')">Copy to Clipboard</button>
+            
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerNexusMacro()">NEXUS rule neg</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <!-- Include JavaScript file -->
+    <script src="nexusscript.js"></script>
+</body>
+</html>
