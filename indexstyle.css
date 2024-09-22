@@ -107,6 +107,13 @@ main {
     gap: 5px; /* Adds space between items */
 }
 
+
+/* Remove bullets from Clinical Pathways list */
+#pathways ul {
+    list-style-type: none;
+    padding-left: 0; /* Removes any left padding */
+}
+
 /* List items styling */
 #decision-tools ul li,
 #procedures ul li {
