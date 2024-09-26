@@ -94,7 +94,7 @@ function generateAdditionalProcedureNote() {
     const additionalNote = document.createElement('div');
     additionalNote.id = additionalNoteId;
     additionalNote.innerHTML = `
-        <h3>Procedure: Abscess ultrasound</h3>
+        <h3>Procedure note: soft tissue ultrasound</h3>
         <p><strong>Indication:</strong> abscess, procedural guidance</p>
         <p><strong>Procedure:</strong> limited skin and soft tissue ultrasound</p>
         <p><strong>Interpretation:</strong> a fluid-filled area consistent with an abscess was visualized in the area of interest. Images were saved in medical record and/or PACS.</p>
