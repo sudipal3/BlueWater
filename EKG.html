@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKG Interpretation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>EKG Interpretation</h2>
+            
+            <!-- Time of EKG Section -->
+            <div class="input-group">
+                <h3>Time of EKG</h3>
+                <button onclick="handleTimeButtonClick(this, 'Time of EKG', 'timeOfEKGText')">Now</button>
+                <textarea id="timeOfEKGText" placeholder="" onchange="updateRealTimeText('Time of EKG', 'timeOfEKGText')"></textarea>
+            </div>
+
+            <!-- Time of Interpretation Section -->
+            <div class="input-group">
+                <h3>Time of Interpretation</h3>
+                <button onclick="handleTimeButtonClick(this, 'Time of Interpretation', 'timeOfInterpretationText')">Now</button>
+                <textarea id="timeOfInterpretationText" placeholder="" onchange="updateRealTimeText('Time of Interpretation', 'timeOfInterpretationText')"></textarea>
+            </div>
+
+            <!-- Rate Section -->
+            <div class="input-group">
+                <h3>Rate</h3>
+                <button data-section="Rate" onclick="handleButtonClick(this, 'Rate', 'normal')">normal</button>
+                <button data-section="Rate" onclick="handleButtonClick(this, 'Rate', 'tachycardic')">tachycardic</button>
+                <button data-section="Rate" onclick="handleButtonClick(this, 'Rate', 'bradycardic')">bradycardic</button>
+                <textarea id="rateText" placeholder="Enter rate information" onchange="updateRealTimeText('Rate', 'rateText')"></textarea>
+            </div>
+
+            <!-- Rhythm Section -->
+            <div class="input-group">
+                <h3>Rhythm</h3>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'sinus')">sinus</button>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'atrial fibrillation')">atrial fibrillation</button>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'atrial flutter')">atrial flutter</button>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'junctional')">junctional</button>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'paced')">paced</button>
+                <button data-section="Rhythm" onclick="handleButtonClick(this, 'Rhythm', 'supraventricular tachycardia')">supraventricular tachycardia</button>
+                <textarea id="rhythmText" placeholder="Enter rhythm information" onchange="updateRealTimeText('Rhythm', 'rhythmText')"></textarea>
+            </div>
+
+            <!-- Axis Section -->
+            <div class="input-group">
+                <h3>Axis</h3>
+                <button data-section="Axis" onclick="handleButtonClick(this, 'Axis', 'normal')">normal</button>
+                <button data-section="Axis" onclick="handleButtonClick(this, 'Axis', 'left')">left</button>
+                <button data-section="Axis" onclick="handleButtonClick(this, 'Axis', 'right')">right</button>
+                <textarea id="axisText" placeholder="Enter axis information" onchange="updateRealTimeText('Axis', 'axisText')"></textarea>
+            </div>
+
+            <!-- Intervals Section -->
+            <div class="input-group">
+                <h3>Intervals</h3>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'normal PR')">normal PR</button>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'normal QRS')">normal QRS</button>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'normal QTc')">normal QTc</button>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'prolonged PR')">prolonged PR</button>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'widened QRS')">widened QRS</button>
+                <button data-section="Intervals" onclick="handleButtonClick(this, 'Intervals', 'prolonged QTc')">prolonged QTc</button>
+                <textarea id="intervalsText" placeholder="Enter interval information" onchange="updateRealTimeText('Intervals', 'intervalsText')"></textarea>
+            </div>
+
+            <!-- Conduction Section -->
+            <div class="input-group">
+                <h3>Conduction</h3>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'right bundle branch block')">RBBB</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'incomplete right bundle branch block')">incomplete RBBB</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'left bundle branch block')">LBBB</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', '1st degree heart block')">1st degree heart block</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'Mobitz type I')">Mobitz type I</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'Mobitz type II')">Mobitz type II</button>
+                <button data-section="Conduction" onclick="handleButtonClick(this, 'Conduction', 'complete heart block')">complete heart block</button>
+                <textarea id="conductionText" placeholder="Enter conduction information" onchange="updateRealTimeText('Conduction', 'conductionText')"></textarea>
+            </div>
+
+            <!-- Ischemia Section -->
+            <div class="input-group">
+                <h3>Ischemia</h3>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'no acute ischemic findings')">none</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'ST-segment depressions')">STD</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'ST-segment elevations')">STEMI</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'T-wave inversions')">TWI</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'Q-waves')">Q-waves</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'poor R wave progression')">poor R wave progression</button>
+                <button data-section="Ischemia" onclick="handleButtonClick(this, 'Ischemia', 'Scargbosa negative for ischemia')">Scargbosa negative</button>
+                <textarea id="ischemiaText" placeholder="Specify leads with ischemic changes" onchange="updateRealTimeText('Ischemia', 'ischemiaText')"></textarea>
+            </div>
+
+            <!-- Prior EKG Comparison Section -->
+            <div class="input-group">
+                <h3>Prior EKG comparison</h3>
+                <button data-section="Prior EKG comparison" onclick="handleButtonClick(this, 'Prior EKG comparison', 'unchanged from prior EKG')">Unchanged</button>
+                <button data-section="Prior EKG comparison" onclick="handleButtonClick(this, 'Prior EKG comparison', 'compared to previous EKG there have been notable changes, specifically')">Interval changes</button>
+                <textarea id="priorEKGText" placeholder="Specify changes since previous EKG" onchange="updateRealTimeText('Prior EKG comparison', 'priorEKGText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="ekgOutput"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearEKGOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to the JavaScript file -->
+    <script src="ekgscript.js"></script>
+</body>
+</html>
