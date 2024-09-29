@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIH Stroke Scale</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>NIH Stroke Scale</h2>
+
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="timeText" placeholder="Manual time entry (optional)"></textarea>
+            </div>
+
+            <!-- Level of Consciousness Section -->
+            <div class="input-group">
+                <h3>Level of consciousness</h3>
+                <button onclick="handleNIHButtonClick(this, 'Level of consciousness', 0, 'Alert; keenly responsive')">Alert; keenly responsive</button>
+                <button onclick="handleNIHButtonClick(this, 'Level of consciousness', 1, 'Arouses to minor stimulation')">Arouses to minor stimulation</button>
+                <button onclick="handleNIHButtonClick(this, 'Level of consciousness', 2, 'Requires repeated stimulation to arouse')">Requires repeated stimulation to arouse</button>
+                <button onclick="handleNIHButtonClick(this, 'Level of consciousness', 2, 'Movements to pain')">Movements to pain</button>
+                <button onclick="handleNIHButtonClick(this, 'Level of consciousness', 3, 'Postures or unresponsive')">Postures or unresponsive</button>
+            </div>
+
+            <!-- LOC Questions Section -->
+            <div class="input-group">
+                <h3>LOC Questions (month and age)</h3>
+                <button onclick="handleNIHButtonClick(this, 'LOC Questions', 0, 'Both questions right')">Both questions right</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Questions', 1, 'One question right')">One question right</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Questions', 2, 'No questions right')">No questions right</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Questions', 1, 'Dysarthric/intubated/trauma/language barrier')">Dysarthric/intubated/trauma/language barrier</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Questions', 2, 'Aphasic')">Aphasic</button>
+            </div>
+
+            <!-- LOC Commands Section -->
+            <div class="input-group">
+                <h3>LOC Commands (‘Blink eyes’ & ‘squeeze hands’)</h3>
+                <button onclick="handleNIHButtonClick(this, 'LOC Commands', 0, 'Performs both tasks')">Performs both tasks</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Commands', 1, 'Performs one task')">Performs one task</button>
+                <button onclick="handleNIHButtonClick(this, 'LOC Commands', 2, 'Performs no tasks')">Performs no tasks</button>
+            </div>
+
+            <!-- Horizontal Extraocular Movements Section -->
+            <div class="input-group">
+                <h3>Horizontal extraocular movements</h3>
+                <button onclick="handleNIHButtonClick(this, 'Horizontal extraocular movements', 0, 'Normal')">Normal</button>
+                <button onclick="handleNIHButtonClick(this, 'Horizontal extraocular movements', 1, 'Partial gaze palsy')">Partial gaze palsy</button>
+                <button onclick="handleNIHButtonClick(this, 'Horizontal extraocular movements', 2, 'Forced gaze palsy')">Forced gaze palsy</button>
+            </div>
+
+            <!-- Visual Fields Section -->
+            <div class="input-group">
+                <h3>Visual fields</h3>
+                <button onclick="handleNIHButtonClick(this, 'Visual fields', 0, 'No visual loss')">No visual loss</button>
+                <button onclick="handleNIHButtonClick(this, 'Visual fields', 1, 'Partial hemianopia')">Partial hemianopia</button>
+                <button onclick="handleNIHButtonClick(this, 'Visual fields', 2, 'Complete hemianopia')">Complete hemianopia</button>
+                <button onclick="handleNIHButtonClick(this, 'Visual fields', 3, 'Patient is bilaterally blind or bilateral hemianopia')">Patient is bilaterally blind or bilateral hemianopia</button>
+            </div>
+
+            <!-- Facial Palsy Section -->
+            <div class="input-group">
+                <h3>Facial palsy</h3>
+                <button onclick="handleNIHButtonClick(this, 'Facial palsy', 0, 'Normal symmetry')">Normal symmetry</button>
+                <button onclick="handleNIHButtonClick(this, 'Facial palsy', 1, 'Minor paralysis')">Minor paralysis</button>
+                <button onclick="handleNIHButtonClick(this, 'Facial palsy', 2, 'Partial paralysis')">Partial paralysis</button>
+                <button onclick="handleNIHButtonClick(this, 'Facial palsy', 3, 'Complete paralysis')">Complete paralysis</button>
+            </div>
+
+            <!-- Left Arm Motor Drift Section -->
+            <div class="input-group">
+                <h3>Left arm motor drift</h3>
+                <button onclick="handleNIHButtonClick(this, 'Left arm motor drift', 0, 'No drift for 10 seconds')">No drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Left arm motor drift', 1, 'Drift, but doesn't hit bed')">Mild drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Left arm motor drift', 2, 'Drift, hits bed')">Drift, hits bed</button>
+                <button onclick="handleNIHButtonClick(this, 'Left arm motor drift', 3, 'No effort against gravity')">No effort against gravity</button>
+                <button onclick="handleNIHButtonClick(this, 'Left arm motor drift', 4, 'No movement')">No movement</button>
+            </div>
+
+            <!-- Right Arm Motor Drift Section -->
+            <div class="input-group">
+                <h3>Right arm motor drift</h3>
+                <button onclick="handleNIHButtonClick(this, 'Right arm motor drift', 0, 'No drift for 10 seconds')">No drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Right arm motor drift', 1, 'Drift, but doesn't hit bed')">Mild drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Right arm motor drift', 2, 'Drift, hits bed')">Drift, hits bed</button>
+                <button onclick="handleNIHButtonClick(this, 'Right arm motor drift', 3, 'No effort against gravity')">No effort against gravity</button>
+                <button onclick="handleNIHButtonClick(this, 'Right arm motor drift', 4, 'No movement')">No movement</button>
+            </div>
+
+            <!-- Left Leg Motor Drift Section -->
+            <div class="input-group">
+                <h3>Left leg motor drift</h3>
+                <button onclick="handleNIHButtonClick(this, 'Left leg motor drift', 0, 'No drift for 10 seconds')">No drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Left leg motor drift', 1, 'Drift, but doesn't hit bed')">Mild drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Left leg motor drift', 2, 'Drift, hits bed')">Drift, hits bed</button>
+                <button onclick="handleNIHButtonClick(this, 'Left leg motor drift', 3, 'No effort against gravity')">No effort against gravity</button>
+                <button onclick="handleNIHButtonClick(this, 'Left leg motor drift', 4, 'No movement')">No movement</button>
+            </div>
+
+            <!-- Right Leg Motor Drift Section -->
+            <div class="input-group">
+                <h3>Right leg motor drift</h3>
+               <button onclick="handleNIHButtonClick(this, 'Right leg motor drift', 0, 'No drift for 10 seconds')">No drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Right leg motor drift', 1, 'Drift, but doesn't hit bed')">Mild drift</button>
+                <button onclick="handleNIHButtonClick(this, 'Right leg motor drift', 2, 'Drift, hits bed')">Drift, hits bed</button>
+                <button onclick="handleNIHButtonClick(this, 'Right leg motor drift', 3, 'No effort against gravity')">No effort against gravity</button>
+                <button onclick="handleNIHButtonClick(this, 'Right leg motor drift', 4, 'No movement')">No movement</button>
+            </div>
+
+            <!-- Limb Ataxia Section -->
+            <div class="input-group">
+                <h3>Limb Ataxia (finger-to-nose/heel-to-shin)</h3>
+                <button onclick="handleNIHButtonClick(this, 'Limb Ataxia', 0, 'No ataxia')">No ataxia</button>
+                <button onclick="handleNIHButtonClick(this, 'Limb Ataxia', 1, 'Ataxia in 1 limb')">Ataxia in one limb</button>
+                <button onclick="handleNIHButtonClick(this, 'Limb Ataxia', 2, 'Ataxia in 2 limbs')">Ataxia in two limbs</button>
+                <button onclick="handleNIHButtonClick(this, 'Limb Ataxia', 0, 'Does not understand or paralyzed')">Does not understand or paralyzed</button>
+            </div>
+
+            <!-- Sensation Section -->
+            <div class="input-group">
+                <h3>Sensation</h3>
+                <button onclick="handleNIHButtonClick(this, 'Sensation', 0, 'Normal')">Normal</button>
+                <button onclick="handleNIHButtonClick(this, 'Sensation', 1, 'Mild-moderate loss')">Mild-moderate loss</button>
+                <button onclick="handleNIHButtonClick(this, 'Sensation', 2, 'Complete loss')">Complete loss</button>
+                <button onclick="handleNIHButtonClick(this, 'Sensation', 2, 'No response or quadriplegic')">No response or quadriplegic</button>
+            </div>
+
+            <!-- Language/Aphasia Section -->
+            <div class="input-group">
+                <h3>Language/aphasia</h3>
+                <button onclick="handleNIHButtonClick(this, 'Language/aphasia', 0, 'Normal; no aphasia')">Normal; no aphasia</button>
+                <button onclick="handleNIHButtonClick(this, 'Language/aphasia', 1, 'Mild-moderate aphasia')">Mild-moderate aphasia</button>
+                <button onclick="handleNIHButtonClick(this, 'Language/aphasia', 2, 'Severe aphasia')">Severe aphasia</button>
+                <button onclick="handleNIHButtonClick(this, 'Language/aphasia', 3, 'Mute/global aphasia or unresponsive')">Mute/global aphasia or unresponsive</button>
+            </div>
+
+            <!-- Dysarthria Section -->
+            <div class="input-group">
+                <h3>Dysarthria</h3>
+                <button onclick="handleNIHButtonClick(this, 'Dysarthria', 0, 'Normal or unable to test')">Normal or unable to test</button>
+                <button onclick="handleNIHButtonClick(this, 'Dysarthria', 1, 'Mild-moderate dysarthria')">Mild-moderate dysarthria</button>
+                <button onclick="handleNIHButtonClick(this, 'Dysarthria', 2, 'Severe dysarthria')">Severe dysarthria</button>
+                <button onclick="handleNIHButtonClick(this, 'Dysarthria', 2, 'Mute/anarthric')">Mute/anarthric</button>
+            </div>
+
+            <!-- Extinction/Inattention Section -->
+            <div class="input-group">
+                <h3>Extinction/inattention</h3>
+                <button onclick="handleNIHButtonClick(this, 'Extinction/inattention', 0, 'No abnormality')">No abnormality</button>
+                <button onclick="handleNIHButtonClick(this, 'Extinction/inattention', 1, 'One modality')">One modality</button>
+                <button onclick="handleNIHButtonClick(this, 'Extinction/inattention', 2, 'Profound inattention')">Profound inattention</button>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>NIH Score:</h3>
+            <p id="nihScoreOutput"></p>
+            <button onclick="clearOutput()">Clear</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        
+        
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <button onclick="triggerNIHZeroMacro()">NIH 0</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+        <p><a href="index.html#procedures">Back to Procedures</a></p>
+    </footer>
+
+    <!-- Link to the JavaScript file -->
+    <script src="nihstroke.js"></script>
+</body>
+</html>
