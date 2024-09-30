@@ -85,9 +85,10 @@ main {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-/* Clinical Decision Tools and Procedures Sections */
+/* Clinical Decision Tools, Procedures, and Pocus Sections */
 #decision-tools,
-#procedures {
+#procedures,
+#pocus {
     background-color: #f4f4f4;
     padding: 10px;
     border: 1px solid #ccc;
@@ -98,7 +99,8 @@ main {
 
 /* Remove bullets and set list to flex */
 #decision-tools ul,
-#procedures ul {
+#procedures ul,
+#pocus ul {
     list-style-type: none; /* Removes bullets */
     padding-left: 0; /* Removes any left padding */
     margin: 0; /* Removes margin */
@@ -106,7 +108,6 @@ main {
     flex-wrap: wrap; /* Allows wrapping of items to new rows */
     gap: 5px; /* Adds space between items */
 }
-
 
 /* Remove bullets from Clinical Pathways list */
 #pathways ul {
@@ -116,13 +117,15 @@ main {
 
 /* List items styling */
 #decision-tools ul li,
-#procedures ul li {
+#procedures ul li,
+#pocus ul li {
     margin-bottom: 0; /* No margin between list items */
 }
 
-/* Link Styles for Decision Tools and Procedures Sections */
+/* Link Styles for Decision Tools, Procedures, and Pocus Sections */
 #decision-tools ul li a,
-#procedures ul li a {
+#procedures ul li a,
+#pocus ul li a {
     display: block;
     background-color: white;
     color: navy;
@@ -139,7 +142,8 @@ main {
 
 /* Hover effect for the links */
 #decision-tools ul li a:hover,
-#procedures ul li a:hover {
+#procedures ul li a:hover,
+#pocus ul li a:hover {
     background-color: navy;
     color: white;
 }
