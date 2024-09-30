@@ -25,9 +25,6 @@ function handleButtonClick(button, section, description) {
         button.classList.add('pressed');
 
         // Add the description to the ekgSections array for this section
-        if (!ekgSections[section]) {
-            ekgSections[section] = [];
-        }
         ekgSections[section].push(description);
     }
 
@@ -50,10 +47,20 @@ function handleTimeButtonClick(button, section, textAreaId) {
     updateEKGOutput();
 }
 
-// Function to handle real-time text input (free text)
+// Function to handle real-time text input (free text) and append to existing output
 function updateRealTimeText(section, textAreaId) {
     const textValue = document.getElementById(textAreaId).value.trim();
-    ekgSections[section] = textValue ? textValue : null;
+
+    // Append the new text to existing button-generated output if any
+    if (textValue) {
+        if (Array.isArray(ekgSections[section])) {
+            ekgSections[section].push(textValue);
+        } else {
+            ekgSections[section] = (ekgSections[section] ? ekgSections[section] + ', ' : '') + textValue;
+        }
+    } else {
+        ekgSections[section] = ekgSections[section].filter(item => !item.includes(textValue));
+    }
 
     // Update the EKG output
     updateEKGOutput();

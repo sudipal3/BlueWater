@@ -48,10 +48,20 @@ function handleTimeButtonClick(button) {
     updatePOCUSFASTOutput();
 }
 
-// Function to handle real-time text input (free text)
+// Function to handle real-time text input (free text) and append to existing output
 function updateRealTimeText(section, textAreaId) {
     const textValue = document.getElementById(textAreaId).value.trim();
-    pocusFASTSections[section] = textValue ? textValue : null;
+
+    // Append the new text to existing button-generated output if any
+    if (textValue) {
+        if (Array.isArray(pocusFASTSections[section])) {
+            pocusFASTSections[section].push(textValue);
+        } else {
+            pocusFASTSections[section] = (pocusFASTSections[section] ? pocusFASTSections[section] + ', ' : '') + textValue;
+        }
+    } else {
+        pocusFASTSections[section] = pocusFASTSections[section].filter(item => !item.includes(textValue));
+    }
 
     // Update the POCUS E-FAST output
     updatePOCUSFASTOutput();
