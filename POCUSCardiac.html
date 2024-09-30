@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Cardiac</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Cardiac</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'chest pain')">chest pain</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'dyspnea')">dyspnea</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'hypotension')">hypotension</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="Views" onclick="handleButtonClick(this, 'parasternal long axis')">PSLA</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'parasternal short axis')">PSSA</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'apical four-chamber')">apical four-chamber</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'subxiphoid view')">subxiphoid</button>
+                <textarea id="ViewsText" placeholder="" onchange="updateRealTimeText('Views', 'ViewsText')"></textarea>
+            </div>
+
+            <!-- Ejection Fraction Section -->
+            <div class="input-group">
+                <h3>Ejection Fraction</h3>
+                <button data-section="Ejection Fraction" onclick="handleButtonClick(this, 'normal')">normal</button>
+                <button data-section="Ejection Fraction" onclick="handleButtonClick(this, 'diminished')">diminished</button>
+                <textarea id="EjectionFractionText" placeholder="" onchange="updateRealTimeText('Ejection Fraction', 'EjectionFractionText')"></textarea>
+            </div>
+
+            <!-- Pericardial Effusion Section -->
+            <div class="input-group">
+                <h3>Pericardial Effusion</h3>
+                <button data-section="Pericardial Effusion" onclick="handleButtonClick(this, 'absent')">absent</button>
+                <button data-section="Pericardial Effusion" onclick="handleButtonClick(this, 'small')">small</button>
+                <button data-section="Pericardial Effusion" onclick="handleButtonClick(this, 'moderate')">moderate</button>
+                <button data-section="Pericardial Effusion" onclick="handleButtonClick(this, 'large')">large</button>
+                <button data-section="Pericardial Effusion" onclick="handleButtonClick(this, 'large pericardial effusion with findings suggestive of pericardial tamponade')">tamponade</button>
+                <textarea id="PericardialEffusionText" placeholder="" onchange="updateRealTimeText('Pericardial Effusion', 'PericardialEffusionText')"></textarea>
+            </div>
+
+            <!-- Right Ventricle Section -->
+            <div class="input-group">
+                <h3>Right Ventricle</h3>
+                <button data-section="Right Ventricle" onclick="handleButtonClick(this, 'normal')">normal</button>
+                <button data-section="Right Ventricle" onclick="handleButtonClick(this, 'dilated')">dilated</button>
+                <button data-section="Right Ventricle" onclick="handleButtonClick(this, 'akinesis of right mid free-wall with apical sparing consistent with a McConnell’s sign')">McConnell’s sign +</button>
+                <textarea id="RightVentricleText" placeholder="" onchange="updateRealTimeText('Right Ventricle', 'RightVentricleText')"></textarea>
+            </div>
+
+            <!-- IVC Section -->
+            <div class="input-group">
+                <h3>IVC</h3>
+                <button data-section="IVC" onclick="handleButtonClick(this, 'there is normal respiratory variation in the IVC')">normal</button>
+                <button data-section="IVC" onclick="handleButtonClick(this, 'there is increased collapsibility of the IVC')">hypovolemic</button>
+                <button data-section="IVC" onclick="handleButtonClick(this, 'the IVC is plump with minimal respiratory variation')">plump</button>
+                <textarea id="IVCText" placeholder="" onchange="updateRealTimeText('IVC', 'IVCText')"></textarea>
+            </div>
+            
+             <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'echocardiogram is overall normal with preserved ejection fraction and no pericardial effusion')">normal</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'findings are consistent with decreased ejection fraction')">decreased EF</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'findings are concerning for right ventricular strain and possible pulmonary embolism')">PE concern</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'findings are consistent with a pericardial effusion')">+pericardial effusion</button>
+                <textarea id="InterpretationText" placeholder="Provide an interpretation here." onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="pocuscardiacscript.js"></script>
+</body>
+</html>
