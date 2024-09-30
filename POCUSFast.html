@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: E-FAST</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: E-FAST</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'blunt trauma with concern for intra-abdominal injury')">blunt trauma</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'penetrating trauma with concern for intra-abdominal injury')">penetrating trauma</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'abdominal pain')">abdominal pain</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'hypotension')">hypotension</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Hepatorenal View (RUQ) Section -->
+            <div class="input-group">
+                <h3>Hepatorenal view (RUQ)</h3>
+                <button data-section="Hepatorenal view (RUQ)" onclick="handleButtonClick(this, 'no free fluid visualized')">negative</button>
+                <button data-section="Hepatorenal view (RUQ)" onclick="handleButtonClick(this, 'free fluid visualized')">+free fluid</button>
+                <textarea id="HepatorenalText" placeholder="" onchange="updateRealTimeText('Hepatorenal view (RUQ)', 'HepatorenalText')"></textarea>
+            </div>
+
+            <!-- Cardiac View Section -->
+            <div class="input-group">
+                <h3>Cardiac view</h3>
+                <button data-section="Cardiac view" onclick="handleButtonClick(this, 'no pericardial effusion')">negative</button>
+                <button data-section="Cardiac view" onclick="handleButtonClick(this, 'a pericardial effusion is visualized')">+pericardial effusion</button>
+                <textarea id="CardiacViewText" placeholder="" onchange="updateRealTimeText('Cardiac view', 'CardiacViewText')"></textarea>
+            </div>
+
+            <!-- Splenorenal (LUQ) Section -->
+            <div class="input-group">
+                <h3>Splenorenal (LUQ)</h3>
+                <button data-section="Splenorenal (LUQ)" onclick="handleButtonClick(this, 'no free fluid visualized')">negative</button>
+                <button data-section="Splenorenal (LUQ)" onclick="handleButtonClick(this, 'free fluid visualized')">+free fluid</button>
+                <textarea id="SplenorenalText" placeholder="" onchange="updateRealTimeText('Splenorenal (LUQ)', 'SplenorenalText')"></textarea>
+            </div>
+
+            <!-- Bladder View Section -->
+            <div class="input-group">
+                <h3>Bladder view</h3>
+                <button data-section="Bladder view" onclick="handleButtonClick(this, 'no free fluid visualized')">negative</button>
+                <button data-section="Bladder view" onclick="handleButtonClick(this, 'free fluid visualized')">+free fluid</button>
+                <textarea id="BladderViewText" placeholder="" onchange="updateRealTimeText('Bladder view', 'BladderViewText')"></textarea>
+            </div>
+
+            <!-- Lung Views Section -->
+            <div class="input-group">
+                <h3>Lung views</h3>
+                <button data-section="Lung views" onclick="handleButtonClick(this, 'lung sliding visualized in right lung')">Right lung normal</button>
+                <button data-section="Lung views" onclick="handleButtonClick(this, 'lung sliding visualized in left lung')">Left lung normal</button>
+                <button data-section="Lung views" onclick="handleButtonClick(this, 'no lung sliding visualized in right lung')">Right lung abnormal</button>
+                <button data-section="Lung views" onclick="handleButtonClick(this, 'no lung sliding visualized in left lung')">Left lung abnormal</button>
+                <textarea id="LungViewsText" placeholder="" onchange="updateRealTimeText('Lung views', 'LungViewsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no signs of intra-abdominal free fluid or pneumothorax on this examination')">normal</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'free fluid is visualized in the abdomen concerning for acute traumatic injury')">+free fluid</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'lack of lung sliding on lung views is concerning for possible traumatic pneumothorax')">pneumothorax</button>
+                <textarea id="InterpretationText" placeholder="Additional interpretation details" onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <button onclick="triggerFASTNegMacro()">FAST neg</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="pocusEFASTscript.js"></script>
+</body>
+</html>
