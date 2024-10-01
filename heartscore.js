@@ -40,7 +40,7 @@ function updateHeartScoreOutput() {
     }
 
     let riskMessage = '';
-    if (totalScore >= 1 && totalScore <= 3) {
+    if (totalScore >= 0 && totalScore <= 3) {
         riskMessage = `<b>HEART score <= 3: Risk of MACE of 0.9-1.7%.</b>`;
     } else if (totalScore > 3) {
         riskMessage = `<b>HEART score > 3: Risk of MACE is >12%.</b>`;
