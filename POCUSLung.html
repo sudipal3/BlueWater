@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Lungs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Lungs</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="Manual time entry (optional)" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'dyspnea')">dyspnea</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'respiratory distress')">respiratory distress</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'trauma')">trauma</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'POCUS confirmed to better clarify findings from an abnormal XRay')">abnormal XR</button>
+                <textarea id="IndicationText" placeholder="Additional indication details" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="Views" onclick="handleButtonClick(this, 'right anterior')">right ant</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'right lateral')">right lat</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'right posterior')">right post</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'left anterior')">left ant</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'left lateral')">left lat</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'left posterior')">left post</button>
+                <textarea id="ViewsText" placeholder="Additional view details" onchange="updateRealTimeText('Views', 'ViewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the right lung was normal without any evidence of pneumothorax, B-lines, pneumonia, or effusion')">right normal</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the left lung was normal without any evidence of pneumothorax, B-lines, pneumonia, or effusion')">left normal</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'B-lines were visualized in all lung fields')">B-lines</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'B-lines and hepatization of the right lung was visualized')">right PNA</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'B-lines and hepatization of the left lung was visualized')">left PNA</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'no lung sliding was visualized in the right lung')">right PTX</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'no lung sliding was visualized in the left lung')">left PTX</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'a fluid collection consistent with an effusion was visualized in the right lung')">right effusion</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'a fluid collection consistent with an effusion was visualized in the left lung')">left effusion</button>
+                <textarea id="FindingsText" placeholder="Additional findings details" onchange="updateRealTimeText('Findings', 'FindingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'normal appearing lungs without evidence of pneumothorax, fluid overload, or effusion')">normal</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the presence of diffuse B-lines is suggestive of a fluid overloaded state')">fluid overload</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the ultrasound findings of B-lines and hepatization are suggestive of pneumonia')">PNA</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the lack of lung sliding is concerning for a pneumothorax in this patient')">PTX</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'a pleural effusion was visualized on this exam')">pleural effusion</button>
+                <textarea id="InterpretationText" placeholder="Provide an interpretation here." onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="pocuslungsscript.js"></script>
+</body>
+</html>
