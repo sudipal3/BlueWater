@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Procedural Sedation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Procedural Sedation</h2>
+            
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained, patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="ConsentText" placeholder="" onchange="updateRealTimeText('Consent', 'ConsentText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'fracture reduction')">fracture reduction</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'dislocation reduction')">dislocation reduction</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'cardioversion')">cardioversion</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'laceration repair')">laceration repair</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Pre-sedation Assessment Section -->
+            <div class="input-group">
+                <h3>Pre-sedation assessment</h3>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'Mallampati I')">Mallampati I</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'Mallampati II')">Mallampati II</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'Mallampati III')">Mallampati III</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'Mallampati IV')">Mallampati IV</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'ASA I (healthy patient with minimal risk)')">ASA I</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'ASA II (a patient with mild systemic disease)')">ASA II</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'ASA III (a patient with severe systemic disease that is not incapacitating)')">ASA III</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'ASA IV (a patient with incapacitating disease that is a constant threat to live)')">ASA IV</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'ASA V (a moribund patient who is not expected to live 24 hours or more with or without surgery)')">ASA V</button>
+                <button data-section="Pre-sedation assessment" onclick="handleButtonClick(this, 'patient’s last PO intake was noted and considered during procedural planning')">last PO noted</button>
+                <textarea id="PreSedationAssessmentText" placeholder="" onchange="updateRealTimeText('Pre-sedation assessment', 'PreSedationAssessmentText')"></textarea>
+            </div>
+
+            <!-- Preparation/Monitoring Section -->
+            <div class="input-group">
+                <h3>Preparation/monitoring</h3>
+                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'respiratory therapy was at bedside with appropriate equipment including a BMV, suction, and resuscitation equipment')">RT/equipment</button>
+                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'patient was placed on supplemental oxygen and monitored via pulse oximetry during the course of the sedation')">O2/pulse oximetry</button>
+                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'end tidal capnography was monitored during the procedure')">ETCO2</button>
+                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'patient was monitored on continuous telemetry')">telemetry</button>
+                <textarea id="PreparationMonitoringText" placeholder="" onchange="updateRealTimeText('Preparation/monitoring', 'PreparationMonitoringText')"></textarea>
+            </div>
+
+            <!-- Medication Section -->
+            <div class="input-group">
+                <h3>Medication</h3>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'ketamine')">ketamine</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'propofol')">propofol</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'etomidate')">etomidate</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'midazolam')">midazolam</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'fentanyl')">fentanyl</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'medications were administered by myself')">provider admin</button>
+                <button data-section="Medication" onclick="handleButtonClick(this, 'medications were administered by the RN at bedside')">RN admin</button>
+                <textarea id="MedicationText" placeholder="Document the amount of sedative used here" onchange="updateRealTimeText('Medication', 'MedicationText')"></textarea>
+            </div>
+
+            <!-- Complications Section -->
+            <div class="input-group">
+                <h3>Complications</h3>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during procedural sedation')">hypoxia</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia requiring BVM ventilation')">bagging</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced vomiting during the sedation')">vomiting</button>
+                <textarea id="ComplicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'ComplicationsText')"></textarea>
+            </div>
+
+            <!-- Post-procedure Assessment Section -->
+            <div class="input-group">
+                <h3>Post-procedure assessment</h3>
+                <button data-section="Post-procedure assessment" onclick="handleButtonClick(this, 'following the sedation, the patient was awake, alert, oriented and with normal vital signs')">AAO nl VS</button>
+                <textarea id="PostProcedureAssessmentText" placeholder="" onchange="updateRealTimeText('Post-procedure assessment', 'PostProcedureAssessmentText')"></textarea>
+            </div>
+
+            <!-- Total Time Spent at Bedside Section -->
+            <div class="input-group">
+                <h3>Total time spent at bedside</h3>
+                <button data-section="Total time spent at bedside" onclick="handleButtonClick(this, '15 minutes')">15 min</button>
+                <button data-section="Total time spent at bedside" onclick="handleButtonClick(this, '20 minutes')">20 min</button>
+                <button data-section="Total time spent at bedside" onclick="handleButtonClick(this, '25 minutes')">25 min</button>
+                <button data-section="Total time spent at bedside" onclick="handleButtonClick(this, '30 minutes')">30 min</button>
+                <button data-section="Total time spent at bedside" onclick="handleButtonClick(this, '35 minutes')">35 min</button>
+                <textarea id="TotalTimeSpentText" placeholder="" onchange="updateRealTimeText('Total time spent at bedside', 'TotalTimeSpentText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="ProviderText" placeholder="" onchange="updateRealTimeText('Provider', 'ProviderText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            
+            <!-- New Section for Related Procedures -->
+            <div class="related-procedures">
+                <p>Press the following links to generate notes for commonly associated procedures: 
+                    <a href="reduction.html">fracture reduction</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="proceduralsedationscript.js"></script>
+</body>
+</html>
