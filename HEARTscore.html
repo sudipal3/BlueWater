@@ -15,7 +15,6 @@
     <nav>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
         </ul>
     </nav>
 
@@ -46,7 +45,7 @@
             </div>
 
             <div class="input-group">
-                <h3>Risk factors</h3>
+                <h3>Risk factors: (HTN, hypercholesterolemia, DM, obesity, smoking,  family history; atherosclerotic disease: prior MI, CABG, CVA/TIA, or peripheral arterial disease)</h3>
                 <button onclick="handleButtonClick(this, 'No known risk factors', 0, 'No known risk factors')">No known risk factors</button>
                 <button onclick="handleButtonClick(this, '1-2 risk factors', 1, '1-2 risk factors')">1-2 risk factors</button>
                 <button onclick="handleButtonClick(this, '≥3 risk factors or history of atherosclerotic disease', 2, '3+ risk factors or history of atherosclerotic disease')">3+ risk factors or history of atherosclerotic disease</button>
@@ -63,6 +62,7 @@
 
         <!-- Output Section -->
         <div class="output-section">
+            <h3>HEART Score:</h3>
             <p id="heartScoreOutput"></p>
             
              <button onclick="clearOutput()">Clear</button>
@@ -75,6 +75,7 @@
 
     <footer>
         <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+        <p><a href="index.html#procedures">Back to Procedures</a></p>
     </footer>
 
 <script src="heartscore.js"></script>
