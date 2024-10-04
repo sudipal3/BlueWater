@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Soft Tissue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Soft Tissue</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'concern for abscess')">abscess</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'cellulitis')">cellulitis</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'visualization of foreign body')">foreign body</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'there is a discrete fluid collection noted in the area of interest')">fluid collection</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'there is cobblestoning noted in the area of interest')">cobblestoning</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'there is ultrasound distortion noted in the area consistent with a foreign body')">foreign body</button>
+                <textarea id="FindingsText" placeholder="" onchange="updateRealTimeText('Findings', 'FindingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'there is a discrete fluid collection consistent with abscess')">abscess</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'there is cobblestoning with no discrete fluid collection, consistent with cellulitis')">cellulitis</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'there is distortion noted in the area consistent with a foreign body')">foreign body</button>
+                <textarea id="InterpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="pocussofttissuescript.js"></script>
+</body>
+</html>
