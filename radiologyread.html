@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiology Interpretation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Radiology Interpretation</h2>
+            
+            <!-- Imaging Type Section -->
+            <div class="input-group">
+                <h3>Imaging type</h3>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'X-ray')">XR</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'CT scan without contrast')">CT scan without contrast</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'CT scan with contrast')">CT scan with contrast</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'MRI')">MRI</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'ultrasound')">US</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'head')">head</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'neck')">neck</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'chest')">chest</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'abdomen')">abdomen</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'C-spine')">C-spine</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'T-spine')">T-spine</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'L-spine')">L-spine</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'upper extremity')">upper extremity</button>
+                <button data-section="Imaging type" onclick="handleButtonClick(this, 'lower extremity')">lower extremity</button>
+                <textarea id="ImagingTypeText" placeholder="" onchange="updateRealTimeText('Imaging type', 'ImagingTypeText')"></textarea>
+            </div>
+
+            <!-- Time of Interpretation Section -->
+            <div class="input-group">
+                <h3>Time of interpretation</h3>
+                <button data-section="Time of interpretation" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeOfInterpretationText" placeholder="" onchange="updateRealTimeText('Time of interpretation', 'TimeOfInterpretationText')"></textarea>
+            </div>
+
+            <!-- Interpretation Sections -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <!-- Head Findings -->
+                <i>Head</i>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no acute bleed noted')">neg bleed</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no shift noted')">neg shift</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'normal sized ventricles noted')">normal ventricles</button>
+                
+                <!-- Spine Findings -->
+                <br><i>Spine</i>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no acute fracture')">neg fracture</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no retropulsion')">neg retropulsion</button>
+                
+                <!-- Chest Findings -->
+                <br><i>Chest</i>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no pneumonia identified')">neg PNA</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no pneumothorax noted')">neg PTX</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no significant PE noted')">neg PE</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'normal mediastinum')">normal mediastinum</button>
+                
+                <!-- Abdomen Findings -->
+                <br><i>Abdomen</i>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no acute obstruction')">neg obstruction</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no fat stranding or abscess noted, reassuring against infection')">neg infection</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no hydronephrosis noted')">neg hydronephrosis</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no kidney stones noted')">neg kidney stones</button>
+                
+                <!-- Extremity Findings -->
+                <br><i>Extremity</i>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no acute fracture or dislocation')">neg fracture/dislocation</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'veins are compressible with no signs of DVT')">neg DVT</button>
+                
+                <textarea id="InterpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="radiologyreadscript.js"></script>
+</body>
+</html>
