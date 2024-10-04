@@ -70,10 +70,19 @@ function updateRadiologyOutput() {
     const outputArea = document.getElementById('outputArea');
     outputArea.innerHTML = ''; // Clear the existing output
 
-    // Create the main Radiology Interpretation header
+    // Create the main Radiology Interpretation header if not already present
     const mainHeader = document.createElement('h2');
     mainHeader.textContent = 'Radiology Interpretation';
     outputArea.appendChild(mainHeader);
+
+    // Create a static phrase paragraph below the main header
+    const staticPhrase = document.createElement('p');
+    staticPhrase.textContent = 'I have independently reviewed and interpreted the following imaging and my interpretation is as follows:';
+    staticPhrase.style.fontWeight = 'bold'; // Make the static text bold for emphasis
+    outputArea.appendChild(staticPhrase);
+
+    // Log to check the contents of radiologySections for debugging
+    console.log('radiologySections:', radiologySections);
 
     // Generate detailed outputs for each section
     for (const section in radiologySections) {
@@ -111,6 +120,6 @@ function copyToClipboard() {
     range.selectNode(outputArea);
     window.getSelection().removeAllRanges(); // Clear current selection
     window.getSelection().addRange(range); // Select the text
-    document.execCommand("copy");
+    document.execCommand('copy');
     window.getSelection().removeAllRanges(); // Deselect the text
 }
