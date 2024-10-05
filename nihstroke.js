@@ -17,7 +17,7 @@ let nihScores = {
     'Extinction/inattention': null
 };
 
-// Object to handle "Time" separately
+// Separate variable to handle "Time"
 let timeEntry = "";
 
 // Function to handle button clicks for scoring sections
@@ -35,14 +35,31 @@ function handleNIHButtonClick(button, section, score, description) {
     updateNIHScoreOutput();
 }
 
-// Function to handle the time button click separately
+// Function to handle the time button click and output the formatted time
 function handleTimeButtonClick(button) {
     const time = new Date();
-    const formattedTime = time.toLocaleTimeString('en-US', { hour12: false, minute: '2-digit', hour: '2-digit' });
+    const formattedTime = time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+
+    // Set the time in the associated textarea
     document.getElementById('timeText').value = formattedTime;
 
-    // Store the time entry separately and update the output
+    // Update the separate time entry variable
     timeEntry = `Time: ${formattedTime}`;
+    updateNIHScoreOutput();
+}
+
+// Function to handle real-time text input (free text)
+function updateRealTimeText() {
+    const textValue = document.getElementById('timeText').value.trim();
+
+    // If free text is present, use it as the time entry, else clear it
+    if (textValue) {
+        timeEntry = `Time: ${textValue}`;
+    } else {
+        timeEntry = "";
+    }
+
+    // Update the NIH score output
     updateNIHScoreOutput();
 }
 
