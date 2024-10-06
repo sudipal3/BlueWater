@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS DVT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: DVT</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'swelling of lower extremity')">swelling</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'pain in the lower extremity')">pain</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'erythema noted in the extremity')">erythema</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'clinical suspicion of pulmonary embolism')">concern for PE</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="Views" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'common femoral vein')">common fem</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'great saphenous vein')">great saphenous</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'superficial femoral vein')">superficial fem</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'popliteal vein')">popliteal vein</button>
+                <textarea id="ViewsText" placeholder="" onchange="updateRealTimeText('Views', 'ViewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'normal compressibility is seen in the vein in all visualized fields')">normal</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'non-compressibility is noted in the vein')">non-compressibility</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'direct clot is visualized in the vein')">direct clot</button>
+                <textarea id="FindingsText" placeholder="" onchange="updateRealTimeText('Findings', 'FindingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'no ultrasonographic findings concerning for DVT')">normal</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the ultrasonographic findings are concerning for DVT')">+DVT</button>
+                <textarea id="InterpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="pocusdvtscript.js"></script>
+</body>
+</html>
