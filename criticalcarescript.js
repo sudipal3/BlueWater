@@ -77,10 +77,10 @@ function addMainHeader() {
     }
 }
 
-// Function to handle real-time text input (free text)
+// Function to handle real-time text input (free text) based on the Intubation script
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
-    const sectionName = sectionTitle.replace(/\s+/g, '-').toLowerCase();
+    const sectionName = textareaId.replace('Text', ''); // Use the base section name without 'Text'
     const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
@@ -97,8 +97,8 @@ function updateRealTimeText(sectionTitle, textareaId) {
     const newText = textarea.value.trim();
 
     if (newText) {
-        // Add or update the free text
-        outputText.textContent = newText;
+        // Append free text to existing output without replacing it
+        outputText.textContent += (outputText.textContent ? ', ' : '') + newText;
     } else {
         // Remove the entire section and reset buttons if free text is deleted
         sectionDiv.remove();
@@ -112,7 +112,10 @@ function updateRealTimeText(sectionTitle, textareaId) {
     reorderSections(outputArea);
 
     // Add the main header if not present
-    addMainHeader();
+    addMainHeader(outputArea);
+
+    // Remove the header if there's no content
+    removeMainHeader(outputArea);
 }
 
 // Utility function to capitalize the first letter of a string and format section names
@@ -159,4 +162,19 @@ function clearOutput() {
     document.querySelectorAll('.pressed').forEach(button => {
         button.classList.remove('pressed');
     });
+    
+    // Clear all textareas (free text inputs)
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.value = '';
+    });
+}
+
+// Function to remove the main header if there's no content
+function removeMainHeader(outputArea) {
+    if (!outputArea.innerHTML.trim()) {
+        const header = outputArea.querySelector('h2');
+        if (header) {
+            header.remove();
+        }
+    }
 }
