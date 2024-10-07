@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Dislocation Reduction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Procedure Note: Dislocation Reduction</h2>
+            
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+            </div>
+
+            <!-- Location/Type Section -->
+            <div class="input-group">
+                <h3>Location/Type</h3>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'shoulder')">shoulder</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'radial head subluxation')">radial head subluxation</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'finger')">finger</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'elbow')">elbow</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'ankle')">ankle</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'hip')">hip</button>
+                <textarea id="locationTypeText" placeholder="" onchange="updateRealTimeText('Location/Type', 'locationTypeText')"></textarea>
+            </div>
+
+            <!-- Pre-Reduction Exam Section -->
+            <div class="input-group">
+                <h3>Pre-reduction Exam</h3>
+                <button data-section="preReductionExam" onclick="handleButtonClick(this, 'the affected extremity was neurovascularly intact prior to splinting diminished')">n/v intact</button>
+                <button data-section="preReductionExam" onclick="handleButtonClick(this, 'there were absent pulses concerning for vascular compromise')">absent pulses</button>
+                <button data-section="preReductionExam" onclick="handleButtonClick(this, 'there was diminished capillary refill concerning for vascular compromise')">CR</button>
+                <button data-section="preReductionExam" onclick="handleButtonClick(this, 'there was neurologic deficit')">neurologic deficit</button>
+                <textarea id="preReductionExamText" placeholder="" onchange="updateRealTimeText('Pre-reduction Exam', 'preReductionExamText')"></textarea>
+            </div>
+
+            <!-- Analgesia/Sedation Section -->
+            <div class="input-group">
+                <h3>Analgesia/Sedation</h3>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'please see procedural sedation note, documented separately')">procedural sedation</button>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'morphine')">morphine</button>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'fentanyl')">fentanyl</button>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'dilaudid')">dilaudid</button>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'midazolam')">midazolam</button>
+                <button data-section="analgesiaSedation" onclick="handleButtonClick(this, 'the joint was injected intra-articularly with anesthetic medication')">intra-articular joint injection</button>
+                <textarea id="analgesiaSedationText" placeholder="" onchange="updateRealTimeText('Analgesia/Sedation', 'analgesiaSedationText')"></textarea>
+            </div>
+
+            <!-- Technique Section -->
+            <div class="input-group">
+                <h3>Technique</h3>
+                <button data-section="technique" onclick="handleButtonClick(this, 'reduction completed with a combination of traction and countertraction')">traction/countertraction</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the Cunningham maneuver was used to reduce the shoulder')">Cunningham</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the shoulder was reduced with a combination of external rotation and adduction')">external rotation/adduction</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the Stimson maneuver was used to reduce the shoulder')">Stimson</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the shoulder was reduced with scapular manipulation and traction')">scapular manipulation</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the FARES maneuver was used to reduce the shoulder')">FARES</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the hip was flexed to 90 degrees and a combination of traction and internal rotation was performed to achieve reduction')">flexion/internal rotation/traction (hip)</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'my knee was used a fulcrum and traction was applied to the affected leg to achieve reduction (Captain Morgan technique)')">Captain Morgan</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'pronation was applied to the affected arm until a palpable click was felt')">pronation</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'supination and flexion were performed to the affected arm until a palpable click was felt')">supination/flexion</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+            </div>
+
+            <!-- Post-Reduction Exam/Tests Section -->
+            <div class="input-group">
+                <h3>Post-reduction Exam/Tests</h3>
+                <button data-section="postReductionExamTests" onclick="handleButtonClick(this, 'the affected extremity was neurovascularly intact following reduction and splinting')">n/v intact</button>
+                <button data-section="postReductionExamTests" onclick="handleButtonClick(this, 'post-reduction XRay was reviewed and demonstrated successful reduction')">XR</button>
+                <textarea id="postReductionExamTestsText" placeholder="" onchange="updateRealTimeText('Post-reduction Exam/Tests', 'postReductionExamTestsText')"></textarea>
+            </div>
+
+            <!-- Immobilization Section -->
+            <div class="input-group">
+                <h3>Immobilization</h3>
+                <button data-section="immobilization" onclick="handleButtonClick(this, 'the extremity was splinted post-reduction')">splint</button>
+                <button data-section="immobilization" onclick="handleButtonClick(this, 'the extremity was placed in a sling')">sling</button>
+                <button data-section="immobilization" onclick="handleButtonClick(this, 'a knee immobilizer was placed')">knee immobilizer</button>
+                <button data-section="immobilization" onclick="handleButtonClick(this, 'the finger was buddy taped')">buddy tape</button>
+                <textarea id="immobilizationText" placeholder="" onchange="updateRealTimeText('Immobilization', 'immobilizationText')"></textarea>
+            </div>
+
+            <!-- Complications Section -->
+            <div class="input-group">
+                <h3>Complications</h3>
+                <button data-section="complications" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced pain despite analgesia')">pain</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during procedural sedation')">hypoxia</button>
+                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="dislocationscript.js"></script>
+</body>
+</html>
