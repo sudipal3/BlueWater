@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Definitive Fracture Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+        <h1>Procedure Note: Definitive Fracture Management</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Procedure Note: Definitive Fracture Management</h2>
+
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+            </div>
+
+            <!-- Location/Fracture Type Section -->
+            <div class="input-group">
+                <h3>Location/Fracture Type</h3>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'nasal bone fracture')">nasal</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'rib fracture')">rib</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'clavicular fracture')">clavicle</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'proximal humeral fracture')">proximal humerus</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'finger fracture')">finger</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'pelvic fracture')">pelvic</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'coccyx')">coccyx</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'fibular fracture')">fibula</button>
+                <button data-section="locationFractureType" onclick="handleButtonClick(this, 'toe fracture')">toe</button>
+                <textarea id="locationFractureTypeText" placeholder="" onchange="updateRealTimeText('Location/Fracture Type', 'locationFractureTypeText')"></textarea>
+            </div>
+
+            <!-- Pain Control Section -->
+            <div class="input-group">
+                <h3>Pain Control</h3>
+                <button data-section="painControl" onclick="handleButtonClick(this, 'I discussed with the patient appropriate pain management including over the counter medications')">OTC pain</button>
+                <button data-section="painControl" onclick="handleButtonClick(this, 'I prescribed pain management for the patient for expected management of the fracture')">pain rx</button>
+                <textarea id="painControlText" placeholder="" onchange="updateRealTimeText('Pain Control', 'painControlText')"></textarea>
+            </div>
+
+            <!-- Interventions Section -->
+            <div class="input-group">
+                <h3>Interventions</h3>
+                <button data-section="interventions" onclick="handleButtonClick(this, 'a splint was applied to the affected area')">splint</button>
+                <button data-section="interventions" onclick="handleButtonClick(this, 'patient was placed in a sling')">sling</button>
+                <button data-section="interventions" onclick="handleButtonClick(this, 'the affected area was buddy taped')">buddy tape</button>
+                <textarea id="interventionsText" placeholder="" onchange="updateRealTimeText('Interventions', 'interventionsText')"></textarea>
+            </div>
+
+            <!-- Follow-up Section -->
+            <div class="input-group">
+                <h3>Follow-up</h3>
+                <button data-section="followUp" onclick="handleButtonClick(this, 'patient was instructed to follow-up with a provider non-urgently to assure appropriate healing of the fracture')">>3 days</button>
+                <button data-section="followUp" onclick="handleButtonClick(this, 'I discussed with the patient expected healing and recovery course as well as symptoms that should prompt urgent follow-up')">recovery/precautions</button>
+                <textarea id="followUpText" placeholder="" onchange="updateRealTimeText('Follow-up', 'followUpText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            <p>For reminders on splinting and definitive fracture care, please press this link: 
+                <a href="splinting_fracture_care.jpg" target="_blank">Splinting/Definitive Fracture Care Tips</a></p> 
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="definitivefracturescript.js"></script>
+</body>
+</html>
