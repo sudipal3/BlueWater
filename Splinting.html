@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Splinting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Procedure Note: Splinting</h2>
+
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+            </div>
+
+            <!-- Location Section -->
+            <div class="input-group">
+                <h3>Location</h3>
+                <button data-section="location" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'finger')">finger</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'wrist')">wrist</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'humerus')">humerus</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'ankle')">ankle</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'foot')">foot</button>
+                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
+            </div>
+
+            <!-- Fracture Type Section -->
+            <div class="input-group">
+                <h3>Fracture Type</h3>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'the extremity was thoroughly examined and was noted to be closed without significant skin defect')">closed</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'there was a significant skin defect with potential intrusion to the fracture, consistent with an open fracture')">open</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'non-displaced')">non-displaced</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'displaced')">displaced</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'colles fracture')">colles</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'buckle fracture')">buckle</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'supracondylar')">supracondylar</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'midshaft humeral fracture')">midshaft humeral</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'Smith fracture')">Smith</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'bimalleolar')">bimalleolar</button>
+                <button data-section="fractureType" onclick="handleButtonClick(this, 'trimalleolar')">trimalleolar</button>
+                <textarea id="fractureTypeText" placeholder="" onchange="updateRealTimeText('Fracture Type', 'fractureTypeText')"></textarea>
+            </div>
+
+            <!-- Pre-test Exam Section -->
+            <div class="input-group">
+                <h3>Pre-test Exam</h3>
+                <button data-section="preTestExam" onclick="handleButtonClick(this, 'the affected extremity was neurovascularly intact prior to splinting')">n/v intact</button>
+                <button data-section="preTestExam" onclick="handleButtonClick(this, 'there were absent pulses concerning for vascular compromise')">absent pulses</button>
+                <button data-section="preTestExam" onclick="handleButtonClick(this, 'there was diminished capillary refill concerning for vascular compromise')">CR</button>
+                <button data-section="preTestExam" onclick="handleButtonClick(this, 'there was neurologic deficit')">neurologic deficit</button>
+                <textarea id="preTestExamText" placeholder="" onchange="updateRealTimeText('Pre-test Exam', 'preTestExamText')"></textarea>
+            </div>
+
+            <!-- Splinting Section -->
+            <div class="input-group">
+                <h3>Splinting</h3>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'orthoglass')">orthoglass</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'plaster')">plaster</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'sugartong splint placed')">sugartong</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'volar splint placed')">volar</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'long arm splint')">long arm splint</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'coaptation splint')">coaptation splint</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'ulnar gutter splint')">ulnar gutter</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'radial gutter splint')">radial gutter</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'thumb spica splint')">thumb spica</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'short leg splint')">short leg splint</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'long leg splint')">long leg splint</button>
+                <textarea id="splintingText" placeholder="" onchange="updateRealTimeText('Splinting', 'splintingText')"></textarea>
+            </div>
+
+            <!-- Post-reduction Exam Section -->
+            <div class="input-group">
+                <h3>Post-reduction Exam</h3>
+                <button data-section="postReductionExam" onclick="handleButtonClick(this, 'the affected extremity was neurovascularly intact following reduction and splinting')">n/v intact</button>
+                <textarea id="postReductionExamText" placeholder="" onchange="updateRealTimeText('Post-reduction Exam', 'postReductionExamText')"></textarea>
+            </div>
+
+            <!-- Complications Section -->
+            <div class="input-group">
+                <h3>Complications</h3>
+                <button data-section="complications" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced pain despite analgesia')">pain</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during procedural sedation')">hypoxia</button>
+                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            
+            <p>For reminders on splinting and definitive fracture care, please press this link: 
+                <a href="splinting_fracture_care.jpg" target="_blank">Splinting/Definitive Fracture Care Tips</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BlueWater Health. All rights reserved.</p>
+    </footer>
+
+    <script src="splintingscript.js"></script>
+</body>
+</html>
