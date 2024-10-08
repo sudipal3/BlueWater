@@ -33,6 +33,7 @@ header h1 {
     font-style: italic; /* Make the font italic */
     flex-grow: 1; /* Allows the title to take up remaining space */
     margin-right: 100px; /* Move the title 100px from the right */
+    font-size: 40px
 }
 
 /* Navigation */
@@ -75,6 +76,7 @@ main {
 #home {
     width: 100%;
     text-align: left;
+    font-size: 18px
 }
 
 /* Content Sections Container */
