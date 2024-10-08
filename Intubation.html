@@ -8,14 +8,12 @@
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="BlueWater Health Logo" id="header-logo">
         <h1>Clinical Hub</h1>
     </header>
 
     <nav>
         <ul>
             <li><a href="index.html#home">Home</a></li>
-            <li><a href="clinicalpathways.html">Clinical Pathways</a></li>
         </ul>
     </nav>
     
@@ -69,7 +67,7 @@
             <h3>Confirmation of Tube</h3>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'tube was directly visualized passing through the cords')">direct visualization</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'symmetric breath sounds were auscultated')">breath sounds</button>
-            <button data-section="confirmation" onclick="handleButtonClick(this, 'appropriate end-tidal capnography was noted')">ETCO2</button>
+            <button data-section="confirmation" onclick="handleButtonClick(this, 'appropriate end-tidal waveform capnography was noted')">ETCO2 waveform</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'a chest XRay was ordered and interpreted showing correct ETT placement')">chest Xray</button>
             <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
             
