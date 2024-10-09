@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHA2DS2-VASc Score for AFib</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Clinical Hub</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>CHA2DS2-VASc Score for Atrial Fibrillation</h2>
+
+            <!-- Age Section -->
+            <div class="input-group">
+                <h3>Age</h3>
+                <button onclick="handleButtonClick(this, 'Age', '<65', 0)">Less than 65</button>
+                <button onclick="handleButtonClick(this, 'Age', '65-74', 1)">65-74</button>
+                <button onclick="handleButtonClick(this, 'Age', '≥75', 2)">75 or above</button>
+            </div>
+
+            <!-- Sex Section -->
+            <div class="input-group">
+                <h3>Sex</h3>
+                <button onclick="handleButtonClick(this, 'Sex', 'Female', 1)">Female</button>
+                <button onclick="handleButtonClick(this, 'Sex', 'Male', 0)">Male</button>
+            </div>
+
+            <!-- CHF History Section -->
+            <div class="input-group">
+                <h3>CHF history</h3>
+                <button onclick="handleButtonClick(this, 'CHF history', 'No', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'CHF history', 'Yes', 1)">Yes</button>
+            </div>
+
+            <!-- Hypertension History Section -->
+            <div class="input-group">
+                <h3>Hypertension history</h3>
+                <button onclick="handleButtonClick(this, 'Hypertension history', 'No', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'Hypertension history', 'Yes', 1)">Yes</button>
+            </div>
+
+            <!-- Stroke/TIA/Thromboembolism History Section -->
+            <div class="input-group">
+                <h3>Stroke/TIA/thromboembolism history</h3>
+                <button onclick="handleButtonClick(this, 'Stroke/TIA history', 'No', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'Stroke/TIA history', 'Yes', 2)">Yes</button>
+            </div>
+
+            <!-- Vascular Disease History Section -->
+            <div class="input-group">
+                <h3>Vascular disease history</h3>
+                <button onclick="handleButtonClick(this, 'Vascular disease history', 'No', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'Vascular disease history', 'Yes', 1)">Yes</button>
+            </div>
+
+            <!-- Diabetes History Section -->
+            <div class="input-group">
+                <h3>Diabetes history</h3>
+                <button onclick="handleButtonClick(this, 'Diabetes history', 'No', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'Diabetes history', 'Yes', 1)">Yes</button>
+            </div>
+
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="cha2ds2VascScoreOutput"></p>
+            <button onclick="clearOutput()">Clear</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="cha2ds2vasc.js"></script>
+</body>
+</html>
