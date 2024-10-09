@@ -48,6 +48,9 @@ nav ul {
 
 nav ul li {
     display: inline;
+    color: white;
+    margin-left: 20px;
+    padding: 8px
 }
 
 nav ul li a {
@@ -59,7 +62,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background-color: navy;
 }
 
 /* Main Content Layout */
@@ -162,7 +165,7 @@ footer {
     background-color: navy;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     position: relative;
     bottom: 0;
