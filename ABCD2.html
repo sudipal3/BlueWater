@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABCD2 Score for TIA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>ABCD2 Score for TIA</h2>
+
+            <div class="input-group">
+                <h3>Age ≥ 60 years</h3>
+                <button onclick="handleButtonClick(this, 'No', 0, 'Age ≥ 60 years: No, 0')">No</button>
+                <button onclick="handleButtonClick(this, 'Yes', 1, 'Age ≥ 60 years: Yes, +1')">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>BP ≥ 140/90 mmHg (Initial BP: either SBP ≥ 140 or DBP ≥ 90)</h3>
+                <button onclick="handleButtonClick(this, 'No', 0, 'BP ≥ 140/90: No, 0')">No</button>
+                <button onclick="handleButtonClick(this, 'Yes', 1, 'BP ≥ 140/90: Yes, +1')">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Clinical features of the TIA</h3>
+                <button onclick="handleButtonClick(this, 'Unilateral weakness', 2, 'Clinical features: Unilateral weakness, +2')">Unilateral weakness</button>
+                <button onclick="handleButtonClick(this, 'Speech disturbance without weakness', 1, 'Clinical features: Speech disturbance without weakness, +1')">Speech disturbance without weakness</button>
+                <button onclick="handleButtonClick(this, 'Other symptoms', 0, 'Clinical features: Other symptoms, 0')">Other symptoms</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Duration of symptoms</h3>
+                <button onclick="handleButtonClick(this, '&lt;10 minutes', 0, 'Duration: <10 minutes, 0')">Less than 10 minutes</button>
+                <button onclick="handleButtonClick(this, '10-59 minutes', 1, 'Duration: 10-59 minutes, +1')">10-59 minutes</button>
+                <button onclick="handleButtonClick(this, '≥ 60 minutes', 2, 'Duration: ≥60 minutes, +2')">≥ 60 minutes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>History of diabetes</h3>
+                <button onclick="handleButtonClick(this, 'No', 0, 'Diabetes: No, 0')">No</button>
+                <button onclick="handleButtonClick(this, 'Yes', 1, 'Diabetes: Yes, +1')">Yes</button>
+            </div>
+
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="abcd2ScoreOutput"></p>
+            <button onclick="clearOutput()">Clear</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+
+    </div>
+
+    <footer></footer>
+
+<script src="abcd2script.js"></script>
+</body>
+</html>
