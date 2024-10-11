@@ -11,9 +11,9 @@ body {
 
 /* Header */
 header {
-    background-color: white;
-    color: navy;
-    padding: 10px;
+    background-color: navy;
+    color: white;
+    padding: 20px;
     display: flex;
     justify-content: space-between; /* Space between the logo and the title */
     align-items: center; /* Align items vertically in the center */
@@ -29,11 +29,10 @@ header {
 header h1 {
     margin: 0;
     text-align: left; /* Align the title text to the left */
-    font-family: 'Charter', serif; /* Set the font to Charter */
-    font-style: italic; /* Make the font italic */
+    font-family: 'Lucida Console', 'Courier New', Courier, monospace; /* Set the font to Lucida Console */
     flex-grow: 1; /* Allows the title to take up remaining space */
     margin-right: 100px; /* Move the title 100px from the right */
-    font-size: 40px
+    font-size: 40px;
 }
 
 /* Navigation */
@@ -48,7 +47,7 @@ nav ul {
 
 nav ul li {
     display: inline;
-    color: white;
+    color: navy;
     margin-left: 20px;
     padding: 8px
 }

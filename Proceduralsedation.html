@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Clinical Hub</h1>
-    </header>
 
     <nav>
         <ul>
@@ -62,7 +59,7 @@
                 <h3>Preparation/monitoring</h3>
                 <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'respiratory therapy was at bedside with appropriate equipment including a BMV, suction, and resuscitation equipment')">RT/equipment</button>
                 <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'patient was placed on supplemental oxygen and monitored via pulse oximetry during the course of the sedation')">O2/pulse oximetry</button>
-                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'end tidal capnography was monitored during the procedure')">ETCO2</button>
+                <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'end tidal capnography waveform was monitored during the procedure')">ETCO2 waveform</button>
                 <button data-section="Preparation/monitoring" onclick="handleButtonClick(this, 'patient was monitored on continuous telemetry')">telemetry</button>
                 <textarea id="PreparationMonitoringText" placeholder="" onchange="updateRealTimeText('Preparation/monitoring', 'PreparationMonitoringText')"></textarea>
             </div>
@@ -122,9 +119,11 @@
             <button onclick="clearOutput()">Clear</button>
             
             <div class="reminder-link">
-                <p>Press the following links to generate notes for commonly associated procedures: 
+                <p>Associated procedures: 
                     <a href="reduction.html">Fracture Reduction</a>
-                    <a href="Cardioversion.html">Cardioversion</a></p>
+                    <a href="Cardioversion.html">Cardioversion</a>
+                    <a href="Dislocation.html">Dislocation</a>
+                
                 <p>For reminders on procedural sedation billing, please press this link: 
                 <a href="procedural_sedation.jpg" target="_blank">Procedural Sedation Billing Tips</a></p>
             </div>
