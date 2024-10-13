@@ -14,10 +14,18 @@ body {
 header {
     background-color: navy;
     color: white;
-    padding: 20px;
+    padding: 10px;
     display: flex;
-    justify-content: space-between; /* Space between the logo and the title */
-    align-items: center; /* Align items vertically in the center */
+    align-items: left;
+    font-size: 38px;
+}
+
+.white-text {
+    color: white;
+}
+
+.blue-text {
+    color: skyblue;
 }
 
 /* Image in Header */
