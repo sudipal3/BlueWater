@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRACE ACS Score</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>GRACE ACS Score</h2>
+
+            <div class="input-group">
+                <h3>Age</h3>
+                <input type="number" id="ageInput" onchange="calculateScore()">
+            </div>
+
+            <div class="input-group">
+                <h3>Heart Rate</h3>
+                <input type="number" id="heartRateInput" onchange="calculateScore()">
+            </div>
+
+            <div class="input-group">
+                <h3>Systolic BP</h3>
+                <input type="number" id="systolicBPInput" onchange="calculateScore()">
+            </div>
+
+            <div class="input-group">
+                <h3>Creatinine</h3>
+                <input type="number" step="0.01" id="creatinineInput" onchange="calculateScore()">
+            </div>
+
+            <div class="input-group">
+                <h3>Cardiac arrest at admission</h3>
+                <button onclick="handleButtonClick(this, 'cardiacArrest', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'cardiacArrest', 39)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>ST segment deviation on EKG</h3>
+                <button onclick="handleButtonClick(this, 'stDeviation', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'stDeviation', 28)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Abnormal cardiac enzymes</h3>
+                <button onclick="handleButtonClick(this, 'cardiacEnzymes', 0)">No</button>
+                <button onclick="handleButtonClick(this, 'cardiacEnzymes', 14)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Killip Class (Signs/Symptoms)</h3>
+                <button onclick="handleButtonClick(this, 'killipClass', 0)">No CHF</button>
+                <button onclick="handleButtonClick(this, 'killipClass', 20)">Rales and/or JVD</button>
+                <button onclick="handleButtonClick(this, 'killipClass', 39)">Pulmonary edema</button>
+                <button onclick="handleButtonClick(this, 'killipClass', 59)">Cardiogenic shock</button>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="graceScoreOutput"></div>
+
+            <button onclick="clearOutput()">Clear</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="gracescore.js"></script>
+</body>
+</html>
