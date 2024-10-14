@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Abdomen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Abdomen</h2>
+
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'abdominal pain')">abd pain</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'vomiting')">vomiting</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'constipation')">constipation</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="Views" onclick="handleButtonClick(this, 'gallbladder')">gallbladder</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'bowel')">bowel</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'appendix')">appendix</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'multiple areas of the abdomen were visualized to look for free fluid')">free fluid evaluation</button>
+                <textarea id="ViewsText" placeholder="" onchange="updateRealTimeText('Views', 'ViewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'no gallstones are visualized')">no gallstones</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'gallstones visualized in the gallbladder')">gallstones</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the gallbladder wall is of normal thickness')">normal GB wall</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the gallbladder wall is thickened')">thickened GB wall</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'pericholecystic fluid is noted')">+perichole fluid</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'normal common bile duct diameter')">normal CBD</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the bowel loops visualized are of normal diameter')">normal bowel</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the bowel loops are noted to be dilated')">dilated bowel</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the appendix appears normal')">normal appx</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'the appendix appears dilated')">dilated appx</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'free fluid is noted in the abdomen')">+ascites</button>
+                <textarea id="FindingsText" placeholder="" onchange="updateRealTimeText('Findings', 'FindingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the gallbladder appears normal without any signs of gallstones or cholecystitis')">normal GB</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'gallstones without cholecystitis')">+gallstones/-chole</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'consistent with acute cholecystitis')">+chole</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'bowel appears normal without obstruction')">-SBO</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'dilated bowel loops, consistent with SBO')">+SBO</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'appendix appears normal and compressible')">-appe</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'dilated appendix, consistent with appendicitis')">+appe</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'free fluid consistent with ascites')">+ascites</button>
+                <textarea id="InterpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="pocusabdomenscript.js"></script>
+</body>
+</html>
