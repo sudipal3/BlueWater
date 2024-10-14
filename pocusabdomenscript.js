@@ -54,7 +54,7 @@ function updatePOCUSAbdomenOutput() {
     outputArea.innerHTML = ''; // Clear the existing output
 
     const header = document.createElement('h2');
-    header.textContent = 'POCUS Abdomen Interpretation';
+    header.textContent = 'POCUS Abdomen';
     outputArea.appendChild(header);
 
     for (const section in pocusAbdomenSections) {
