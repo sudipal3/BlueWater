@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Epistaxis Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Epistaxis Management</h2>
+
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family is given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="ConsentText" placeholder="" onchange="updateRealTimeText('Consent', 'ConsentText')"></textarea>
+            </div>
+
+            <!-- Location/Type Section -->
+            <div class="input-group">
+                <h3>Location/Type</h3>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'right nares')">right</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'left nares')">left</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'bilateral nares')">bilateral</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'anterior bleeding')">anterior</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'posterior bleeding')">posterior</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'mild amount of bleeding noted')">mild</button>
+                <button data-section="Location/type" onclick="handleButtonClick(this, 'brisk bleeding noted')">brisk</button>
+                <textarea id="Location/typeText" placeholder="" onchange="updateRealTimeText('Location/type', 'Location/typeText')"></textarea>
+            </div>
+
+            <!-- Interventions Section -->
+            <div class="input-group">
+                <h3>Interventions</h3>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'oxymetazoline was administered')">Afrin</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'lidocaine was administered')">lidocaine</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'epinephrine was administered')">epinephrine</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'silver nitrate was used to cauterize visible bleeding in the anterior nares')">silver nitrate</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'a nasal clamp was placed onto the bridge of the patient’s nose')">nasal clamp</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'Merocel nasal packing was placed in the bleeding nares')">Merocel</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'an anterior Rhino Rocket was placed in the bleeding nare and the balloon was inflated')">Rhino (anterior)</button>
+                <button data-section="Interventions" onclick="handleButtonClick(this, 'a posterior Rhino Rocket was placed in the bleeding nare and the balloon was inflated')">Rhino (posterior)</button>
+                <textarea id="InterventionsText" placeholder="" onchange="updateRealTimeText('Interventions', 'InterventionsText')"></textarea>
+            </div>
+
+            <!-- Outcome Section -->
+            <div class="input-group">
+                <h3>Outcome</h3>
+                <button data-section="Outcome" onclick="handleButtonClick(this, 'appropriate hemostasis was achieved')">hemostasis</button>
+                <button data-section="Outcome" onclick="handleButtonClick(this, 'despite the attempts at hemostatic control, there was persistent bleeding')">unsuccessful</button>
+                <textarea id="OutcomeText" placeholder="" onchange="updateRealTimeText('Outcome', 'OutcomeText')"></textarea>
+            </div>
+
+            <!-- Complications Section -->
+            <div class="input-group">
+                <h3>Complications</h3>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced pain despite analgesia')">pain</button>
+                <textarea id="ComplicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'ComplicationsText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="ProviderText" placeholder="Enter provider details" onchange="updateRealTimeText('Provider', 'ProviderText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <script src="epistaxisscript.js"></script>
+</body>
+</html>
