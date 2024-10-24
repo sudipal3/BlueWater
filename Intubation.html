@@ -62,14 +62,15 @@
             <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
             
             <h3>Confirmation of Tube</h3>
+            <button data-section="confirmation" onclick="handleButtonClick(this, 'appropriate end-tidal waveform capnography was noted')" style="background-color: #FF6868; color: white; border: 2px solid #000080;">ETCO2 waveform</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'tube was directly visualized passing through the cords')">direct visualization</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'symmetric breath sounds were auscultated')">breath sounds</button>
-            <button data-section="confirmation" onclick="handleButtonClick(this, 'appropriate end-tidal waveform capnography was noted')">ETCO2 waveform</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'a chest XRay was ordered and interpreted showing correct ETT placement')">chest Xray</button>
             <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
             
             <h3>Complications</h3>
-            <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure')">none</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure, intubation successful on first pass and O2 sats above 90% throughout procedure')">none, first pass</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'multiple attempts were required for intubation')">multiple attempts</button>
             <button data-section="complications" onclick="handleButtonClick(this, 'there was hypoxia noted during the intubation which improved following intubation and oxygenation')">hypoxia</button>
             <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
             
@@ -86,7 +87,7 @@
         <!-- Macro Buttons Section -->
         <div class="macro-section">
             <h3>Macros</h3>
-            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none'], this)">Glidescope 7.5</button>
+            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, first pass'], this)">Glidescope 7.5</button>
             <!-- Add more macros as needed -->
         </div>
     </div>
