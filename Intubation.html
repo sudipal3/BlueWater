@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <div class="output-section">
+ <div class="output-section">
         <div id="outputArea"></div>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
         <button onclick="clearOutput()">Clear</button>
@@ -87,9 +87,13 @@
         <!-- Macro Buttons Section -->
         <div class="macro-section">
             <h3>Macros</h3>
-            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, first pass'], this)">Glidescope 7.5</button>
+            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, first pass'], this)">Glidescope 7.5</button>
             <!-- Add more macros as needed -->
         </div>
+
+        <!-- New Note Section -->
+        <p><i>Note</i>: BlueWater strongly encourages the use of waveform capnography to confirm tube placement.</p>
+
     </div>
 </div>
 
