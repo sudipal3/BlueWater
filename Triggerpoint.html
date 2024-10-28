@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure: Trigger Point Injection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Trigger Point Injection</h2>
+
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+            </div>
+
+            <!-- Location/Type Section -->
+            <div class="input-group">
+                <h3>Location/Type</h3>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'paracervical')">paracervical</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'parathoracic')">parathoracic</button>
+                <button data-section="locationType" onclick="handleButtonClick(this, 'paralumbar')">paralumbar</button>
+                <textarea id="locationTypeText" placeholder="" onchange="updateRealTimeText('Location/Type', 'locationTypeText')"></textarea>
+            </div>
+
+            <!-- Prep Section -->
+            <div class="input-group">
+                <h3>Prep</h3>
+                <button data-section="prep" onclick="handleButtonClick(this, 'alcohol wipes were used to sterilize the area of point tenderness')">alcohol</button>
+                <button data-section="prep" onclick="handleButtonClick(this, 'chloraprep was used to sterilize the area of point tenderness')">chloraprep</button>
+                <textarea id="prepText" placeholder="" onchange="updateRealTimeText('Prep', 'prepText')"></textarea>
+            </div>
+
+            <!-- Medications Section -->
+            <div class="input-group">
+                <h3>Medications</h3>
+                <button data-section="medications" onclick="handleButtonClick(this, 'bupivacaine was injected into the area of point tenderness')">bupivacaine</button>
+                <button data-section="medications" onclick="handleButtonClick(this, 'lidocaine was injected into the area of point tenderness')">lidocaine</button>
+                <button data-section="medications" onclick="handleButtonClick(this, 'methylprednisolone was injected into the area of point tenderness')">methylprednisolone</button>
+                <button data-section="medications" onclick="handleButtonClick(this, 'triamcinolone was injected into the area of point tenderness')">triamcinolone</button>
+                <textarea id="medicationsText" placeholder="" onchange="updateRealTimeText('Medications', 'medicationsText')"></textarea>
+            </div>
+
+            <!-- Technique Section -->
+            <div class="input-group">
+                <h3>Technique</h3>
+                <button data-section="technique" onclick="handleButtonClick(this, 'a single injection was made at the area of maximal tenderness')">single point</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'multiple fascial planes were entered and medication was injected into each location')">multiple fascial planes</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+            </div>
+
+            <!-- Outcome Section -->
+            <div class="input-group">
+                <h3>Outcome</h3>
+                <button data-section="outcome" onclick="handleButtonClick(this, 'the patient tolerated the procedure well')">tolerated well</button>
+                <button data-section="outcome" onclick="handleButtonClick(this, 'the patient’s pain improved on reassessment following the injection')">improved pain</button>
+                <textarea id="outcomeText" placeholder="" onchange="updateRealTimeText('Outcome', 'outcomeText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="triggerpointscript.js"></script>
+</body>
+</html>
