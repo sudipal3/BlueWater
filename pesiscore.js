@@ -54,7 +54,7 @@ function updatePesiScoreOutput() {
     if (score === 0) {
         riskMessage = 'A simplified PESI score of 0 is considered “low risk” with a 1.1% risk of death and a 1.5% risk of recurrent thromboembolism or non-fatal bleeding within 30 days.';
     } else {
-        riskMessage = 'A simplified PESI score of 1 or greater is considered "high risk" with an 8.9% 30-day mortality.';
+        riskMessage = 'A simplified PESI score of ≥1 is considered "high risk" with an 8.9% 30-day mortality.';
     }
 
     // Update the output area with the header, score, and results
