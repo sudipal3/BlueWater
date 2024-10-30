@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplified PESI Score for PE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Simplified PESI Score for PE</h2>
+
+            <div class="input-group">
+                <h3>Age >80</h3>
+                <button onclick="handlePESIButtonClick(this, 'age80', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'age80', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>History of cancer</h3>
+                <button onclick="handlePESIButtonClick(this, 'cancer', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'cancer', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>History of chronic cardiopulmonary disease</h3>
+                <button onclick="handlePESIButtonClick(this, 'cardiopulm', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'cardiopulm', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Heart rate ≥110</h3>
+                <button onclick="handlePESIButtonClick(this, 'hr110', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'hr110', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>Systolic BP <100 mmHg</h3>
+                <button onclick="handlePESIButtonClick(this, 'bp100', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'bp100', true)">Yes</button>
+            </div>
+
+            <div class="input-group">
+                <h3>O₂ saturation <90%</h3>
+                <button onclick="handlePESIButtonClick(this, 'o2sat90', false)">No</button>
+                <button onclick="handlePESIButtonClick(this, 'o2sat90', true)">Yes</button>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="pesiScoreOutput"></p>
+            <button onclick="clearPESIOutput()">Clear</button>
+            <button onclick="copyToClipboard('pesiScoreOutput')">Copy to Clipboard</button>
+            
+            <!-- Macro Button Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerPESIMacro()">PESI 0</button>
+            </div>
+        </div>
+
+    </div>
+
+     <footer>
+    </footer>
+
+<script src="pesiscore.js"></script>
+</body>
+</html>
