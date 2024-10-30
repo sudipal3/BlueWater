@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkland Formula for Burns</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Parkland Formula Section -->
+        <div class="form-section">
+            <h2>Parkland Formula for Burns</h2>
+
+            <!-- Weight Section -->
+            <div class="input-group">
+                <h3>Weight (kg)</h3>
+                <input type="number" id="weightInput" placeholder="">
+            </div>
+
+            <!-- Percentage Burned Section -->
+            <div class="input-group">
+                <h3>Percentage body area burned (excluding 1st degree)</h3>
+                <input type="number" id="burnPercentageInput" placeholder="">
+            </div>
+
+            <button onclick="calculateParklandFormula()">Calculate</button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+            
+            <div class="reminder-link">
+                <p>For a graphic showing TBSA by body part, click here: 
+                <a href="parklandburns.jpg" target="_blank">TBSA Graphic</a></p>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <footer></footer>
+
+    <script src="parklandscript.js"></script>
+</body>
+</html>
