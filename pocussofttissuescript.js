@@ -2,6 +2,7 @@
 let pocusSoftTissueSections = {
     'Time': null,
     'Indication': [],
+    'Location': [],
     'Findings': [],
     'Interpretation': []
 };
@@ -87,6 +88,7 @@ function clearOutput() {
     pocusSoftTissueSections = {
         'Time': null,
         'Indication': [],
+        'Location': [],
         'Findings': [],
         'Interpretation': []
     };
