@@ -1,6 +1,8 @@
 // Define the order of sections for reordering
 const sectionOrder = [
-    'Complexity', 'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian', 'IndependentRadiologyReview', 'ConsultantDiscussion', 'Risk'
+    'ComplexityLow', 'ComplexityModerate', 'ComplexityHigh', 
+    'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian', 
+    'IndependentRadiologyReview', 'ConsultantDiscussion', 'Risk'
 ];
 
 // Function to handle adding text when a button is pressed
@@ -137,11 +139,6 @@ function formatSectionName(section) {
         .replace(/([A-Z])/g, ' $1')
         .replace(/^[a-z]/, match => match.toUpperCase())
         .trim();
-}
-
-// Function to capitalize the first letter of a string
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // Function to reorder sections according to the predefined order
