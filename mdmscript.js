@@ -34,35 +34,34 @@ function addText(text, button) {
     reorderSections(outputArea);
 
     // Add the main header if not present
-    addMainHeader();
+    addMainHeader(outputArea);
 }
 
 // Function to handle removing text when a button is unpressed
 function removeText(text, button) {
     const sectionName = button.getAttribute('data-section');
     const sectionId = `output-${sectionName}`;
+    const outputArea = document.getElementById('outputArea');
+
     const sectionDiv = document.getElementById(sectionId);
+    const outputText = sectionDiv.querySelector('.output-text');
 
-    if (sectionDiv) {
-        const outputText = sectionDiv.querySelector('.output-text');
+    // Remove the button-generated text
+    outputText.textContent = outputText.textContent
+        .split(', ')
+        .filter(item => item !== text)
+        .join(', ');
 
-        // Remove the button-generated text
-        outputText.textContent = outputText.textContent
-            .split(', ')
-            .filter(item => item !== text)
-            .join(', ');
-
-        // If no text remains, remove the section
-        if (!outputText.textContent.trim()) {
-            sectionDiv.remove();
-        }
-
-        // Unmark the button as pressed
-        button.classList.remove('pressed');
-
-        // Remove the main header if there's no content
-        removeMainHeader();
+    // If no text remains, remove the section
+    if (!outputText.textContent.trim()) {
+        sectionDiv.remove();
     }
+
+    // Unmark the button as pressed
+    button.classList.remove('pressed');
+
+    // Remove the header if there's no content
+    removeMainHeader(outputArea);
 }
 
 // Function to handle button clicks
@@ -111,34 +110,28 @@ function updateRealTimeText(sectionTitle, textareaId) {
     reorderSections(outputArea);
 
     // Add the main header if not present
-    addMainHeader();
+    addMainHeader(outputArea);
+
+    // Remove the header if there's no content
+    removeMainHeader(outputArea);
 }
 
 // Function to add the main header if it's not already present
-function addMainHeader() {
-    const outputArea = document.getElementById('outputArea');
-    if (!outputArea.querySelector('h2')) {
-        outputArea.insertAdjacentHTML('afterbegin', `<h2>Medical Decision Making Note</h2><br>`);
+function addMainHeader(outputArea) {
+    if (!outputArea.querySelector('h2') && outputArea.innerHTML.trim() !== '') {
+        const mainTitle = document.querySelector('.form-section h2').innerText;
+        outputArea.insertAdjacentHTML('afterbegin', `<h2>${mainTitle}</h2><br>`);
     }
 }
 
 // Function to remove the main header if there's no content
-function removeMainHeader() {
-    const outputArea = document.getElementById('outputArea');
+function removeMainHeader(outputArea) {
     if (!outputArea.innerHTML.trim()) {
         const header = outputArea.querySelector('h2');
         if (header) {
             header.remove();
         }
     }
-}
-
-// Function to format section names with spaces between words
-function formatSectionName(section) {
-    return section
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/^[a-z]/, match => match.toUpperCase())
-        .trim();
 }
 
 // Function to reorder sections according to the predefined order
@@ -149,6 +142,44 @@ function reorderSections(outputArea) {
             outputArea.appendChild(sectionDiv);
         }
     });
+}
+
+// Function to trigger macros
+function triggerMacro(buttonIds, macroButton, ...freeTexts) {
+    // Activate the selected macro by pressing each button
+    buttonIds.forEach(id => {
+        const [section, buttonText] = id.split('-');
+        const buttons = document.querySelectorAll(`[data-section="${section}"]`);
+        const matchedButton = Array.from(buttons).find(btn => btn.innerText === buttonText);
+
+        if (matchedButton) {
+            const associatedText = matchedButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+            addText(associatedText, matchedButton); // Add text directly
+            matchedButton.classList.add('pressed'); // Mark button as pressed
+        }
+    });
+
+    // Add free text to the respective sections
+    for (let i = 0; i < freeTexts.length; i += 2) {
+        const sectionId = freeTexts[i];
+        const freeText = freeTexts[i + 1];
+        const textarea = document.getElementById(sectionId);
+        if (textarea) {
+            textarea.value = freeText; // Set the textarea value
+            updateRealTimeText(formatSectionName(sectionId.replace('Text', '')), sectionId); // Update the output area
+        }
+    }
+
+    // Ensure the macro button reflects the state
+    macroButton.classList.add('pressed');
+}
+
+// Utility function to format section names with spaces between words
+function formatSectionName(section) {
+    return section
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^[a-z]/, match => match.toUpperCase())
+        .trim();
 }
 
 // Function to copy the output text to the clipboard
@@ -162,7 +193,7 @@ function copyToClipboard() {
     window.getSelection().removeAllRanges();
 }
 
-// Function to clear all output and reset all buttons and textareas
+// Function to clear all output and reset all buttons
 function clearOutput() {
     // Clear the output area
     const outputArea = document.getElementById('outputArea');
@@ -178,6 +209,6 @@ function clearOutput() {
         textarea.value = '';
     });
 
-    // Remove the main header if there's no content
-    removeMainHeader();
+    // Remove the main header if it's there
+    removeMainHeader(outputArea);
 }

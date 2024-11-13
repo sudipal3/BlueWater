@@ -114,6 +114,14 @@
             <div id="outputArea"></div>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
+        
+            <!-- Macro Buttons Section -->
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerMacro(['ComplexityHigh-acute/chronic with life/bodily threat', 'OrderedReviewedTests-See chart for details', 'IndependentRadiologyReview-see chart', 'Risk-clinical decision tools'], this, 'ComplexityHighText', 'workup of chest pain with a broad differential including the evaluation of multiple potential life threatening conditions')">Chest Pain</button>
+                
+                <button onclick="triggerMacro(['ComplexityHigh-acute/chronic with life/bodily threat', 'OrderedReviewedTests-See chart for details', 'IndependentRadiologyReview-see chart', 'ConsultantDiscussion-hospitalist admit', 'Risk-IV drug therapy', 'Risk-hospitalization decision'], this, 'ComplexityHighText', 'concern for sepsis requiring complex diagnostic and therapeutic management with threat to life', 'RiskText', 'IV antibiotics targeting the suspected infection were administered')">Sepsis</button>
+            </div>
         </div>
     </div>
 
