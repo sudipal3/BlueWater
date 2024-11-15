@@ -77,13 +77,13 @@
                 <textarea id="MedicationText" placeholder="Document the total dosage of sedative used here" onchange="updateRealTimeText('Medication', 'MedicationText')"></textarea>
             </div>
 
+            
             <!-- Complications Section -->
             <div class="input-group">
                 <h3>Complications</h3>
                 <button data-section="Complications" onclick="handleButtonClick(this, 'none')">none</button>
-                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during procedural sedation')">hypoxia</button>
-                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia requiring BVM ventilation')">bagging</button>
-                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced vomiting during the sedation')">vomiting</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during procedural sedation requiring supplemental oxygen')">hypoxia</button>
+                <button data-section="Complications" onclick="handleButtonClick(this, 'the patient experienced decreased respiratory effort requiring BVM ventilation')" >PPV</button>
                 <textarea id="ComplicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'ComplicationsText')"></textarea>
             </div>
 
