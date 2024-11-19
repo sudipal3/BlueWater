@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBIRT Note</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Input Section -->
+        <div class="form-section">
+            <h2>SBIRT Note</h2>
+
+            <!-- Screening for Substance -->
+            <h3>Screening for Substance</h3>
+            <div class="input-group">
+                <button data-section="Screening" onclick="handleButtonClick(this, 'The patient has screened positive for active alcohol use disorder')">alcohol</button>
+                <button data-section="Screening" onclick="handleButtonClick(this, 'The patient has screened positive for active opioid use disorder')">opioids</button>
+                <button data-section="Screening" onclick="handleButtonClick(this, 'The patient has screened positive for active cocaine use disorder')">cocaine</button>
+                <button data-section="Screening" onclick="handleButtonClick(this, 'The patient has screened positive for active methamphetamine use')">meth</button>
+                <textarea id="ScreeningText" placeholder="" onchange="updateRealTimeText('Screening for Substance', 'ScreeningText')"></textarea>
+            </div>
+
+            <!-- Brief Intervention -->
+            <h3>Brief Intervention</h3>
+            <div class="input-group">
+                <button data-section="BriefIntervention" onclick="handleButtonClick(this, 'I discussed the harms of ongoing substance use with the patient including dependency, morbidity, and death')">discussed harms</button>
+                <button data-section="BriefIntervention" onclick="handleButtonClick(this, 'we discussed the benefits both reduction of current substance use and of abstinence')">benefits of reduction/abstinence</button>
+                <button data-section="BriefIntervention" onclick="handleButtonClick(this, 'the patient was willing to make efforts to reduce current substance use')">patient willingness</button>
+                <textarea id="BriefInterventionText" placeholder="" onchange="updateRealTimeText('Brief Intervention', 'BriefInterventionText')"></textarea>
+            </div>
+
+            <!-- MAT -->
+            <h3>MAT</h3>
+            <div class="input-group">
+                <button data-section="MAT" onclick="handleButtonClick(this, 'the patient was prescribed Suboxone with a plan for outpatient continuance of this regimen')">suboxone</button>
+                <button data-section="MAT" onclick="handleButtonClick(this, 'the patient was prescribed medications to help taper alcohol withdrawal symptoms as an outpatient')">alcohol taper</button>
+                <button data-section="MAT" onclick="handleButtonClick(this, 'the patient was prescribed medications to help treat associated symptoms of substance withdrawal')">symptomatic meds</button>
+                <textarea id="MATText" placeholder="" onchange="updateRealTimeText('MAT', 'MATText')"></textarea>
+            </div>
+
+            <!-- Referral -->
+            <h3>Referral</h3>
+            <div class="input-group">
+                <button data-section="Referral" onclick="handleButtonClick(this, 'the patient was referred to a local substance use clinic for follow-up')">local clinic</button>
+                <button data-section="Referral" onclick="handleButtonClick(this, 'the patient was given resources for telemedicine services for substance use disorder')">telemedicine</button>
+                <textarea id="ReferralText" placeholder="Specify the referral location, if applicable" onchange="updateRealTimeText('Referral', 'ReferralText')"></textarea>
+            </div>
+
+            <!-- Total Time Spent -->
+            <h3>Total Time Spent</h3>
+            <div class="input-group">
+                <button data-section="TotalTimeSpent" onclick="handleButtonClick(this, 'between 15 and 30 minutes were spent specifically dedicated to this SBIRT encounter')">>15 minutes</button>
+                <button data-section="TotalTimeSpent" onclick="handleButtonClick(this, 'over 30 minutes was spent specifically dedicated to this SBIRT encounter')">>30 minutes</button>
+                <textarea id="TotalTimeSpentText" placeholder="" onchange="updateRealTimeText('Total Time Spent', 'TotalTimeSpentText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="sbirtscript.js"></script>
+</body>
+</html>
