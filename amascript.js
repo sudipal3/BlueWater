@@ -56,6 +56,42 @@ function addText(text, button) {
     button.classList.add('pressed');
 }
 
+// Function to remove button-generated text
+function removeText(text, button) {
+    const sectionName = button.getAttribute('data-section');
+    const sectionId = `output-${sectionName}`;
+    const sectionDiv = document.getElementById(sectionId);
+
+    if (sectionDiv) {
+        const outputText = sectionDiv.querySelector('.output-text');
+
+        // Remove the button-generated text
+        const updatedText = outputText.textContent
+            .split(', ')
+            .filter(item => item !== text)
+            .join(', ');
+
+        outputText.textContent = updatedText;
+
+        // If no text remains, remove the section
+        if (!updatedText.trim()) {
+            sectionDiv.remove();
+        }
+    }
+
+    // Unmark the button as pressed
+    button.classList.remove('pressed');
+}
+
+// Function to handle button clicks
+function handleButtonClick(button, text) {
+    if (button.classList.contains('pressed')) {
+        removeText(text, button);
+    } else {
+        addText(text, button);
+    }
+}
+
 // Function to handle free text updates
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
