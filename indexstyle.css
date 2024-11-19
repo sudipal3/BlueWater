@@ -98,7 +98,8 @@ main {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-/* Clinical Decision Tools, Procedures, and Pocus Sections */
+/* Documentaion Macros, Clinical Decision Tools, Procedures, and Pocus Sections */
+#documentation-macros,
 #decision-tools,
 #procedures,
 #pocus {
@@ -111,6 +112,7 @@ main {
 }
 
 /* Remove bullets and set list to flex */
+#documentation-macros ul,
 #decision-tools ul,
 #procedures ul,
 #pocus ul {
@@ -135,7 +137,8 @@ main {
     margin-bottom: 0; /* No margin between list items */
 }
 
-/* Link Styles for Decision Tools, Procedures, and Pocus Sections */
+/* Link Styles for Documentation Macros, Decision Tools, Procedures, and Pocus Sections */
+#documentation-macros ul li a,
 #decision-tools ul li a,
 #procedures ul li a,
 #pocus ul li a {
@@ -154,6 +157,7 @@ main {
 }
 
 /* Hover effect for the links */
+#documentation-macros ul li a:hover,
 #decision-tools ul li a:hover,
 #procedures ul li a:hover,
 #pocus ul li a:hover {

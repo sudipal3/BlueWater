@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Against Medical Advice Note</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Input Section -->
+        <div class="form-section">
+            <h2>Against Medical Advice Note</h2>
+
+            <!-- Specific Concerns -->
+            <h3>Specific Concerns</h3>
+            <div class="input-group">
+                <button data-section="SpecificConcerns" onclick="addText('I explained to the patient that I was concerned of possibly undiagnosed traumatic injuries', this)">traumatic injuries</button>
+                <button data-section="SpecificConcerns" onclick="addText('I explained to the patient that I was concerned of the risk of infection and/or sepsis that could pose a threat of death or morbidity', this)">infection/sepsis</button>
+                <button data-section="SpecificConcerns" onclick="addText('I explained to the patient that I was concerned of morbidity or death due to ongoing and clinically relevant substance use', this)">substance use</button>
+                <button data-section="SpecificConcerns" onclick="addText('I explained to the patient that I was concerned about the potential for ongoing cardiac ischemia', this)">ACS</button>
+                <button data-section="SpecificConcerns" onclick="addText('I explained to the patient that I was concerned about the potential for an ongoing neurologic emergency that could pose a threat of serious morbidity and/or death', this)">neurologic emergency</button>
+                <textarea id="SpecificConcernsText" placeholder="" onchange="updateRealTimeText('Specific Concerns', 'SpecificConcernsText')"></textarea>
+            </div>
+
+            <!-- Diagnostics/Treatments Offered -->
+            <h3>Diagnostics/Treatments Offered</h3>
+            <div class="input-group">
+                <button data-section="DiagnosticsOffered" onclick="addText('Further laboratory testing was recommended as part of their workup', this)">lab testing</button>
+                <button data-section="DiagnosticsOffered" onclick="addText('Imaging was recommended as a part of their emergency workup', this)">imaging</button>
+                <button data-section="DiagnosticsOffered" onclick="addText('I recommended further IV fluids in the management of their presumed hypovolemic state', this)">IV fluids</button>
+                <button data-section="DiagnosticsOffered" onclick="addText('I recommended antibiotics for the treatment of a presumed infection', this)">antibiotics</button>
+                <button data-section="DiagnosticsOffered" onclick="addText('I strongly recommended admission to the hospital for further workup and management of their presenting symptoms', this)">admission</button>
+                <textarea id="DiagnosticsOfferedText" placeholder="" onchange="updateRealTimeText('Diagnostics/Treatments Offered', 'DiagnosticsOfferedText')"></textarea>
+            </div>
+
+            <!-- Risk Mitigation -->
+            <h3>Risk Mitigation</h3>
+            <div class="input-group">
+                <button data-section="RiskMitigation" onclick="addText('In order to reduce risk from their decision to leave AMA, I have spoken with an outpatient provider to best coordinate outpatient follow-up', this)">outpatient follow-up</button>
+                <button data-section="RiskMitigation" onclick="addText('Despite their decision to leave AMA, I have prescribed outpatient medications and informed the patient of this plan', this)">rx management</button>
+                <button data-section="RiskMitigation" onclick="addText('I have spoken with the patient’s family to help monitor for return precautions and also encourage the patient to seek ongoing care for their current medical condition', this)">discussion with family</button>
+                <textarea id="RiskMitigationText" placeholder="" onchange="updateRealTimeText('Risk Mitigation', 'RiskMitigationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="amascript.js"></script>
+</body>
+</html>
