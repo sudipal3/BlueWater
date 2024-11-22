@@ -45,10 +45,27 @@ function handleTimeButtonClick(button) {
     updatePOCUSOutput();
 }
 
-// Function to handle real-time text input (free text)
+// Function to handle real-time text input (free text) and append to existing output
 function updateRealTimeText(section, textAreaId) {
     const textValue = document.getElementById(textAreaId).value.trim();
-    pocusSections[section] = textValue ? textValue : null;
+
+    // Append the free text to the existing button-generated output
+    if (textValue) {
+        if (Array.isArray(pocusSections[section])) {
+            pocusSections[section].push(textValue);
+        } else {
+            pocusSections[section] = pocusSections[section]
+                ? `${pocusSections[section]}, ${textValue}`
+                : textValue;
+        }
+    } else {
+        // If the text is cleared, reset the section
+        if (Array.isArray(pocusSections[section])) {
+            pocusSections[section] = pocusSections[section].filter(item => item !== textValue);
+        } else {
+            pocusSections[section] = null;
+        }
+    }
 
     // Update the POCUS output
     updatePOCUSOutput();
@@ -68,7 +85,11 @@ function updatePOCUSOutput() {
     for (const section in pocusSections) {
         if (pocusSections[section] && (Array.isArray(pocusSections[section]) ? pocusSections[section].length > 0 : pocusSections[section])) {
             const sectionDiv = document.createElement('div');
-            sectionDiv.innerHTML = `<strong>${section}:</strong> ${Array.isArray(pocusSections[section]) ? pocusSections[section].join(', ') : pocusSections[section]}`;
+            sectionDiv.innerHTML = `<strong>${section}:</strong> ${
+                Array.isArray(pocusSections[section])
+                    ? pocusSections[section].join(', ')
+                    : pocusSections[section]
+            }`;
             outputArea.appendChild(sectionDiv);
         }
     }
