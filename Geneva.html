@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geneva Score for Pulmonary Embolism</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Geneva Score for Pulmonary Embolism</h2>
+
+            <!-- Age -->
+            <div class="input-group">
+                <h3>Age >65</h3>
+                <button onclick="handleGenevaButtonClick(this, 'age', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'age', 1)">Yes</button>
+            </div>
+
+            <!-- Previous DVT or PE -->
+            <div class="input-group">
+                <h3>Previous DVT or PE</h3>
+                <button onclick="handleGenevaButtonClick(this, 'dvtPE', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'dvtPE', 3)">Yes</button>
+            </div>
+
+            <!-- Surgery or lower limb fracture in past month -->
+            <div class="input-group">
+                <h3>Surgery (under general anesthesia) or lower limb fracture in past month</h3>
+                <button onclick="handleGenevaButtonClick(this, 'surgery', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'surgery', 2)">Yes</button>
+            </div>
+
+            <!-- Active malignant condition -->
+            <div class="input-group">
+                <h3>Active malignant condition</h3>
+                <button onclick="handleGenevaButtonClick(this, 'malignancy', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'malignancy', 2)">Yes</button>
+            </div>
+
+            <!-- Unilateral lower limb pain -->
+            <div class="input-group">
+                <h3>Unilateral lower limb pain</h3>
+                <button onclick="handleGenevaButtonClick(this, 'limbPain', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'limbPain', 3)">Yes</button>
+            </div>
+
+            <!-- Hemoptysis -->
+            <div class="input-group">
+                <h3>Hemoptysis</h3>
+                <button onclick="handleGenevaButtonClick(this, 'hemoptysis', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'hemoptysis', 2)">Yes</button>
+            </div>
+
+            <!-- Heart rate -->
+            <div class="input-group">
+                <h3>Heart rate</h3>
+                <button onclick="handleGenevaButtonClick(this, 'heartRate', 0)">&lt; 75</button>
+                <button onclick="handleGenevaButtonClick(this, 'heartRate', 3)">75-94</button>
+                <button onclick="handleGenevaButtonClick(this, 'heartRate', 5)">≥ 95</button>
+            </div>
+
+            <!-- Pain on lower limb palpation and unilateral edema -->
+            <div class="input-group">
+                <h3>Pain on lower limb palpation and unilateral edema</h3>
+                <button onclick="handleGenevaButtonClick(this, 'palpationPain', 0)">No</button>
+                <button onclick="handleGenevaButtonClick(this, 'palpationPain', 4)">Yes</button>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="genevaScoreOutput"></p>
+            <button onclick="clearGenevaOutput()">Clear</button>
+            <button onclick="copyToClipboard('genevaScoreOutput')">Copy to Clipboard</button>
+        </div>
+    </div>
+
+     <footer>
+    </footer>
+
+<script src="genevascript.js"></script>
+</body>
+</html>
