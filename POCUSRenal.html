@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Renal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Renal</h2>
+
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="timeText" placeholder="" onchange="updateRealTimeText('Time', 'timeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="indication" onclick="handleButtonClick(this, 'flank pain')">flank pain</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'hematuria')">hematuria</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'dysuria')">dysuria</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="views" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'sagittal view of the kidney')">sagittal</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'transverse view of the kidney')">transverse</button>
+                <textarea id="viewsText" placeholder="" onchange="updateRealTimeText('Views', 'viewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="findings" onclick="handleButtonClick(this, 'no hydronephrosis noted')">neg hydronephrosis</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'there is hydronephrosis noted')">+hydronephrosis</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'normal ureteral jets are noted')">normal ureteral jets</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'a kidney stone is visualized')">kidney stone</button>
+                <textarea id="findingsText" placeholder="" onchange="updateRealTimeText('Findings', 'findingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'the kidneys appear normal without any signs of hydronephrosis')">normal kidneys</button>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'there is hydronephrosis noted suggestive of an obstructing lesion, possibly a kidney stone')">+hydronephrosis</button>
+                <textarea id="interpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'interpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="pocusrenalscript.js"></script>
+</body>
+</html>
