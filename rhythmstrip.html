@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Strip Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Rhythm Strip Analysis</h2>
+
+            <!-- Time of Rhythm Strip Section -->
+            <div class="input-group">
+                <h3>Time of Rhythm Strip</h3>
+                <button onclick="handleTimeButtonClick(this, 'Time of Rhythm Strip', 'timeOfRhythmStripText')">Now</button>
+                <textarea id="timeOfRhythmStripText" placeholder="" onchange="updateRealTimeText('Time of Rhythm Strip', 'timeOfRhythmStripText')"></textarea>
+            </div>
+
+            <!-- Time of Interpretation Section -->
+            <div class="input-group">
+                <h3>Time of Interpretation</h3>
+                <button onclick="handleTimeButtonClick(this, 'Time of Interpretation', 'timeOfInterpretationText')">Now</button>
+                <textarea id="timeOfInterpretationText" placeholder="" onchange="updateRealTimeText('Time of Interpretation', 'timeOfInterpretationText')"></textarea>
+            </div>
+
+            <!-- Type Section -->
+            <div class="input-group">
+                <h3>Type</h3>
+                <button data-section="Type" onclick="handleButtonClick(this, 'Type', 'rhythm strip')">rhythm strip</button>
+                <button data-section="Type" onclick="handleButtonClick(this, 'Type', 'cardiac monitor')">cardiac monitor</button>
+                <textarea id="typeText" placeholder="" onchange="updateRealTimeText('Type', 'typeText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'sinus rhythm is noted')">sinus</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'bradycardia is noted')">bradycardia</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'tachycardia is noted')">tachycardia</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'atrial fibrillation is noted')">Afib</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'atrial flutter is noted')">AFlutter</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'ventricular tachycardia is noted')">VTach</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'asystole is noted')">asystole</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'PVCs are noted')">PVCs</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'Interpretation', 'paced')">paced</button>
+                <textarea id="interpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'interpretationText')"></textarea>
+            </div>
+
+            <!-- Prior Comparison Section -->
+            <div class="input-group">
+                <h3>Prior Comparison</h3>
+                <button data-section="Prior Comparison" onclick="handleButtonClick(this, 'Prior Comparison', 'unchanged from prior rhythm')">Unchanged</button>
+                <button data-section="Prior Comparison" onclick="handleButtonClick(this, 'Prior Comparison', 'compared to previous EKG/rhythm strip there have been notable changes, specifically')">Interval changes</button>
+                <textarea id="priorComparisonText" placeholder="Specify changes since previous exam" onchange="updateRealTimeText('Prior Comparison', 'priorComparisonText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="rhythmstripscript.js"></script>
+</body>
+</html>
