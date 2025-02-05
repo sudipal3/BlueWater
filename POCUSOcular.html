@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Ocular</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Ocular</h2>
+
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="timeText" placeholder="" onchange="updateRealTimeText('Time', 'timeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="indication" onclick="handleButtonClick(this, 'vision loss')">vision loss</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'ocular pain')">ocular pain</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'ocular trauma')">ocular trauma</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="views" onclick="handleButtonClick(this, 'right eye')">right eye</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'left eye')">left eye</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'transverse')">transverse</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'sagittal')">sagittal</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'optic nerve')">optic nerve</button>
+                <button data-section="views" onclick="handleButtonClick(this, 'retina')">retina</button>
+                <textarea id="viewsText" placeholder="" onchange="updateRealTimeText('Views', 'viewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="findings" onclick="handleButtonClick(this, 'the optic nerve was noted to be normal in diameter')">normal optic nerve</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'the optic nerve was noted to be have greater diameter than normal')">enlarged optic nerve</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'the retina was noted to be normal without signs of detachment')">normal retina</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'the retina was noted to be detached from the posterior wall')">+retinal detachment</button>
+                <button data-section="findings" onclick="handleButtonClick(this, 'hyperechoic fluid was noted in the posterior chamber concerning for vitreous hemorrhage')">+vitreous hemorrhage</button>
+                <textarea id="findingsText" placeholder="" onchange="updateRealTimeText('Findings', 'findingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'the finding of a normal optic nerve sheath diameter is reassuring for a normal intracranial pressure')">normal intracranial pressure</button>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'the finding of a dilated optic nerve sheath diameter is concerning for an increased intracranial pressure')">increased intracranial pressure</button>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'the normal appearing retina is reassuring against acute retinal detachment')">no retinal detachment</button>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'findings are concerning for an acute retinal detachment')">+retinal detachment</button>
+                <button data-section="interpretation" onclick="handleButtonClick(this, 'findings are concerning for vitreous hemorrhage')">+vitreous hemorrhage</button>
+                <textarea id="interpretationText" placeholder="" onchange="updateRealTimeText('Interpretation', 'interpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="pocusocular.js"></script>
+</body>
+</html>
