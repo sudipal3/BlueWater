@@ -1,5 +1,5 @@
-// Define the order of sections
-const sectionOrder = ['diagnosis', 'management'];
+// Define the correct order of sections
+const sectionOrder = ['diagnosis', 'initial_management', 'reassessment'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
@@ -15,7 +15,7 @@ function addText(text, button) {
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${capitalize(formatSectionName(sectionName))}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `<strong>${formatSectionTitle(sectionName)}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
@@ -29,7 +29,7 @@ function addText(text, button) {
     // Mark the button as pressed
     button.classList.add('pressed');
 
-    // Ensure the sections are in the correct order
+    // Ensure sections are in the correct order
     reorderSections(outputArea);
 }
 
@@ -85,7 +85,7 @@ function updateRealTimeText(sectionTitle, textareaId) {
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${sectionTitle}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `<strong>${formatSectionTitle(sectionName)}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
@@ -106,8 +106,25 @@ function updateRealTimeText(sectionTitle, textareaId) {
         buttons.forEach(button => button.classList.remove('pressed'));
     }
 
-    // Ensure the sections are in the correct order
+    // Ensure sections are in the correct order
     reorderSections(outputArea);
+}
+
+// Function to format section titles correctly (fixes "Initial_management" issue)
+function formatSectionTitle(section) {
+    return section
+        .replace(/_/g, ' ') // Replace underscores with spaces
+        .replace(/\b\w/g, c => c.toUpperCase()); // Capitalize each word
+}
+
+// Function to reorder sections according to the predefined order
+function reorderSections(outputArea) {
+    sectionOrder.forEach(section => {
+        const sectionDiv = document.getElementById(`output-${section}`);
+        if (sectionDiv) {
+            outputArea.appendChild(sectionDiv);
+        }
+    });
 }
 
 // Function to add the main header if it's not already present
@@ -131,26 +148,6 @@ function removeMainHeader() {
             paragraph.remove();
         }
     }
-}
-
-// Function to format section names with spaces between words
-function formatSectionName(section) {
-    return section.replace(/([A-Z])/g, ' $1').trim();
-}
-
-// Function to capitalize the first letter of a string
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// Function to reorder sections according to the predefined order
-function reorderSections(outputArea) {
-    sectionOrder.forEach(section => {
-        const sectionDiv = document.getElementById(`output-${section}`);
-        if (sectionDiv) {
-            outputArea.appendChild(sectionDiv);
-        }
-    });
 }
 
 // Function to copy the output text to the clipboard

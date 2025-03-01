@@ -28,16 +28,25 @@
                 <textarea id="diagnosisText" placeholder="" onchange="updateRealTimeText('Diagnosis', 'diagnosisText')"></textarea>
             </div>
 
-            <!-- Management Section -->
+            <!-- Initial Management Section -->
             <div class="input-group">
-                <h3>Management</h3>
-                <button data-section="management" onclick="handleButtonClick(this, 'patient’s lactate level was measured')">lactate</button>
-                <button data-section="management" onclick="handleButtonClick(this, 'blood cultures were sent prior to antibiotic administration')">blood cx</button>
-                <button data-section="management" onclick="handleButtonClick(this, 'IV antibiotics were administered')">antibiotics</button>
-                <button data-section="management" onclick="handleButtonClick(this, 'the patient received a 30 cc/kg bolus of IV fluids')">30 cc/kg</button>
-                <button data-section="management" onclick="handleButtonClick(this, 'patient was initiated on IV vasopressors')">pressors</button>
-                <button data-section="management" onclick="handleButtonClick(this, 'patient demonstrated improved hemodynamics and perfusion on reassessment')">improved reassess</button>
-                <textarea id="managementText" placeholder="Explain any variance in sepsis bundle (e.g. gentle fluids for CHF)" onchange="updateRealTimeText('Management', 'managementText')"></textarea>
+                <h3>Initial Management</h3>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'patient’s lactate level was measured')">lactate</button>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'blood cultures were sent prior to antibiotic administration')">blood cx</button>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'IV antibiotics were administered')">antibiotics</button>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'the patient was ordered for a 30 cc/kg bolus of IV fluids')">30 cc/kg fluid ordered</button>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'the patient did not have a 30 cc/kg bolus of fluid ordered due to contraindication specified in the chart')">fluid contraindication</button>
+                <textarea id="initial_managementText" placeholder="Explain any variance in sepsis bundle (e.g. gentle fluids for CHF)" onchange="updateRealTimeText('initial_management', 'initial_managementText')"></textarea>
+            </div>
+            
+            <!-- Reassessment Section -->
+            <div class="input-group">
+                <h3>Reassessment</h3>
+                <button data-section="reassessment" onclick="handleButtonClick(this, 'a repeat lactate was measured for the patient to assess response to resuscitation')">repeat lactate</button>
+                <button data-section="reassessment" onclick="handleButtonClick(this, 'blood pressure improved following initial resuscitation')">improved BP</button>
+                <button data-section="reassessment" onclick="handleButtonClick(this, 'patient was initiated on IV vasopressors due to persistent hypotension')">pressors</button>
+                <button data-section="reassessment" onclick="handleButtonClick(this, 'patient demonstrated improved perfusion on reassessment')">improved capillary refill</button>
+                <textarea id="reassessmentText" placeholder="" onchange="updateRealTimeText('reassessment', 'reassessmentText')"></textarea>
             </div>
         </div>
 
