@@ -1,5 +1,5 @@
 // Define the order of sections
-const sectionOrder = ['timeout', 'indication', 'consent', 'preparation', 'medications', 'technique', 'confirmation', 'complications', 'provider'];
+const sectionOrder = ['timeout', 'indication', 'consent', 'assessment', 'preparation', 'medications', 'technique', 'confirmation', 'complications', 'provider'];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {

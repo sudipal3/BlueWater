@@ -36,6 +36,15 @@
             <button data-section="consent" onclick="handleButtonClick(this, 'family gave informed consent: risks/benefits/alternatives discussed')">family</button>
             <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
             
+            <h3>Assessment</h3>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'the patient\'s last oral intake was noted')">last oral intake noted</button>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'Mallampati 1')">Mallampati 1</button>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'Mallampati 2')">Mallampati 2</button>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'Mallampati 3')">Mallampati 3</button>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'Mallampati 4')">Mallampati 4</button>
+            <button data-section="assessment" onclick="handleButtonClick(this, 'discussed and documented prior history of anesthetic complications')">prior anesthesia history</button>
+            <textarea id="assessmentText" placeholder="" onchange="updateRealTimeText('Assessment', 'assessmentText')"></textarea>
+            
             <h3>Preparation</h3>
             <button data-section="preparation" onclick="handleButtonClick(this, 'patient was placed in appropriate positioning and was placed on the monitor with pulse oximetry and end-tidal CO2')">position/monitor</button>
             <button data-section="preparation" onclick="handleButtonClick(this, 'all equipment was verified including intubating equipment, suction, BMV, and adjunct equipment')">equipment</button>
@@ -53,9 +62,9 @@
             <textarea id="medicationsText" placeholder="" onchange="updateRealTimeText('Medications', 'medicationsText')"></textarea>
             
             <h3>Technique</h3>
-            <button data-section="technique" onclick="handleButtonClick(this, 'Glidescope video laryngoscopy was performed with a hyperangulated blade')">glidescope</button>
-            <button data-section="technique" onclick="handleButtonClick(this, 'Direct laryngoscopy was performed with a geometric blade')">direct laryngoscopy</button>
-            <button data-section="technique" onclick="handleButtonClick(this, 'A bougie was used as a tracheal introducer with the ETT passed over the bougie.')">bougie</button>
+            <button data-section="technique" onclick="handleButtonClick(this, 'video laryngoscopy was performed with a hyperangulated blade')">video laryngoscopy</button>
+            <button data-section="technique" onclick="handleButtonClick(this, 'direct laryngoscopy was performed with a geometric blade')">direct laryngoscopy</button>
+            <button data-section="technique" onclick="handleButtonClick(this, 'a bougie was used as a tracheal introducer with the ETT passed over the bougie.')">bougie</button>
             <button data-section="technique" onclick="handleButtonClick(this, 'a 7.0 Fr ETT was used')">7.0 Fr ETT</button>
             <button data-section="technique" onclick="handleButtonClick(this, 'a 7.5 Fr ETT was used')">7.5 Fr ETT</button>
             <button data-section="technique" onclick="handleButtonClick(this, 'an 8.0 Fr ETT was used')">8.0 Fr ETT</button>
@@ -88,7 +97,7 @@
         <!-- Macro Buttons Section -->
         <div class="macro-section">
             <h3>Macros</h3>
-            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, first pass'], this)">Glidescope 7.5</button>
+            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, first pass'], this)">Video 7.5</button>
             <!-- Add more macros as needed -->
         </div>
 
