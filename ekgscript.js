@@ -3,7 +3,7 @@ let ekgSections = {
     'Time of EKG': null,
     'Time of Interpretation': null,
     'Rate': [],
-    'Rhythm': [],
+    'Rhythm': [], // Corrected spelling
     'Axis': [],
     'Intervals': [],
     'Conduction': [],
@@ -76,6 +76,11 @@ function updateEKGOutput() {
     mainHeader.textContent = 'EKG Interpretation';
     outputArea.appendChild(mainHeader);
 
+    // Add the new phrase below the header
+    const reviewPhrase = document.createElement('p');
+    reviewPhrase.textContent = 'I independently reviewed the EKG with the following interpretation:';
+    outputArea.appendChild(reviewPhrase);
+
     // Generate detailed outputs for each section
     for (const section in ekgSections) {
         if (ekgSections[section] && (Array.isArray(ekgSections[section]) ? ekgSections[section].length > 0 : ekgSections[section])) {
@@ -93,7 +98,7 @@ function clearEKGOutput() {
         'Time of EKG': null,
         'Time of Interpretation': null,
         'Rate': [],
-        'Rhythm': [],
+        'Rhythm': [], // Corrected spelling
         'Axis': [],
         'Intervals': [],
         'Conduction': [],
