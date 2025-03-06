@@ -26,8 +26,10 @@
                 
                 <h3>Indication</h3>
                 <button data-section="indication" onclick="handleButtonClick(this, 'anticipated need for frequent blood draws and potential pressors/multiple drips')">patient acuity</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'requirement for hemodynamic support with potential vasopressor use')">hemodynamic support</button>
                 <button data-section="indication" onclick="handleButtonClick(this, 'poor IV access')">poor IV access</button>
                 <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+            
                 
                 <h3>Consent</h3>
                 <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. Patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
@@ -52,7 +54,7 @@
                 
                 <h3>Ultrasound</h3>
                 <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement')">US used</button>
-                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation')">US not used</button>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">US not used</button>
                 <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
                 
                 <h3>Technique</h3>
@@ -72,6 +74,9 @@
                 
                 <h3>Complications</h3>
                 <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure')">none</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'minimal bleeding during the procedure')">minimal bleeding</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'EBL was less than 100 cc')">estimated blood loss under 100</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'a pneumothorax was noted on follow-up XRay')">pneumothorax</button>
                 <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
                 
                 <h3>Provider</h3>
