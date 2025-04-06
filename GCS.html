@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glasgow Coma Score</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Glasgow Coma Score</h2>
+
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button onclick="handleTimeNow()">Now</button>
+                <textarea id="timeText" placeholder="Manual time entry (optional)" onchange="updateTimeText()"></textarea>
+            </div>
+
+            <!-- Eye Response -->
+            <div class="input-group">
+                <h3>Best eye response</h3>
+                <button onclick="handleGCSButtonClick(this, 'Eye', 4, 'Spontaneously')">Spontaneously (+4)</button>
+                <button onclick="handleGCSButtonClick(this, 'Eye', 3, 'To verbal command')">To verbal command (+3)</button>
+                <button onclick="handleGCSButtonClick(this, 'Eye', 2, 'To pain')">To pain (+2)</button>
+                <button onclick="handleGCSButtonClick(this, 'Eye', 1, 'No eye opening')">No eye opening (+1)</button>
+            </div>
+
+            <!-- Verbal Response -->
+            <div class="input-group">
+                <h3>Best verbal response</h3>
+                <button onclick="handleGCSButtonClick(this, 'Verbal', 5, 'Oriented')">Oriented (+5)</button>
+                <button onclick="handleGCSButtonClick(this, 'Verbal', 4, 'Confused')">Confused (+4)</button>
+                <button onclick="handleGCSButtonClick(this, 'Verbal', 3, 'Inappropriate words')">Inappropriate words (+3)</button>
+                <button onclick="handleGCSButtonClick(this, 'Verbal', 2, 'Incomprehensible sounds')">Incomprehensible sounds (+2)</button>
+                <button onclick="handleGCSButtonClick(this, 'Verbal', 1, 'No verbal response')">No verbal response (+1)</button>
+            </div>
+
+            <!-- Motor Response -->
+            <div class="input-group">
+                <h3>Best motor response</h3>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 6, 'Obeys commands')">Obeys commands (+6)</button>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 5, 'Localizes pain')">Localizes pain (+5)</button>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 4, 'Withdrawal from pain')">Withdrawal from pain (+4)</button>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 3, 'Flexion to pain')">Flexion to pain (+3)</button>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 2, 'Extension to pain')">Extension to pain (+2)</button>
+                <button onclick="handleGCSButtonClick(this, 'Motor', 1, 'No motor response')">No motor response (+1)</button>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h3>Glasgow Coma Scale:</h3>
+            <p id="gcsOutput"></p>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearGCS()">Clear</button>
+        </div>
+    </div>
+
+    <script src="GCSscript.js"></script>
+</body>
+</html>
