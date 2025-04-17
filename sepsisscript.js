@@ -165,7 +165,7 @@ function copyToClipboard() {
 function clearOutput() {
     // Clear the output area
     const outputArea = document.getElementById('outputArea');
-    outputArea.innerHTML = '<p><strong>Due to a concern for sepsis, the following actions were conducted within three hours of the patient’s arrival to the emergency department:</strong></p>';
+    outputArea.innerHTML = '';
 
     // Reset all buttons
     document.querySelectorAll('.pressed').forEach(button => {
