@@ -131,7 +131,7 @@ function reorderSections(outputArea) {
 function addMainHeader() {
     const outputArea = document.getElementById('outputArea');
     if (!outputArea.querySelector('h2')) {
-        outputArea.insertAdjacentHTML('afterbegin', `<h2>Sepsis Management</h2><br><p>Due to a concern for sepsis, the following actions were conducted within three hours of the patient’s arrival to the emergency department:</p>`);
+        outputArea.insertAdjacentHTML('afterbegin', `<h2>Sepsis Management</h2><p>Due to a concern for sepsis, the following actions were conducted within three hours of the patient’s arrival to the emergency department:</p>`);
     }
 }
 
