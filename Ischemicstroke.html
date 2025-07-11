@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ischemic Stroke Management Note</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="index.html#home">Home</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="form-section">
+        <h2>Ischemic Stroke Management</h2>
+
+        <!-- CT Scan Time Section -->
+        <div class="input-group">
+            <h3>CT Scan Time</h3>
+            <button data-section="ct_scan_time" onclick="handleButtonClick(this, 'CT scan was performed within 25 minutes of patient’s arrival')">&lt;25 minutes</button>
+            <textarea id="ct_scan_timeText" placeholder="Please explain any delay in time to CT scan" onchange="updateRealTimeText('ct_scan_time', 'ct_scan_timeText')"></textarea>
+        </div>
+
+        <!-- NIH Score Section -->
+        <div class="input-group">
+            <h3>NIH Score</h3>
+            <textarea id="nih_scoreText" placeholder="Record NIH score here" onchange="updateRealTimeText('nih_score', 'nih_scoreText')"></textarea>
+        </div>
+
+        <!-- Thrombolytics Section -->
+        <div class="input-group">
+            <h3>Thrombolytics</h3>
+            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered within 60 minutes of patient’s arrival to the ED')">&lt;60 minutes</button>
+            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered more than 60 minutes after the patient’s arrival in the ED')">&gt;60 minutes</button>
+            <textarea id="thrombolyticsText" placeholder="Please explain any delays in thrombolytic administration" onchange="updateRealTimeText('thrombolytics', 'thrombolyticsText')"></textarea>
+        </div>
+
+        <!-- Other Factors Section -->
+        <div class="input-group">
+            <h3>Other Factors</h3>
+            <button data-section="other_factors" onclick="handleButtonClick(this, 'the patient’s blood pressure was managed acutely due to hypertension on arrival')">BP management</button>
+            <button data-section="other_factors" onclick="handleButtonClick(this, 'due to concern for a LVO, CTA was ordered in addition to CT non-contrast')">CTA ordered</button>
+            <textarea id="other_factorsText" placeholder="" onchange="updateRealTimeText('other_factors', 'other_factorsText')"></textarea>
+        </div>
+    </div>
+
+    <div class="output-section">
+        <div id="outputArea"></div>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button onclick="clearOutput()">Clear</button>
+        
+        <!-- New Section for Related Notes -->
+        <div class="related-procedures">
+            <p>Include a full NIH score in your chart, which can be created here: 
+                    <a href="NIHSS.html">NIH Score</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="ischemicstroke.js"></script>
+
+</body>
+</html>
