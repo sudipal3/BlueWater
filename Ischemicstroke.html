@@ -36,7 +36,8 @@
             <h3>Thrombolytics</h3>
             <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered within 60 minutes of patient’s arrival to the ED')">&lt;60 minutes</button>
             <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered more than 60 minutes after the patient’s arrival in the ED')">&gt;60 minutes</button>
-            <textarea id="thrombolyticsText" placeholder="Please explain any delays in thrombolytic administration" onchange="updateRealTimeText('thrombolytics', 'thrombolyticsText')"></textarea>
+            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics contraindicated')">TNK contraindicated</button>
+            <textarea id="thrombolyticsText" placeholder="Please explain any delays in thrombolytic administration and/or reasons for contraindication" onchange="updateRealTimeText('thrombolytics', 'thrombolyticsText')"></textarea>
         </div>
 
         <!-- Other Factors Section -->
