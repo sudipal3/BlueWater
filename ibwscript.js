@@ -26,7 +26,7 @@ function calculateIBW() {
     ibw = 45.5 + 2.3 * (totalInches - 60);
   }
 
-  const output = <br>`The ideal body weight for this patientis: <strong>${ibw.toFixed(1)} kg</strong>`;
+  const output = `<br>The ideal body weight for this patient is: <strong>${ibw.toFixed(1)} kg</strong>`;
   document.getElementById('ibwOutput').innerHTML = output;
 }
 
