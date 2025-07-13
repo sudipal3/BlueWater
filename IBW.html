@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ideal Body Weight Calculator</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>Ideal Body Weight</h2>
+
+      <div class="input-group">
+        <h3>Sex</h3>
+        <button onclick="handleSexClick(this, 'male')">Male</button>
+        <button onclick="handleSexClick(this, 'female')">Female</button>
+      </div>
+
+      <div class="input-group">
+        <h3>Height</h3>
+        <label>Feet: <input type="number" id="heightFeetInput" onchange="calculateIBW()"/></label>
+        <label>Inches: <input type="number" id="heightInchesInput" onchange="calculateIBW()"/></label>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div id="ibwOutput"></div>
+      <button onclick="clearIBW()">Clear</button>
+      <button onclick="copyIBW()">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script src="ibwscript.js"></script>
+</body>
+</html>

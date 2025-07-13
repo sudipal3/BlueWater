@@ -35,7 +35,7 @@
                 <button data-section="initial_management" onclick="handleButtonClick(this, 'blood cultures were sent prior to antibiotic administration')">blood cx</button>
                 <button data-section="initial_management" onclick="handleButtonClick(this, 'IV antibiotics were administered')">antibiotics</button>
                 <button data-section="initial_management" onclick="handleButtonClick(this, 'the patient was ordered for a 30 cc/kg bolus of IV fluids')">30 cc/kg fluid ordered</button>
-                <button data-section="initial_management" onclick="handleButtonClick(this, 'given the patients habitus, ideal body weight was used for fluid calculation')">ideal body weight used</button>
+                <button data-section="initial_management" onclick="handleButtonClick(this, 'given the patients habitus, ideal body weight of ___ kg was used for fluid calculation')">ideal body weight used</button>
                 <button data-section="initial_management" onclick="handleButtonClick(this, 'the patient did not have a 30 cc/kg bolus of fluid ordered due to contraindication')">fluid contraindication</button>
                 <textarea id="initial_managementText" placeholder="Explain any variance in sepsis bundle and/or contraindication to 30 cc/kg fluid bolus here" onchange="updateRealTimeText('initial_management', 'initial_managementText')"></textarea>
             </div>
@@ -64,6 +64,12 @@
 2. Lactate drawn<br>
 3. Antibiotic(s) administered<br>
 4. 30mL/kg if hypotension present or Lactate >4 (use ideal body weight in obese patients) or reason why fluid bolus is not appropriate</p>
+            
+            <div class="related-procedures">
+                <p>IBW Calculator: 
+                    <a href="IBW.html">Ideal Body Weight</a>
+                </p>
+            </div>
         
         </div>
         

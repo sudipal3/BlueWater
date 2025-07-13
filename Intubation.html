@@ -21,7 +21,7 @@
         <div class="input-group">
             <h3>Timeout</h3>
             <button data-section="timeout" onclick="handleButtonClick(this, 'A formal timeout was deferred given the emergent nature of the intubation')">emergent</button>
-            <button data-section="timeout" onclick="handleButtonClick(this, 'pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity.')">protocol/checklist</button>
+            <button data-section="timeout" onclick="handleButtonClick(this, 'pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity')">protocol/checklist</button>
             <textarea id="timeoutText" placeholder="" onchange="updateRealTimeText('Timeout', 'timeoutText')"></textarea>
             
             <h3>Indication</h3>
@@ -79,9 +79,10 @@
             <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
             
             <h3>Complications</h3>
-            <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure, intubation successful on first pass and O2 sats above 90% throughout procedure')">none, O2 over 90%, first pass</button>
-            <button data-section="complications" onclick="handleButtonClick(this, 'there was hypoxia noted during the intubation with an O2 sat <90% which improved following intubation and oxygenation')">hypoxia, less than 90%</button>
-            <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypotension during or following the intubation')">hypotension</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure, intubation successful on first pass and O2 sats above 90% throughout procedure')"style="background-color: #87ceeb; color: white; border: 2px solid #000080;">none, O2 over 90%, first pass</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'there was hypoxia noted during the intubation with an O2 sat <90% which improved following intubation and oxygenation')" style="background-color: #87ceeb; color: white; border: 2px solid #000080;" >hypoxia, less than 90%</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypotension during or following the intubation with a SBP<90')">hypotension, SBP less than 90</button>
+            <button data-section="complications" onclick="handleButtonClick(this, 'no hypotension was noted following the intubation')">no hypotension</button>
             <button data-section="complications" onclick="handleButtonClick(this, 'multiple attempts were required for intubation')">multiple attempts</button>
             <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
             
