@@ -1,6 +1,7 @@
 // Define the Procedural Sedation sections object to store the pressed button values
 let sedationSections = {
     'Consent': [],
+    'Timeout': [],
     'Indication': [],
     'Pre-sedation assessment': [],
     'Preparation/monitoring': [],
@@ -15,55 +16,53 @@ let sedationSections = {
 function handleButtonClick(button, description) {
     const section = button.getAttribute('data-section');
 
+    if (!sedationSections.hasOwnProperty(section)) return; // safety check
+
     // Toggle the button's pressed state
     if (button.classList.contains('pressed')) {
         button.classList.remove('pressed');
-
-        // Remove the description from the sedationSections array for this section
         sedationSections[section] = sedationSections[section].filter(item => item !== description);
     } else {
         button.classList.add('pressed');
-
-        // Add the description to the sedationSections array for this section
         sedationSections[section].push(description);
     }
 
-    // Update the Procedural Sedation output with the new values
     updateSedationOutput();
 }
 
-// Function to handle real-time text input (free text) and append to existing output
+// Function to handle real-time text input (free text)
 function updateRealTimeText(section, textAreaId) {
+    if (!sedationSections.hasOwnProperty(section)) return; // safety check
+
+    // Remove previous free text input for that section
+    sedationSections[section] = sedationSections[section].filter(item => !item.startsWith('FREE_TEXT:'));
+
     const textValue = document.getElementById(textAreaId).value.trim();
 
-    // Append the new text to existing button-generated output if any
     if (textValue) {
-        if (Array.isArray(sedationSections[section])) {
-            sedationSections[section].push(textValue);
-        } else {
-            sedationSections[section] = (sedationSections[section] ? sedationSections[section] + ', ' : '') + textValue;
-        }
+        sedationSections[section].push(`FREE_TEXT:${textValue}`);
     }
 
-    // Update the Procedural Sedation output
     updateSedationOutput();
 }
 
 // Function to update the Procedural Sedation Output
 function updateSedationOutput() {
     const outputArea = document.getElementById('outputArea');
-    outputArea.innerHTML = ''; // Clear the existing output
+    outputArea.innerHTML = ''; // Clear existing output
 
-    // Create the main Procedural Sedation Interpretation header
     const mainHeader = document.createElement('h2');
     mainHeader.textContent = 'Procedure Note: Procedural Sedation';
     outputArea.appendChild(mainHeader);
 
-    // Generate detailed outputs for each section
     for (const section in sedationSections) {
-        if (sedationSections[section] && (Array.isArray(sedationSections[section]) ? sedationSections[section].length > 0 : sedationSections[section])) {
+        const values = sedationSections[section].map(item =>
+            item.startsWith('FREE_TEXT:') ? item.replace('FREE_TEXT:', '') : item
+        );
+
+        if (values.length > 0) {
             const sectionDiv = document.createElement('div');
-            sectionDiv.innerHTML = `<strong>${section}:</strong> ${Array.isArray(sedationSections[section]) ? sedationSections[section].join(', ') : sedationSections[section]}`;
+            sectionDiv.innerHTML = `<strong>${section}:</strong> ${values.join(', ')}`;
             outputArea.appendChild(sectionDiv);
         }
     }
@@ -71,26 +70,12 @@ function updateSedationOutput() {
 
 // Function to clear the Procedural Sedation output and reset the buttons
 function clearOutput() {
-    // Reset all sections
-    sedationSections = {
-        'Consent': [],
-        'Indication': [],
-        'Pre-sedation assessment': [],
-        'Preparation/monitoring': [],
-        'Medication': [],
-        'Complications': [],
-        'Post-procedure assessment': [],
-        'Total time spent at bedside': [],
-        'Provider': []
-    };
+    for (const section in sedationSections) {
+        sedationSections[section] = [];
+    }
 
-    // Clear all text areas
     document.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
-
-    // Unpress all buttons
     document.querySelectorAll('.pressed').forEach(button => button.classList.remove('pressed'));
-
-    // Clear the output area
     document.getElementById('outputArea').innerHTML = '';
 }
 
@@ -99,8 +84,8 @@ function copyToClipboard() {
     const outputArea = document.getElementById('outputArea');
     const range = document.createRange();
     range.selectNode(outputArea);
-    window.getSelection().removeAllRanges(); // Clear current selection
-    window.getSelection().addRange(range); // Select the text
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
     document.execCommand("copy");
-    window.getSelection().removeAllRanges(); // Deselect the text
+    window.getSelection().removeAllRanges();
 }
