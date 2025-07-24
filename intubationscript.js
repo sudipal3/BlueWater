@@ -173,11 +173,13 @@ function triggerMacro(buttonIds, macroButton) {
         if (matchedButton) {
             const associatedText = matchedButton.getAttribute('onclick').match(/'([^']+)'/)[1];
             addText(associatedText, matchedButton);
-        } else {console.warn(`Macro button not found: section=${section}, text=${buttonText}`);
+        } else {
+            console.warn(`Macro button not found: section=${section}, text=${buttonText}`);
         }
+    });
 
-    // Ensure the macro button reflects the state
-    macroButton.classList.add('pressed');
+    // Reflect macro button state
+    if (macroButton) macroButton.classList.add('pressed');
 }
 
 // Function to clear all output and reset all buttons
