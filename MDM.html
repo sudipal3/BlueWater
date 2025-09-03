@@ -1,112 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Medical Decision Making</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Optional: small quality-of-life tweaks for details/summary */
+        details {
+            border-radius: 10px;
+            padding: 0.25rem 0.5rem;
+            margin: 0.5rem 0;
+            background: var(--panel-bg, #f7f7f9);
+        }
+        summary {
+            cursor: pointer;
+            list-style: none; /* Remove default marker so only the native arrow shows */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0;
+        }
+        summary::-webkit-details-marker {
+            margin-right: 0.25rem;
+        }
+        .section-body {
+            padding: 0.25rem 0.25rem 0.75rem 1.25rem;
+        }
+        .input-group {
+            margin: 0.35rem 0 0.85rem;
+        }
+        .input-group textarea {
+            display: block;
+            width: 100%;
+            min-height: 54px;
+            margin-top: 0.35rem;
+        }
+        .pressed {
+            outline: 2px solid #3b82f6; /* visible state for pressed buttons */
+        }
+    </style>
 </head>
 <body>
-
     <nav>
         <ul>
             <li><a href="index.html#home">Home</a></li>
         </ul>
     </nav>
-    
+
     <div class="container">
         <div class="form-section">
             <h2>Medical Decision Making</h2>
-            
-            <!-- Complexity/Problems Addressed -->
-            <strong><i style="font-size: 1.2em">Complexity/Problems Addressed</i></strong><br>
-            <i style="font-size: 0.85em;">Low Complexity</i>
-            <div class="input-group">
-                <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'low complexity with self-limited or minor problems')">minor problems</button>
-                <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'low complexity with a stable, chronic illness')">stable chronic</button>
-                <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'an acute, uncomplicated illness or injury')">acute, uncomplicated</button>
-                <textarea id="ComplexityLowText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityLowText')"></textarea>
-            </div>
 
-            <i style="font-size: 0.85em;">Moderate Complexity</i>
-            <div class="input-group">
-                <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with one or more chronic illness with exacerbation/progression')">chronic, exac</button>
-                <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with two or more stable chronic illnesses')">multiple chronic</button>
-                <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with an acute illness with systemic symptoms')">acute with systemic sx</button>
-                <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with an acute, complicated injury')">complicated injury</button>
-                <textarea id="ComplexityModerateText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityModerateText')"></textarea>
-            </div>
+            <!-- Complexity/Problems Addressed (collapsed by default) -->
+            <details id="secComplexity">
+                <summary>
+                    <strong><i style="font-size: 1.2em">Complexity/Problems Addressed</i></strong>
+                </summary>
+                <div class="section-body">
+                    <i style="font-size: 0.85em;">Low Complexity</i>
+                    <div class="input-group">
+                        <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'low complexity with self-limited or minor problems')">minor problems</button>
+                        <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'low complexity with a stable, chronic illness')">stable chronic</button>
+                        <button data-section="ComplexityLow" onclick="handleButtonClick(this, 'an acute, uncomplicated illness or injury')">acute, uncomplicated</button>
+                        <textarea id="ComplexityLowText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityLowText')"></textarea>
+                    </div>
 
-            <i style="font-size: 0.85em;">High Complexity</i>
-            <div class="input-group">
-                <button data-section="ComplexityHigh" onclick="handleButtonClick(this, 'high complexity with a chronic illness with severe exacerbation/progression')">chronic w/ severe exac</button>
-                <button data-section="ComplexityHigh" onclick="handleButtonClick(this, 'high complexity with an acute or chronic illness or injury that poses a threat to life or bodily function')">acute/chronic with life/bodily threat</button>
-                <textarea id="ComplexityHighText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityHighText')"></textarea>
-            </div>
+                    <i style="font-size: 0.85em;">Moderate Complexity</i>
+                    <div class="input-group">
+                        <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with one or more chronic illness with exacerbation/progression')">chronic, exac</button>
+                        <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with two or more stable chronic illnesses')">multiple chronic</button>
+                        <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with an acute illness with systemic symptoms')">acute with systemic sx</button>
+                        <button data-section="ComplexityModerate" onclick="handleButtonClick(this, 'moderate complexity with an acute, complicated injury')">complicated injury</button>
+                        <textarea id="ComplexityModerateText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityModerateText')"></textarea>
+                    </div>
 
-            <br>
+                    <i style="font-size: 0.85em;">High Complexity</i>
+                    <div class="input-group">
+                        <button data-section="ComplexityHigh" onclick="handleButtonClick(this, 'high complexity with a chronic illness with severe exacerbation/progression')">chronic w/ severe exac</button>
+                        <button data-section="ComplexityHigh" onclick="handleButtonClick(this, 'high complexity with an acute or chronic illness or injury that poses a threat to life or bodily function')">acute/chronic with life/bodily threat</button>
+                        <textarea id="ComplexityHighText" placeholder="" onchange="updateRealTimeText('Complexity', 'ComplexityHighText')"></textarea>
+                    </div>
+                </div>
+            </details>
 
-            <!-- Data Reviewed -->
-            <strong><i style="font-size: 1.2em">Data Reviewed</i></strong><br>
+            <!-- Data Reviewed (open by default) -->
+            <details id="secData" open>
+                <summary>
+                    <strong><i style="font-size: 1.2em">Data Reviewed</i></strong>
+                </summary>
+                <div class="section-body">
+                    <i style="font-size: 0.85em;">External Notes</i>
+                    <div class="input-group">
+                        <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous inpatient and/or outpatient notes to inform my care of the patient in today’s visit')">inpt/outpt notes</button>
+                        <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous radiology reports which informed today’s care of the patient')">rad reports</button>
+                        <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous EKG reports')">EKG</button>
+                        <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous labs')">labs</button>
+                        <textarea id="ExternalNotesText" placeholder="" onchange="updateRealTimeText('External Notes', 'ExternalNotesText')"></textarea>
+                    </div>
 
-            <i style="font-size: 0.85em;">External Notes</i>
-            <div class="input-group">
-                <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous inpatient and/or outpatient notes to inform my care of the patient in today’s visit')">inpt/outpt notes</button>
-                <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous radiology reports which informed today’s care of the patient')">rad reports</button>
-                <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous EKG reports')">EKG</button>
-                <button data-section="ExternalNotes" onclick="handleButtonClick(this, 'I reviewed previous labs')">labs</button>
-                <textarea id="ExternalNotesText" placeholder="" onchange="updateRealTimeText('External Notes', 'ExternalNotesText')"></textarea>
-            </div>
+                    <i style="font-size: 0.85em;">Ordered/Reviewed Tests</i>
+                    <div class="input-group">
+                        <button data-section="OrderedReviewedTests" onclick="handleButtonClick(this, 'I ordered and independently reviewed the laboratory testing and/or imaging detailed in the patient’s chart')">See chart for details</button>
+                        <textarea id="OrderedReviewedTestsText" placeholder="" onchange="updateRealTimeText('Ordered/Reviewed Tests', 'OrderedReviewedTestsText')"></textarea>
+                    </div>
 
-            <i style="font-size: 0.85em;">Ordered/Reviewed Tests</i>
-            <div class="input-group">
-                <button data-section="OrderedReviewedTests" onclick="handleButtonClick(this, 'I ordered and independently reviewed the laboratory testing and/or imaging detailed in the patient’s chart')">See chart for details</button>
-                <textarea id="OrderedReviewedTestsText" placeholder="" onchange="updateRealTimeText('Ordered/Reviewed Tests', 'OrderedReviewedTestsText')"></textarea>
-            </div>
+                    <i style="font-size: 0.85em;">Independent Historian</i>
+                    <div class="input-group">
+                        <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'a history was acquired from EMS personnel including presentation in the field and relevant vital signs and/or labs')">EMS</button>
+                        <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s spouse that informed decision making')">spouse</button>
+                        <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s parent(s) that informed decision making')">parent</button>
+                        <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s family that informed decision making')">family</button>
+                        <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s outpatient provider that informed decision making')">outpatient provider</button>
+                        <textarea id="IndependentHistorianText" placeholder="" onchange="updateRealTimeText('Independent Historian', 'IndependentHistorianText')"></textarea>
+                    </div>
 
-            <i style="font-size: 0.85em;">Independent Historian</i>
-            <div class="input-group">
-                <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'a history was acquired from EMS personnel including presentation in the field and relevant vital signs and/or labs')">EMS</button>
-                <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s spouse that informed decision making')">spouse</button>
-                <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s parent(s) that informed decision making')">parent</button>
-                <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s family that informed decision making')">family</button>
-                <button data-section="IndependentHistorian" onclick="handleButtonClick(this, 'relevant history was provided by the patient’s outpatient provider that informed decision making')">outpatient provider</button>
-                <textarea id="IndependentHistorianText" placeholder="" onchange="updateRealTimeText('Independent Historian', 'IndependentHistorianText')"></textarea>
-            </div>
+                    <i style="font-size: 0.85em;">Independent Radiology Review</i>
+                    <div class="input-group">
+                        <button data-section="IndependentRadiologyReview" onclick="handleButtonClick(this, 'I have included an independent radiology review in the chart')">see chart</button>
+                        <button data-section="IndependentRadiologyReview" onclick="handleButtonClick(this, 'I have independently reviewed the radiology tests performed with the following interpretation')">see below</button>
+                        <textarea id="IndependentRadiologyReviewText" placeholder="Include independent radiology report here" onchange="updateRealTimeText('Independent Radiology Review', 'IndependentRadiologyReviewText')"></textarea>
+                    </div>
 
-            <i style="font-size: 0.85em;">Independent Radiology Review</i>
-            <div class="input-group">
-                <button data-section="IndependentRadiologyReview" onclick="handleButtonClick(this, 'I have included an independent radiology review in the chart')">see chart</button>
-                <button data-section="IndependentRadiologyReview" onclick="handleButtonClick(this, 'I have independently reviewed the radiology tests performed with the following interpretation')">see below</button>
-                <textarea id="IndependentRadiologyReviewText" placeholder="Include independent radiology report here" onchange="updateRealTimeText('Independent Radiology Review', 'IndependentRadiologyReviewText')"></textarea>
-            </div>
+                    <i style="font-size: 0.85em;">Consultant Discussion</i>
+                    <div class="input-group">
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed the care with the hospitalist who has agreed to admit the patient')">hospitalist admit</button>
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have spoken with the patient’s primary care provider team about appropriate outpatient follow-up')">PCP f/u</button>
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed with specialty consultants about active management of the patient')">consultant</button>
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed with mental health providers about active care of the patient')">mental health</button>
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have medical management of the patient with pharmacist')">pharmacy</button>
+                        <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed disposition planning with physical therapy and/or case management')">PT/CM</button>
+                        <textarea id="ConsultantDiscussionText" placeholder="" onchange="updateRealTimeText('Consultant Discussion', 'ConsultantDiscussionText')"></textarea>
+                    </div>
+                </div>
+            </details>
 
-            <i style="font-size: 0.85em;">Consultant Discussion</i>
-            <div class="input-group">
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed the care with the hospitalist who has agreed to admit the patient')">hospitalist admit</button>
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have spoken with the patient’s primary care provider team about appropriate outpatient follow-up')">PCP f/u</button>
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed with specialty consultants about active management of the patient')">consultant</button>
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed with mental health providers about active care of the patient')">mental health</button>
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have medical management of the patient with pharmacist')">pharmacy</button>
-                <button data-section="ConsultantDiscussion" onclick="handleButtonClick(this, 'I have discussed disposition planning with physical therapy and/or case management')">PT/CM</button>
-                <textarea id="ConsultantDiscussionText" placeholder="" onchange="updateRealTimeText('Consultant Discussion', 'ConsultantDiscussionText')"></textarea>
-            </div>
-
-            <br>
-
-            <!-- Risk of Patient Management -->
-            <strong><i style="font-size: 1.2em">Risk of Patient Management</i></strong><br>
-            <div class="input-group">
-                <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included the prescription of medications for ongoing care')">rx management</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'management included the use of parenteral controlled substances for pain and/or anxiety management')">parenteral controlled substance</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'drug therapy was administered that required intensive monitoring for toxicity')">IV drug therapy</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'hospitalization and/or escalation of care was considered in management of the patient')">hospitalization decision</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included the discussion and consideration of elective or emergent surgery')">surgery</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included consideration of social determinants of health which impacted care and disposition planning')">SDOH</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'decision was made to not resuscitate or de-escalate care because of poor prognosis')">de-escalation</button>
-                <button data-section="Risk" onclick="handleButtonClick(this, 'clinical decision tools were used in patient management to determine appropriateness of diagnostic workup')">clinical decision tools</button>
-                <textarea id="RiskText" placeholder="" onchange="updateRealTimeText('Risk', 'RiskText')"></textarea>
-            </div>
+            <!-- Risk of Patient Management (open by default) -->
+            <details id="secRisk" open>
+                <summary>
+                    <strong><i style="font-size: 1.2em">Risk of Patient Management</i></strong>
+                </summary>
+                <div class="section-body">
+                    <div class="input-group">
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'I considered escalation of patient's care including consideration of admission or transfer)">escalation of care considered</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included the prescription of medications for ongoing care')">rx management</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'management included the use of parenteral controlled substances for pain and/or anxiety management')">parenteral controlled substance</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'drug therapy was administered that required intensive monitoring for toxicity')">IV drug therapy</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'hospitalization and/or escalation of care was considered in management of the patient')">hospitalization decision</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included the discussion and consideration of elective or emergent surgery')">surgery</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'management of the patient included consideration of social determinants of health which impacted care and disposition planning')">SDOH</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'decision was made to not resuscitate or de-escalate care because of poor prognosis')">de-escalation</button>
+                        <button data-section="Risk" onclick="handleButtonClick(this, 'clinical decision tools were used in patient management to determine appropriateness of diagnostic workup')">clinical decision tools</button>
+                        <textarea id="RiskText" placeholder="" onchange="updateRealTimeText('Risk', 'RiskText')"></textarea>
+                    </div>
+                </div>
+            </details>
         </div>
 
         <!-- Output Section -->
@@ -114,20 +162,34 @@
             <div id="outputArea"></div>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
-        
+
             <!-- Macro Buttons Section -->
             <div class="macro-section">
                 <h3>Macros</h3>
                 <button onclick="triggerMacro(['ComplexityHigh-acute/chronic with life/bodily threat', 'OrderedReviewedTests-See chart for details', 'IndependentRadiologyReview-see chart', 'Risk-clinical decision tools'], this, 'ComplexityHighText', 'workup of chest pain with a broad differential including the evaluation of multiple potential life threatening conditions')">Chest Pain</button>
-                
+
                 <button onclick="triggerMacro(['ComplexityHigh-acute/chronic with life/bodily threat', 'OrderedReviewedTests-See chart for details', 'IndependentRadiologyReview-see chart', 'ConsultantDiscussion-hospitalist admit', 'Risk-IV drug therapy', 'Risk-hospitalization decision'], this, 'ComplexityHighText', 'concern for sepsis requiring complex diagnostic and therapeutic management with threat to life', 'RiskText', 'IV antibiotics targeting the suspected infection were administered')">Sepsis</button>
             </div>
         </div>
     </div>
 
-     <footer>
-    </footer>
+    <footer></footer>
 
     <script src="mdmscript.js"></script>
+    <script>
+        // Ensure initial open/closed state exactly as requested:
+        // Complexity collapsed, Data & Risk open. If your CSS/JS toggles based on classes later,
+        // this guarantees a correct initial state on load.
+        document.addEventListener('DOMContentLoaded', () => {
+            const complexity = document.getElementById('secComplexity');
+            const data = document.getElementById('secData');
+            const risk = document.getElementById('secRisk');
+
+            complexity.removeAttribute('open');
+            data.setAttribute('open', '');
+            risk.setAttribute('open', '');
+        });
+    </script>
 </body>
 </html>
+

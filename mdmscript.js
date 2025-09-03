@@ -1,7 +1,7 @@
 // Define the order of sections for reordering
 const sectionOrder = [
-    'ComplexityLow', 'ComplexityModerate', 'ComplexityHigh', 
-    'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian', 
+    'ComplexityLow', 'ComplexityModerate', 'ComplexityHigh',
+    'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian',
     'IndependentRadiologyReview', 'ConsultantDiscussion', 'Risk'
 ];
 
@@ -44,7 +44,10 @@ function removeText(text, button) {
     const outputArea = document.getElementById('outputArea');
 
     const sectionDiv = document.getElementById(sectionId);
+    if (!sectionDiv) return;
+
     const outputText = sectionDiv.querySelector('.output-text');
+    if (!outputText) return;
 
     // Remove the button-generated text
     outputText.textContent = outputText.textContent
@@ -126,11 +129,10 @@ function addMainHeader(outputArea) {
 
 // Function to remove the main header if there's no content
 function removeMainHeader(outputArea) {
-    if (!outputArea.innerHTML.trim()) {
-        const header = outputArea.querySelector('h2');
-        if (header) {
-            header.remove();
-        }
+    const hasContent = Array.from(outputArea.children).some(child => child.id && child.id.startsWith('output-'));
+    const header = outputArea.querySelector('h2');
+    if (!hasContent && header) {
+        outputArea.innerHTML = ''; // clear entirely
     }
 }
 
@@ -177,38 +179,4 @@ function triggerMacro(buttonIds, macroButton, ...freeTexts) {
 // Utility function to format section names with spaces between words
 function formatSectionName(section) {
     return section
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/^[a-z]/, match => match.toUpperCase())
-        .trim();
-}
-
-// Function to copy the output text to the clipboard
-function copyToClipboard() {
-    const outputArea = document.getElementById('outputArea');
-    const range = document.createRange();
-    range.selectNode(outputArea);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-}
-
-// Function to clear all output and reset all buttons
-function clearOutput() {
-    // Clear the output area
-    const outputArea = document.getElementById('outputArea');
-    outputArea.innerHTML = '';
-
-    // Reset all buttons
-    document.querySelectorAll('.pressed').forEach(button => {
-        button.classList.remove('pressed');
-    });
-
-    // Clear all textareas
-    document.querySelectorAll('textarea').forEach(textarea => {
-        textarea.value = '';
-    });
-
-    // Remove the main header if it's there
-    removeMainHeader(outputArea);
-}
+        .replace(/([A-Z]
