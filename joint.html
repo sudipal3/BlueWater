@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Joint Aspiration/Injection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Joint Aspiration/Injection</h2>
+            
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family is given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained, patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained, family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+                
+                <h3>Indication</h3>
+                <button data-section="indication" onclick="handleButtonClick(this, 'diagnostic aspiration for evaluation of fluid for signs of infection or inflammatory process')">diagnostic aspiration</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'therapeutic injection of joint for symptomatic management')">therapeutic injection</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+            
+                <h3>Location</h3>
+                <button data-section="location" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'knee')">knee</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'shoulder')">shoulder</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'wrist')">wrist</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'ankle')">ankle</button>
+                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
+            
+                <h3>Ultrasound</h3>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'dynamic ultrasound was used to visualize the fluid pocket and help guide needle placement')">US used</button>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks and clinical assessment was used to identify an appropriate location for needle insertion')">US not used</button>
+                <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
+            
+                <h3>Technique</h3>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the patient is prepared with proper sterile technique and I used sterile gloves/mask throughout the procedure')">sterile prep/drape</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the site was prepped and draped in a sterile fashion. 1% lidocaine was used to numb the skin overlying the affected area. A needle and syringe was inserted with negative pressure aspiration until fluid was aspirated. Fluid was collected and sent for laboratory analysis. The needle was removed and no leaking was noted. A sterile dressing was placed over the puncture wound.')">diagnostic aspiration</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the site was prepped and draped in a sterile fashion. 1% lidocaine was used to numb the skin, soft tissue and peritoneum. A needle and syringe was inserted and the below specified medications were injected into the joint space. A sterile dressing was placed over the puncture wound.')">therapeutic injection</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+                
+                <h3>Fluid Details</h3>
+                <button data-section="fluid" onclick="handleButtonClick(this, 'straw colored fluid was removed')">straw colored</button>
+                <button data-section="fluid" onclick="handleButtonClick(this, 'bloody fluid was removed')">bloody</button>
+                <button data-section="fluid" onclick="handleButtonClick(this, 'purulent appearing fluid was removed')">purulent</button>
+                <textarea id="fluidText" placeholder="" onchange="updateRealTimeText('Fluid Details', 'fluidText')"></textarea>
+
+                <h3>Medications</h3>
+                <button data-section="medications" onclick="handleButtonClick(this, 'methylprednisolone was injected')">methylprednisolone</button>
+                <button data-section="medications" onclick="handleButtonClick(this, 'triamcinolone was injected')">triamcinolone</button>
+                <button data-section="medications" onclick="handleButtonClick(this, '0.5% bupivicaine was injected')">bupivicaine</button>
+                <textarea id="medicationsText" placeholder="" onchange="updateRealTimeText('Medications', 'medicationsText')"></textarea>
+                
+                <h3>Complications</h3>
+                <button data-section="complications" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced pain despite anesthetic application and/or procedural sedation')">pain</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'bleeding was noted at the injection site following the procedure')">bleeding</button>
+                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+                
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+    
+    <footer></footer>
+
+    <script src="joint.js"></script>
+</body>
+</html>
