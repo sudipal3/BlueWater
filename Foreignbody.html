@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Foreign Body Removal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Foreign Body Removal</h2>
+            
+            <!-- Consent Section -->
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family is given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="Consent" onclick="handleButtonClick(this, 'family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="ConsentText" placeholder="" onchange="updateRealTimeText('Consent', 'ConsentText')"></textarea>
+            </div>
+
+            <!-- Location Section -->
+            <div class="input-group">
+                <h3>Location</h3>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s skin was removed')">skin</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s eye was removed')">eye</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s rectum was removed')">rectum</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s vagina was removed')">vagina</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s mouth was removed')">mouth</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s ear was removed')">ear</button>
+                <button data-section="Location" onclick="handleButtonClick(this, 'foreign body in the patient’s nose was removed')">nose</button>
+                <textarea id="LocationText" placeholder="Specify the area on the body where the skin foreign body was removed" onchange="updateRealTimeText('Location', 'LocationText')"></textarea>
+            </div>
+
+            <!-- Object type Section -->
+            <div class="input-group">
+                <h3>Object type</h3>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a metallic object was the retained object')">metal</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a glass fragment was the retained object')">glass</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a wooden splinter was the retained object')">splinter</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a toy was the retained object')">toy</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'an insect was the retained object')">insect</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a fishhook was the retained object')">fishhook</button>
+                <button data-section="Object type" onclick="handleButtonClick(this, 'a rust ring was the retained object')">rust ring</button>
+                <textarea id="ObjectTypeText" placeholder="" onchange="updateRealTimeText('Object type', 'ObjectTypeText')"></textarea>
+            </div>
+
+            <!-- Imaging if applicable Section -->
+            <div class="input-group">
+                <h3>Imaging if applicable</h3>
+                <button data-section="Imaging if applicable" onclick="handleButtonClick(this, 'an XRay was used to visualize the retained foreign body')">XRay</button>
+                <textarea id="ImagingText" placeholder="" onchange="updateRealTimeText('Imaging if applicable', 'ImagingText')"></textarea>
+            </div>
+
+            <!-- Method Section -->
+            <div class="input-group">
+                <h3>Method</h3>
+                <button data-section="Method" onclick="handleButtonClick(this, 'forceps were used to remove the foreign body')">forceps</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'a needle was used to remove the foreign body')">needle</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'a cotton tip applicator was used to remove the foreign body')">cotton tip applicator</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'a Katz balloon was used to remove the nasal foreign body')">Katz balloon</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'the foreign body was removed with manual traction')">manual traction</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'a scalpel was used to incise the skin and remove the foreign body')">scalpel</button>
+                <button data-section="Method" onclick="handleButtonClick(this, 'the fishhook was cut and then pushed through the skin to remove the object completely')">fishhook removal</button>
+                <textarea id="MethodText" placeholder="" onchange="updateRealTimeText('Method', 'MethodText')"></textarea>
+            </div>
+
+            <!-- Outcome Section -->
+            <div class="input-group">
+                <h3>Outcome</h3>
+                <button data-section="Outcome" onclick="handleButtonClick(this, 'the foreign body was successfully removed from the patient')">successful</button>
+                <button data-section="Outcome" onclick="handleButtonClick(this, 'the foreign body was unable to be removed from the patient despite above attempt')">unsuccessful</button>
+                <textarea id="OutcomeText" placeholder="" onchange="updateRealTimeText('Outcome', 'OutcomeText')"></textarea>
+            </div>
+
+            <!-- Complication Section -->
+            <div class="input-group">
+                <h3>Complication</h3>
+                <button data-section="Complication" onclick="handleButtonClick(this, 'none')">none</button>
+                <button data-section="Complication" onclick="handleButtonClick(this, 'patient experienced pain during the procedure despite analgesia and/or sedation')">pain</button>
+                <textarea id="ComplicationText" placeholder="" onchange="updateRealTimeText('Complication', 'ComplicationText')"></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div class="input-group">
+                <h3>Provider</h3>
+                <textarea id="ProviderText" placeholder="" onchange="updateRealTimeText('Provider', 'ProviderText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+
+            
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="foreignbodyscript.js"></script>
+</body>
+</html>
