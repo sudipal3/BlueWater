@@ -1,5 +1,17 @@
 // Define the order of sections
-const sectionOrder = ['timeout', 'indication', 'consent', 'assessment', 'preparation', 'medications', 'technique', 'confirmation', 'complications', 'provider'];
+const sectionOrder = [
+    'timeout',
+    'intubation-time',   // <-- NEW: Intubation Time section key
+    'indication',
+    'consent',
+    'assessment',
+    'preparation',
+    'medications',
+    'technique',
+    'confirmation',
+    'complications',
+    'provider'
+];
 
 // Function to handle adding text when a button is pressed
 function addText(text, button) {
@@ -68,6 +80,43 @@ function handleButtonClick(button, text) {
         addText(text, button);
     }
 }
+
+// ===== NEW: Intubation Time "Now" handler =====
+function handleIntubationTimeNow() {
+    const now = new Date();
+    // 24-hour HH:MM format (like your NIH script)
+    const formattedTime = now.toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    // 1) Put time into the textarea
+    const textarea = document.getElementById('intubationTimeText');
+    if (textarea) {
+        textarea.value = formattedTime;
+    }
+
+    // 2) Create/update the Intubation Time section in the output directly
+    const outputArea = document.getElementById('outputArea');
+    const sectionId = 'output-intubation-time';
+    let sectionDiv = document.getElementById(sectionId);
+
+    if (!sectionDiv) {
+        sectionDiv = document.createElement('div');
+        sectionDiv.id = sectionId;
+        sectionDiv.innerHTML = `<strong>Intubation Time:</strong> <span class="output-text"></span><br>`;
+        outputArea.appendChild(sectionDiv);
+    }
+
+    const outputText = sectionDiv.querySelector('.output-text');
+    outputText.textContent = formattedTime;
+
+    // 3) Keep ordering and header consistent
+    reorderSections(outputArea);
+    addMainHeader(outputArea);
+}
+// ===== END NEW =====
 
 // Function to handle real-time text input (free text)
 function updateRealTimeText(sectionTitle, textareaId) {

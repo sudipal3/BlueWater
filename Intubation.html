@@ -24,6 +24,12 @@
             <button data-section="timeout" onclick="handleButtonClick(this, 'pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity')">protocol/checklist</button>
             <textarea id="timeoutText" placeholder="" onchange="updateRealTimeText('Timeout', 'timeoutText')"></textarea>
             
+            <!-- Intubation Time section -->
+            <h3 style="color: blue; font-weight: bold;">Intubation Time</h3>
+            <button onclick="handleIntubationTimeNow()">Now</button>
+            <textarea id="intubationTimeText" placeholder="Document intubation time here" onchange="updateRealTimeText('Intubation Time', 'intubationTimeText')"></textarea>
+            <!-- END NEW -->
+
             <h3>Indication</h3>
             <button data-section="indication" onclick="handleButtonClick(this, 'airway protection')">airway protection</button>
             <button data-section="indication" onclick="handleButtonClick(this, 'respiratory failure')">resp failure</button>
