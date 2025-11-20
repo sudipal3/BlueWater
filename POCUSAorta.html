@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS: Aorta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>POCUS: Aorta</h2>
+            
+            <!-- Time Section -->
+            <div class="input-group">
+                <h3>Time</h3>
+                <button data-section="Time" onclick="handleTimeButtonClick(this)">Now</button>
+                <textarea id="TimeText" placeholder="" onchange="updateRealTimeText('Time', 'TimeText')"></textarea>
+            </div>
+
+            <!-- Indication Section -->
+            <div class="input-group">
+                <h3>Indication</h3>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'abdominal pain')">abdominal pain</button>
+                <button data-section="Indication" onclick="handleButtonClick(this, 'pulsatile mass')">pulsatile mass</button>
+                <textarea id="IndicationText" placeholder="" onchange="updateRealTimeText('Indication', 'IndicationText')"></textarea>
+            </div>
+
+            <!-- Views Section -->
+            <div class="input-group">
+                <h3>Views</h3>
+                <button data-section="Views" onclick="handleButtonClick(this, 'transverse')">transverse</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'sagittal')">sagittal</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'proximal aorta')">proximal</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'mid aorta')">mid aorta</button>
+                <button data-section="Views" onclick="handleButtonClick(this, 'iliacs')">iliacs</button>
+                <textarea id="ViewsText" placeholder="" onchange="updateRealTimeText('Views', 'ViewsText')"></textarea>
+            </div>
+
+            <!-- Findings Section -->
+            <div class="input-group">
+                <h3>Findings</h3>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'aorta was of normal caliber')">normal caliber</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'no dissection flap was noted')">- dissection flap</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'aorta was noted to be dilated with below specified diameter')">dilated aorta</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'a dissection flap was noted')">+ dissection flap</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'free fluid was noted in the abdomen')">+free fluid</button>
+                <button data-section="Findings" onclick="handleButtonClick(this, 'a previously known graft was visualized in the abdomen')">previous graft</button>
+                <textarea id="FindingsText" placeholder="Specify the abdominal aortic diameter here" onchange="updateRealTimeText('Findings', 'FindingsText')"></textarea>
+            </div>
+
+            <!-- Interpretation Section -->
+            <div class="input-group">
+                <h3>Interpretation</h3>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the descending aorta was visualized and appeared normal without concerning findings for AAA or aortic dissection')">normal aorta</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'the abdominal aorta was noted to be dilated with concern for acute AAA')">AAA</button>
+                <button data-section="Interpretation" onclick="handleButtonClick(this, 'findings are concerning for dissection with involvement of the descending aorta')">dissection</button>
+                <textarea id="InterpretationText" placeholder="Provide an interpretation here." onchange="updateRealTimeText('Interpretation', 'InterpretationText')"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="pocusaortascript.js"></script>
+</body>
+</html>
