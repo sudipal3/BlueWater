@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional Nerve Block</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Procedure Note: Regional Nerve Block</h2>
+            
+            <div class="input-group">
+                <h3>Consent</h3>
+                <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient and they verbally agree to proceed with planned procedure')">verbal</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+                <button data-section="consent" onclick="handleButtonClick(this, 'family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+                <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+
+                <h3>Indication</h3>
+                <button data-section="indication" onclick="handleButtonClick(this, 'acute pain control')">pain control</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'fracture reduction')">fracture reduction</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'dislocation')">dislocation</button>
+                <button data-section="indication" onclick="handleButtonClick(this, 'procedural analgesia')">procedural analgesia</button>
+                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+
+                <h3>Location</h3>
+                <button data-section="location" onclick="handleButtonClick(this, 'right')">right</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'left')">left</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'femoral')">femoral</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'fascia iliaca')">fascia iliaca</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'interscalane')">interscalane</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'popliteal')">popliteal</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'median')">median</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'ulnar')">ulnar</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'supraorbital')">supraorbital</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'serratus anterior')">serratus anterior</button>
+                <button data-section="location" onclick="handleButtonClick(this, 'infraalveolar')">infraalveolar</button>
+                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
+
+                <h3>Ultrasound</h3>
+                <button data-section="ultrasound" onclick="handleButtonClick(this, 'ultrasound is used to visualize the needle location during block application')">US used</button>
+                <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
+
+                <h3>Technique</h3>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the procedural area is prepped appropriately and a sterile probe cover and gel were used')">sterile procedure</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'an anesthesia-specific needle was used for the procedure')">anesthesia needle</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'the needle was guided to the correct position using ultrasound guidance. When in the target area, aspiration was performed without blood return to rule out intravascular needle placement. The anesthetic medication was then injected.')">general procedure</button>
+                <button data-section="technique" onclick="handleButtonClick(this, 'hydroplaning with saline was used to better visualize the needle tip in the correct space')">hydroplaning</button>
+                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
+
+                <h3>Medication</h3>
+                <button data-section="medication" onclick="handleButtonClick(this, 'lidocaine')">lido</button>
+                <button data-section="medication" onclick="handleButtonClick(this, 'lidocaine with epinephrine')">lido w/ epi</button>
+                <button data-section="medication" onclick="handleButtonClick(this, 'bupivicaine')">bupiv</button>
+                <button data-section="medication" onclick="handleButtonClick(this, 'bupivicaine with epinephrine')">bupiv w/ epi</button>
+                <button data-section="medication" onclick="handleButtonClick(this, 'ropivicaine')">ropivicaine</button>
+                <textarea id="medicationText" placeholder="Specify the medication concentration and/or  volume injected" onchange="updateRealTimeText('Medication', 'medicationText')"></textarea>
+
+                <h3>Post-Procedure assessment</h3>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'block was successful with appropriate anesthesia')">block successful</button>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'block was not successful with inadequate anesthesia')">block unsuccessful</button>
+                <button data-section="postprocedure" onclick="handleButtonClick(this, 'patient with neurovascularly intact on repeat assessment')">n/v intact</button>
+                <textarea id="postprocedureText" placeholder="" onchange="updateRealTimeText('Postprocedure', 'postprocedureText')"></textarea>
+
+                <h3>Complications</h3>
+                <button data-section="complications" onclick="handleButtonClick(this, 'there were no complications')">none</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'pain was noted during the procedure')">pain</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'bleeding was noted during the procedure')">bleeding</button>
+                <button data-section="complications" onclick="handleButtonClick(this, 'signs of  systemic toxicity were noted from the procedure, documented separately')">LAST</button>
+                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+
+                <h3>Provider</h3>
+                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+
+                <div id="additionalProcedureNote"></div>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="regionalnerveblockscript.js"></script>
+</body>
+</html>
