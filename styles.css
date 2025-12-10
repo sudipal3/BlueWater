@@ -281,3 +281,17 @@ button:hover {
 
 .collapsible-content { display: none; padding: .25rem 0 .5rem; }
 .collapsible[aria-expanded="true"] + .collapsible-content { display: block; }
+
+#sepsis-criteria {
+    font-size: 0.8rem;   /* Adjust smaller or larger as desired */
+    line-height: 1.2;
+}
+
+#sepsis-criteria h3 {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#sepsis-criteria ul {
+    margin-left: 20px;
+}
