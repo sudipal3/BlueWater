@@ -1,7 +1,7 @@
 // Define the order of sections
 const sectionOrder = [
+    'intubation-time',
     'timeout',
-    'intubation-time',   // <-- NEW: Intubation Time section key
     'indication',
     'consent',
     'assessment',
@@ -81,10 +81,10 @@ function handleButtonClick(button, text) {
     }
 }
 
-// ===== NEW: Intubation Time "Now" handler =====
+// ===== Intubation Time "Now" handler =====
 function handleIntubationTimeNow() {
     const now = new Date();
-    // 24-hour HH:MM format (like your NIH script)
+    // 24-hour HH:MM format
     const formattedTime = now.toLocaleTimeString('en-US', {
         hour12: false,
         hour: '2-digit',
@@ -116,7 +116,7 @@ function handleIntubationTimeNow() {
     reorderSections(outputArea);
     addMainHeader(outputArea);
 }
-// ===== END NEW =====
+// ===== END Intubation Time handler =====
 
 // Function to handle real-time text input (free text)
 function updateRealTimeText(sectionTitle, textareaId) {
@@ -194,9 +194,54 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Helper: show inline copy error under the Copy/Clear buttons
+function showCopyError(message) {
+    const errorId = 'copyErrorMessage';
+    let errorElem = document.getElementById(errorId);
+
+    if (!errorElem) {
+        errorElem = document.createElement('div');
+        errorElem.id = errorId;
+        errorElem.style.color = 'red';
+        errorElem.style.fontWeight = 'bold';
+        errorElem.style.marginTop = '8px';
+
+        // Insert right after the "Clear" button inside the output-section
+        const clearButton = document.querySelector('button[onclick="clearOutput()"]');
+        if (clearButton && clearButton.parentNode) {
+            clearButton.parentNode.insertBefore(errorElem, clearButton.nextSibling);
+        } else {
+            // Fallback: append inside .output-section, then body as last resort
+            const outputSection = document.querySelector('.output-section');
+            if (outputSection) {
+                outputSection.appendChild(errorElem);
+            } else {
+                document.body.appendChild(errorElem);
+            }
+        }
+    }
+
+    errorElem.textContent = message || '';
+}
+
 // Function to copy the output text to the clipboard
 function copyToClipboard() {
     const outputArea = document.getElementById('outputArea');
+
+    // ===== SOFT WARNING: Intubation Time missing =====
+    const timeSection = document.getElementById('output-intubation-time');
+    const timeTextSpan = timeSection ? timeSection.querySelector('.output-text') : null;
+    const timeText = timeTextSpan ? timeTextSpan.textContent.trim() : '';
+
+    if (!timeText) {
+        // Show warning, but DO NOT block copying
+        showCopyError("Please include an intubation time in your note.");
+    } else {
+        // Clear any previous warning once time is present
+        showCopyError("");
+    }
+    // ===== END SOFT WARNING =====
+
     const range = document.createRange();
     range.selectNode(outputArea);
     window.getSelection().removeAllRanges();
@@ -241,6 +286,9 @@ function clearOutput() {
     document.querySelectorAll('.pressed').forEach(button => {
         button.classList.remove('pressed');
     });
+
+    // Clear any copy warning when clearing output
+    showCopyError("");
 
     // Remove the main header if it's there
     removeMainHeader(outputArea);
