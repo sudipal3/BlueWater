@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review of Symptoms</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Review of Symptoms</h2>
+
+            <div class="input-group">
+
+                <!-- GLOBAL ROS NEGATIVE -->
+                <h3>General ROS Statement</h3>
+                <button data-section="global" onclick="handleButtonClick(this, 'A full review of symptoms was completed and was negative except for as noted in the HPI')">
+                    Negative except per HPI
+                </button>
+                <textarea id="globalText" onchange="updateRealTimeText('Global', 'globalText')"></textarea>
+
+                <!-- CONSTITUTIONAL -->
+                <h3>Constitutional</h3>
+                <button data-section="constitutional" onclick="handleButtonClick(this, 'no fever')">no fever</button>
+                <button data-section="constitutional" onclick="handleButtonClick(this, 'no chills')">no chills</button>
+                <button data-section="constitutional" onclick="handleButtonClick(this, 'no fatigue')">no fatigue</button>
+                <button data-section="constitutional" onclick="handleButtonClick(this, 'no weight loss')">no weight loss</button>
+                <button data-section="constitutional" onclick="handleButtonClick(this, 'no diaphoresis')">no diaphoresis</button>
+                <textarea id="constitutionalText" onchange="updateRealTimeText('Constitutional', 'constitutionalText')"></textarea>
+
+                <!-- HEENT -->
+                <h3>HEENT</h3>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no sore throat')">no sore throat</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no congestion')">no congestion</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no ear pain')">no ear pain</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no vision changes')">no vision changes</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no eye discharge')">no eye discharge</button>
+                <textarea id="heentText" onchange="updateRealTimeText('HEENT', 'heentText')"></textarea>
+
+                <!-- CARDIO -->
+                <h3>Cardiovascular</h3>
+                <button data-section="cardio" onclick="handleButtonClick(this, 'no chest pain')">no chest pain</button>
+                <button data-section="cardio" onclick="handleButtonClick(this, 'no palpitations')">no palpitations</button>
+                <button data-section="cardio" onclick="handleButtonClick(this, 'no leg swelling')">no leg swelling</button>
+                <textarea id="cardioText" onchange="updateRealTimeText('Cardiovascular', 'cardioText')"></textarea>
+
+                <!-- RESP -->
+                <h3>Respiratory</h3>
+                <button data-section="resp" onclick="handleButtonClick(this, 'no shortness of breath')">no shortness of breath</button>
+                <button data-section="resp" onclick="handleButtonClick(this, 'no cough')">no cough</button>
+                <button data-section="resp" onclick="handleButtonClick(this, 'no wheezing')">no wheezing</button>
+                <textarea id="respText" onchange="updateRealTimeText('Respiratory', 'respText')"></textarea>
+
+                <!-- GI -->
+                <h3>Gastrointestinal</h3>
+                <button data-section="gi" onclick="handleButtonClick(this, 'no abdominal pain')">no abdominal pain</button>
+                <button data-section="gi" onclick="handleButtonClick(this, 'no nausea')">no nausea</button>
+                <button data-section="gi" onclick="handleButtonClick(this, 'no vomiting')">no vomiting</button>
+                <button data-section="gi" onclick="handleButtonClick(this, 'no diarrhea')">no diarrhea</button>
+                <button data-section="gi" onclick="handleButtonClick(this, 'no constipation')">no constipation</button>
+                <textarea id="giText" onchange="updateRealTimeText('Gastrointestinal', 'giText')"></textarea>
+
+                <!-- GU -->
+                <h3>Genitourinary</h3>
+                <button data-section="gu" onclick="handleButtonClick(this, 'no dysuria')">no dysuria</button>
+                <button data-section="gu" onclick="handleButtonClick(this, 'no hematuria')">no hematuria</button>
+                <button data-section="gu" onclick="handleButtonClick(this, 'no urinary frequency')">no urinary frequency</button>
+                <button data-section="gu" onclick="handleButtonClick(this, 'no flank pain')">no flank pain</button>
+                <textarea id="guText" onchange="updateRealTimeText('Genitourinary', 'guText')"></textarea>
+
+                <!-- MSK -->
+                <h3>Musculoskeletal</h3>
+                <button data-section="msk" onclick="handleButtonClick(this, 'no joint pain')">no joint pain</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'no back pain')">no back pain</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'no myalgias')">no myalgias</button>
+                <textarea id="mskText" onchange="updateRealTimeText('Musculoskeletal', 'mskText')"></textarea>
+
+                <!-- SKIN -->
+                <h3>Skin</h3>
+                <button data-section="skin" onclick="handleButtonClick(this, 'no rash')">no rash</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'no pruritus')">no pruritus</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'no wounds')">no wounds</button>
+                <textarea id="skinText" onchange="updateRealTimeText('Skin', 'skinText')"></textarea>
+
+                <!-- NEURO -->
+                <h3>Neurologic</h3>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'no headache')">no headache</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'no dizziness')">no dizziness</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'no weakness')">no weakness</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'no numbness')">no numbness</button>
+                <textarea id="neuroText" onchange="updateRealTimeText('Neurologic', 'neuroText')"></textarea>
+
+                <!-- PSYCH -->
+                <h3>Psychiatric</h3>
+                <button data-section="psych" onclick="handleButtonClick(this, 'no anxiety')">no anxiety</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'no depression')">no depression</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'no confusion')">no confusion</button>
+                <textarea id="psychText" onchange="updateRealTimeText('Psychiatric', 'psychText')"></textarea>
+
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+<script src="rosscript.js"></script>
+</body>
+</html>

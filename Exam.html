@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Examination</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Physical Examination</h2>
+
+            <div class="input-group">
+
+                <!-- GENERAL -->
+                <h3>General</h3>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient is in no acute distress')">no distress</button>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient is noted to be uncomfortable')">uncomfortable</button>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient appears ill')">ill-appearing</button>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient appears toxic')">toxic-appearing</button>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient is diaphoretic')">diaphoretic</button>
+                <button data-section="general" onclick="handleButtonClick(this, 'the patient appears well')">well-appearing</button>
+                <textarea id="generalText" onchange="updateRealTimeText('General', 'generalText')"></textarea>
+
+                <!-- HEENT -->
+                <h3>HEENT</h3>
+                <button data-section="heent" onclick="handleButtonClick(this, 'normal conjunctivae')">normal conjunctivae</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'normal TM noted bilaterally')">normal TM bilaterally</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'pupils are equal, round, and reactive to light')">PERRL</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'extraocular movements are intact')">EOMI</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'mucous membranes are moist')">moist mucous membranes</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'mucous membranes are dry')">dry mucous membranes</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'pharyngeal erythema was present')">pharyngeal erythema</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'no pharyngeal erythema was noted')">no pharyngeal erythema</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'the oropharynx was clear')">clear oropharynx</button>
+                <button data-section="heent" onclick="handleButtonClick(this, 'tonsillar exudates were present')">tonsillar exudates</button>
+                <textarea id="heentText" onchange="updateRealTimeText('HEENT', 'heentText')"></textarea>
+
+                <!-- NECK -->
+                <h3>Neck</h3>
+                <button data-section="neck" onclick="handleButtonClick(this, 'the neck was supple')">supple</button>
+                <button data-section="neck" onclick="handleButtonClick(this, 'no meningismus was present')">no meningismus</button>
+                <button data-section="neck" onclick="handleButtonClick(this, 'tender cervical lymphadenopathy was present')">tender cervical LAD</button>
+                <button data-section="neck" onclick="handleButtonClick(this, 'no cervical lymphadenopathy was present')">no cervical LAD</button>
+                <button data-section="neck" onclick="handleButtonClick(this, 'the trachea was midline')">midline trachea</button>
+                <textarea id="neckText" onchange="updateRealTimeText('Neck', 'neckText')"></textarea>
+
+                <!-- CARDIAC -->
+                <h3>Cardiac</h3>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'heart had regular rate and rhythm')">regular rate and rhythm</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'the patient was tachycardic')">tachycardic</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'the patient was bradycardic')">bradycardic</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'a murmur was appreciated')">murmur present</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'no murmur was appreciated')">no murmur</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'distal pulses were normal')">normal pulses</button>
+                <button data-section="cardiac" onclick="handleButtonClick(this, 'an irregular rhythm was present')">irregular rhythm</button>
+                <textarea id="cardiacText" onchange="updateRealTimeText('Cardiac', 'cardiacText')"></textarea>
+
+                <!-- RESPIRATORY -->
+                <h3>Respiratory</h3>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'breath sounds were normal bilaterally')">normal breath sounds</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'no respiratory distress was noted')">no respiratory distress</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'wheezing was present')">wheezing</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'rales were noted')">rales</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'rhonchi were noted')">rhonchi</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'breath sounds were diminished')">diminished breath sounds</button>
+                <button data-section="respiratory" onclick="handleButtonClick(this, 'the patient was tachypneic')">tachypnea</button>
+                <textarea id="respiratoryText" onchange="updateRealTimeText('Respiratory', 'respiratoryText')"></textarea>
+
+                <!-- ABDOMINAL -->
+                <h3>Abdominal</h3>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'the abdomen was soft and nontender')">soft and nontender</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'the abdomen was tender to palpation')">tender</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'the abdomen was distended')">distended</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'no rebound or guarding was noted')">no rebound/guarding</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'rebound or guarding was present')">rebound/guarding present</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'bowel sounds were hyperactive')">hyperactive bowel sounds</button>
+                <button data-section="abdominal" onclick="handleButtonClick(this, 'bowel sounds were hypoactive')">hypoactive bowel sounds</button>
+                <textarea id="abdominalText" onchange="updateRealTimeText('Abdominal', 'abdominalText')"></textarea>
+
+                <!-- MSK -->
+                <h3>MSK</h3>
+                <button data-section="msk" onclick="handleButtonClick(this, 'normal range of motion')">normal ROM</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'limited range of motion was noted')">limited ROM</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'no deformity was present')">no deformity</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'a deformity was present')">deformity present</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'there was tenderness to palpation')">tenderness</button>
+                <button data-section="msk" onclick="handleButtonClick(this, 'no tenderness to palpation')">no tenderness</button>
+                <textarea id="mskText" onchange="updateRealTimeText('MSK', 'mskText')"></textarea>
+
+                <!-- SKIN -->
+                <h3>Skin</h3>
+                <button data-section="skin" onclick="handleButtonClick(this, 'the skin was warm and dry')">warm and dry</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'the skin was cool to touch')">cool</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'the patient was diaphoretic')">diaphoretic</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'a rash was present')">rash present</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'no rash was noted')">no rash</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'pallor was noted')">pallor</button>
+                <button data-section="skin" onclick="handleButtonClick(this, 'the patient appeared jaundiced')">jaundiced</button>
+                <textarea id="skinText" onchange="updateRealTimeText('Skin', 'skinText')"></textarea>
+
+                <!-- NEURO -->
+                <h3>Neuro</h3>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'the patient was alert and oriented to person, place, and time')">alert and oriented x3</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'the patient had a GCS of 15')">GCS 15</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'cranial nerves II–XII were intact')">cranial nerves intact</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'no focal neurologic deficits were noted')">no focal deficits</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'a focal neurologic deficit was present')">focal deficit present</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'strength was 5/5 in all extremities')">normal strength</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'weakness was noted in the affected extremity')">weakness</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'sensation was intact')">normal sensation</button>
+                <button data-section="neuro" onclick="handleButtonClick(this, 'a sensory deficit was noted')">sensation deficit</button>
+                <textarea id="neuroText" onchange="updateRealTimeText('Neuro', 'neuroText')"></textarea>
+
+                <!-- PSYCH -->
+                <h3>Psych</h3>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient had a normal mood and affect')">normal mood/affect</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient appeared anxious')">anxious</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient appeared depressed')">depressed</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient was agitated')">agitated</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient exhibited a flat affect')">flat affect</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient was cooperative')">cooperative</button>
+                <button data-section="psych" onclick="handleButtonClick(this, 'the patient was uncooperative')">uncooperative</button>
+                <textarea id="psychText" onchange="updateRealTimeText('Psych', 'psychText')"></textarea>
+
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+
+    <footer></footer>
+
+<script src="examscript.js"></script>
+</body>
+</html>
