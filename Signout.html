@@ -24,8 +24,6 @@
             <div class="input-group">
                 <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has an active mental health issue that is currently being evaluated for final disposition plan')">mental health</button>
                 <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has received medical treatment with a plan for symptomatic reassessment')">symptomatic reassessment</button>
-                <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'there are labs pending at time of signout that will require follow-up')">labs pending</button>
-                <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'there is imaging pending that will require follow-up')">imaging pending</button>
                 <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has generalized weakness requiring en evaluation by physical therapy and case management for final disposition')">PT/CM</button>
                 <textarea id="ActiveProblemText" placeholder="Provide any description of the patient’s ongoing problem and ED workup here" onchange="updateRealTimeText('Active problem', 'ActiveProblemText')"></textarea>
             </div>
@@ -61,6 +59,8 @@
                 <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'the patient’s home medications have been ordered and are currently being administered')">home meds ordered</button>
                 <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'PRN medication orders have been reviewed')">PRN meds</button>
                 <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a plan for repeat labs in the ED to help guide care and disposition')">repeat labs</button>
+                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there are labs pending at time of signout that will require follow-up')">labs pending</button>
+                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is imaging pending that will require follow-up')">imaging pending</button>
                 <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'code status has been reviewed and documented in the chart')">code status</button>
                 <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient sitter status has been reviewed and documented in the chart')">sitter status</button>
                 <textarea id="GeneralCareComponentsText" placeholder="" onchange="updateRealTimeText('General care components', 'GeneralCareComponentsText')"></textarea>
