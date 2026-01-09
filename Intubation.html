@@ -18,7 +18,6 @@
     <div class="form-section">
         <h2>Procedure Note: Intubation</h2>
         
-            
             <!-- Intubation Time section -->
             <h3>Intubation Time (mandatory: please be as accurate as possible)</h3>
             <button onclick="handleIntubationTimeNow()">Now</button>
@@ -77,7 +76,13 @@
             <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
             
             <h3>Confirmation of Tube</h3>
-            <button data-section="confirmation" onclick="handleButtonClick(this, 'continuous waveform capnography was used to confirm placement')" style="background-color: #87ceeb; color: white; border: 2px solid #000080;">ETCO2 waveform</button>
+            <!-- CHANGED: removed inline light-blue style; added class="blue-toggle" -->
+            <button data-section="confirmation"
+                    onclick="handleButtonClick(this, 'continuous waveform capnography was used to confirm placement')"
+                    class="blue-toggle">
+                ETCO2 waveform
+            </button>
+
             <button data-section="confirmation" onclick="handleButtonClick(this, 'tube was directly visualized passing through the cords')">direct visualization</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'good color change on colorimetry')">color change</button>
             <button data-section="confirmation" onclick="handleButtonClick(this, 'symmetric breath sounds were auscultated')">breath sounds</button>
@@ -85,7 +90,13 @@
             <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
             
             <h3>Complications</h3>
-            <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure, intubation successful on first pass and O2 sats above 90% throughout procedure')"style="background-color: #87ceeb; color: white; border: 2px solid #000080;">none, O2 over 90%, first pass</button>
+            <!-- CHANGED: removed inline light-blue style; added class="blue-toggle" -->
+            <button data-section="complications"
+                    onclick="handleButtonClick(this, 'no complications during the procedure intubation successful on first pass and O2 sats above 90% throughout procedure')"
+                    class="blue-toggle">
+                none, O2 over 90%, first pass
+            </button>
+
             <button data-section="complications" onclick="handleButtonClick(this, 'there was hypoxia noted during the intubation with an O2 sat <90% which improved following intubation and oxygenation')">hypoxia, less than 90%</button>
             <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypotension during or following the intubation with a SBP<90')">hypotension, SBP less than 90</button>
             <button data-section="complications" onclick="handleButtonClick(this, 'no hypotension was noted following the intubation')">no hypotension</button>
@@ -114,7 +125,6 @@
 
     </div>
 </div>
-
 
      <footer>
     </footer>
