@@ -1,4 +1,11 @@
-const sectionOrder = ['ct_scan_time', 'nih_score', 'thrombolytics', 'other_factors'];
+// ORDER OF SECTIONS (matches new layout)
+const sectionOrder = [
+    'last_known_well_time',
+    'nih_score',
+    'thrombolytics',
+    'contraindications',
+    'management_components'
+];
 
 function addText(text, button) {
     const sectionName = button.getAttribute('data-section');
@@ -52,6 +59,7 @@ function handleButtonClick(button, text) {
     }
 }
 
+// Free text behavior (same pattern you already use)
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
     const sectionName = textareaId.replace('Text', '');
@@ -71,11 +79,13 @@ function updateRealTimeText(sectionTitle, textareaId) {
     const newText = textarea.value.trim();
 
     if (newText) {
-        if (!outputText.textContent.includes(newText)) {
-            outputText.textContent += (outputText.textContent ? ', ' : '') + newText;
-        }
+        // Replace existing free-text content for this textarea-based section
+        // by setting the whole section to the new text (prevents endless comma-growth on edits)
+        outputText.textContent = newText;
     } else {
         sectionDiv.remove();
+
+        // Unpress any buttons in this same section (if any exist)
         const buttons = document.querySelectorAll(`button[data-section="${sectionName}"]`);
         buttons.forEach(button => button.classList.remove('pressed'));
     }
@@ -88,7 +98,8 @@ function formatSectionTitle(section) {
         .replace(/_/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase())
         .replace(/\bCt\b/i, 'CT')
-        .replace(/\bNih\b/i, 'NIH');
+        .replace(/\bNih\b/i, 'NIH')
+        .replace(/\bLvo\b/i, 'LVO');
 }
 
 function reorderSections(outputArea) {
@@ -103,14 +114,20 @@ function reorderSections(outputArea) {
 function addMainHeader() {
     const outputArea = document.getElementById('outputArea');
     if (!outputArea.querySelector('h2')) {
-        outputArea.insertAdjacentHTML('afterbegin',
-            `<h2>Ischemic Stroke Management</h2><p>Due to a concern for stroke, the following actions were conducted after arrival to the emergency department:</p>`);
+        outputArea.insertAdjacentHTML(
+            'afterbegin',
+            `<h2>Ischemic Stroke Management</h2><p>Due to a concern for stroke, the following actions were conducted after arrival to the emergency department:</p>`
+        );
     }
 }
 
 function removeMainHeader() {
     const outputArea = document.getElementById('outputArea');
-    if (outputArea.children.length === 1) {
+
+    // If only header + paragraph remain, remove them
+    // (children length can vary due to whitespace nodes, so check for any output-* sections instead)
+    const hasAnySection = !!outputArea.querySelector('[id^="output-"]');
+    if (!hasAnySection) {
         const header = outputArea.querySelector('h2');
         const paragraph = outputArea.querySelector('p');
         if (header) header.remove();

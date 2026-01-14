@@ -18,34 +18,91 @@
     <div class="form-section">
         <h2>Ischemic Stroke Management</h2>
 
-        <!-- CT Scan Time Section -->
+        <!-- Last Known Well Time -->
         <div class="input-group">
-            <h3>CT Scan Time</h3>
-            <button data-section="ct_scan_time" onclick="handleButtonClick(this, 'CT scan was performed within 25 minutes of patient’s arrival')">&lt;25 minutes</button>
-            <textarea id="ct_scan_timeText" placeholder="Please explain any delay in time to CT scan" onchange="updateRealTimeText('ct_scan_time', 'ct_scan_timeText')"></textarea>
+            <h3>Last Known Well Time</h3>
+            <textarea id="last_known_well_timeText"
+                placeholder="Please document the patient’s last known well time"
+                onchange="updateRealTimeText('last_known_well_time', 'last_known_well_timeText')"></textarea>
         </div>
 
-        <!-- NIH Score Section -->
+        <!-- NIH Score -->
         <div class="input-group">
             <h3>NIH Score</h3>
-            <textarea id="nih_scoreText" placeholder="Record NIH score here" onchange="updateRealTimeText('nih_score', 'nih_scoreText')"></textarea>
+            <textarea id="nih_scoreText"
+                placeholder="Record NIH score here"
+                onchange="updateRealTimeText('nih_score', 'nih_scoreText')"></textarea>
         </div>
 
-        <!-- Thrombolytics Section -->
+        <!-- Thrombolytics -->
         <div class="input-group">
             <h3>Thrombolytics</h3>
-            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered within 60 minutes of patient’s arrival to the ED')">&lt;60 minutes</button>
-            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics were administered more than 60 minutes after the patient’s arrival in the ED')">&gt;60 minutes</button>
-            <button data-section="thrombolytics" onclick="handleButtonClick(this, 'thrombolytics contraindicated')">TNK contraindicated</button>
-            <textarea id="thrombolyticsText" placeholder="Please explain any delays in thrombolytic administration and/or reasons for contraindication" onchange="updateRealTimeText('thrombolytics', 'thrombolyticsText')"></textarea>
+            <button data-section="thrombolytics"
+                onclick="handleButtonClick(this, 'thrombolytics were administered due to concern for acute ischemic stroke in conjunction with neurology recommendations')">
+                administered
+            </button>
         </div>
 
-        <!-- Other Factors Section -->
+        <!-- Contraindications -->
         <div class="input-group">
-            <h3>Other Factors</h3>
-            <button data-section="other_factors" onclick="handleButtonClick(this, 'the patient’s blood pressure was managed acutely due to hypertension on arrival')">BP management</button>
-            <button data-section="other_factors" onclick="handleButtonClick(this, 'due to concern for a LVO CTA was ordered in addition to CT non-contrast')">CTA ordered</button>
-            <textarea id="other_factorsText" placeholder="" onchange="updateRealTimeText('other_factors', 'other_factorsText')"></textarea>
+            <h3>Contraindications for thrombolytics</h3>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'the patient presented outside of the window for thrombolytic consideration')">
+                timeframe
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'the patient is currently taking anticoagulant medications that are contraindications for thrombolytic')">
+                anticoagulation
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'the patient has poorly controlled hypertension')">
+                hypertension
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'thrombocytopenia was a contraindication for thrombolytic')">
+                thrombocytopenia
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'the patient has a history of intracranial bleeding which is a contraindication for thrombolytic')">
+                history of intracranial bleed
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'patient with recent surgery which is a contraindication for thrombolytic')">
+                recent surgery
+            </button>
+            <button data-section="contraindications"
+                onclick="handleButtonClick(this, 'patient with a recent history of GI bleed which is a contraindication for thrombolytic')">
+                GI bleed
+            </button>
+        </div>
+
+        <!-- Management components -->
+        <div class="input-group">
+            <h3>Management components</h3>
+            <button data-section="management_components"
+                onclick="handleButtonClick(this, 'the patient’s glucose was evaluated emergently to rule this out as a potential etiology')">
+                glucose evaluation
+            </button>
+            <button data-section="management_components"
+                onclick="handleButtonClick(this, 'the patient’s blood pressure was managed acutely due to hypertension on arrival')">
+                BP management
+            </button>
+            <button data-section="management_components"
+                onclick="handleButtonClick(this, 'due to concern for a LVO, CTA was ordered in addition to CT non-contrast')">
+                CTA ordered
+            </button>
+            <button data-section="management_components"
+                onclick="handleButtonClick(this, 'the patient’s home medications were reviewed by me to make sure there were no contraindicating medications to thrombolytics')">
+                med rec
+            </button>
+            <button data-section="management_components"
+                onclick="handleButtonClick(this, 'extensive discussion with family about the management of their ischemic stroke')">
+                family discussion
+            </button>
+
+            <textarea id="management_componentsText"
+                placeholder=""
+                onchange="updateRealTimeText('management_components', 'management_componentsText')"></textarea>
         </div>
     </div>
 
@@ -53,11 +110,10 @@
         <div id="outputArea"></div>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
         <button onclick="clearOutput()">Clear</button>
-        
-        <!-- New Section for Related Notes -->
+
         <div class="related-procedures">
-            <p>Include a full NIH score in your chart, which can be created here: 
-                    <a href="NIHSS.html">NIH Score</a>
+            <p>Include a full NIH score in your chart, which can be created here:
+                <a href="NIHSS.html">NIH Score</a>
             </p>
         </div>
     </div>
