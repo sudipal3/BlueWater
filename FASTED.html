@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAST-ED Score</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- LEFT: Inputs -->
+    <div class="form-section">
+      <h2>FAST-ED Score</h2>
+
+      <!-- Time / LKW -->
+      <div class="input-group">
+        <h3>Time (Last Known Well)</h3>
+        <textarea data-section="time" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+      <!-- Facial Palsy -->
+      <div class="input-group">
+        <h3>Facial Palsy</h3>
+        <button data-section="facial" data-score="0" onclick="handleScoreButton(this, 'Normal/minor facial weakness', 0)">0: normal/minor</button>
+        <button data-section="facial" data-score="1" onclick="handleScoreButton(this, 'Partial/complete facial paralysis', 1)">1: partial/complete</button>
+        <textarea data-section="facial" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+      <!-- Arm Weakness -->
+      <div class="input-group">
+        <h3>Arm Weakness</h3>
+        <button data-section="arm" data-score="0" onclick="handleScoreButton(this, 'No drift', 0)">0: no drift</button>
+        <button data-section="arm" data-score="1" onclick="handleScoreButton(this, 'Drift / some effort against gravity', 1)">1: drift/some effort</button>
+        <button data-section="arm" data-score="2" onclick="handleScoreButton(this, 'No effort against gravity / no movement', 2)">2: no effort/no movement</button>
+        <textarea data-section="arm" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+      <!-- Speech Changes -->
+      <div class="input-group">
+        <h3>Speech Changes</h3>
+        <button data-section="speech" data-score="0" onclick="handleScoreButton(this, 'Absent', 0)">0: absent</button>
+        <button data-section="speech" data-score="1" onclick="handleScoreButton(this, 'Mild–moderate dysarthria/aphasia', 1)">1: mild–moderate</button>
+        <button data-section="speech" data-score="2" onclick="handleScoreButton(this, 'Severe (global aphasia/mute)', 2)">2: severe/global/mute</button>
+        <textarea data-section="speech" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+      <!-- Eye Deviation -->
+      <div class="input-group">
+        <h3>Eye Deviation</h3>
+        <button data-section="eye" data-score="0" onclick="handleScoreButton(this, 'Absent', 0)">0: absent</button>
+        <button data-section="eye" data-score="1" onclick="handleScoreButton(this, 'Partial deviation', 1)">1: partial</button>
+        <button data-section="eye" data-score="2" onclick="handleScoreButton(this, 'Forced deviation', 2)">2: forced</button>
+        <textarea data-section="eye" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+      <!-- Denial / Neglect -->
+      <div class="input-group">
+        <h3>Denial/Neglect</h3>
+        <button data-section="neglect" data-score="0" onclick="handleScoreButton(this, 'Absent', 0)">0: absent</button>
+        <button data-section="neglect" data-score="1" onclick="handleScoreButton(this, 'Extinction to bilateral stimulation (one modality)', 1)">1: extinction</button>
+        <button data-section="neglect" data-score="2" onclick="handleScoreButton(this, 'Does not recognize own hand / orients only to one side', 2)">2: severe neglect</button>
+        <textarea data-section="neglect" placeholder=" " oninput="handleFreeText(this)"></textarea>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Output -->
+    <div class="output-section">
+      <h2>FAST-ED Score</h2>
+
+
+      <div id="outputArea">
+        <div id="scoreSummary" class="score-summary">
+          <strong>FAST-ED Total:</strong> <span id="scoreValue">0</span>/9
+          <br />
+          <strong>Estimated LVO Probability:</strong> <span id="probValue">≤1: &lt;15%</span>
+        </div>
+        <hr />
+      </div>
+        
+        <div class="output-actions">
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button onclick="clearAll()">Clear</button>
+      </div>
+
+      <div id="copyStatus" style="margin-top:10px;"></div>
+    </div>
+
+  </div>
+
+  <script src="fastedscript.js"></script>
+</body>
+</html>
