@@ -8,78 +8,96 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html#home">Home</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul>
+        <li><a href="index.html#home">Home</a></li>
+    </ul>
+</nav>
 
-    <div class="container">
-        <!-- Input Section -->
-        <div class="form-section">
-            <h2>Signout Note</h2>
+<div class="container">
+    <!-- Input Section -->
+    <div class="form-section">
+        <h2>Signout Note</h2>
 
-            <!-- Active Problem -->
-            <h3>Active problem</h3>
-            <div class="input-group">
-                <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has an active mental health issue that is currently being evaluated for final disposition plan')">mental health</button>
-                <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has received medical treatment with a plan for symptomatic reassessment')">symptomatic reassessment</button>
-                <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has generalized weakness requiring en evaluation by physical therapy and case management for final disposition')">PT/CM</button>
-                <textarea id="ActiveProblemText" placeholder="Provide any description of the patient’s ongoing problem and ED workup here" onchange="updateRealTimeText('Active problem', 'ActiveProblemText')"></textarea>
-            </div>
-
-            <!-- Vital Signs Reviewed -->
-            <h3>Vital signs reviewed</h3>
-            <div class="input-group">
-                <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were unremarkable')">Vital signs normal</button>
-                <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were notable for the following findings')">Vital signs abnormal</button>
-                <textarea id="VitalSignsReviewedText" placeholder="Specify any notable vital sign abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Vital signs reviewed', 'VitalSignsReviewedText')"></textarea>
-            </div>
-
-            <!-- Labs Reviewed -->
-            <h3>Labs reviewed</h3>
-            <div class="input-group">
-                <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were unremarkable')">Labs normal</button>
-                <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were notable for the following findings')">Labs abnormal</button>
-                <textarea id="LabsReviewedText" placeholder="Specify any notable lab abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Labs reviewed', 'LabsReviewedText')"></textarea>
-            </div>
-
-            <!-- Imaging Reviewed -->
-            <h3>Imaging reviewed</h3>
-            <div class="input-group">
-                <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were unremarkable')">Imaging normal</button>
-                <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were notable for the following findings')">Imaging abnormal</button>
-                <textarea id="ImagingReviewedText" placeholder="Specify any notable imaging findings pertinent to their care in the ED" onchange="updateRealTimeText('Imaging reviewed', 'ImagingReviewedText')"></textarea>
-            </div>
-
-            <!-- General Care Components -->
-            <h3>General care components</h3>
-            <div class="input-group">
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient has had a diet ordered')">diet ordered</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'the patient’s home medications have been ordered and are currently being administered')">home meds ordered</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'PRN medication orders have been reviewed')">PRN meds</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a plan for repeat labs in the ED to help guide care and disposition')">repeat labs</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there are labs pending at time of signout that will require follow-up')">labs pending</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is imaging pending that will require follow-up')">imaging pending</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a consult pending to help inform patient care and disposition')">consult pending</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'code status has been reviewed and documented in the chart')">code status</button>
-                <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient sitter status has been reviewed and documented in the chart')">sitter status</button>
-                <textarea id="GeneralCareComponentsText" placeholder="" onchange="updateRealTimeText('General care components', 'GeneralCareComponentsText')"></textarea>
-            </div>
-
+        <!-- Time of Signout -->
+        <h3>Time of signout</h3>
+        <div class="input-group">
+            <button data-section="TimeOfSignout" onclick="insertCurrentTime(this)">Now</button>
+            <textarea
+                id="TimeOfSignoutText"
+                placeholder="Enter signout time"
+                onchange="updateRealTimeText('Time of signout', 'TimeOfSignoutText')">
+            </textarea>
         </div>
 
-        <!-- Output Section -->
-        <div class="output-section">
-            <div id="outputArea"></div>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
-            <button onclick="clearOutput()">Clear</button>
+        <!-- Previous Provider -->
+        <h3>Previous provider</h3>
+        <div class="input-group">
+            <textarea
+                id="PreviousProviderText"
+                placeholder="Enter name of previous provider"
+                onchange="updateRealTimeText('Previous provider', 'PreviousProviderText')">
+            </textarea>
         </div>
+
+        <!-- Active Problem -->
+        <h3>Active problem</h3>
+        <div class="input-group">
+            <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has an active mental health issue that is currently being evaluated for final disposition plan')">mental health</button>
+            <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has received medical treatment with a plan for symptomatic reassessment')">symptomatic reassessment</button>
+            <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has generalized weakness requiring en evaluation by physical therapy and case management for final disposition')">PT/CM</button>
+            <textarea id="ActiveProblemText" placeholder="Provide any description of the patient’s ongoing problem and ED workup here" onchange="updateRealTimeText('Active problem', 'ActiveProblemText')"></textarea>
+        </div>
+
+        <!-- Vital Signs Reviewed -->
+        <h3>Vital signs reviewed</h3>
+        <div class="input-group">
+            <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were unremarkable')">Vital signs normal</button>
+            <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were notable for the following findings')">Vital signs abnormal</button>
+            <textarea id="VitalSignsReviewedText" placeholder="Specify any notable vital sign abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Vital signs reviewed', 'VitalSignsReviewedText')"></textarea>
+        </div>
+
+        <!-- Labs Reviewed -->
+        <h3>Labs reviewed</h3>
+        <div class="input-group">
+            <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were unremarkable')">Labs normal</button>
+            <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were notable for the following findings')">Labs abnormal</button>
+            <textarea id="LabsReviewedText" placeholder="Specify any notable lab abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Labs reviewed', 'LabsReviewedText')"></textarea>
+        </div>
+
+        <!-- Imaging Reviewed -->
+        <h3>Imaging reviewed</h3>
+        <div class="input-group">
+            <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were unremarkable')">Imaging normal</button>
+            <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were notable for the following findings')">Imaging abnormal</button>
+            <textarea id="ImagingReviewedText" placeholder="Specify any notable imaging findings pertinent to their care in the ED" onchange="updateRealTimeText('Imaging reviewed', 'ImagingReviewedText')"></textarea>
+        </div>
+
+        <!-- General Care Components -->
+        <h3>General care components</h3>
+        <div class="input-group">
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient has had a diet ordered')">diet ordered</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'the patient’s home medications have been ordered and are currently being administered')">home meds ordered</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'PRN medication orders have been reviewed')">PRN meds</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a plan for repeat labs in the ED to help guide care and disposition')">repeat labs</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there are labs pending at time of signout that will require follow-up')">labs pending</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is imaging pending that will require follow-up')">imaging pending</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a consult pending to help inform patient care and disposition')">consult pending</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'code status has been reviewed and documented in the chart')">code status</button>
+            <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient sitter status has been reviewed and documented in the chart')">sitter status</button>
+            <textarea id="GeneralCareComponentsText" placeholder="" onchange="updateRealTimeText('General care components', 'GeneralCareComponentsText')"></textarea>
+        </div>
+
     </div>
 
-    <footer>
-    </footer>
+    <!-- Output Section -->
+    <div class="output-section">
+        <div id="outputArea"></div>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button onclick="clearOutput()">Clear</button>
+    </div>
+</div>
 
-    <script src="signoutscript.js"></script>
+<script src="signoutscript.js"></script>
 </body>
 </html>

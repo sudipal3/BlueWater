@@ -1,15 +1,20 @@
 // Define the order of sections
-const sectionOrder = ['ActiveProblem', 'VitalSignsReviewed', 'LabsReviewed', 'ImagingReviewed', 'GeneralCareComponents'];
+const sectionOrder = [
+    'TimeOfSignout',
+    'PreviousProvider',
+    'ActiveProblem',
+    'VitalSignsReviewed',
+    'LabsReviewed',
+    'ImagingReviewed',
+    'GeneralCareComponents'
+];
 
-// Function to initialize the output with the intro text
+// Initialize output with intro text
 function initializeOutput() {
     const outputArea = document.getElementById('outputArea');
-    const introTextId = 'introText';
-
-    // Ensure the introText always exists
-    if (!document.getElementById(introTextId)) {
+    if (!document.getElementById('introText')) {
         const introDiv = document.createElement('div');
-        introDiv.id = introTextId;
+        introDiv.id = 'introText';
         introDiv.innerHTML = `
             <h2>Signout Note</h2>
             <p>
@@ -20,13 +25,22 @@ function initializeOutput() {
     }
 }
 
-// Function to add button-generated text
+// Insert current time for signout
+function insertCurrentTime(button) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const textarea = document.getElementById('TimeOfSignoutText');
+    textarea.value = timeString;
+    updateRealTimeText('Time of signout', 'TimeOfSignoutText');
+    button.classList.add('pressed');
+}
+
+// Button text handling
 function addText(text, button) {
-    const sectionName = button.getAttribute('data-section');
+    const sectionName = button.dataset.section;
     const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
-    // Find or create the section div
     let sectionDiv = document.getElementById(sectionId);
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
@@ -36,119 +50,89 @@ function addText(text, button) {
     }
 
     const outputText = sectionDiv.querySelector('.output-text');
-
-    // Add button-generated text, ensuring no duplicates
     if (!outputText.textContent.includes(text)) {
         outputText.textContent += (outputText.textContent ? ', ' : '') + text;
     }
-    
-    // Ensure the sections are in the correct order
-    reorderSections(outputArea);
 
-    // Mark the button as pressed
+    reorderSections(outputArea);
     button.classList.add('pressed');
 }
 
-// Function to remove button-generated text
 function removeText(text, button) {
-    const sectionName = button.getAttribute('data-section');
-    const sectionId = `output-${sectionName}`;
-    const sectionDiv = document.getElementById(sectionId);
+    const sectionName = button.dataset.section;
+    const sectionDiv = document.getElementById(`output-${sectionName}`);
+    if (!sectionDiv) return;
 
-    if (sectionDiv) {
-        const outputText = sectionDiv.querySelector('.output-text');
+    const outputText = sectionDiv.querySelector('.output-text');
+    outputText.textContent = outputText.textContent
+        .split(', ')
+        .filter(item => item !== text)
+        .join(', ');
 
-        // Remove the button-generated text
-        const updatedText = outputText.textContent
-            .split(', ')
-            .filter(item => item !== text)
-            .join(', ');
-
-        outputText.textContent = updatedText;
-
-        // If no text remains, remove the section
-        if (!updatedText.trim()) {
-            sectionDiv.remove();
-        }
+    if (!outputText.textContent.trim()) {
+        sectionDiv.remove();
     }
 
-    // Unmark the button as pressed
     button.classList.remove('pressed');
 }
 
-// Function to handle button clicks
 function handleButtonClick(button, text) {
-    if (button.classList.contains('pressed')) {
-        removeText(text, button);
-    } else {
-        addText(text, button);
-    }
+    button.classList.contains('pressed')
+        ? removeText(text, button)
+        : addText(text, button);
 }
 
-// Function to handle free text updates
+// Free text updates
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
-    const sectionId = `output-${textareaId.replace('Text', '')}`;
+    const sectionName = textareaId.replace('Text', '');
+    const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
-    // Find or create the section div
     let sectionDiv = document.getElementById(sectionId);
-    if (!sectionDiv) {
+    if (!sectionDiv && textarea.value.trim()) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
         sectionDiv.innerHTML = `<strong>${sectionTitle}:</strong> <span class="output-text"></span><br>`;
         outputArea.appendChild(sectionDiv);
     }
 
-    const outputText = sectionDiv.querySelector('.output-text');
-    const newText = textarea.value.trim();
-
-    if (newText) {
-        if (!outputText.textContent.includes(newText)) {
-            outputText.textContent += (outputText.textContent ? ', ' : '') + newText;
-        }
-    } else {
-        sectionDiv.remove();
+    if (sectionDiv) {
+        const outputText = sectionDiv.querySelector('.output-text');
+        outputText.textContent = textarea.value.trim();
+        if (!outputText.textContent) sectionDiv.remove();
     }
+
+    reorderSections(outputArea);
 }
 
-// Function to format section names
+// Helpers
 function formatSectionName(section) {
     return section.replace(/([A-Z])/g, ' $1').trim();
 }
 
-// Function to reorder sections according to the predefined order
 function reorderSections(outputArea) {
     sectionOrder.forEach(section => {
-        const sectionDiv = document.getElementById(`output-${section}`);
-        if (sectionDiv) {
-            outputArea.appendChild(sectionDiv);
-        }
+        const div = document.getElementById(`output-${section}`);
+        if (div) outputArea.appendChild(div);
     });
 }
 
-// Ensure the sections are in the correct order
-reorderSections(outputArea);
-
-// Function to copy output to clipboard
+// Clipboard + Clear
 function copyToClipboard() {
-    const outputArea = document.getElementById('outputArea');
-    const tempElement = document.createElement('textarea');
-    tempElement.value = outputArea.innerText;
-    document.body.appendChild(tempElement);
-    tempElement.select();
+    const temp = document.createElement('textarea');
+    temp.value = document.getElementById('outputArea').innerText;
+    document.body.appendChild(temp);
+    temp.select();
     document.execCommand('copy');
-    document.body.removeChild(tempElement);
+    document.body.removeChild(temp);
 }
 
-// Function to clear the output area (except for introText)
 function clearOutput() {
-    const outputArea = document.getElementById('outputArea');
-    outputArea.innerHTML = '';
+    document.getElementById('outputArea').innerHTML = '';
     initializeOutput();
-    document.querySelectorAll('textarea').forEach(textarea => (textarea.value = ''));
-    document.querySelectorAll('.pressed').forEach(button => button.classList.remove('pressed'));
+    document.querySelectorAll('textarea').forEach(t => (t.value = ''));
+    document.querySelectorAll('.pressed').forEach(b => b.classList.remove('pressed'));
 }
 
-// Initialize the output on page load
 document.addEventListener('DOMContentLoaded', initializeOutput);
