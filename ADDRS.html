@@ -1,0 +1,90 @@
+<!-- add-rs.html (white layout like Foreign Body Removal) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADD-RS (Aortic Dissection Detection Risk Score)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>ADD-RS (Aortic Dissection Detection Risk Score)</h2>
+
+      <!-- High-Risk Conditions -->
+      <div class="input-group">
+        <h3>
+          <strong>Any high-risk condition</strong>
+          <span style="font-weight: normal;">
+            (Marfan/other connective tissue disease, family history of aortic disease, known aortic valve disease,
+            recent aortic manipulation, known thoracic aortic aneurysm)
+          </span>
+        </h3>
+        <button data-section="conditions" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
+        <button data-section="conditions" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+      </div>
+
+      <!-- High-Risk Pain Features -->
+      <div class="input-group">
+        <h3>
+          <strong>Any high-risk pain feature</strong>
+          <span style="font-weight: normal;">
+            (Chest, back, or abdominal pain described as abrupt onset, severe intensity, or ripping/tearing)
+          </span>
+        </h3>
+        <button data-section="pain" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
+        <button data-section="pain" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+      </div>
+
+      <!-- High-Risk Exam Features -->
+      <div class="input-group">
+        <h3>
+          <strong>Any high-risk exam feature</strong>
+          <span style="font-weight: normal;">
+            (Pulse deficit, systolic BP differential, focal neurologic deficit with pain, new aortic insufficiency murmur with pain,
+            hypotension/shock)
+          </span>
+        </h3>
+        <button data-section="exam" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
+        <button data-section="exam" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+      </div>
+
+    </div>
+
+    <!-- Output Section (no gray box header, like Foreign Body) -->
+    <div class="output-section">
+      <h2>ADD-RS (Aortic Dissection Detection Risk Score)</h2>
+
+      <div id="outputArea">
+        <div id="scoreSummary" class="score-summary">
+          <strong>ADD-RS Total:</strong> <span id="scoreValue">0</span>/3
+          <br />
+          <strong>Recommendation:</strong>
+          <div id="recommendationText" style="margin-top:6px;">
+            Proceed to D-dimer testing according to ADD-RS; if &lt;500 ng/mL, consider stopping dissection workup, or if ≥500 ng/mL, consider CTA.
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <!-- Copy/Clear UNDER output (like Foreign Body) -->
+      <button onclick="copyToClipboard()">Copy to Clipboard</button>
+      <button onclick="clearAll()">Clear</button>
+
+      <div id="copyStatus" style="margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <footer></footer>
+
+  <script src="addrsscript.js"></script>
+</body>
+</html>
