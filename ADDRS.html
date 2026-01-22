@@ -1,4 +1,4 @@
-<!-- add-rs.html (white layout like Foreign Body Removal) -->
+<!-- add-rs.html (updated: free text under each input) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +30,10 @@
         </h3>
         <button data-section="conditions" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
         <button data-section="conditions" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+        <textarea
+          id="conditionsText"
+          placeholder="Specify the high risk condition"
+          oninput="handleFreeText('conditions', 'conditionsText')"></textarea>
       </div>
 
       <!-- High-Risk Pain Features -->
@@ -42,6 +46,10 @@
         </h3>
         <button data-section="pain" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
         <button data-section="pain" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+        <textarea
+          id="painText"
+          placeholder="Specify the high risk pain"
+          oninput="handleFreeText('pain', 'painText')"></textarea>
       </div>
 
       <!-- High-Risk Exam Features -->
@@ -55,11 +63,15 @@
         </h3>
         <button data-section="exam" data-score="0" onclick="handleYesNoButton(this, 'No', 0)">No</button>
         <button data-section="exam" data-score="1" onclick="handleYesNoButton(this, 'Yes', 1)">Yes</button>
+        <textarea
+          id="examText"
+          placeholder="Specify the high risk exam"
+          oninput="handleFreeText('exam', 'examText')"></textarea>
       </div>
 
     </div>
 
-    <!-- Output Section (no gray box header, like Foreign Body) -->
+    <!-- Output Section -->
     <div class="output-section">
       <h2>ADD-RS (Aortic Dissection Detection Risk Score)</h2>
 
@@ -75,7 +87,6 @@
         <hr />
       </div>
 
-      <!-- Copy/Clear UNDER output (like Foreign Body) -->
       <button onclick="copyToClipboard()">Copy to Clipboard</button>
       <button onclick="clearAll()">Clear</button>
 

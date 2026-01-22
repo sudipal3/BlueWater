@@ -1,9 +1,7 @@
-// add-rs.js
+// addrsscript.js
 
-// Order for output lines
 const sectionOrder = ['conditions', 'pain', 'exam'];
 
-// Human-readable labels (for output + copy)
 function formatSectionTitle(sectionName) {
   const map = {
     conditions: 'Any high-risk condition',
@@ -13,10 +11,10 @@ function formatSectionTitle(sectionName) {
   return map[sectionName] || sectionName;
 }
 
-// Create / get a section line in the output area
 function ensureSection(sectionName) {
   const sectionId = `output-${sectionName}`;
   const outputArea = document.getElementById('outputArea');
+  if (!outputArea) return null;
 
   let sectionDiv = document.getElementById(sectionId);
   if (!sectionDiv) {
@@ -24,20 +22,24 @@ function ensureSection(sectionName) {
     sectionDiv.id = sectionId;
     sectionDiv.setAttribute('data-section', sectionName);
     sectionDiv.setAttribute('data-score', '0');
+    sectionDiv.setAttribute('data-answer', ''); // Yes/No
+    sectionDiv.setAttribute('data-free', '');   // free text
+
     sectionDiv.innerHTML = `
       <strong>${formatSectionTitle(sectionName)}:</strong>
       <span class="output-text"></span>
       <br>
     `;
+
     outputArea.appendChild(sectionDiv);
     reorderSections();
   }
   return sectionDiv;
 }
 
-// Keep output lines in a consistent order
 function reorderSections() {
   const outputArea = document.getElementById('outputArea');
+  if (!outputArea) return;
 
   const sections = sectionOrder
     .map(name => document.getElementById(`output-${name}`))
@@ -47,11 +49,29 @@ function reorderSections() {
   sections.forEach(div => outputArea.appendChild(div));
 }
 
-// YES/NO buttons (exclusive per section) + pressed styling
+function renderSectionLine(sectionName) {
+  const div = document.getElementById(`output-${sectionName}`);
+  if (!div) return;
+
+  const answer = (div.getAttribute('data-answer') || '').trim();
+  const free = (div.getAttribute('data-free') || '').trim();
+  const outputTextEl = div.querySelector('.output-text');
+  if (!outputTextEl) return;
+
+  if (!answer && !free) {
+    outputTextEl.textContent = '';
+    return;
+  }
+
+  if (answer && free) outputTextEl.textContent = `${answer}, ${free}`;
+  else if (answer) outputTextEl.textContent = answer;
+  else outputTextEl.textContent = free; // if free text entered without Yes/No
+}
+
 function handleYesNoButton(button, text, score) {
   const sectionName = button.getAttribute('data-section');
   const sectionDiv = ensureSection(sectionName);
-  const outputText = sectionDiv.querySelector('.output-text');
+  if (!sectionDiv) return;
 
   const isPressed = button.classList.contains('pressed');
 
@@ -60,31 +80,46 @@ function handleYesNoButton(button, text, score) {
   siblingButtons.forEach(b => b.classList.remove('pressed'));
 
   if (isPressed) {
-    // Toggle OFF (clears section back to unknown/blank)
-    outputText.textContent = '';
+    // Toggle OFF
+    sectionDiv.setAttribute('data-answer', '');
     sectionDiv.setAttribute('data-score', '0');
   } else {
     // Toggle ON
     button.classList.add('pressed');
-    outputText.textContent = text;
+    sectionDiv.setAttribute('data-answer', text);
     sectionDiv.setAttribute('data-score', String(score));
   }
 
+  renderSectionLine(sectionName);
   cleanupIfEmpty(sectionName);
   updateTotalScoreAndRecommendation();
   reorderSections();
 }
 
-// Remove section line if nothing selected (keeps output clean)
+function handleFreeText(sectionName, textareaId) {
+  const textarea = document.getElementById(textareaId);
+  const value = (textarea?.value || '').trim();
+
+  const sectionDiv = ensureSection(sectionName);
+  if (!sectionDiv) return;
+
+  sectionDiv.setAttribute('data-free', value);
+
+  renderSectionLine(sectionName);
+  cleanupIfEmpty(sectionName);
+  reorderSections();
+}
+
 function cleanupIfEmpty(sectionName) {
   const sectionDiv = document.getElementById(`output-${sectionName}`);
   if (!sectionDiv) return;
 
-  const main = sectionDiv.querySelector('.output-text')?.textContent.trim() || '';
-  if (!main) sectionDiv.remove();
+  const answer = (sectionDiv.getAttribute('data-answer') || '').trim();
+  const free = (sectionDiv.getAttribute('data-free') || '').trim();
+
+  if (!answer && !free) sectionDiv.remove();
 }
 
-// Sum score across the three yes/no categories and set recommendation text
 function updateTotalScoreAndRecommendation() {
   let total = 0;
 
@@ -96,9 +131,12 @@ function updateTotalScoreAndRecommendation() {
     }
   });
 
-  document.getElementById('scoreValue').textContent = String(total);
+  const scoreEl = document.getElementById('scoreValue');
+  if (scoreEl) scoreEl.textContent = String(total);
 
   const recEl = document.getElementById('recommendationText');
+  if (!recEl) return;
+
   if (total <= 1) {
     recEl.textContent =
       'Proceed to D-dimer testing according to ADD-RS; if <500 ng/mL, consider stopping dissection workup, or if ≥500 ng/mL, consider CTA.';
@@ -108,45 +146,50 @@ function updateTotalScoreAndRecommendation() {
   }
 }
 
-// Copy output to clipboard
 function copyToClipboard() {
-  const total = document.getElementById('scoreValue').textContent;
-  const rec = document.getElementById('recommendationText').textContent;
+  const total = document.getElementById('scoreValue')?.textContent || '0';
+  const rec = document.getElementById('recommendationText')?.textContent || '';
 
   let text =
     `ADD-RS (Aortic Dissection Detection Risk Score)\n` +
     `ADD-RS Total: ${total}/3\n` +
     `Recommendation: ${rec}\n`;
 
-  // Include selected Yes/No lines (if any)
   sectionOrder.forEach(name => {
     const div = document.getElementById(`output-${name}`);
     if (!div) return;
 
     const label = formatSectionTitle(name);
-    const main = div.querySelector('.output-text')?.textContent.trim() || '';
-    if (!main) return;
+    const line = div.querySelector('.output-text')?.textContent.trim() || '';
+    if (!line) return;
 
-    text += `\n${label}: ${main}`;
+    text += `\n${label}: ${line}`;
   });
 
   navigator.clipboard.writeText(text.trim())
     .then(() => {
       const status = document.getElementById('copyStatus');
+      if (!status) return;
       status.textContent = 'Copied!';
       setTimeout(() => status.textContent = '', 1200);
     })
     .catch(() => {
       const status = document.getElementById('copyStatus');
+      if (!status) return;
       status.textContent = 'Copy failed. Please try again.';
       setTimeout(() => status.textContent = '', 2000);
     });
 }
 
-// Clear everything
 function clearAll() {
   // Clear pressed states
   document.querySelectorAll('button[data-section]').forEach(b => b.classList.remove('pressed'));
+
+  // Clear textareas
+  ['conditionsText', 'painText', 'examText'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
 
   // Remove output lines
   sectionOrder.forEach(name => {
@@ -155,14 +198,21 @@ function clearAll() {
   });
 
   // Reset score + default recommendation
-  document.getElementById('scoreValue').textContent = '0';
-  document.getElementById('recommendationText').textContent =
-    'Proceed to D-dimer testing according to ADD-RS; if <500 ng/mL, consider stopping dissection workup, or if ≥500 ng/mL, consider CTA.';
+  const scoreEl = document.getElementById('scoreValue');
+  if (scoreEl) scoreEl.textContent = '0';
+
+  const recEl = document.getElementById('recommendationText');
+  if (recEl) {
+    recEl.textContent =
+      'Proceed to D-dimer testing according to ADD-RS; if <500 ng/mL, consider stopping dissection workup, or if ≥500 ng/mL, consider CTA.';
+  }
 
   // Clear status
   const status = document.getElementById('copyStatus');
   if (status) status.textContent = '';
 }
 
-// Initialize on load (ensures recommendation matches default score)
-updateTotalScoreAndRecommendation();
+// Initialize once the DOM exists
+document.addEventListener('DOMContentLoaded', () => {
+  updateTotalScoreAndRecommendation();
+});
