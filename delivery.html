@@ -1,0 +1,165 @@
+<!-- delivery-note.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergent Delivery Procedure Note</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html#home">Home</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <!-- INPUTS (LEFT) -->
+  <div class="form-section">
+    <h2>Procedure Note: Emergent Delivery</h2>
+
+    <!-- Arrival Status -->
+    <div class="input-group">
+      <h3>Arrival Status</h3>
+      <textarea id="arrival_station" placeholder="Head station (e.g., +2, crowning)" onchange="updateArrival()"></textarea>
+      <textarea id="arrival_fht" placeholder="Fetal heart tones (e.g., 140s, reassuring / bradycardic)" onchange="updateArrival()"></textarea>
+      <textarea id="arrival_other" placeholder="Other significant findings (optional)" onchange="updateArrival()"></textarea>
+    </div>
+
+    <!-- Delivery Method -->
+    <div class="input-group">
+      <h3>Delivery Method</h3>
+      <button data-section="deliverymethod" data-single="true"
+        onclick="handleButtonClick(this, 'NSVD')">NSVD</button>
+      <button data-section="deliverymethod" data-single="true"
+        onclick="handleButtonClick(this, 'forceps-assisted vaginal delivery')">Forceps</button>
+      <button data-section="deliverymethod" data-single="true"
+        onclick="handleButtonClick(this, 'vacuum-assisted vaginal delivery')">Vacuum</button>
+
+      <textarea id="deliverymethod_other" placeholder="Other delivery method details (optional)"
+        onchange="updateDeliveryMethodOther()"></textarea>
+    </div>
+
+    <!-- Infant Sex / Viability -->
+    <div class="input-group">
+      <h3>Infant</h3>
+      <button data-section="infant" data-single="true"
+        onclick="handleButtonClick(this, 'live male infant')">Live Male</button>
+      <button data-section="infant" data-single="true"
+        onclick="handleButtonClick(this, 'live female infant')">Live Female</button>
+    </div>
+
+    <!-- Perineum / Episiotomy -->
+    <div class="input-group">
+      <h3>Perineum / Episiotomy</h3>
+      <button data-section="perineum" data-single="true"
+        onclick="handleButtonClick(this, 'over intact perineum')">Intact</button>
+      <button data-section="perineum" data-single="true"
+        onclick="handleButtonClick(this, 'episiotomy performed')">Episiotomy</button>
+
+      <textarea id="perineum_details" placeholder="Episiotomy type/details (optional)"
+        onchange="updatePerineumDetails()"></textarea>
+    </div>
+
+    <!-- Meconium / Nuchal Cord -->
+    <div class="input-group">
+      <h3>Meconium / Nuchal Cord</h3>
+      <button data-section="meconium" data-single="true"
+        onclick="handleButtonClick(this, 'no meconium')">No Meconium</button>
+      <button data-section="meconium" data-single="true"
+        onclick="handleButtonClick(this, 'meconium present')">Meconium</button>
+
+      <button data-section="nuchal" data-single="true"
+        onclick="handleButtonClick(this, 'no nuchal cord')">No Nuchal</button>
+      <button data-section="nuchal" data-single="true"
+        onclick="handleButtonClick(this, 'nuchal cord present')">Nuchal Cord</button>
+
+      <textarea id="cord_notes" placeholder="Notes (e.g., reduced x1, tight/loose, thick meconium) (optional)"
+        onchange="updateCordNotes()"></textarea>
+    </div>
+
+    <!-- Placenta -->
+    <div class="input-group">
+      <h3>Placenta</h3>
+      <button data-section="placenta" data-single="true"
+        onclick="handleButtonClick(this, 'spontaneous delivery of placenta')">Spontaneous</button>
+      <button data-section="placenta" data-single="true"
+        onclick="handleButtonClick(this, 'manual delivery of placenta')">Manual</button>
+
+      <textarea id="placenta_notes" placeholder="Other placenta notes (optional)"
+        onchange="updatePlacentaNotes()"></textarea>
+    </div>
+
+    <!-- Cord Vessels -->
+    <div class="input-group">
+      <h3>Umbilical Cord Vessels</h3>
+      <button data-section="cordvessels" data-single="true"
+        onclick="handleButtonClick(this, '3-vessel cord')">3-Vessel</button>
+      <button data-section="cordvessels" data-single="true"
+        onclick="handleButtonClick(this, '2-vessel cord')">2-Vessel</button>
+    </div>
+
+    <!-- Lacerations and Repair -->
+    <div class="input-group">
+      <h3>Lacerations / Repair</h3>
+      <button data-section="laceration" data-single="true"
+        onclick="handleButtonClick(this, 'no lacerations')">None</button>
+      <button data-section="laceration" data-single="true"
+        onclick="handleButtonClick(this, '1st degree laceration')">1st</button>
+      <button data-section="laceration" data-single="true"
+        onclick="handleButtonClick(this, '2nd degree laceration')">2nd</button>
+      <button data-section="laceration" data-single="true"
+        onclick="handleButtonClick(this, '3rd degree laceration')">3rd</button>
+      <button data-section="laceration" data-single="true"
+        onclick="handleButtonClick(this, '4th degree laceration')">4th</button>
+
+      <textarea id="laceration_location" placeholder="Location (optional)" onchange="updateLacerationDetails()"></textarea>
+      <textarea id="laceration_suture" placeholder="Repair material (optional)" onchange="updateLacerationDetails()"></textarea>
+      <textarea id="laceration_notes" placeholder="Additional notes (optional)" onchange="updateLacerationDetails()"></textarea>
+    </div>
+
+    <!-- EBL -->
+    <div class="input-group">
+      <h3>Estimated Blood Loss (EBL)</h3>
+      <button data-section="ebl" data-single="true"
+        onclick="handleButtonClick(this, 'EBL normal for vaginal delivery (≈300 cc)')">Normal (~300)</button>
+      <button data-section="ebl" data-single="true"
+        onclick="handleButtonClick(this, 'EBL above expected')">Above Expected</button>
+      <button data-section="ebl" data-single="true"
+        onclick="handleButtonClick(this, 'EBL below expected')">Below Expected</button>
+
+      <textarea id="ebl_exact" placeholder="Exact EBL (e.g., 350 cc) (optional)" onchange="updateEBLExact()"></textarea>
+    </div>
+
+    <!-- Newborn Location -->
+    <div class="input-group">
+      <h3>Newborn Transition</h3>
+      <button data-section="newborn" data-single="true"
+        onclick="handleButtonClick(this, 'Newborn to mother’s abdomen. Dried.')">To Abdomen</button>
+      <button data-section="newborn" data-single="true"
+        onclick="handleButtonClick(this, 'Newborn to warmer. Dried.')">To Warmer</button>
+    </div>
+
+    <!-- Apgars -->
+    <div class="input-group">
+      <h3>Apgar Scores</h3>
+      <textarea id="apgar_1" placeholder="1 minute Apgar (e.g., 8)" onchange="updateApgars()"></textarea>
+      <textarea id="apgar_5" placeholder="5 minute Apgar (e.g., 9)" onchange="updateApgars()"></textarea>
+      <textarea id="apgar_10" placeholder="10 minute Apgar (optional)" onchange="updateApgars()"></textarea>
+    </div>
+  </div>
+
+  <!-- OUTPUTS (RIGHT) -->
+  <div class="output-section">
+    <div id="outputArea"></div>
+
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button onclick="clearOutput()">Clear</button>
+  </div>
+</div>
+
+<script src="deliveryscript.js"></script>
+</body>
+</html>
