@@ -26,8 +26,7 @@
             <textarea
                 id="TimeOfSignoutText"
                 placeholder="Enter signout time"
-                onchange="updateRealTimeText('Time of signout', 'TimeOfSignoutText')">
-            </textarea>
+                oninput="updateRealTimeText('Time of signout', 'TimeOfSignoutText')"></textarea>
         </div>
 
         <!-- Previous Provider -->
@@ -36,8 +35,7 @@
             <textarea
                 id="PreviousProviderText"
                 placeholder="Enter name of previous provider"
-                onchange="updateRealTimeText('Previous provider', 'PreviousProviderText')">
-            </textarea>
+                oninput="updateRealTimeText('Previous provider', 'PreviousProviderText')"></textarea>
         </div>
 
         <!-- Active Problem -->
@@ -46,7 +44,10 @@
             <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has an active mental health issue that is currently being evaluated for final disposition plan')">mental health</button>
             <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has received medical treatment with a plan for symptomatic reassessment')">symptomatic reassessment</button>
             <button data-section="ActiveProblem" onclick="handleButtonClick(this, 'the patient has generalized weakness requiring en evaluation by physical therapy and case management for final disposition')">PT/CM</button>
-            <textarea id="ActiveProblemText" placeholder="Provide any description of the patient’s ongoing problem and ED workup here" onchange="updateRealTimeText('Active problem', 'ActiveProblemText')"></textarea>
+            <textarea
+                id="ActiveProblemText"
+                placeholder="Provide any description of the patient’s ongoing problem and ED workup here"
+                oninput="updateRealTimeText('Active problem', 'ActiveProblemText')"></textarea>
         </div>
 
         <!-- Vital Signs Reviewed -->
@@ -54,7 +55,10 @@
         <div class="input-group">
             <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were unremarkable')">Vital signs normal</button>
             <button data-section="VitalSignsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s vital signs that were notable for the following findings')">Vital signs abnormal</button>
-            <textarea id="VitalSignsReviewedText" placeholder="Specify any notable vital sign abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Vital signs reviewed', 'VitalSignsReviewedText')"></textarea>
+            <textarea
+                id="VitalSignsReviewedText"
+                placeholder="Specify any notable vital sign abnormalities pertinent to their care in the ED"
+                oninput="updateRealTimeText('Vital signs reviewed', 'VitalSignsReviewedText')"></textarea>
         </div>
 
         <!-- Labs Reviewed -->
@@ -62,7 +66,10 @@
         <div class="input-group">
             <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were unremarkable')">Labs normal</button>
             <button data-section="LabsReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s laboratory results that were notable for the following findings')">Labs abnormal</button>
-            <textarea id="LabsReviewedText" placeholder="Specify any notable lab abnormalities pertinent to their care in the ED" onchange="updateRealTimeText('Labs reviewed', 'LabsReviewedText')"></textarea>
+            <textarea
+                id="LabsReviewedText"
+                placeholder="Specify any notable lab abnormalities pertinent to their care in the ED"
+                oninput="updateRealTimeText('Labs reviewed', 'LabsReviewedText')"></textarea>
         </div>
 
         <!-- Imaging Reviewed -->
@@ -70,7 +77,10 @@
         <div class="input-group">
             <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were unremarkable')">Imaging normal</button>
             <button data-section="ImagingReviewed" onclick="handleButtonClick(this, 'I reviewed the patient’s imaging results that were notable for the following findings')">Imaging abnormal</button>
-            <textarea id="ImagingReviewedText" placeholder="Specify any notable imaging findings pertinent to their care in the ED" onchange="updateRealTimeText('Imaging reviewed', 'ImagingReviewedText')"></textarea>
+            <textarea
+                id="ImagingReviewedText"
+                placeholder="Specify any notable imaging findings pertinent to their care in the ED"
+                oninput="updateRealTimeText('Imaging reviewed', 'ImagingReviewedText')"></textarea>
         </div>
 
         <!-- General Care Components -->
@@ -85,7 +95,10 @@
             <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'there is a consult pending to help inform patient care and disposition')">consult pending</button>
             <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'code status has been reviewed and documented in the chart')">code status</button>
             <button data-section="GeneralCareComponents" onclick="handleButtonClick(this, 'patient sitter status has been reviewed and documented in the chart')">sitter status</button>
-            <textarea id="GeneralCareComponentsText" placeholder="" onchange="updateRealTimeText('General care components', 'GeneralCareComponentsText')"></textarea>
+            <textarea
+                id="GeneralCareComponentsText"
+                placeholder=""
+                oninput="updateRealTimeText('General care components', 'GeneralCareComponentsText')"></textarea>
         </div>
 
     </div>
