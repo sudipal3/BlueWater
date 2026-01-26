@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YEARS Algorithm for PE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <!-- Form Section -->
+    <div class="form-section">
+      <h2>YEARS Algorithm for Pulmonary Embolism (PE)</h2>
+
+      <div id="yearsQuestionContainer">
+
+        <!-- Pregnancy -->
+        <div class="input-group">
+          <h3>Pregnant patient?</h3>
+          <button onclick="handleYearsButtonClick(this, 'pregnant', 'No')">No</button>
+          <button onclick="handleYearsButtonClick(this, 'pregnant', 'Yes')">Yes</button>
+        </div>
+
+        <!-- Pregnancy pathway: DVT signs -->
+        <div class="input-group" id="pregDvtGroup" style="display:none;">
+          <h3>Clinical signs of DVT present? (pregnancy pathway)</h3>
+          <button onclick="handleYearsButtonClick(this, 'pregDvtSigns', 'No')">No</button>
+          <button onclick="handleYearsButtonClick(this, 'pregDvtSigns', 'Yes')">Yes</button>
+        </div>
+
+        <!-- Pregnancy pathway: Ultrasound -->
+        <div class="input-group" id="ultrasoundGroup" style="display:none;">
+          <h3>Compression ultrasound of symptomatic leg</h3>
+          <button onclick="handleYearsButtonClick(this, 'ultrasound', 'Normal')">Normal</button>
+          <button onclick="handleYearsButtonClick(this, 'ultrasound', 'Abnormal')">Abnormal</button>
+        </div>
+
+        <!-- YEARS items -->
+        <div id="yearsItemsGroup" style="display:none;">
+
+          <div class="input-group">
+            <h3>Clinical signs of DVT?</h3>
+            <button onclick="handleYearsButtonClick(this, 'dvt', 'No')">No</button>
+            <button onclick="handleYearsButtonClick(this, 'dvt', 'Yes')">Yes</button>
+          </div>
+
+          <div class="input-group">
+            <h3>Hemoptysis?</h3>
+            <button onclick="handleYearsButtonClick(this, 'hemoptysis', 'No')">No</button>
+            <button onclick="handleYearsButtonClick(this, 'hemoptysis', 'Yes')">Yes</button>
+          </div>
+
+          <div class="input-group">
+            <h3>PE most likely diagnosis?</h3>
+            <button onclick="handleYearsButtonClick(this, 'peMostLikely', 'No')">No</button>
+            <button onclick="handleYearsButtonClick(this, 'peMostLikely', 'Yes')">Yes</button>
+          </div>
+
+          <!-- D-dimer -->
+          <div class="input-group" id="ddimerGroup" style="display:none;">
+            <h3 id="ddimerPrompt">Is D-dimer ≥ threshold?</h3>
+            <button onclick="handleYearsButtonClick(this, 'ddimerAbove', 'No')">No</button>
+            <button onclick="handleYearsButtonClick(this, 'ddimerAbove', 'Yes')">Yes</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Section -->
+    <div class="output-section">
+      <div id="yearsScoreOutput"></div>
+      <button onclick="clearYearsOutput()">Clear</button>
+      <button onclick="copyYearsOutput()">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <footer></footer>
+
+  <script src="yearsscript.js"></script>
+</body>
+</html>
