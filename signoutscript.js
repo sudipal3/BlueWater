@@ -1,3 +1,5 @@
+// signoutscript.js
+
 // Define the order of sections
 const sectionOrder = [
     'TimeOfSignout',
@@ -29,32 +31,63 @@ function initializeOutput() {
 function insertCurrentTime(button) {
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
     const textarea = document.getElementById('TimeOfSignoutText');
     textarea.value = timeString;
+
     updateRealTimeText('Time of signout', 'TimeOfSignoutText');
     button.classList.add('pressed');
 }
 
-// Button text handling
-function addText(text, button) {
-    const sectionName = button.dataset.section;
-    const sectionId = `output-${sectionName}`;
+// Ensure a section div exists with separate storage for button-text vs free-text
+function ensureSectionDiv(sectionName, sectionTitle) {
     const outputArea = document.getElementById('outputArea');
+    const sectionId = `output-${sectionName}`;
 
     let sectionDiv = document.getElementById(sectionId);
     if (!sectionDiv) {
         sectionDiv = document.createElement('div');
         sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${formatSectionName(sectionName)}:</strong> <span class="output-text"></span><br>`;
+        sectionDiv.innerHTML = `
+            <strong>${sectionTitle}:</strong>
+            <span class="output-text"></span><br>
+            <span class="button-store" style="display:none;"></span>
+            <span class="free-store" style="display:none;"></span>
+        `;
         outputArea.appendChild(sectionDiv);
     }
+    return sectionDiv;
+}
 
-    const outputText = sectionDiv.querySelector('.output-text');
-    if (!outputText.textContent.includes(text)) {
-        outputText.textContent += (outputText.textContent ? ', ' : '') + text;
-    }
+// Combine stored button-text + free-text into the visible output-text
+function renderSection(sectionDiv) {
+    const buttonStore = sectionDiv.querySelector('.button-store').textContent.trim();
+    const freeStore = sectionDiv.querySelector('.free-store').textContent.trim();
 
-    reorderSections(outputArea);
+    let combined = '';
+    if (buttonStore) combined += buttonStore;
+    if (freeStore) combined += (combined ? ', ' : '') + freeStore;
+
+    sectionDiv.querySelector('.output-text').textContent = combined;
+}
+
+// Button text handling (adds/removes from button-store, never overwritten by free text)
+function addText(text, button) {
+    const sectionName = button.dataset.section;
+    const sectionTitle = formatSectionName(sectionName);
+    const sectionDiv = ensureSectionDiv(sectionName, sectionTitle);
+
+    const buttonStoreEl = sectionDiv.querySelector('.button-store');
+    const currentItems = buttonStoreEl.textContent.trim()
+        ? buttonStoreEl.textContent.trim().split(', ')
+        : [];
+
+    if (!currentItems.includes(text)) currentItems.push(text);
+
+    buttonStoreEl.textContent = currentItems.join(', ');
+    renderSection(sectionDiv);
+
+    reorderSections(document.getElementById('outputArea'));
     button.classList.add('pressed');
 }
 
@@ -63,15 +96,20 @@ function removeText(text, button) {
     const sectionDiv = document.getElementById(`output-${sectionName}`);
     if (!sectionDiv) return;
 
-    const outputText = sectionDiv.querySelector('.output-text');
-    outputText.textContent = outputText.textContent
-        .split(', ')
-        .filter(item => item !== text)
-        .join(', ');
+    const buttonStoreEl = sectionDiv.querySelector('.button-store');
+    const freeStoreEl = sectionDiv.querySelector('.free-store');
 
-    if (!outputText.textContent.trim()) {
-        sectionDiv.remove();
-    }
+    const newItems = buttonStoreEl.textContent.trim()
+        ? buttonStoreEl.textContent.trim().split(', ').filter(item => item !== text)
+        : [];
+
+    buttonStoreEl.textContent = newItems.join(', ');
+    renderSection(sectionDiv);
+
+    // If BOTH button + free text are empty, remove the whole section
+    const hasButtons = buttonStoreEl.textContent.trim().length > 0;
+    const hasFree = freeStoreEl.textContent.trim().length > 0;
+    if (!hasButtons && !hasFree) sectionDiv.remove();
 
     button.classList.remove('pressed');
 }
@@ -82,26 +120,26 @@ function handleButtonClick(button, text) {
         : addText(text, button);
 }
 
-// Free text updates
+// Free text updates (stores into free-store, then renders combined output)
 function updateRealTimeText(sectionTitle, textareaId) {
     const textarea = document.getElementById(textareaId);
     const sectionName = textareaId.replace('Text', '');
-    const sectionId = `output-${sectionName}`;
     const outputArea = document.getElementById('outputArea');
 
-    let sectionDiv = document.getElementById(sectionId);
-    if (!sectionDiv && textarea.value.trim()) {
-        sectionDiv = document.createElement('div');
-        sectionDiv.id = sectionId;
-        sectionDiv.innerHTML = `<strong>${sectionTitle}:</strong> <span class="output-text"></span><br>`;
-        outputArea.appendChild(sectionDiv);
-    }
+    // Only create the section if there's something to show (free text OR button text later)
+    const sectionDiv = ensureSectionDiv(sectionName, sectionTitle);
 
-    if (sectionDiv) {
-        const outputText = sectionDiv.querySelector('.output-text');
-        outputText.textContent = textarea.value.trim();
-        if (!outputText.textContent) sectionDiv.remove();
-    }
+    // Set free-text store (this is the key fix: do NOT overwrite button text)
+    const freeStoreEl = sectionDiv.querySelector('.free-store');
+    freeStoreEl.textContent = textarea.value.trim();
+
+    renderSection(sectionDiv);
+
+    // If BOTH button + free text are empty, remove the whole section
+    const buttonStoreEl = sectionDiv.querySelector('.button-store');
+    const hasButtons = buttonStoreEl.textContent.trim().length > 0;
+    const hasFree = freeStoreEl.textContent.trim().length > 0;
+    if (!hasButtons && !hasFree) sectionDiv.remove();
 
     reorderSections(outputArea);
 }
@@ -131,6 +169,7 @@ function copyToClipboard() {
 function clearOutput() {
     document.getElementById('outputArea').innerHTML = '';
     initializeOutput();
+
     document.querySelectorAll('textarea').forEach(t => (t.value = ''));
     document.querySelectorAll('.pressed').forEach(b => b.classList.remove('pressed'));
 }
