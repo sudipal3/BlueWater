@@ -1,0 +1,208 @@
+<!-- flexible-bronchoscopy.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flexible Bronchoscopy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>Procedure Note: Flexible Bronchoscopy</h2>
+
+      <!-- Time -->
+      <h3>Time</h3>
+      <button onclick="handleBronchoscopyTimeNow()">Now</button>
+      <textarea
+        id="bronchoscopyTimeText"
+        placeholder="Document bronchoscopy time here"
+        onchange="updateRealTimeText('Time', 'bronchoscopyTimeText')"
+      ></textarea>
+
+      <!-- Consent -->
+      <h3>Consent</h3>
+      <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family is given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>
+      <button data-section="consent" onclick="handleButtonClick(this, 'due to the emergent nature of the procedure, consent not obtained')">emergent</button>
+      <button data-section="consent" onclick="handleButtonClick(this, 'patient gave informed consent: risks/benefits/alternatives discussed')">patient</button>
+      <button data-section="consent" onclick="handleButtonClick(this, 'family gave informed consent: risks/benefits/alternatives discussed')">family</button>
+      <textarea id="consentText" placeholder="" onchange="updateRealTimeText('Consent', 'consentText')"></textarea>
+
+      <!-- Timeout -->
+      <h3>Timeout</h3>
+      <button data-section="timeout" onclick="handleButtonClick(this, 'a full timeout was deferred due to the emergent nature of the case')">emergent</button>
+      <button data-section="timeout" onclick="handleButtonClick(this, 'a timeout was performed per protocol with confirmation of all necessary personnel and equipment')">protocol</button>
+      <textarea id="timeoutText" placeholder="" onchange="updateRealTimeText('Timeout', 'timeoutText')"></textarea>
+
+      <!-- Indication -->
+      <h3>Indication</h3>
+      <button data-section="indication" onclick="handleButtonClick(this, 'bronchoscopy was performed to confirm ETT positioning')">ETT confirmation</button>
+      <button data-section="indication" onclick="handleButtonClick(this, 'bronchoscopy was performed for general airway surveillance')">airway surveillance</button>
+      <button data-section="indication" onclick="handleButtonClick(this, 'bronchoscopy was performed to help with clearance of secretions')">secretion clearance</button>
+      <button data-section="indication" onclick="handleButtonClick(this, 'bronchoscopy was performed to as a part of the evaluation of hemoptysis')">hemoptysis</button>
+      <button data-section="indication" onclick="handleButtonClick(this, 'bronchoscopy was performed for the evaluation of a foreign body')">foreign body</button>
+      <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
+
+      <!-- Preparation/monitoring -->
+      <h3>Preparation/monitoring</h3>
+      <button data-section="preparation-monitoring" onclick="handleButtonClick(this, 'respiratory therapy is at bedside with appropriate equipment including a BMV, suction, and resuscitation equipment')">RT/equipment</button>
+      <button data-section="preparation-monitoring" onclick="handleButtonClick(this, 'patient is placed on supplemental oxygen and monitored via pulse oximetry during the course of the sedation')">O2/pulse oximetry</button>
+      <button data-section="preparation-monitoring" onclick="handleButtonClick(this, 'end tidal capnography is monitored during the procedure')">ETCO2</button>
+      <button data-section="preparation-monitoring" onclick="handleButtonClick(this, 'patient is monitored on continuous telemetry')">telemetry</button>
+      <textarea id="prepMonitoringText" placeholder="" onchange="updateRealTimeText('Preparation/monitoring', 'prepMonitoringText')"></textarea>
+
+      <!-- Medication -->
+      <h3>Medication</h3>
+      <button data-section="medication" onclick="handleButtonClick(this, 'patient was intubated and sedated prior to the procedure with continuous infusions of medications as per EMR')">ongoing sedation</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'ketamine')">ketamine</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'propofol')">propofol</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'etomidate')">etomidate</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'midazolam')">midazolam</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'fentanyl')">fentanyl</button>
+      <button data-section="medication" onclick="handleButtonClick(this, 'patient was intubated and sedated prior to the procedure with continuous infusions of medications as per EMR')">continuation of previous sedation</button>
+      <textarea id="medicationText" placeholder="" onchange="updateRealTimeText('Medication', 'medicationText')"></textarea>
+
+      <!-- Bronchoscope Size -->
+      <h3>Bronchoscope Size</h3>
+      <button data-section="bronchoscope-size" onclick="handleButtonClick(this, 'a slim bronchoscope was utilized')">slim</button>
+      <button data-section="bronchoscope-size" onclick="handleButtonClick(this, 'a regular bronchoscope was utilized')">regular</button>
+      <button data-section="bronchoscope-size" onclick="handleButtonClick(this, 'a large bronchoscope was used')">large</button>
+      <textarea id="bronchoscopeSizeText" placeholder="" onchange="updateRealTimeText('Bronchoscope Size', 'bronchoscopeSizeText')"></textarea>
+
+      <!-- Entry -->
+      <h3>Entry</h3>
+      <button data-section="entry" onclick="handleButtonClick(this, 'the bronchoscope was lubricated and introduced via the patient’s endotracheal tube')">ETT</button>
+      <button data-section="entry" onclick="handleButtonClick(this, 'the bronchoscope was lubricated and inserted through the patient’s indwelling tracheostomy device')">tracheostomy</button>
+      <textarea id="entryText" placeholder="" onchange="updateRealTimeText('Entry', 'entryText')"></textarea>
+
+      <!-- Specimens -->
+      <h3>Specimens</h3>
+      <button data-section="specimens" onclick="handleButtonClick(this, 'bronchoalveolar lavage was performed with collection of a specimen')">BAL</button>
+      <button data-section="specimens" onclick="handleButtonClick(this, 'no specimen was collected during the bronchoscopy')">none</button>
+      <textarea id="specimensText" placeholder="" onchange="updateRealTimeText('Specimens', 'specimensText')"></textarea>
+
+      <!-- Findings (single subheader + sub-sub-headers) -->
+      <h3>Findings</h3>
+
+      <h4>Tube</h4>
+      <button data-section="findings-tube" onclick="handleButtonClick(this, 'the tube was clean without biofilm')">clean w/o biofilm</button>
+      <button data-section="findings-tube" onclick="handleButtonClick(this, 'mucous was noted in the endotracheal tube')">mucous</button>
+      <button data-section="findings-tube" onclick="handleButtonClick(this, 'a biofilm was visualized on the endotracheal tube')">biofilm</button>
+      <textarea id="findingsTubeText" placeholder="" onchange="updateRealTimeText('Tube', 'findingsTubeText', 'findings')"></textarea>
+
+      <h4>Trachea</h4>
+      <button data-section="findings-trachea" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-trachea" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-trachea" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-trachea" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-trachea" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsTracheaText" placeholder="" onchange="updateRealTimeText('Trachea', 'findingsTracheaText', 'findings')"></textarea>
+
+      <h4>Right mainstem</h4>
+      <button data-section="findings-right-mainstem" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-right-mainstem" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-right-mainstem" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-right-mainstem" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-right-mainstem" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsRightMainstemText" placeholder="" onchange="updateRealTimeText('Right mainstem', 'findingsRightMainstemText', 'findings')"></textarea>
+
+      <h4>Right upper lobe</h4>
+      <button data-section="findings-right-upper-lobe" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-right-upper-lobe" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-right-upper-lobe" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-right-upper-lobe" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-right-upper-lobe" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsRULText" placeholder="" onchange="updateRealTimeText('Right upper lobe', 'findingsRULText', 'findings')"></textarea>
+
+      <h4>Right middle lobe</h4>
+      <button data-section="findings-right-middle-lobe" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-right-middle-lobe" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-right-middle-lobe" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-right-middle-lobe" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-right-middle-lobe" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsRMLText" placeholder="" onchange="updateRealTimeText('Right middle lobe', 'findingsRMLText', 'findings')"></textarea>
+
+      <h4>Right lower lobe</h4>
+      <button data-section="findings-right-lower-lobe" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-right-lower-lobe" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-right-lower-lobe" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-right-lower-lobe" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-right-lower-lobe" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsRLLText" placeholder="" onchange="updateRealTimeText('Right lower lobe', 'findingsRLLText', 'findings')"></textarea>
+
+      <h4>Left mainstem</h4>
+      <button data-section="findings-left-mainstem" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-left-mainstem" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-left-mainstem" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-left-mainstem" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-left-mainstem" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsLeftMainstemText" placeholder="" onchange="updateRealTimeText('Left mainstem', 'findingsLeftMainstemText', 'findings')"></textarea>
+
+      <h4>Left upper lobe</h4>
+      <button data-section="findings-left-upper-lobe" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-left-upper-lobe" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-left-upper-lobe" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-left-upper-lobe" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-left-upper-lobe" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsLULText" placeholder="" onchange="updateRealTimeText('Left upper lobe', 'findingsLULText', 'findings')"></textarea>
+
+      <h4>Left lower lobe</h4>
+      <button data-section="findings-left-lower-lobe" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-left-lower-lobe" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-left-lower-lobe" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-left-lower-lobe" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-left-lower-lobe" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsLLLText" placeholder="" onchange="updateRealTimeText('Left lower lobe', 'findingsLLLText', 'findings')"></textarea>
+
+      <h4>Lingula</h4>
+      <button data-section="findings-lingula" onclick="handleButtonClick(this, 'no secretions were visualized')">no secretions</button>
+      <button data-section="findings-lingula" onclick="handleButtonClick(this, 'blood was visualized')">blood</button>
+      <button data-section="findings-lingula" onclick="handleButtonClick(this, 'mucous was visualized')">mucous</button>
+      <button data-section="findings-lingula" onclick="handleButtonClick(this, 'purulence was visualized')">purulence</button>
+      <button data-section="findings-lingula" onclick="handleButtonClick(this, 'friable tissue was visualized')">friable tissue</button>
+      <textarea id="findingsLingulaText" placeholder="" onchange="updateRealTimeText('Lingula', 'findingsLingulaText', 'findings')"></textarea>
+
+      <!-- ETT positioning -->
+      <h3>ETT positioning</h3>
+      <button data-section="ett-positioning" onclick="handleButtonClick(this, 'ETT was visualized above the carina')">above carina</button>
+      <button data-section="ett-positioning" onclick="handleButtonClick(this, 'ETT was in the right mainstem bronchus')">right mainstem</button>
+      <button data-section="ett-positioning" onclick="handleButtonClick(this, 'ETT was in the left mainstem bronchus')">left mainstem</button>
+      <textarea
+        id="ettPositioningText"
+        placeholder="Specify how far above the carina the ETT was, if relevant"
+        onchange="updateRealTimeText('ETT positioning', 'ettPositioningText')"
+      ></textarea>
+
+      <!-- Complications -->
+      <h3>Complications</h3>
+      <button data-section="complications" onclick="handleButtonClick(this, 'there were no complications during the procedure')">none</button>
+      <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypoxia during the procedure')">hypoxia</button>
+      <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced hypotension during the procedure')">hypotension</button>
+      <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
+
+      <!-- Provider -->
+      <h3>Provider</h3>
+      <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+
+    </div>
+
+    <div class="output-section">
+      <div id="outputArea"></div>
+      <button onclick="copyToClipboard()">Copy to Clipboard</button>
+      <button onclick="clearOutput()">Clear</button>
+    </div>
+  </div>
+
+  <footer></footer>
+
+  <script src="bronchoscopyscript.js"></script>
+</body>
+</html>
