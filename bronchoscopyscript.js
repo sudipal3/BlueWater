@@ -34,7 +34,7 @@ const sectionOrder = [
 // Core button text handling
 // ---------------------------
 function addText(text, button) {
-  const sectionName = button.getAttribute('data-section');
+  const sectionName = button.getAttribute('data-section'); // e.g. "findings-tube"
   const sectionId = `output-${sectionName}`;
   const outputArea = document.getElementById('outputArea');
 
@@ -42,18 +42,23 @@ function addText(text, button) {
   if (!sectionDiv) {
     sectionDiv = document.createElement('div');
     sectionDiv.id = sectionId;
+
+    // ✅ Uses prettifySectionTitle which now strips "findings-" from display titles
     sectionDiv.innerHTML = `<strong>${prettifySectionTitle(sectionName)}:</strong> <span class="output-text"></span><br>`;
     outputArea.appendChild(sectionDiv);
   }
 
   const outputText = sectionDiv.querySelector('.output-text');
 
+  // Add button-generated text, ensuring no duplicates
   if (!outputText.textContent.includes(text)) {
     outputText.textContent += (outputText.textContent ? ', ' : '') + text;
   }
 
+  // Mark the button as pressed
   button.classList.add('pressed');
 
+  // Ensure ordering and header
   reorderSections(outputArea);
   addMainHeader(outputArea);
 }
@@ -66,21 +71,25 @@ function removeText(text, button) {
 
   const outputText = sectionDiv.querySelector('.output-text');
 
+  // Remove the button-generated text
   outputText.textContent = outputText.textContent
     .split(', ')
     .filter(item => item !== text)
     .join(', ');
 
+  // If no text remains, remove the section
   if (!outputText.textContent.trim()) {
     sectionDiv.remove();
   }
 
+  // Unmark the button
   button.classList.remove('pressed');
 
   const outputArea = document.getElementById('outputArea');
   removeMainHeaderIfEmpty(outputArea);
 }
 
+// Function to handle button clicks
 function handleButtonClick(button, text) {
   if (button.classList.contains('pressed')) {
     removeText(text, button);
@@ -100,9 +109,11 @@ function handleBronchoscopyTimeNow() {
     minute: '2-digit'
   });
 
+  // 1) Put time into textarea
   const textarea = document.getElementById('bronchoscopyTimeText');
   if (textarea) textarea.value = formattedTime;
 
+  // 2) Create/update the output section directly
   const outputArea = document.getElementById('outputArea');
   const sectionId = 'output-time';
   let sectionDiv = document.getElementById(sectionId);
@@ -116,6 +127,7 @@ function handleBronchoscopyTimeNow() {
 
   sectionDiv.querySelector('.output-text').textContent = formattedTime;
 
+  // 3) Keep ordering/header consistent
   reorderSections(outputArea);
   addMainHeader(outputArea);
 }
@@ -144,6 +156,7 @@ function updateRealTimeText(sectionTitle, textareaId, groupSectionName) {
       outputArea.appendChild(groupDiv);
     }
 
+    // Child section name includes group, but display title is just sectionTitle
     const childSectionName = normalizeSectionName(`${groupSectionName}-${sectionTitle}`);
     const childId = `output-${childSectionName}`;
 
@@ -163,6 +176,7 @@ function updateRealTimeText(sectionTitle, textareaId, groupSectionName) {
         ? `${outputText.textContent}, ${newText}`
         : newText;
     } else {
+      // Remove child if empty and reset buttons for that subsection
       childDiv.remove();
       resetButtonsForSection(childSectionName);
     }
@@ -177,7 +191,7 @@ function updateRealTimeText(sectionTitle, textareaId, groupSectionName) {
     return;
   }
 
-  // Non-grouped sections
+  // Non-grouped sections (normal behavior)
   const sectionName = normalizeSectionName(sectionTitle);
   const sectionId = `output-${sectionName}`;
 
@@ -216,7 +230,7 @@ function addMainHeader(outputArea) {
 }
 
 function removeMainHeaderIfEmpty(outputArea) {
-  // If nothing meaningful exists, remove header
+  // Remove header if no output sections exist
   const meaningful = outputArea.querySelectorAll('div[id^="output-"]').length;
   if (!meaningful) {
     const header = outputArea.querySelector('h2');
@@ -228,6 +242,7 @@ function removeMainHeaderIfEmpty(outputArea) {
 // Ordering
 // ---------------------------
 function reorderSections(outputArea) {
+  // Only reorders top-level output sections by ID in sectionOrder.
   sectionOrder.forEach(section => {
     const node = document.getElementById(`output-${section}`);
     if (node) outputArea.appendChild(node);
@@ -257,12 +272,12 @@ function clearOutput() {
 // Utilities
 // ---------------------------
 
-// FIX: normalize ANY non-alphanumeric characters (including "/") to "-"
+// ✅ FIX: normalize ANY non-alphanumeric characters (including "/") to "-"
 function normalizeSectionName(title) {
   return title
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9]+/g, '-')   // <-- key fix
+    .replace(/[^a-z0-9]+/g, '-')   // key normalization fix
     .replace(/-+/g, '-')          // collapse repeats
     .replace(/^-|-$/g, '');       // trim leading/trailing "-"
 }
@@ -272,7 +287,15 @@ function resetButtonsForSection(sectionName) {
   buttons.forEach(btn => btn.classList.remove('pressed'));
 }
 
+// ✅ CHANGE: Findings output titles should NOT include "Findings"
 function prettifySectionTitle(sectionName) {
+  // If it's a findings subsection, remove "findings-" from the displayed title
+  if (sectionName.startsWith('findings-')) {
+    const withoutPrefix = sectionName.replace(/^findings-/, '');
+    return capitalizeWords(withoutPrefix.replace(/-/g, ' '));
+  }
+
+  // Default behavior
   return capitalizeWords(sectionName.replace(/-/g, ' '));
 }
 
