@@ -83,7 +83,22 @@
                 <button data-section="splinting" onclick="handleButtonClick(this, 'thumb spica splint')">thumb spica</button>
                 <button data-section="splinting" onclick="handleButtonClick(this, 'short leg splint')">short leg splint</button>
                 <button data-section="splinting" onclick="handleButtonClick(this, 'long leg splint')">long leg splint</button>
+
+                <!-- ADDED -->
+                <button data-section="splinting" onclick="handleButtonClick(this, 'a knee immobilizer was placed on the affected knee')">knee immobilizer</button>
+                <button data-section="splinting" onclick="handleButtonClick(this, 'a hinged-knee brace was placed on the affected knee')">hinged-knee brace</button>
+
                 <textarea id="splintingText" placeholder="" onchange="updateRealTimeText('Splinting', 'splintingText')"></textarea>
+            </div>
+
+            <!-- ADDED: Ambulatory Assist Devices -->
+            <div class="input-group">
+                <h3>Ambulatory Assist Devices</h3>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a cane was provided to the patient')">cane</button>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'crutches were provided for the patient')">crutches</button>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a sling was placed on the affected arm')">sling</button>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a walker was provided to the patient')">walker</button>
+                <textarea id="ambulatoryAssistDevicesText" placeholder="" onchange="updateRealTimeText('Ambulatory Assist Devices', 'ambulatoryAssistDevicesText')"></textarea>
             </div>
 
             <!-- Post-splint Exam Section -->
@@ -114,8 +129,8 @@
             <div id="outputArea"></div>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
-            
-            <p>For reminders on splinting and definitive fracture care, please press this link: 
+
+            <p>For reminders on splinting and definitive fracture care, please press this link:
                 <a href="splinting_fracture_care.jpg" target="_blank">Splinting/Definitive Fracture Care Tips</a></p>
         </div>
     </div>

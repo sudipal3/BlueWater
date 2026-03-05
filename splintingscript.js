@@ -1,7 +1,15 @@
 // Define the order of sections
 const sectionOrder = [
-    'consent', 'location', 'fractureType', 'preSplintExam', 'splinting',
-    'postSplintingExam', 'complications', 'provider'
+    'consent', 
+    'location', 
+    'fractureType', 
+    'preSplintExam', 
+    'splinting',
+    // ADDED
+    'ambulatoryAssistDevices',
+    'postSplintingExam', 
+    'complications', 
+    'provider'
 ];
 
 // Function to handle adding text when a button is pressed
