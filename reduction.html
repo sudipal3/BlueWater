@@ -108,7 +108,22 @@
                 <button data-section="Splinting" onclick="handleButtonClick(this, 'short leg splint')">short leg splint</button>
                 <button data-section="Splinting" onclick="handleButtonClick(this, 'long leg splint')">long leg splint</button>
                 <button data-section="Splinting" onclick="handleButtonClick(this, 'walking boot')">walking boot</button>
+
+                <!-- ADDED -->
+                <button data-section="Splinting" onclick="handleButtonClick(this, 'a knee immobilizer was placed on the affected knee')">knee immobilizer</button>
+                <button data-section="Splinting" onclick="handleButtonClick(this, 'a hinged-knee brace was placed on the affected knee')">hinged-knee brace</button>
+
                 <textarea id="SplintingText" placeholder="" onchange="updateRealTimeText('Splinting', 'SplintingText')"></textarea>
+            </div>
+
+            <!-- ADDED: Ambulatory Assist Devices -->
+            <div class="input-group">
+                <h3>Ambulatory Assist Devices</h3>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a cane was provided to the patient')">cane</button>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'crutches were provided for the patient')">crutches</button>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a sling was placed on the affected arm')">sling</button>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a walker was provided to the patient')">walker</button>
+                <textarea id="AmbulatoryAssistDevicesText" placeholder="" onchange="updateRealTimeText('Ambulatory Assist Devices', 'AmbulatoryAssistDevicesText')"></textarea>
             </div>
 
             <!-- Post-Reduction Exam/Tests Section -->

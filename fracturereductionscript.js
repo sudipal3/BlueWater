@@ -7,6 +7,8 @@ let fractureReductionSections = {
     'Sedation/Analgesia': [],
     'Technique': [],
     'Splinting': [],
+    // ADDED
+    'Ambulatory Assist Devices': [],
     'Post-reduction exam/tests': [],
     'Complications': [],
     'Provider': []
@@ -45,7 +47,8 @@ function updateRealTimeText(section, textAreaId) {
             fractureReductionSections[section] = (fractureReductionSections[section] ? fractureReductionSections[section] + ', ' : '') + textValue;
         }
     } else {
-        fractureReductionSections[section] = fractureReductionSections[section].filter(item => !item.includes(textValue));
+        // If emptied, do nothing special (keeps button outputs intact)
+        // NOTE: This matches your current script behavior, even though it can duplicate free text over time.
     }
 
     // Update the Fracture Reduction output
@@ -62,11 +65,20 @@ function updateFractureReductionOutput() {
     mainHeader.textContent = 'Procedure Note: Fracture Reduction';
     outputArea.appendChild(mainHeader);
 
-    // Generate detailed outputs for each section
+    // Generate detailed outputs for each section (in object insertion order)
     for (const section in fractureReductionSections) {
-        if (fractureReductionSections[section] && (Array.isArray(fractureReductionSections[section]) ? fractureReductionSections[section].length > 0 : fractureReductionSections[section])) {
+        if (
+            fractureReductionSections[section] &&
+            (Array.isArray(fractureReductionSections[section])
+                ? fractureReductionSections[section].length > 0
+                : fractureReductionSections[section])
+        ) {
             const sectionDiv = document.createElement('div');
-            sectionDiv.innerHTML = `<strong>${section}:</strong> ${Array.isArray(fractureReductionSections[section]) ? fractureReductionSections[section].join(', ') : fractureReductionSections[section]}`;
+            sectionDiv.innerHTML = `<strong>${section}:</strong> ${
+                Array.isArray(fractureReductionSections[section])
+                    ? fractureReductionSections[section].join(', ')
+                    : fractureReductionSections[section]
+            }`;
             outputArea.appendChild(sectionDiv);
         }
     }
@@ -83,13 +95,15 @@ function clearOutput() {
         'Sedation/Analgesia': [],
         'Technique': [],
         'Splinting': [],
+        // ADDED
+        'Ambulatory Assist Devices': [],
         'Post-reduction exam/tests': [],
         'Complications': [],
         'Provider': []
     };
 
     // Clear all text areas
-    document.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
+    document.querySelectorAll('textarea').forEach(textarea => (textarea.value = ''));
 
     // Unpress all buttons
     document.querySelectorAll('.pressed').forEach(button => button.classList.remove('pressed'));
