@@ -94,10 +94,13 @@
             <!-- ADDED: Ambulatory Assist Devices -->
             <div class="input-group">
                 <h3>Ambulatory Assist Devices</h3>
+                <p style="font-size: 14px;"><i>Please specify weight bearing status for patients being discharged with ambulatory assist devices.</i></p>
                 <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a cane was provided to the patient')">cane</button>
                 <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'crutches were provided for the patient')">crutches</button>
                 <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a sling was placed on the affected arm')">sling</button>
                 <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'a walker was provided to the patient')">walker</button>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'patient instructed to be non-weight bearing')">non-weight bearing</button>
+                <button data-section="ambulatoryAssistDevices" onclick="handleButtonClick(this, 'patient instructed to be partial weight bearing')">partial weight bearing</button>
                 <textarea id="ambulatoryAssistDevicesText" placeholder="" onchange="updateRealTimeText('Ambulatory Assist Devices', 'ambulatoryAssistDevicesText')"></textarea>
             </div>
 

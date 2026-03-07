@@ -116,14 +116,16 @@
                 <textarea id="SplintingText" placeholder="" onchange="updateRealTimeText('Splinting', 'SplintingText')"></textarea>
             </div>
 
-            <!-- ADDED: Ambulatory Assist Devices -->
             <div class="input-group">
                 <h3>Ambulatory Assist Devices</h3>
+                <p style="font-size: 14px;"><i>Please specify weight bearing status for patients being discharged with ambulatory assist devices.</i></p>
                 <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a cane was provided to the patient')">cane</button>
                 <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'crutches were provided for the patient')">crutches</button>
                 <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a sling was placed on the affected arm')">sling</button>
                 <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'a walker was provided to the patient')">walker</button>
-                <textarea id="AmbulatoryAssistDevicesText" placeholder="" onchange="updateRealTimeText('Ambulatory Assist Devices', 'AmbulatoryAssistDevicesText')"></textarea>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'patient instructed to be non-weight bearing')">non-weight bearing</button>
+                <button data-section="Ambulatory Assist Devices" onclick="handleButtonClick(this, 'patient instructed to be partial weight bearing')">partial weight bearing</button>
+                <textarea id="Ambulatory Assist DevicesText" placeholder="" onchange="updateRealTimeText('Ambulatory Assist Devices', 'Ambulatory Assist DevicesText')"></textarea>
             </div>
 
             <!-- Post-Reduction Exam/Tests Section -->
