@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westley Croup Score</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Westley Croup Score</h2>
+
+            <!-- Dynamic Question Container -->
+            <div id="westleyCroupQuestionContainer">
+                <div class="input-group">
+                    <h3>Chest wall retractions</h3>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'retractions', 'None')">None</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'retractions', 'Mild')">Mild</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'retractions', 'Moderate')">Moderate</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'retractions', 'Severe')">Severe</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Stridor</h3>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'stridor', 'None')">None</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'stridor', 'With agitation')">With agitation</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'stridor', 'At rest')">At rest</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Cyanosis</h3>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'cyanosis', 'None')">None</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'cyanosis', 'With agitation')">With agitation</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'cyanosis', 'At rest')">At rest</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Level of consciousness</h3>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'consciousness', 'Normal')">Normal</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'consciousness', 'Disoriented')">Disoriented</button>
+                </div>
+
+                <div class="input-group">
+                    <h3>Air entry</h3>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'airEntry', 'Normal')">Normal</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'airEntry', 'Decreased')">Decreased</button>
+                    <button onclick="handleWestleyCroupButtonClick(this, 'airEntry', 'Markedly decreased')">Markedly decreased</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <p id="westleyCroupScoreOutput"></p>
+            <button onclick="clearWestleyCroupOutput()">Clear</button>
+            <button onclick="copyToClipboard('westleyCroupScoreOutput')">Copy to Clipboard</button>
+
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+<script src="croupscript.js"></script>
+</body>
+</html>
