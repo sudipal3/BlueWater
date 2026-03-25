@@ -4,7 +4,7 @@ const sectionOrder = [
     'nih_score',
     'thrombolytics',
     'contraindications',
-    'management_components'
+    'reasons_for_thrombolytic_delay'
 ];
 
 function addText(text, button) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ischemic Stroke Management Note</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -22,9 +22,9 @@
         <div class="input-group">
             <h3>Last Known Well Time</h3>
             <textarea
-                id="last_known_well_timeText"
+                data-section="last_known_well_time"
                 placeholder="Please document the patient’s last known well time"
-                onchange="updateRealTimeText('last_known_well_time', 'last_known_well_timeText')">
+                onchange="updateText(this)">
             </textarea>
         </div>
 
@@ -32,9 +32,9 @@
         <div class="input-group">
             <h3>NIH Score</h3>
             <textarea
-                id="nih_scoreText"
+                data-section="nih_score"
                 placeholder="Record NIH score here"
-                onchange="updateRealTimeText('nih_score', 'nih_scoreText')">
+                onchange="updateText(this)">
             </textarea>
         </div>
 
@@ -43,7 +43,7 @@
             <h3>Thrombolytics</h3>
             <button
                 data-section="thrombolytics"
-                onclick="handleButtonClick(this, 'thrombolytics were administered due to concern for acute ischemic stroke in conjunction with neurology recommendations')">
+                onclick="btnClick(this, 'thrombolytics were administered due to concern for acute ischemic stroke in conjunction with neurology recommendations')">
                 administered
             </button>
         </div>
@@ -53,37 +53,37 @@
             <h3>Contraindications for thrombolytics</h3>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'the patient presented outside of the window for thrombolytic consideration')">
+                onclick="btnClick(this, 'the patient presented outside of the window for thrombolytic consideration')">
                 LKW Time
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'the patient is currently taking anticoagulant medications that are contraindications for thrombolytic')">
+                onclick="btnClick(this, 'the patient is currently taking anticoagulant medications that are contraindications for thrombolytic')">
                 anticoagulation
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'the patient has poorly controlled hypertension')">
+                onclick="btnClick(this, 'the patient has poorly controlled hypertension')">
                 hypertension
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'thrombocytopenia was a contraindication for thrombolytic')">
+                onclick="btnClick(this, 'thrombocytopenia was a contraindication for thrombolytic')">
                 thrombocytopenia
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'the patient has a history of intracranial bleeding which is a contraindication for thrombolytic')">
+                onclick="btnClick(this, 'the patient has a history of intracranial bleeding which is a contraindication for thrombolytic')">
                 history of intracranial bleed
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'patient with recent surgery which is a contraindication for thrombolytic')">
+                onclick="btnClick(this, 'patient with recent surgery which is a contraindication for thrombolytic')">
                 recent surgery
             </button>
 
             <button data-section="contraindications"
-                onclick="handleButtonClick(this, 'patient with a recent history of GI bleed which is a contraindication for thrombolytic')">
+                onclick="btnClick(this, 'patient with a recent history of GI bleed which is a contraindication for thrombolytic')">
                 GI bleed
             </button>
         </div>
@@ -93,44 +93,44 @@
             <h3>Reasons for thrombolytic delay</h3>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'the patient’s airway had to be secured which caused overall delays in lytic administration')">
+                onclick="btnClick(this, 'the patient’s airway had to be secured which caused overall delays in lytic administration')">
                 airway management
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'extensive family discussions regarding care caused delays in lytic administration')">
+                onclick="btnClick(this, 'extensive family discussions regarding care caused delays in lytic administration')">
                 family discussion
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'delays in patient’s blood work results caused a delay in lytic administration')">
+                onclick="btnClick(this, 'delays in patient’s blood work results caused a delay in lytic administration')">
                 lab delay
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'delays in establishing last known well caused a delay in lytic administration')">
+                onclick="btnClick(this, 'delays in establishing last known well caused a delay in lytic administration')">
                 unclear LKW
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'delays in a neurology evaluation caused a delay in lytic administration')">
+                onclick="btnClick(this, 'delays in a neurology evaluation caused a delay in lytic administration')">
                 delayed neuro eval
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'requirement to optimize blood pressure for the patient caused a delay in lytic administration')">
+                onclick="btnClick(this, 'requirement to optimize blood pressure for the patient caused a delay in lytic administration')">
                 blood pressure management
             </button>
 
             <button data-section="reasons_for_thrombolytic_delay"
-                onclick="handleButtonClick(this, 'delays in CT scan facilitation caused a delay in lytic administration')">
+                onclick="btnClick(this, 'delays in CT scan facilitation caused a delay in lytic administration')">
                 imaging delays
             </button>
 
             <textarea
-                id="reasons_for_thrombolytic_delayText"
+                data-section="reasons_for_thrombolytic_delay"
                 placeholder=""
-                onchange="updateRealTimeText('reasons_for_thrombolytic_delay', 'reasons_for_thrombolytic_delayText')">
+                onchange="updateText(this)">
             </textarea>
         </div>
     </div>
@@ -138,7 +138,7 @@
     <div class="output-section">
         <div id="outputArea"></div>
 
-        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button onclick="copyOutput()">Copy to Clipboard</button>
         <button onclick="clearOutput()">Clear</button>
 
         <div class="related-procedures">
@@ -154,6 +154,20 @@
     </div>
 </div>
 
-<script src="ischemicstroke.js"></script>
+    <script src="jstest/general.js"></script>
+    <script>
+        SECTIONS = [
+            'last_known_well_time',
+            'nih_score',
+            'thrombolytics',
+            'contraindications',
+            'reasons_for_thrombolytic_delay'
+        ];
+        outputArea = document.getElementById('outputArea');
+        NOTE_HEADING = 'Ischemic Stroke Management'
+        NOTE_INTRO = 'Due to a concern for stroke, the following actions were conducted after arrival to the emergency department:'
+
+    </script>
+
 </body>
 </html>
