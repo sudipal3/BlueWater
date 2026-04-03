@@ -76,13 +76,13 @@
             <button data-section="technique" onclick="btnClick(this, 'an 8.0 Fr ETT was used')">8.0 Fr ETT</button>
             <textarea data-section="technique" placeholder="" onchange="updateText(this)"></textarea>
 
-            <h3>Number of Attempts</h3>
-            <button data-section="number_of_attempts" id="defaltAttempts" onclick="togglegroup(this, 'Successful on 1st attempt')">1</button>
+            <h3>Attempts</h3>
+            <button data-section="attempts" id="defaltAttempts" onclick="togglegroup(this, 'Successful on 1st attempt')">1</button>
             
-            <button data-section="number_of_attempts" onclick="togglegroup(this, 'Successful on 2nd attempt')">2</button>
-            <button data-section="number_of_attempts" onclick="togglegroup(this, 'Successful on 3rd attempt')">3</button>
-            <button data-section="number_of_attempts" onclick="togglegroup(this, 'Multiple attempts required')">Multiple attempts</button>
-            <textarea data-section="number_of_attempts" placeholder="additional details" onchange="updateText(this)"></textarea>
+            <button data-section="attempts" onclick="togglegroup(this, 'Successful on 2nd attempt')">2</button>
+            <button data-section="attempts" onclick="togglegroup(this, 'Successful on 3rd attempt')">3</button>
+            <button data-section="attempts" onclick="togglegroup(this, 'Multiple attempts required')">Multiple attempts</button>
+            <textarea data-section="attempts" placeholder="additional details" onchange="updateText(this)"></textarea>
 
             
             <h3>Confirmation of Tube</h3>
@@ -104,7 +104,6 @@
             <button data-section="complications" onclick="btnClick(this, 'no complications during the procedure, O2 sats above 90% and systolic BP above 90 throughout procedure')">none, O2 over 90%, SBP over 90</button>
             <button data-section="complications" onclick="btnClick(this, 'there was hypoxia noted during the intubation with an O2 sat <90% which improved following intubation and oxygenation')">hypoxia, less than 90%</button>
             <button data-section="complications" onclick="btnClick(this, 'the patient experienced hypotension during or following the intubation with a SBP<90')">hypotension, SBP less than 90</button>
-            <button data-section="complications" onclick="btnClick(this, 'no hypotension was noted following the intubation')">no hypotension</button>
             <textarea data-section="complications" placeholder="additional details" onchange="updateText(this)"></textarea>
             
             <h3>Provider</h3>
@@ -120,7 +119,7 @@
         <!-- Macro Buttons Section -->
         <div class="macro-section">
             <h3>Macros</h3>
-            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'number_of_attempts-1','confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, O2 over 90%, SBP over 90'], this)">Video 7.5</button>
+            <button onclick="triggerMacro(['timeout-emergent', 'indication-resp failure', 'consent-emergent', 'preparation-position/monitor', 'preparation-equipment', 'medications-etomidate', 'medications-succinylcholine', 'technique-glidescope', 'technique-7.5 Fr ETT', 'attempts-1','confirmation-ETCO2 waveform', 'confirmation-chest Xray', 'confirmation-direct visualization', 'confirmation-breath sounds', 'complications-none, O2 over 90%, SBP over 90'], this)">Video 7.5</button>
             <!-- Add more macros as needed -->
         </div>
     </div>
@@ -140,7 +139,7 @@
     'preparation',
     'medications',
     'technique',
-    'number_of_attempts',
+    'attempts',
     'confirmation',
     'complications',
     'provider'];
