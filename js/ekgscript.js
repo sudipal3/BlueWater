@@ -78,7 +78,7 @@ function updateEKGOutput() {
 
     // Add the new phrase below the header
     const reviewPhrase = document.createElement('p');
-    reviewPhrase.textContent = 'I independently reviewed the EKG with the following interpretation:';
+    reviewPhrase.textContent = 'I independently interpreted the EKG:';
     outputArea.appendChild(reviewPhrase);
 
     // Generate detailed outputs for each section
