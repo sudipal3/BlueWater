@@ -8,6 +8,7 @@ const NOTE_HEADING = document.querySelector('.title')?.textContent ?? '';
 let NOTE_INTRO = '';
 let SCORE_CONFIG = [];
 let SCORE_NAME = '';
+let SHOW_RESPONSES = false;
 
 function getSection(el) {
     return el.closest('[data-section]')?.dataset.section;
@@ -54,6 +55,19 @@ function render(score) {
     const result = `<strong>${SCORE_NAME}:</strong> ${score}`;
     const base = fmt(range.message.replace('{{score}}', score));
     outputArea.innerHTML = `<h2>${NOTE_HEADING}</h2><p>${NOTE_INTRO}</p><p>${result}</p><p>${base}</p>`;
+    if (SHOW_RESPONSES){
+        const responses = SECTIONS.map(section => {
+            const pressed = document.querySelector(`[data-section="${section}"] button.pressed`);
+            if (!pressed) return '';
+            const title = document.querySelector(`[data-section="${section}"] h3`)?.textContent;
+            return `<strong>${title}:</strong> ${pressed.textContent.trim()}`;
+        }).filter(Boolean);
+
+    if (responses.length) {
+        outputArea.innerHTML += responses.map(r => `<div>${r}</div>`).join('');
+    }
+
+    }
 }
 
 function fmt(text) {

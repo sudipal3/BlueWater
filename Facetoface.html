@@ -164,18 +164,18 @@
 
         NOTE_TEMPLATE = `
         {{date_time}}
-        \nI have completed a face-to-face evaluation of the patient within 1 hour after the initiation of {{restraint_type}}.
-        \n
-        \nThe 1-hour face-to-face evaluation included the following findings:
-        &#10;The patient's immediate situation or cause of the {{restraint_type}}: {{reason}}
-        &#10;The patient's reaction to the intervention: {{reaction}}
-        &#10;Mental status: {{mental_status}}
-        &#10;Review of Systems: {{ros}}
-        &#10;Review of History: {{history}}
-        &#10;Criteria for discontinuation of {{restraint_type}} include: {{criteria}}
-        &#10;Environment Safety Assessment: {{ESA}}
-        &#10;The {{informee}} were updated on the patient's status and use of restraints, questions answered.
-        &#10;Recommendation: {{recommendation}}`;
+        I have completed a face-to-face evaluation of the patient within 1 hour after the initiation of {{restraint_type}}.
+        
+        The 1-hour face-to-face evaluation included the following findings:
+        <strong>Reason:</strong>>The patient's immediate situation or cause of the {{restraint_type}}: {{reason}}
+        <strong>Reaction:</strong>The patient's reaction to the intervention: {{reaction}}
+        <strong>>Mental status:</strong {{mental_status}}
+        <strong>Review of Systems:</strong> {{ros}}
+        <strong>Review of History:</strong> {{history}}
+        <strong>Criteria for discontinuation of {{restraint_type}} include:</strong> {{criteria}}
+        <strong>Environment Safety Assessment:</strong> {{ESA}}
+        <strong>Notification/Education:</strong>The {{informee}} were updated on the patient's status and use of restraints, questions answered.
+        <strong>Recommendation:</strong> {{recommendation}}`;
     </script>
     
 </body>

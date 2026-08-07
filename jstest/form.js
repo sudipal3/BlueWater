@@ -41,6 +41,9 @@ function render() {
         if (replaceEl?.classList.contains('hidden')) return;
         const boxes = selected[replace] ? [...selected[replace]] : [];
         const freetext = textState[replace] || '';
+        if (boxes.length === 1 && boxes.includes("patient")) {
+            NOTE = NOTE.replace('were updated', 'was updated')
+        }
         // Combine both sources, drop empty strings
         const val = [...boxes, freetext].filter(Boolean).join(', ');
         NOTE = NOTE.replace(new RegExp(`{{${replace}}}`, 'g'), val || `<strong>[${replace}]</strong>`);
