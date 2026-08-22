@@ -8,14 +8,13 @@ const NOTE_HEADING = document.querySelector('.title')?.textContent ?? '';
 let NOTE_INTRO = '';
 
 
-
 const state = {};
 const textState = {};     // strings — for textareas
 const inputState = {}; 
 const revealState = {};
 
 function getSection(el) {
-    return el.closest('[data-section]')?.dataset.section;
+    return el.dataset.loc ? el.dataset.loc : el.closest('[data-section]')?.dataset.section;
 }
 
 function defaltSet(id) {
@@ -54,17 +53,19 @@ function btnClick(btn) {
     // handle reveal first, before data-text check
     const section = getSection(btn);
     // Fall back to data-text if text not passed directly
-    const value = btn.dataset.text;
+    const value = btn.dataset.text ? btn.dataset.text : btn.innerText; 
 
     reveal(btn);
 
-    if (!state[section]) state[section] = new Set();
  
     const added = btn.classList.toggle('pressed');
+    const altloc = btn.dataset.loc ? btn.datset.loc : false;
 
     if (!value) return;
-    added ? state[section].add(value) : state[section].delete(value);
 
+    
+    if (!state[section]) state[section] = new Set();
+    added ? state[section].add(value) : state[section].delete(value);
     
     render();
 }
@@ -141,16 +142,30 @@ function updateText(textarea, input = false) {
 
 
 function render() {
+    let INTRO = NOTE_INTRO
     const lines = SECTIONS
         .map(section => {
             const sectionEl = document.querySelector(`[data-section="${section}"]`);
+            const altloc = sectionEl.dataset.loc ?? false;
+
             if (sectionEl?.dataset.display === 'false') return;
             if (sectionEl?.classList.contains('hidden')) return;
+            
+            const buttons = [...(state[section] ?? [])];
+            const pretext = document.querySelector(`[data-section="${section}"][data-pretext]`)?.dataset.pretext;
+            
+            if (altloc == "introNote"){
 
-            const buttons = state[section] ? [...state[section]] : [];
+                const introbtns = [...buttons].filter(Boolean).join(' ');
+                if (!introbtns) return;
+                const newIntro = fmt([INTRO, pretext, introbtns].filter(Boolean).join(' '));
+                INTRO = newIntro;
+                return '';
+            }
             const freetext = textState[section] || '';
             const inputtext = inputState[section] || '';
             const title = document.querySelector(`[data-section="${section}"] h3`)?.textContent;
+
             // Combine both sources, drop empty strings
             const val = [...buttons, inputtext, freetext].filter(Boolean).join(', ');
             const formattedVal = fmt(val);
@@ -159,7 +174,7 @@ function render() {
         })
         .filter(Boolean);
 
-    outputArea.innerHTML = `<h2>${NOTE_HEADING}</h2><p>${fmt(NOTE_INTRO)}</p>${lines.map(l => `<div>${l}</div>`).join('')}`;
+    outputArea.innerHTML = `<h2>${NOTE_HEADING}</h2><p>${fmt(INTRO)}</p>${lines.map(l => `<div>${l}</div>`).join('')}`;
 }
 
 function fmt(text) {
@@ -245,6 +260,7 @@ document.addEventListener('click', e => {
     const btn = e.target.closest('button');
     if (!btn) return;
     if (!btn.closest('[data-section]')) return;
+
     if (btn.dataset.action === 'time-now') {
         timeNow(btn);
     } else if (btn.dataset.group === 'toggle') {

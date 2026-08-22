@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure Note: Splinting</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Procedure Note: Fractures/Splinting</h2>
+
+            <!-- Consent Section -->
+            <div data-section="proc_consent"></div>
+
+
+            <!-- Location Section -->
+            <div data-section="location">
+                <h3>Location</h3>
+                <button>right</button>
+                <button>left</button>
+                <button>clavical</button>
+                <button>humerus</button>
+                <button>forearm</button>
+                <button>wrist</button>
+                <button>hand</button>
+                <button>knee</button>
+                <button>tibia/fibula</button>
+                <button>ankle</button>
+                <button>foot</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Fracture Type Section -->
+            <div data-section="fractureType">
+                <h3>Fracture Type</h3>
+                <button data-text="the extremity was thoroughly examined and was noted to be closed without significant skin defect">closed</button>
+                <button data-text="there was a significant skin defect with potential intrusion to the fracture, consistent with an open fracture">open</button>
+                <button>non-displaced</button>
+                <button>displaced</button>
+                <button>colles fracture</button>
+                <button>buckle fracture</button>
+                <button>supracondylar</button>
+                <button>midshaft humeral fracture</button>
+                <button>Smith fracture</button>
+                <button>bimalleolar</button>
+                <button>trimalleolar</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Pre-splint Exam Section -->
+            <div data-section="preSplintExam">
+                <h3>Pre-splint Exam</h3>
+                <button data-text="the affected extremity was neurovascularly intact prior to splinting">n/v intact</button>
+                <button data-text="there were absent pulses concerning for vascular compromise">absent pulses</button>
+                <button data-text="there was diminished capillary refill concerning for vascular compromise">CR</button>
+                <button data-text="there was neurologic deficit">neurologic deficit</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Splinting Section -->
+            <div data-section="splinting">
+                <h3>Splinting</h3>
+                <button>orthoglass</button>
+                <button>plaster</button>
+                <button>sugartong splint placed</button>
+                <button>volar splint placed</button>
+                <button>long arm splint</button>
+                <button>coaptation splint</button>
+                <button>ulnar gutter splint</button>
+                <button>radial gutter splint</button>
+                <button>wrist immobilizer</button>
+                <button>thumb spica splint</button>
+                <button>short leg splint</button>
+                <button>long leg splint</button>
+                <button data-text="a knee immobilizer was placed on the affected knee">knee immobilizer</button>
+                <button>ankle brace</button>
+                <button data-text="a hinged-knee brace was placed on the affected knee">hinged-knee brace</button>
+                <button>sling</button>
+                <button>boot</button>
+                <button>buddy tape</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- ADDED: Ambulatory Assist Devices -->
+            <div data-section="AssistDevices">
+                <h3>Assist Devices</h3>
+                <p style="font-size: 14px;"><i>Please specify weight bearing status for patients being discharged with assist devices.</i></p>
+                <button data-text="a cane was provided to the patient">cane</button>
+                <button data-text="crutches were provided for the patient">crutches</button>
+                <button data-text="a sling was placed on the affected arm">sling</button>
+                <button data-text="a walker was provided to the patient">walker</button>
+                <button data-text="patient instructed to be non-weight bearing">non-weight bearing</button>
+                <button data-text="patient instructed to be partial weight bearing">partial weight bearing</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Post-splint Exam Section -->
+            <div data-section="postSplintingExam">
+                <h3>Post-splinting Exam</h3>
+                <button data-text="the affected extremity was neurovascularly intact following splinting">n/v intact</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Complications Section -->
+            <div data-section="complications">
+                <h3>Complications</h3>
+                <button>none</button>
+                <button data-text="the patient experienced pain despite analgesia">pain</button>
+                <button data-text="the patient experienced hypoxia during procedural sedation">hypoxia</button>
+                <textarea></textarea>
+            </div>
+
+            <div data-section="painControl">
+                <h3>Pain Control</h3>
+                <button data-text="I discussed with the patient appropriate pain management including over the counter medications">OTC pain</button>
+                <button data-text="I prescribed pain management for the patient for expected management of the fracture">pain rx</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Provider Section -->
+            <div data-section="provider">
+                <h3>Provider</h3>
+                <textarea></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+
+            <p>For reminders on splinting and definitive fracture care, please press this link:
+                <a href="img/splinting_fracture_care.jpg" target="_blank">Splinting/Definitive Fracture Care Tips</a></p>
+        </div>
+    </div>
+
+     <footer>
+    </footer>
+
+    <script src="jstest/general.js"></script>
+    <script src="jstest/shared.js"></script>
+    <script>
+        loadShared('proc_consent');
+    </script>
+</body>
+</html>

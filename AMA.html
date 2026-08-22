@@ -19,6 +19,27 @@
         <div class="form-section">
             <h2 class="title">Against Medical Advice Note</h2>
 
+            <div data-section="RisksDisscussed" data-loc="introNote" data-pretext="Risks discussed included, but were not limited to,">
+                <h3>Risks discussed</h3>
+                <button>death</button>
+                <button>permanent disability</button>
+                <button>prolonged hospitalization</button>
+                <button>prolonged illness</button>
+            </div>
+
+            <div data-section="BenefitsDisscussed" data-loc="introNote" data-pretext="I discussed the specific benefits of">
+                <h3>Benefits discussed</h3>
+                <button>additional treatment</button>
+                <button>offering alternative options</button>
+            </div>
+
+            <div data-section="ActionsTaken" data-loc="introNote" data-pretext="However, the patient declined my options and insisted on leaving as I was unable to convince the patient to stay. I">
+                <h3>Actions Taken</h3>
+                <button>answered all of their questions about their condition</button>
+                <button>provided written discharge instructions which were reviewed</button>
+                <button data-text="advised them to return to this or any emergency department to complete their evaluation at any time, particularly with worsening symptoms." >advised them to return to an emergency department</button>
+            </div>
+
             <!-- Specific Concerns -->
             <div data-section="SpecificConcerns">
                 <h3>Specific Concerns</h3>
@@ -77,24 +98,7 @@
 
     <script src="jstest/general.js"></script>
     <script>
-        NOTE_INTRO = `Despite extensive discussion, the patient has decided to leave the emergency
-            department against medical advice without completing further evaluation, testing, or
-            treatments that were offered. The patient's capacity to make this decision is not reduced
-            by intoxication or distracting pain. They appear to have intact insight, judgment, and
-            reasoning, and in my medical opinion, they have decision-making capacity. The patient
-            is also not under any duress to leave the hospital. I explained my concerns about the
-            patient's health, given that a full evaluation and treatment have not been completed. I
-            discussed the need for continued evaluation to determine whether their symptoms may
-            be caused by a condition that carries a risk of death or serious morbidity. Risks
-            discussed included, but were not limited to, death, permanent disability, prolonged
-            hospitalization, and prolonged illness. I discussed the specific benefits of additional
-            treatment, as well as tried offering alternative options in hopes that the patient might be
-            amenable to partial evaluation and treatment which would be medically beneficial to the
-            patient. However, the patient declined my options and insisted on leaving. Because I
-            was unable to convince the patient to stay, I answered all of their questions about their
-            condition, provided written discharge instructions which were reviewed and advised
-            them to return to this or any emergency department to complete their evaluation at any
-            time, particularly with worsening symptoms.`;
+        NOTE_INTRO = `Despite extensive discussion, the patient has decided to leave the emergency department against medical advice without completing further evaluation, testing, or treatments that were offered. Thepatient's capacity to make this decision is not reduced by intoxication or distracting pain. They appear tohave intact insight, judgment, and reasoning, and in my medical opinion, they have decision-makingcapacity. The patient is also not under any duress to leave the hospital. I explained my concerns aboutthe patient's health, given that a full evaluation and treatment have not been completed. I discussed theneed for continued evaluation to determine whether their symptoms may be caused by a condition thatcarries a risk of death or serious morbidity.`;
         render();
     </script>
 </body>
