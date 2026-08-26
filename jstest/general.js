@@ -156,10 +156,10 @@ function render() {
             
             if (altloc == "introNote"){
 
-                const introbtns = [...buttons].filter(Boolean).join(' ');
+                const introbtns = [...buttons].filter(Boolean).join(', ');
                 if (!introbtns) return;
                 const newIntro = fmt([INTRO, pretext, introbtns].filter(Boolean).join(' '));
-                INTRO = newIntro;
+                INTRO = newIntro + '.';
                 return '';
             }
             const freetext = textState[section] || '';
