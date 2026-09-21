@@ -40,7 +40,7 @@
                 <button data-text="patient received additional IV fluids by EMS prior to arrival">IVF by EMS</button>
                 <div id="ibw" class="hidden reveal-target">
                     <h3 class = "inline">Ideal body weight used:</h3>
-                    <input data-text="given the patients habitus, ideal body weight of {{input}} kg was used for fluid calculation"  type="number">
+                    <input data-key="weight" data-text="given the patients habitus, ideal body weight of {{input}} kg was used for fluid calculation"  type="number">
                 </div>
                 <textarea placeholder="Explain any variance in sepsis bundle and/or contraindication to 30 cc/kg fluid bolus here"></textarea>
             </div>
@@ -48,7 +48,7 @@
             <!-- Initial Management Section -->
             <div data-section="fluid_adjustment" id="fluid" class="hidden reveal-target">
                 <h3 class = "inline">Adjusted amount of fluid given</h3>
-                <input type="number" data-text="{{input}} mL">
+                <input type="number" data-unit=" mL">
             </div>
             
             <!-- Reassessment Section -->

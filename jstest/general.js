@@ -8,13 +8,12 @@ const NOTE_HEADING = document.querySelector('.title')?.textContent ?? '';
 let NOTE_INTRO = '';
 
 
-const state = {};
-const textState = {};     // strings — for textareas
-const inputState = {}; 
+//const state = {};
+//const inputState = {}; 
 const revealState = {};
 
 function getSection(el) {
-    return el.dataset.loc ? el.dataset.loc : el.closest('[data-section]')?.dataset.section;
+    return el.closest('[data-section]')?.dataset.section;
 }
 
 function defaltSet(id) {
@@ -29,57 +28,41 @@ function reveal(btn){
             id = id.trim();
             const el = document.getElementById(id);
             if (!el) return;
-            const section = getSection(el);
             if (!revealState[id]) revealState[id] = 0;
             revealState[id] += isPressed ? -1 : 1;
             el.classList.toggle('hidden', revealState[id] === 0);
+            if (el.tagName === "BUTTON" && el.classList.contains('pressed')){
+                el.classList.toggle('pressed');
+            }
             if (!!el.querySelector('input')) {
-                if( el.classList.contains('hidden')) {
-                    delete inputState[section];
-                    render()
-                }else{
-                    updateText(el.querySelector('input'), true);
+                if( !el.classList.contains('hidden')) {
+                    render();
                 }
-            } else {
-                render()
             }
         });
+        render();
     }
 }
 
 
 
 function btnClick(btn) {
-    // handle reveal first, before data-text check
-    const section = getSection(btn);
-    // Fall back to data-text if text not passed directly
-    const value = btn.dataset.text ? btn.dataset.text : btn.innerText; 
-
     reveal(btn);
 
  
-    const added = btn.classList.toggle('pressed');
-    const altloc = btn.dataset.loc ? btn.datset.loc : false;
-
-    if (!value) return;
-
-    
-    if (!state[section]) state[section] = new Set();
-    added ? state[section].add(value) : state[section].delete(value);
+    btn.classList.toggle('pressed');
     
     render();
 }
 
 
-function togglegroup(btn) {
-    const section = getSection(btn);
+function togglegroup(btn, group) {
+
     const currentlyPressed = document.querySelector(
-        `[data-section="${section}"] button.pressed`
+        `[data-group="${group}"] button.pressed`
     );
     if (currentlyPressed && currentlyPressed !== btn) {
-        currentlyPressed.classList.remove('pressed');
-        const val = currentlyPressed.dataset.text;
-        state[section]?.delete(val);
+        btnClick(currentlyPressed)
     }
     btnClick(btn);
 }
@@ -100,7 +83,7 @@ function timeNow(btn) {
     // 1) Put time into the textarea
     if (textarea) {
         textarea.value = formattedTime;
-        updateText(textarea)
+        render();
     }
 
 }
@@ -113,7 +96,7 @@ const today = new Date().toLocaleDateString('en-US', {
 
 document.querySelectorAll('textarea[data-default="date"]').forEach(ta => {
     ta.value = today;
-    updateText(ta);
+    render();
 });
 
 document.querySelectorAll('input[type="number"]').forEach(input => {
@@ -123,95 +106,195 @@ document.querySelectorAll('input[type="number"]').forEach(input => {
     });
 });
 
-function updateText(textarea, input = false) {
-    const section = getSection(textarea);
-    const content = textarea.value.trim();
-    if (input) {
-        const text = textarea.dataset.text
-        if (text){
-            if (!inputState[section]) inputState[section] = new Set();
-            inputState[section] = text.replace(/{{input}}/g, content || '___')
-        }
-    } else {
-        if (!textState[section]) textState[section] = new Set();
-        textState[section] = textarea.value.trim();
-    }
+// function updateText(textarea) {
+//     const section = getSection(textarea);
+//     const key = textarea.dataset.key || 'default';
     
-    render();
-}
+//     if (!textState[section]) textState[section] = {};
 
+//     const unit = textarea.closest('[data-unit]')?.dataset.unit ?? false;
+
+//     const text = textarea.closest('[data-text]')?.dataset.text ?? false;
+//     let content = textarea.value.trim();
+
+//     if (unit && content){
+//         content += " " + unit.trim();
+//     }
+
+
+//     if (text){
+//         textState[section][key] = text
+//             .replace(/{{input}}/g, content || '___')
+//             .replace (/{{response}}/g,[content, getChildren(textarea.parentElement)]
+//             .filter(Boolean)
+//             .join(", ") || '____');
+//     } else {
+//         textState[section][key] = content;
+//     }
+    
+//     render();
+// }
+
+
+function getChildren(div) {
+    const buttons = div.querySelectorAll("button.pressed");
+    //const textarea = div.querySelector('textarea,input[type="number"],input[type="text"]');
+
+    const btntext = [...buttons].map(btn => btn.innerText.trim());
+    //const text = textarea.value.trim();
+
+    return [...btntext].filter(Boolean).join(', ');
+}
 
 function render() {
     let INTRO = NOTE_INTRO
+
     const lines = SECTIONS
         .map(section => {
             const sectionEl = document.querySelector(`[data-section="${section}"]`);
             const altloc = sectionEl.dataset.loc ?? false;
+            const format = sectionEl.dataset.format ?? false;
+            const pretext = document.querySelector(`[data-section="${section}"][data-pretext]`)?.dataset.pretext;
+            const sectiontxt =  sectionEl.dataset.text ?? false;
+
 
             if (sectionEl?.dataset.display === 'false') return;
             if (sectionEl?.classList.contains('hidden')) return;
-            
-            const buttons = [...(state[section] ?? [])];
-            const pretext = document.querySelector(`[data-section="${section}"][data-pretext]`)?.dataset.pretext;
-            
-            if (altloc == "introNote"){
 
-                const introbtns = [...buttons].filter(Boolean).join(', ');
-                if (!introbtns) return;
-                const newIntro = fmt([INTRO, pretext, introbtns].filter(Boolean).join(' '));
+            const groups = [...document.querySelectorAll(`[data-section="${section}"] [data-group]`)];
+            const targets = groups.length ? groups : [sectionEl];
+
+            const datagroups = targets
+                .map(group => {
+                    const grouptext =  group.dataset.text ?? false;
+
+                    const children = [...group.querySelectorAll('button, textarea, input')]
+                        .map(child => {
+
+                            if (child.closest('hidden')) return;
+                            let value = ""
+                            const unit = child.closest('[data-unit]')?.dataset.unit ?? false;
+                            const text = child.dataset.text ?? false;
+                            
+                            if (child.tagName === "BUTTON" && child.classList.contains('pressed')){
+                                const btnVal = (child.dataset.text ?? child.innerText.trim()) + (unit ? ' ' + unit.trim() : '');
+                                                          
+                                if (btnVal){
+                                    value = btnVal;
+                                }
+                            }
+                            if ((child.tagName === "TEXTAREA" || child.tagName === "INPUT") && child.value) {                                                 
+                                let content = child.value.trim();
+                                if (unit && content){
+                                    content += " " + unit.trim();
+                                }
+                                if (text){
+                                    content = text
+                                        .replace(/{{input}}/g, content || '___');
+                                } 
+                                value = content;
+                            }
+                            if (!value){
+                                return;
+                            }
+                            return value;
+                        })
+                        .filter(Boolean)
+                        .join(', ');
+
+                    let value = children;
+
+                    if (grouptext && value){
+                        value = grouptext.replace(/{{}}/g, value)
+                    }
+
+                    return value;      
+
+            })
+            .filter(Boolean)
+            .join(', ');
+
+            let value = datagroups;
+
+            if (sectiontxt && value){
+                value = sectiontxt.replace(/{{}}/g, value)
+            }
+
+
+            if (altloc == "introNote"){
+                if (!value) return;
+                const newIntro = fmt([INTRO, pretext, value].filter(Boolean).join(' '));
                 INTRO = newIntro + '.';
                 return '';
             }
-            const freetext = textState[section] || '';
-            const inputtext = inputState[section] || '';
+
             const title = document.querySelector(`[data-section="${section}"] h3`)?.textContent;
 
-            // Combine both sources, drop empty strings
-            const val = [...buttons, inputtext, freetext].filter(Boolean).join(', ');
-            const formattedVal = fmt(val);
-            
-            return val ? `<strong>${title}:</strong> ${formattedVal}` : '';
+            const formattedVal = fmt(value, format);
+
+            return value ? `<strong>${title}:</strong> ${formattedVal}` : '';
         })
         .filter(Boolean);
 
-    outputArea.innerHTML = `<h2>${NOTE_HEADING}</h2><p>${fmt(INTRO)}</p>${lines.map(l => `<div>${l}</div>`).join('')}`;
+    outputArea.innerHTML = `<h2>${NOTE_HEADING}</h2><p>${fmt(INTRO, true)}</p>${lines.map(l => `<div>${l}</div>`).join('')}`;
 }
 
-function fmt(text) {
-    const date = document.querySelector(`[data-section="date"] textarea`)?.value;
-    const time = document.querySelector(`[data-section="time"] textarea`)?.value;
+function fmt(text, format) {
+    
+    if (format === "datetime" || format==="true"){
+        const date = document.querySelector(`[data-section="date"] textarea`)?.value;
+        const time = document.querySelector(`[data-section="time"] textarea`)?.value;
+        text = text
+            .replace(/{{date}}/g, date? date : '____')
+            .replace(/{{time}}/g, time? time : '____');
+    } else if (format==="nocomma") {
+        text = text.replace(/,/g, "");
+    }
+    
     return text
         .replace(/\n/g, '<br>')
         .replace(/_([^_]+)_/g, '<u>$1</u>')
-        .replace(/{{date}}/g, date? date : '____')
-        .replace(/{{time}}/g, time? time : '____')
 }
 
 // Function to trigger macros
 
-function triggerMacro(keys, macroBtn) {    
+function triggerMacro(keys, macroBtn) {
     const wasPressed = macroBtn.classList.contains('pressed'); // check BEFORE clearing
     clearOutput();
     if (!wasPressed) {
         keys.forEach(key => {
-            const dashIndex = key.indexOf('-');
-            const section  = key.slice(0, dashIndex);
-            const label    = key.slice(dashIndex + 1);
-        
-            const match = Array.from(
-                document.querySelector(`[data-section="${section}"]`)
-                    .querySelectorAll('button')
-                ).find(btn => btn.innerText.trim() === label);
-            
-            if (match) {
-                btnClick(match);
-            } else {
-                console.warn(`Macro: no button found for section="${section}" label="${label}"`);
-            }
+            const parts = key.split('-');
+            const section = parts[0];
+            const labels = parts.slice(1); // one or more labels for this section
+
+            const sectionEls = document.querySelectorAll(`[data-section="${section}"]`);
+
+            labels.forEach(label => {
+                let matches = [];
+                sectionEls.forEach(sectionEl => {
+                    matches.push(
+                        ...Array.from(sectionEl.querySelectorAll('button'))
+                            .filter(btn => btn.innerText.trim() === label)
+                    );
+                });
+
+                if (matches.length) {
+                    matches.forEach(match => {
+                        if (match.dataset.action === 'time-now') {
+                            timeNow(match);
+                        } else if (match.closest('[data-group]')?.dataset.group) {
+                            togglegroup(match, match.closest('[data-group]')?.dataset.group);
+                        } else {
+                            btnClick(match);
+                        }
+                    });
+                } else {
+                    console.warn(`Macro: no button found for section="${section}" label="${label}"`);
+                }
+            });
         });
         macroBtn.classList.add('pressed');
     }
-
 }
 
 // ─── Copy ────────────────────────────────────────────────────────────────────
@@ -226,15 +309,15 @@ async function copyOutput() {
 }
 // ─── Clear ────────────────────────────────────────────────────────────────────
 function clearOutput() {
-    Object.keys(state).forEach(k => delete state[k]);
-    Object.keys(textState).forEach(k => delete textState[k]);
+    // Object.keys(state).forEach(k => delete state[k]);
+    // Object.keys(textState).forEach(k => delete textState[k]);
     Object.keys(revealState).forEach(k => delete revealState[k]);
-    Object.keys(inputState).forEach(k => delete inputState[k]);
+    // Object.keys(inputState).forEach(k => delete inputState[k]);
     document.querySelectorAll('.reveal-target').forEach(el => el.classList.add('hidden'));
     outputArea.innerHTML = '';
     document.querySelectorAll('.pressed').forEach(b => b.classList.remove('pressed'));
     document.querySelectorAll('textarea').forEach(t => t.value = '');
-    document.querySelectorAll('input[type="number"]').forEach(i => i.value = '');
+    document.querySelectorAll('input[type="number"], input[type="text"]').forEach(i => i.value = '');
 
     if (typeof showCopyError === "function") showCopyError("");
     
@@ -249,8 +332,8 @@ function testFill() {
     });
     document.querySelectorAll('textarea').forEach(ta => {
         ta.value = 'test text';
-        updateText(ta);
     });
+    render();
 }
 
 
@@ -263,8 +346,8 @@ document.addEventListener('click', e => {
 
     if (btn.dataset.action === 'time-now') {
         timeNow(btn);
-    } else if (btn.dataset.group === 'toggle') {
-        togglegroup(btn);
+    } else if (btn.closest('[data-group]')?.dataset.group) {
+        togglegroup(btn, btn.closest('[data-group]')?.dataset.group);
     } else {
         btnClick(btn);
     }
@@ -273,9 +356,9 @@ document.addEventListener('click', e => {
  
 document.addEventListener('change', e => {
     const ta = e.target.closest('textarea');
-    if (ta) updateText(ta);
+    if (ta) render();
 
     const input = e.target.closest('input');
-    if (input) updateText(input,true);
+    if (input) render();
     
 });

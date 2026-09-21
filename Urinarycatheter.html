@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urinary Catheter Placement</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2 class="title">Procedure Note: Fractures/Splinting</h2>
+
+            <!-- Consent Section -->
+            <div data-section="consent"></div>
+
+
+            <!-- procedure -->
+            <div data-section="procedure">
+                <h3>Procedure</h3>
+                <button data-reveal="foley">Foley Catheter</button>
+                <button data-reveal="suprapubic">Suprapubic Catheter</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Indication -->
+            <div data-section="indication">
+                <h3>Indication</h3>
+                <button>Acute urinary retention</button>
+                <button data-text="Accurate urine output monitoring">Accurate I&amp;O</button>
+                <button>Neurogenic bladder</button>
+                <button>Other</button>
+            </div>
+            
+            <!-- Pre-Procedure Assessment -->
+            <div data-section="preassesment">
+                <h3>Pre-Procedure Assessment</h3>
+                <button data-text="Patient identification confirmed, privacy ensured">Patient identity/privacy</button>
+                <button data-text="Allergies reviewed, no allergies to iodine, latex or other relevant substances noted">Allergies reviewed, none</button>
+                <button data-text="Allergies reviewed, latex allergy noted, applicable prevention measures taken">Latex allergy</button>
+                <button data-text="Allergies reviewed, iodine allergy noted, applicable prevention measures taken">Iodine allergy</button>
+                <button data-text="Allergies reviewed, allergy as noted below">Other allergy</button>
+                <button>Relevant urologic history reviewed</button>
+                <textarea></textarea>
+            </div>
+
+            <!-- Catheter Size / Type -->
+            <div data-section="sizeandtype" data-format="nocomma">
+                <h3>Catheter Size / Type</h3>
+
+                <div data-group="size" data-unit="Fr">
+                <h4>Size (Fr):</h4>
+                    <button>12</button>
+                    <button>14</button>
+                    <button>16</button>
+                    <button>18</button>
+                    <button>20</button>
+                    <button>14</button>
+                    <p class="inline">Other:</p>
+                    <input type="number">
+                </div>
+
+                <div data-group="type">
+                    <h4>Type:</h4>
+                    <button>standard foley</button>
+                    <button>coude tip</button>
+                    <button>3-way</button>
+                    <button>suprapubic</button>
+                    <p class="inline">Other:</p>
+                    <input type="text">
+                </div>
+
+                <div data-group="material">
+                    <h4>Material:</h4>
+                    <button data-text="(silicone)">silicone</button>
+                    <button data-text="(antimicrobial-coated)">antimicrobial-coated</button>
+                    <button data-text="(latex)">latex</button>
+                </div>
+            </div>
+
+
+            <!-- Initial Management Section -->
+            <div data-section="Technique">
+                <h3>Technique</h3>
+                <button  id="foley" class="hidden reveal-target" data-text="Hand hygiene performed, sterile field established, urethral meatus cleansed with antiseptic solution, Catheter inserted under sterile technique until urine return observed">Sterile insertion</button>
+                <button  id="suprapubic" class="hidden reveal-target" data-text="Sterile field established; sterile catheter insertion set and lubricated catheter prepared. Catheter gently inserted through the suprapubic tract into the bladder until urine return observed; no resistance or discomfort reported.">Sterile insertion</button>
+            
+                <div data-group="balloon" data-text="Balloon inflated with {{}} sterile water">
+                    <h4>Balloon inflated:</h4>
+                    <button>5 mL</button>
+                    <button>10 mL</button>
+                    <p class="inline">Other:</p>
+                    <input data-unit="mL" type="number">
+                </div>
+                <div data-group="CatheterSecuredTo" data-text="Catheter secured to {{}}, drainage bag positioned below bladder level, tubing free of kinks">
+                    <h4>Catheter secured to:</h4>
+                    <button>Thigh</button>
+                    <button>Abdomen</button>
+                </div>
+
+            </div>
+
+
+            <div data-section="output" data-text="{{}} urine drained" data-format="nocomma">
+                <h3>Output</h3>
+                <div data-group="volume">
+                    <p class="inline">Initial urine volume:</p>
+                    <input data-unit="mL" type="number">
+                </div>
+                <div data-group="descriptor" data-text="of {{}}">
+                    <button>Clear</button>
+                    <button>Cloudy</button>
+                    <button>Bloody</button>
+                    <p class="inline">Other:</p>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div data-section="Complications" data-text="{{}} urine drained" data-format="nocomma">
+                <h3>Complications</h3>
+                <button data-text="Procedure completed without complications, the patient tolerated the procedure, no pain or bleeding were reported, the catheter is patent and draining">None</button>
+                <textarea></textarea>
+            </div>
+
+
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <div id="outputArea"></div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearOutput()">Clear</button>
+
+            <div class="macro-section">
+                <h3>Macros</h3>
+                <button onclick="triggerMacro(['consent-verbal', 'procedure-Foley Catheter', 'indication-Acute urinary retention', 'preassesment-Patient identity/privacy-Allergies reviewed, none-Relevant urologic history reviewed', 'sizeandtype-16-standard foley-silicone', 'Technique-Sterile insertion-10 mL-Thigh', 'Complications-None'], this)">Foley 16Fr</button>
+                 <!-- Add more macros as needed -->
+            </div>
+        </div>
+    </div>
+
+     <footer>
+    </footer>
+
+    <script src="jstest/general.js"></script>
+    <script src="jstest/shared.js"></script>
+    <script>
+        loadShared('consent');
+    </script>
+</body>
+</html>

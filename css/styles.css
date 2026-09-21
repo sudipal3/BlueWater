@@ -203,7 +203,7 @@ main {
 .form-section p {
     margin: 2px 0;
     line-height: 1.0;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* Output Section */
@@ -344,7 +344,7 @@ label {
     margin-bottom: 4px;
 }
 
-span {
+span.old {
     display: flex;
     align-items: center;
     line-height: 1;
@@ -352,6 +352,25 @@ span {
 }
 
 h3.inline {
+    display: inline;
+    margin: 0;
+    padding: 0 3px 0 0;
+}
+
+h4{
+    display: inline;
+    font-size: 14px;
+    margin: 0;
+    padding: 0 3px 0 0;
+}
+
+h4::before {
+  content: "";
+  display: block;
+  width: 100%;
+}
+
+p.inline {
     display: inline;
     margin: 0;
     padding: 0 3px 0 0;
@@ -467,3 +486,4 @@ tr:nth-child(even) {
     line-height: 1.0; 
     font-size: 16px;
 }
+
