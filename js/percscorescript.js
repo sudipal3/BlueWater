@@ -59,7 +59,7 @@ function updatePercScoreOutput() {
     if (anyYes) {
         riskMessage = 'Despite an initial low pre-test probability for pulmonary embolism, as there is a positive criteria, the PERC rule cannot rule out pulmonary embolism.';
     } else {
-        riskMessage = 'The patient has a low pre-test probability (<3%) of PE based on their clinical presentation and risk factors. Given all negative PERC criteria, PE can be effectively ruled out at this time.';
+        riskMessage = 'The patient has a low pre-test probability (<3%) of PE based on their clinical presentation and risk factors. Given all negative PERC criteria, the risk of PE is below the testing threshold.';
     }
 
     // Update the output area with the header and results

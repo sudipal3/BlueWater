@@ -157,7 +157,7 @@ function updateOutput() {
 
   html +=
     yearsState.ddimerAbove === 'No'
-      ? 'PE excluded per YEARS algorithm.'
+      ? 'the patient does not meet the threshold for additional testing'
       : 'PE not excluded — consider CTPA or other definitive imaging per YEARS algorithm.';
 
   out.innerHTML = html;

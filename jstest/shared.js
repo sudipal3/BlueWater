@@ -8,6 +8,12 @@ const SHARED_SECTIONS = {
         <button data-text="family gave informed consent: risks/benefits/alternatives discussed">family</button>
         <textarea></textarea>
     `,
+    timeout: `
+        <h3>Timeout</h3>
+        <button data-text="pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity.">protocol/checklist</button>
+        <button data-text="A formal timeout was deferred given the emergent nature of the procedure">emergent</button>
+        <textarea></textarea>
+    `,
     proc_consent: `
         <h3>Consent</h3>
         <button data-section="consent" onclick="handleButtonClick(this, 'potential benefits and harm as well as alternatives were explained to patient/family. patient/family was given the opportunity to ask questions and patient agrees to proceed with planned procedure')">verbal</button>

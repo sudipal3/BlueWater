@@ -1,7 +1,7 @@
 // Define the order of sections for reordering
 const sectionOrder = [
   'ComplexityLow', 'ComplexityModerate', 'ComplexityHigh',
-  'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian',
+  'ExternalNotes', 'OrderedReviewedTests', 'IndependentHistorian', 'IndependentEKG',
   'IndependentRadiologyReview', 'ConsultantDiscussion', 'Risk'
 ];
 
@@ -182,7 +182,7 @@ function triggerMacro(buttonIds, macroButton, ...freeTexts) {
 // Utility function to format section names with spaces between words
 function formatSectionName(section) {
   return section
-    .replace(/([A-Z])/g, ' $1')
+    //.replace(/([A-Z])/g, ' $1')
     .replace(/^[a-z]/, m => m.toUpperCase())
     .trim();
 }
