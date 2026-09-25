@@ -75,8 +75,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><h3>ROS</h3></th>
-                        <td data-replace="ros">
+                        <th><h3>Exam</h3></th>
+                        <td data-replace="exam">
                             <label><input type="checkbox">vital signs stable</label>
                             <label><input type="checkbox">skin warm/dry, no evidence of breakdown</label>
                             <label><input type="checkbox">respirations regular and unlabored</label>
@@ -112,7 +112,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><h3>Noification/education</h3></th>
+                        <th><h3>Notification/education</h3></th>
                         <td data-replace="informee">
                             <label><input type="checkbox">patient</label>
                             <label><input type="checkbox">family/significant other</label>
@@ -124,6 +124,7 @@
                         <th><h3>Recommendation</h3></th>
                         <td data-replace="recommendation">
                             <label><input type="checkbox" data-text="The patient MEETS criteria for continued {{restraint_type}}">The patient MEETS criteria for continued restraints</label>
+                            <label><input type="checkbox" data-text="The patient meets criteria to DISCONTINUE {{restraint_type}}">"The patient meets criteria to DISCONTINUE restraints</label>
                             <textarea></textarea>
                         </td>
                     </tr>
@@ -170,7 +171,7 @@
         <strong>Reason:</strong>The patient's immediate situation or cause of the {{restraint_type}}: {{reason}}
         <strong>Reaction:</strong>The patient's reaction to the intervention: {{reaction}}
         <strong>Mental status:</strong {{mental_status}}
-        <strong>Review of Systems:</strong> {{ros}}
+        <strong>Post Restraint Exam:</strong> {{ros}}
         <strong>Review of History:</strong> {{history}}
         <strong>Criteria for discontinuation of {{restraint_type}} include:</strong> {{criteria}}
         <strong>Environment Safety Assessment:</strong> {{ESA}}

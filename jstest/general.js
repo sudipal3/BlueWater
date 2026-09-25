@@ -161,18 +161,19 @@ function render() {
             if (sectionEl?.dataset.display === 'false') return;
             if (sectionEl?.classList.contains('hidden')) return;
 
-            const groups = [...document.querySelectorAll(`[data-section="${section}"] [data-group]`)];
-            const targets = groups.length ? groups : [sectionEl];
+            const groups = [...sectionEl.querySelectorAll(`[data-section="${section}"] [data-group]`)];
+            const targets = groups.length ? [sectionEl, ...groups] : [sectionEl];
 
             const datagroups = targets
                 .map(group => {
                     const grouptext =  group.dataset.text ?? false;
 
                     const children = [...group.querySelectorAll('button, textarea, input')]
+                        .filter(child => group !== sectionEl || !child.closest('[data-group]'))
                         .map(child => {
 
                             if (child.closest('hidden')) return;
-                            let value = ""
+                            let value = "";
                             const unit = child.closest('[data-unit]')?.dataset.unit ?? false;
                             const text = child.dataset.text ?? false;
                             
@@ -217,7 +218,9 @@ function render() {
             let value = datagroups;
 
             if (sectiontxt && value){
+                console.log(value);
                 value = sectiontxt.replace(/{{}}/g, value)
+                console.log(value);
             }
 
 

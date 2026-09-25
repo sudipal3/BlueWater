@@ -15,102 +15,123 @@
     </nav>
     
     <div class="container">
+        <!-- Form Section -->
         <div class="form-section">
-            <h2>Procedure Note: Laceration</h2>
-            
-            <div class="input-group">
-                <div data-section="proc_consent"></div>
+            <h2 class="title">Procedure Note: Laceration</h2>
 
+            <div data-section="consent"></div>
+
+            <div data-section="location">
                 <h3>Location</h3>
-                <button data-section="location" onclick="handleButtonClick(this, 'right')">right</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'left')">left</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'scalp')">scalp</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'forehead')">forehead</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'lip')">lip</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'chin')">chin</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'arm')">arm</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'hand')">hand</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'finger')">finger</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'chest')">chest</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'back')">back</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'abdomen')">abdomen</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'leg')">leg</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'foot')">foot</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'toe')">toe</button>
-                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
+                <button>right</button>
+                <button>left</button>
+                <button>scalp</button>
+                <button>forehead</button>
+                <button>lip</button>
+                <button>chin</button>
+                <button>arm</button>
+                <button>hand</button>
+                <button>finger</button>
+                <button>chest</button>
+                <button>back</button>
+                <button>abdomen</button>
+                <button>leg</button>
+                <button>foot</button>
+                <button>toe</button>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="length">
                 <h3>Length (cm)</h3>
-                <textarea id="lengthText" placeholder="Enter length in cm here" onchange="updateRealTimeText('Length (cm)', 'lengthText')"></textarea>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="cleaning">
                 <h3>Cleaning</h3>
-                <button data-section="cleaning" onclick="handleButtonClick(this, 'the wound was copiously pressure irrigated with sterile fluids')">pressure irrigation</button>
-                <button data-section="cleaning" onclick="handleButtonClick(this, 'the wound was cleaned with chlorhexidine')">chlorhexidine</button>
-                <textarea id="cleaningText" placeholder="" onchange="updateRealTimeText('Cleaning', 'cleaningText')"></textarea>
+                <button data-text="the wound was copiously pressure irrigated with sterile fluids">pressure irrigation</button>
+                <button data-text="the wound was cleaned with chlorhexidine">chlorhexidine</button>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="foreignbody">
                 <h3>Foreign body</h3>
-                <button data-section="foreignbody" onclick="handleButtonClick(this, 'no foreign body present in the wound on direct visualization and exploration')">none</button>
-                <button data-section="foreignbody" onclick="handleButtonClick(this, 'no foreign body was noted on XR prior to wound closure')">XR verification</button>
-                <textarea id="foreignBodyText" placeholder="" onchange="updateRealTimeText('Foreign body', 'foreignBodyText')"></textarea>
+                <button data-text="no foreign body present in the wound on direct visualization and exploration">none</button>
+                <button data-text="no foreign body was noted on XR prior to wound closure">XR verification</button>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="anesthetic">
                 <h3>Anesthetic</h3>
-                <button data-section="anesthetic" onclick="handleButtonClick(this, 'lidocaine')">lidocaine</button>
-                <button data-section="anesthetic" onclick="handleButtonClick(this, 'lidocaine with epinephrine')">lido w/ epinephrine</button>
-                <button data-section="anesthetic" onclick="handleButtonClick(this, 'bupivacaine')">bupivacaine</button>
-                <button data-section="anesthetic" onclick="handleButtonClick(this, 'topical anesthetic was applied to the wound prior to repair')">topical</button>
-                <button data-section="anesthetic" onclick="handleButtonClick(this, 'a regional nerve block was used for anesthetic')">regional nerve block</button>
-                <textarea id="anestheticText" placeholder="Enter volume of anesthetic here" onchange="updateRealTimeText('Anesthetic', 'anestheticText')"></textarea>
+                <button data-text="lidocaine">lidocaine</button>
+                <button data-text="lidocaine with epinephrine">lido w/ epinephrine</button>
+                <button data-text="bupivacaine">bupivacaine</button>
+                <button data-text="topical anesthetic was applied to the wound prior to repair">topical</button>
+                <button data-text="a regional nerve block was used for anesthetic">regional nerve block</button>
+                <textarea placeholder="Enter volume of anesthetic here"></textarea>
+            </div>
 
+            <div data-section="suturetechnique">
                 <h3>Suture technique</h3>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'single layer')">single layer</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'multi-layer repair')">multi-layer repair</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, '3-0')">3-0</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, '4-0')">4-0</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, '5-0')">5-0</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, '6-0')">6-0</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'nylon sutures')">nylon</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'prolene sutures')">prolene</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'vicryl sutures')">vicryl</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'vicryl rapide sutures')">vicryl rapide</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'fast-absorbing gut sutures')">fast-absorbing gut</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'simple interrupted sutures')">simple interrupted</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'running sutures')">running sutures</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'deep dermal sutures placed')">dermal sutures</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'subcuticular sutures')">subcuticular sutures</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'horizontal mattress sutures')">horizontal mattress sutures</button>
-                <button data-section="suturetechnique" onclick="handleButtonClick(this, 'vertical mattress sutures')">vertical mattress sutures</button>
-                <textarea id="sutureText" placeholder="Enter number of sutures" onchange="updateRealTimeText('Suture technique', 'sutureText')"></textarea>
+                <button >single layer</button>
+                <button >multi-layer repair</button>
+                <button >3-0</button>
+                <button >4-0</button>
+                <button >5-0</button>
+                <button >6-0</button>
+                <button data-text="nylon sutures">nylon</button>
+                <button data-text="prolene sutures">prolene</button>
+                <button data-text="vicryl sutures">vicryl</button>
+                <button data-text="vicryl rapide sutures">vicryl rapide</button>
+                <button data-text="fast-absorbing gut sutures">fast-absorbing gut</button>
+                <button data-text="simple interrupted sutures">simple interrupted</button>
+                <button >running sutures</button>
+                <button data-text="deep dermal sutures placed">dermal sutures</button>
+                <button >subcuticular sutures</button>
+                <button >horizontal mattress sutures</button>
+                <button >vertical mattress sutures</button>
+                <textarea placeholder="Enter number of sutures"></textarea>
+            </div>
 
+            <div data-section="othertechniques">
                 <h3>Other techniques</h3>
-                <button data-section="othertechniques" onclick="handleButtonClick(this, 'staples')">staples</button>
-                <button data-section="othertechniques" onclick="handleButtonClick(this, 'adhesive glue')">adhesive glue</button>
-                <button data-section="othertechniques" onclick="handleButtonClick(this, 'steri-strips')">steri-strips</button>
-                <textarea id="otherTechniquesText" placeholder="Enter number of staples" onchange="updateRealTimeText('Other techniques', 'otherTechniquesText')"></textarea>
+                <button >staples</button>
+                <button >adhesive glue</button>
+                <button >steri-strips</button>
+                <textarea placeholder="Enter number of staples"></textarea>
+            </div>
 
+            <div data-section="postprocedure">
                 <h3>Post-procedure</h3>
-                <button data-section="postprocedure" onclick="handleButtonClick(this, 'following repair of the wound, appropriate approximation and cosmesis was achieved')">good approximation/cosmesis</button>
-                <button data-section="postprocedure" onclick="handleButtonClick(this, 'due to concern for possible infection, the wound was repaired with loose approximation')">loose approximation</button>
-                <button data-section="postprocedure" onclick="handleButtonClick(this, 'a sterile dressing was applied to the wound')">sterile dressing</button>
-                <textarea id="postProcedureText" placeholder="" onchange="updateRealTimeText('Post-procedure', 'postProcedureText')"></textarea>
+                <button data-text="following repair of the wound, appropriate approximation and cosmesis was achieved">good approximation/cosmesis</button>
+                <button data-text="due to concern for possible infection, the wound was repaired with loose approximation">loose approximation</button>
+                <button data-text="a sterile dressing was applied to the wound">sterile dressing</button>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="tetanus">
                 <h3>Tetanus</h3>
-                <button data-section="tetanus" onclick="handleButtonClick(this, 'the patient was up to date on their tetanus vaccination status')">UTD</button>
-                <button data-section="tetanus" onclick="handleButtonClick(this, 'the patient received a tetanus vaccination')">tetanus updated</button>
-                <textarea id="tetanusText" placeholder="" onchange="updateRealTimeText('Tetanus', 'tetanusText')"></textarea>
+                <button data-text="the patient was up to date on their tetanus vaccination status">UTD</button>
+                <button data-text="the patient received a tetanus vaccination">tetanus updated</button>
+                <textarea></textarea>
+            </div>
 
+            <div data-section="complications">
                 <h3>Complications</h3>
-                <button data-section="complications" onclick="handleButtonClick(this, 'none')">none</button>
-                <button data-section="complications" onclick="handleButtonClick(this, 'there was a mild amount of bleeding that was controlled at the time of procedure completion')">bleeding</button>
-                <button data-section="complications" onclick="handleButtonClick(this, 'the patient experienced pain despite anesthetic application')">pain</button>
-                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
-                
+                <button >none</button>
+                <button data-text="there was a mild amount of bleeding that was controlled at the time of procedure completion">bleeding</button>
+                <button data-text="the patient experienced pain despite anesthetic application">pain</button>
+                <textarea></textarea>
+            </div>
+
+            <div data-section="provider">
                 <h3>Provider</h3>
-                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
+                <textarea></textarea>
             </div>
         </div>
 
         <div class="output-section">
             <div id="outputArea"></div>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="copyOutput()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
         </div>
     </div>
@@ -118,10 +139,10 @@
     <footer>
     </footer>
 
-    <script src="js/lacerationscript.js"></script>
+    <script src="jstest/general.js"></script>
     <script src="jstest/shared.js"></script>
     <script>
-        loadShared('proc_consent');
+        loadShared('consent');
     </script>
 </body>
 </html>

@@ -37,7 +37,7 @@
                 <button>Acute urinary retention</button>
                 <button data-text="Accurate urine output monitoring">Accurate I&amp;O</button>
                 <button>Neurogenic bladder</button>
-                <button>Other</button>
+                <textarea></textarea>
             </div>
             
             <!-- Pre-Procedure Assessment -->
@@ -111,11 +111,11 @@
 
             <div data-section="output" data-text="{{}} urine drained" data-format="nocomma">
                 <h3>Output</h3>
-                <div data-group="volume">
+                <div data-group="volume" data-text="{{}} of">
                     <p class="inline">Initial urine volume:</p>
                     <input data-unit="mL" type="number">
                 </div>
-                <div data-group="descriptor" data-text="of {{}}">
+                <div data-group="descriptor">
                     <button>Clear</button>
                     <button>Cloudy</button>
                     <button>Bloody</button>
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-            <div data-section="Complications" data-text="{{}} urine drained" data-format="nocomma">
+            <div data-section="Complications">
                 <h3>Complications</h3>
                 <button data-text="Procedure completed without complications, the patient tolerated the procedure, no pain or bleeding were reported, the catheter is patent and draining">None</button>
                 <textarea></textarea>
@@ -136,7 +136,7 @@
         <!-- Output Section -->
         <div class="output-section">
             <div id="outputArea"></div>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="copyOutput()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
 
             <div class="macro-section">
