@@ -184,7 +184,7 @@ function formatSectionName(section) {
   return section
     .replace(/([A-Z])/g, ' $1')
     .replace(/^[a-z]/, m => m.toUpperCase())
-    .replace([Ekg], 'EKG')
+    .replace(/Ekg/g, 'EKG')
     .trim();
 }
 
