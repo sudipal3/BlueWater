@@ -16,74 +16,87 @@
     
     <div class="container">
         <div class="form-section">
-            <h2>Procedure Note: Central Line</h2>
+            <h2 class="title">Procedure Note: Central Line</h2>
             
-            <div class="input-group">
-                <h3>Timeout</h3>
-                <button data-section="timeout" onclick="handleButtonClick(this, 'A formal timeout was deferred given the emergent nature of the procedure')">emergent</button>
-                <button data-section="timeout" onclick="handleButtonClick(this, 'pre-procedure time out was performed and standard protocol/checklist was utilized as permitted by time/acuity.')">protocol/checklist</button>
-                <textarea id="timeoutText" placeholder="" onchange="updateRealTimeText('Timeout', 'timeoutText')"></textarea>
-                
+            
+            <div data-section="consent"></div>
+            
+            <div data-section="timeout"></div> 
+            
+            <div data-section="indication">
                 <h3>Indication</h3>
-                <button data-section="indication" onclick="handleButtonClick(this, 'anticipated need for frequent blood draws and potential pressors/multiple drips')">patient acuity</button>
-                <button data-section="indication" onclick="handleButtonClick(this, 'requirement for hemodynamic support with potential vasopressor use')">hemodynamic support</button>
-                <button data-section="indication" onclick="handleButtonClick(this, 'poor IV access')">poor IV access</button>
-                <textarea id="indicationText" placeholder="" onchange="updateRealTimeText('Indication', 'indicationText')"></textarea>
-            
-                
-                <div data-section="proc_consent"></div>
+                <button data-text="anticipated need for frequent blood draws and potential pressors/multiple drips">patient acuity</button>
+                <button data-text="requirement for hemodynamic support with potential vasopressor use">hemodynamic support</button>
+                <button data-text="poor IV access">poor IV access</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="location">
                 
                 <h3>Location</h3>
-                <button data-section="location" onclick="handleButtonClick(this, 'right internal jugular vein')">right IJ</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'left internal jugular vein')">left IJ</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'right subclavian vein')">right subclavian</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'left subclavian vein')">left subclavian</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'right femoral vein')">right femoral</button>
-                <button data-section="location" onclick="handleButtonClick(this, 'left femoral vein')">left femoral</button>
-                <textarea id="locationText" placeholder="" onchange="updateRealTimeText('Location', 'locationText')"></textarea>
-                
+                <button data-text="right internal jugular vein">right IJ</button>
+                <button data-text="left internal jugular vein">left IJ</button>
+                <button data-text="right subclavian vein">right subclavian</button>
+                <button data-text="left subclavian vein">left subclavian</button>
+                <button data-text="right femoral vein">right femoral</button>
+                <button data-text="left femoral vein">left femoral</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="preparation"> 
                 <h3>Preparation</h3>
-                <button data-section="preparation" onclick="handleButtonClick(this, 'patient was placed in Trendelenburg position')">Trendelenburg</button>
-                <button data-section="preparation" onclick="handleButtonClick(this, 'My hands were washed immediately prior to the procedure and I donned sterile gowns and gloves and wore a cap and mask throughout the procedure. The patient was draped with a sterile gown and the procedural area was prepared with chlorhexadine.')">sterile procedure</button>
-                <textarea id="preparationText" placeholder="" onchange="updateRealTimeText('Preparation', 'preparationText')"></textarea>
-                
+                <button data-text="patient was placed in Trendelenburg position">Trendelenburg</button>
+                <button data-text="My hands were washed immediately prior to the procedure and I donned sterile gowns and gloves and wore a cap and mask throughout the procedure. The patient was draped with a sterile gown and the procedural area was prepared with chlorhexadine.">sterile procedure</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="ultrasound">
                 <h3>Ultrasound</h3>
-                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Dynamic ultrasound was used to visualize the vessel and help guide needle placement')">US used</button>
-                <button data-section="ultrasound" onclick="handleButtonClick(this, 'Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.')">US not used</button>
-                <textarea id="ultrasoundText" placeholder="" onchange="updateRealTimeText('Ultrasound', 'ultrasoundText')"></textarea>
-                
+                <button data-text="Dynamic ultrasound was used to visualize the vessel and help guide needle placement">US used</button>
+                <button data-text="Anatomic landmarks were used to identify the appropriate position for needle insertion and appropriate venous bloodflow was confirmed prior to dilation.">US not used</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="technique"> 
                 <h3>Technique</h3>
-                <button data-section="technique" onclick="handleButtonClick(this, 'a triple lumen catheter was used')">triple lumen catheter</button>
-                <button data-section="technique" onclick="handleButtonClick(this, 'a cordis catheter was used')">cordis</button>
-                <button data-section="technique" onclick="handleButtonClick(this, 'Lidocaine was used to anesthetize the overlying skin')">lidocaine</button>
-                <button data-section="technique" onclick="handleButtonClick(this, 'A needle was introduced into the vessel and good bloodflow was confirmed with aspiration. A wire was then introduced into the vessel followed by a scalpel incision and dilation of the vessel. The catheter was then introduced into the vessel over the wire and the wire was removed ')">Seldinger</button>
-                <button data-section="technique" onclick="handleButtonClick(this, 'Good return of blood was noted from all ports following removal of the wire')">good return of blood</button>
-                <button data-section="technique" onclick="handleButtonClick(this, 'The catheter was secured with a suture. A biopatch and/orsterile dressing was placed over the catheter')">suture/sterile dressing</button>
-                <textarea id="techniqueText" placeholder="" onchange="updateRealTimeText('Technique', 'techniqueText')"></textarea>
-                
+                <button data-text="a triple lumen catheter was used">triple lumen catheter</button>
+                <button data-text="a cordis catheter was used">cordis</button>
+                <button data-text="Lidocaine was used to anesthetize the overlying skin">lidocaine</button>
+                <button data-text="A needle was introduced into the vessel and good bloodflow was confirmed with aspiration. A wire was then introduced into the vessel followed by a scalpel incision and dilation of the vessel. The catheter was then introduced into the vessel over the wire and the wire was removed ">Seldinger</button>
+                <button data-text="Good return of blood was noted from all ports following removal of the wire">good return of blood</button>
+                <button data-text="The catheter was secured with a suture. A biopatch and/orsterile dressing was placed over the catheter">suture/sterile dressing</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="confirmation">
                 <h3>Confirmation</h3>
-                <button data-section="confirmation" onclick="handleButtonClick(this, 'The wire was visualized in the vessel dynamically on ultrasound')">US visualization</button>
-                <button data-section="confirmation" onclick="handleButtonClick(this, 'Venous bloodflow was confirmed on pressure transducing')">pressure transducing</button>
-                <button data-section="confirmation" onclick="handleButtonClick(this, 'a chest XRay was ordered and interpreted showing correct catheter placement')">chest X-ray</button>
-                <textarea id="confirmationText" placeholder="" onchange="updateRealTimeText('Confirmation', 'confirmationText')"></textarea>
-                
+                <button data-text="The wire was visualized in the vessel dynamically on ultrasound">US visualization</button>
+                <button data-text="Venous bloodflow was confirmed on pressure transducing">pressure transducing</button>
+                <button data-text="a chest XRay was ordered and interpreted showing correct catheter placement">chest X-ray</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="complications">
                 <h3>Complications</h3>
-                <button data-section="complications" onclick="handleButtonClick(this, 'no complications during the procedure')">none</button>
-                <button data-section="complications" onclick="handleButtonClick(this, 'minimal bleeding during the procedure')">minimal bleeding</button>
-                <button data-section="complications" onclick="handleButtonClick(this, 'EBL was less than 100 cc')">estimated blood loss under 100</button>
-                <button data-section="complications" onclick="handleButtonClick(this, 'a pneumothorax was noted on follow-up XRay')">pneumothorax</button>
-                <textarea id="complicationsText" placeholder="" onchange="updateRealTimeText('Complications', 'complicationsText')"></textarea>
-                
+                <button data-text="no complications during the procedure">none</button>
+                <button data-text="minimal bleeding during the procedure">minimal bleeding</button>
+                <button data-text="EBL was less than 100 cc">estimated blood loss under 100</button>
+                <button data-text="a pneumothorax was noted on follow-up XRay">pneumothorax</button>
+                <textarea></textarea>
+            </div> 
+
+            <div data-section="Provider">
                 <h3>Provider</h3>
-                <textarea id="providerText" placeholder="" onchange="updateRealTimeText('Provider', 'providerText')"></textarea>
-                
-                <div id="additionalProcedureNote"></div>
+                <textarea></textarea>
             </div>
+               
+            <div id="additionalProcedureNote"></div>
+
         </div>
 
         <div class="output-section">
             <div id="outputArea"></div>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="copyOutput()">Copy to Clipboard</button>
             <button onclick="clearOutput()">Clear</button>
             
             <!-- Macro Buttons Section -->
@@ -98,10 +111,11 @@
     <footer>
     </footer>
 
-    <script src="js/centrallinescript.js"></script>
+    <script src="jstest/general.js"></script>
     <script src="jstest/shared.js"></script>
     <script>
-        loadShared('proc_consent');
+        loadShared('consent');
+        loadShared('timeout');
     </script>
 </body>
 </html>
